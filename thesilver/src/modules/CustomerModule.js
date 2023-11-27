@@ -2,15 +2,15 @@ import {createActions, handleActions} from "redux-actions";
 
 const initialState = {};
 
-const SIGNUP_SUCCESS = 'member/SIGNUP_SUCCESS';
+const GET_CUSTOMERS = 'customers/GET_CUSTOMERS';
 
-export const { member : { signupSuccess } } = createActions({
-    [SIGNUP_SUCCESS] : () => ({ signupSuccess : true })
+export const {customers: {getCustomers}} = createActions({
+    [GET_CUSTOMERS]: result => ({customers: result.data})
 });
 
 /* 리듀서 함수 */
 const customerReducer = handleActions({
-    [SIGNUP_SUCCESS] : (state, { payload }) => payload
+    [GET_CUSTOMERS]: (state, {payload}) => payload,
 }, initialState);
 
 export default customerReducer;
