@@ -1,0 +1,90 @@
+import {NavLink} from "react-router-dom"
+import {useState} from "react";
+
+function Navbar(){
+
+    const [isSubMenuOpen, setSubMenuOpen] = useState({
+        customer: false,
+        program: false,
+        schedule: false,
+        attendance: false,
+        employee: false,
+        myInfo: false
+    });
+
+    /* Menu class 클릭 시 subMenu 보이기 */
+    const onClickMenuHandler = (menu) => {
+        setSubMenuOpen((prevState) => ({
+            ...Object.keys(prevState).reduce((acc, key) => {
+                acc[key] = key === menu ? !prevState[key] : false;
+                return acc;
+            }, {}),
+        }));
+    };
+
+    return(
+        <div className="navbar-div">
+            <NavLink to="/">
+                <img src='/img/logo.png' className="imgLogo"/>
+            </NavLink>
+            <ul className="nav-list-ul">
+                <li>
+                    <a className="Menu" onClick={() => onClickMenuHandler("customer")}>고객 관리</a>
+                    {isSubMenuOpen.customer && (
+                    <ul className="subMenu" >
+                        <li><NavLink to="">고객 신규 등록</NavLink></li>
+                        <li><NavLink to="">고객 정보 관리</NavLink></li>
+                    </ul>
+                    )}
+                </li>
+                <li>
+                    <a className="Menu" onClick={() => onClickMenuHandler("program")}>프로그램</a>
+                    {isSubMenuOpen.program && (
+                    <ul className="subMenu">
+                        <li><NavLink to="">프로그램 소개</NavLink></li>
+                        <li><NavLink to="">프로그램 일지</NavLink></li>
+                    </ul>
+                    )}
+                </li>
+                <li>
+                    <a className="Menu" onClick={() => onClickMenuHandler("schedule")}>일정 관리</a>
+                    {isSubMenuOpen.schedule && (
+                    <ul className="subMenu">
+                        <li><NavLink to="">월간 스케줄</NavLink></li>
+                    </ul>
+                    )}
+                </li>
+                <li>
+                    <a className="Menu" onClick={() => onClickMenuHandler("attendance")}>근태/연차 관리</a>
+                    {isSubMenuOpen.attendance && (
+                    <ul className="subMenu">
+                        <li><NavLink to="">근태 관리</NavLink></li>
+                        <li><NavLink to="">연차 관리</NavLink></li>
+                    </ul>
+                    )}
+                 </li>
+                <li>
+                    <a className="Menu" onClick={() => onClickMenuHandler("employee")}>직원 관리</a>
+                    {isSubMenuOpen.employee && (
+                    <ul className="subMenu">
+                        <li><NavLink to="">직원 정보 관리</NavLink></li>
+                        <li><NavLink to="">직원 근태 관리</NavLink></li>
+                        <li><NavLink to="">직원 연차 관리</NavLink></li>
+                    </ul>
+                    )}
+                </li>
+                <li>
+                    <a className="Menu" onClick={() => onClickMenuHandler("myInfo")}>내정보 관리</a>
+                    {isSubMenuOpen.myInfo && (
+                    <ul className="subMenu">
+                        <li><NavLink to="">내정보 관리</NavLink></li>
+                    </ul>
+                    )}
+                </li>
+                <img src='/img/logout.png' className="imgLogout" title="로그아웃"/>
+            </ul>
+        </div>
+    );
+}
+
+export default Navbar;
