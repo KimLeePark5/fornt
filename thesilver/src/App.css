@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -75,4 +76,56 @@
 
 
 
+
+=======
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+hr {
+    margin: 0;
+}
+
+/* paging bar ------------------------------------------------------------------------ */
+
+.paging-ul {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.paging-btn {
+    margin: 5px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.paging-btn:hover {
+    cursor: pointer;
+    background-color: burlywood;
+}
+
+/* customer ------------------------------------------------------------------------ */
+.customerList-head {
+    background-color: #01092b;
+    color: #FFFFFF;
+    padding: 3px;
+}
+
+.customerList-body, .customerList-head {
+    display: flex;
+    text-align: center;
+}
+
+.customerList-body > div, .customerList-head > div {
+    flex: 1; /* 모든 자식에게 기본적으로 1의 비율을 부여 */
+}
+
+.customerList-body > div:nth-child(1), .customerList-head > div:nth-child(1) {
+    flex: 0.5; /* 첫 번째 자식에게 1의 비율 부여 */
+}
 
