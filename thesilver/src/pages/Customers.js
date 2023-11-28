@@ -22,8 +22,15 @@ function Customers() {
         <>
             {customers && (
                 <>
-                    <CustomerList data={customers.data} />
-                    <PagingBar pageInfo={customers.pageInfo} setCurrentPage={setCurrentPage}/>
+                    <div className="customers-type">
+                        <div className="customers-type-first"></div>
+                        <div className="customers-type-second"></div>
+                        <div className="customers-type-third"></div>
+                    </div>
+                    <div className="customers-list">
+                        <CustomerList data={customers.data}/>
+                        <PagingBar pageInfo={customers.pageInfo} setCurrentPage={setCurrentPage}/>
+                    </div>
                 </>
             )}
         </>
