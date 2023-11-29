@@ -1,0 +1,171 @@
+
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/**** Layout ****************************************/
+.layout {
+    display: flex;
+}
+
+.layout > div:nth-child(1) {
+    width: 280px;
+    min-width: 280px;
+}
+
+.layout > div:nth-child(2) {
+    flex: auto;
+    margin: 50px;
+}
+
+/**** nav bar ****************************************/
+.navbar-div {
+    width: 280px;
+    background-color: #01092B ;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    box-shadow: 2px 5px 5px 0 #01092B;
+    border-radius: 10px;
+}
+
+.imgLogo {
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.nav-list-ul {
+    list-style: none;
+    margin-top: 50px;
+    padding-inline-start: 0;
+    margin-block-end: 0;
+    padding-bottom: 43px;
+}
+
+.nav-list-ul li {
+    font-size: 20px;
+    margin-bottom: 60px;
+}
+
+.nav-list-ul a {
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 40px;
+    color: #FFFFFF;
+}
+
+.Menu {
+    padding-left: 20px;
+}
+
+.nav-list-ul a:hover {
+    color: #FFCF00;
+    cursor: pointer;
+}
+
+.subMenu {
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    background-color: #08335B;
+    transition: opacity 3s ease-in-out;
+}
+
+.subMenu li {
+    margin-bottom: 10px;
+}
+.subMenu a {
+    font-size: 18px;
+}
+
+.subMenu a:hover {
+    color: #FFCF00;
+    cursor: pointer;
+}
+
+.imgLogout {
+    margin-top: 153px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+
+
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+hr {
+    margin: 0;
+}
+
+/* paging bar ------------------------------------------------------------------------ */
+
+.paging-ul {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.paging-btn {
+    margin: 5px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.paging-btn:hover {
+    cursor: pointer;
+    background-color: burlywood;
+}
+
+/* customers ------------------------------------------------------------------------ */
+.customers-list-head {
+    background-color: #01092b;
+    color: #FFFFFF;
+    padding: 3px;
+}
+
+.customers-list-body, .customers-list-head {
+    display: flex;
+    text-align: center;
+}
+
+.customers-list-body > div, .customers-list-head > div {
+    flex: 1; /* 모든 자식에게 기본적으로 1의 비율을 부여 */
+}
+
+.customers-list-body > div:nth-child(1), .customers-list-head > div:nth-child(1) {
+    flex: 0.5; /* 첫 번째 자식에게 1의 비율 부여 */
+}
+
+.customers-type {
+    display: flex;
+    justify-content: center;
+}
+
+.customers-type-first, .customers-type-second, .customers-type-third {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.customers-list {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+    width: 1280px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.customers-list-title {
+    margin: 20px;
+}
+.customers-list-search {
+    margin: 20px;
+}
+
