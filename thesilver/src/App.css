@@ -22,8 +22,9 @@
 /*    display: none;*/
 /*}*/
 
+/*상의하기*/
 body{
-    margin-left: 0;
+    margin: 0;
 }
 
 /**** nav bar ****************************************/
@@ -134,7 +135,83 @@ hr {
     background-color: burlywood;
 }
 
-/* customers ------------------------------------------------------------------------ */
+/* 용민 ------------------------------------------------------------------------ */
+/* login */
+.login-img {
+    margin: 15px;
+    width: 110px;
+}
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F7F8F8;
+}
+
+.login-header {
+    background-color: #01092B;
+    width: 100vw;
+    height: 100px;
+}
+
+.login-content {
+    background-color: white;
+    box-shadow: 2px 2px 5px 0 #787878;
+    margin: auto;
+    border-radius: 20px;
+    height: 270px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+.login-input:focus {
+    outline: none;
+}
+.login-input {
+    border-width: 0 0 2px 0;
+    border-color: #080808;
+    font-size: 105%;
+}
+
+.login-content-autologin {
+    font-size: 95%;
+    margin-right: 110px;
+}
+
+.login-content-button {
+    height: 40px;
+    width: 215px;
+    background-color: #01092B;
+    color: white;
+    border-radius: 20px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.login-content-find {
+    font-size: 80%;
+    cursor: pointer;
+    border-bottom: 1px solid #bbbbbb;
+    color: #666666;
+}
+
+.login-footer {
+    background-color: #01092B;
+    width: 100vw;
+    height: 50px;
+    bottom: 1px;
+    color: #eaeaea;
+    text-align: center;
+    font-size: 70%;
+}
+
+/* customers */
 .customers-list-head {
     background-color: #01092b;
     color: #FFFFFF;
