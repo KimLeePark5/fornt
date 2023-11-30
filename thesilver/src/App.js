@@ -4,6 +4,7 @@ import Layout from "./layouts/Layout";
 
 
 import Customers from "./pages/Customers";
+import Employees from "./pages/Employees";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route path="/customers" element={<Customers/>}></Route>
+                    <Route path="/employees" element={<Employees/>}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>
