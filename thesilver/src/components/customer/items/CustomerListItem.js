@@ -1,7 +1,7 @@
 function CustomerListItem({customer}) {
     return (
         <>
-            <div className="customerList-body">
+            <div className="customers-list-body">
                 <div>{customer.customerCode}</div>
                 <div>{customer.status}</div>
                 <div>{customer.name}</div>

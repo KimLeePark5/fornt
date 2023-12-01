@@ -4,18 +4,19 @@
 
 /**** nav bar ****************************************/
 .navbar-div {
-    margin-left: 500px;
+    height: 98vh;
     width: 280px;
     background-color: #01092B ;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
     box-shadow: 2px 5px 5px 0 #01092B;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
+    position: relative;
 }
 
 .imgLogo {
     margin-top: 30px;
-    margin-left: 40px;
+    margin-left: 16px;
 }
 
 .nav-list-ul {
@@ -39,7 +40,7 @@
 }
 
 .Menu {
-    padding-left: 20px;
+    padding-left: 0px;
 }
 
 .nav-list-ul a:hover {
@@ -69,18 +70,10 @@
 }
 
 .imgLogout {
-    margin-top: 153px;
-    margin-left: 40px;
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
     cursor: pointer;
-}
-
-
-html {
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-hr {
-    margin: 0;
 }
 
 /* paging bar ------------------------------------------------------------------------ */
@@ -104,23 +97,52 @@ hr {
     background-color: burlywood;
 }
 
-/* customer ------------------------------------------------------------------------ */
-.customerList-head {
+/* customers ------------------------------------------------------------------------ */
+.customers-list-head {
     background-color: #01092b;
     color: #FFFFFF;
     padding: 3px;
 }
 
-.customerList-body, .customerList-head {
+.customers-list-body, .customers-list-head {
     display: flex;
     text-align: center;
 }
 
-.customerList-body > div, .customerList-head > div {
+.customers-list-body > div, .customers-list-head > div {
     flex: 1; /* 모든 자식에게 기본적으로 1의 비율을 부여 */
 }
 
-.customerList-body > div:nth-child(1), .customerList-head > div:nth-child(1) {
+.customers-list-body > div:nth-child(1), .customers-list-head > div:nth-child(1) {
     flex: 0.5; /* 첫 번째 자식에게 1의 비율 부여 */
 }
 
+.customers-type {
+    display: flex;
+    justify-content: center;
+}
+
+.customers-type-first, .customers-type-second, .customers-type-third {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.customers-list {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+    width: 1280px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.customers-list-title {
+    margin: 20px;
+}
+.customers-list-search {
+    margin: 20px;
+}
+
+
+/**                               employee                               **/
