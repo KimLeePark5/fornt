@@ -22,6 +22,7 @@ function App() {
                     <Route path="attend-management" element={<AttendAdmin/>}></Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
+
                 </Route>
             </Routes>
         </BrowserRouter>
