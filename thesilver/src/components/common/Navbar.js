@@ -37,13 +37,12 @@ function Navbar(){
             </NavLink>
             <ul className="nav-list-ul">
                 <li>
-                    <a className="Menu" onClick={() => onClickMenuHandler("customer")}>고객 관리</a>
-                    {isSubMenuOpen.customer && (
-                    <ul className="subMenu" >
+                    <a className={`Menu`} onClick={() => onClickMenuHandler("customer")}>고객 관리</a>
+                    <ul className={`subMenu ${isSubMenuOpen.customer ? 'active' : ''}`} >
                         <li><NavLink to="/regist-customer">고객 신규 등록</NavLink></li>
                         <li><NavLink to="/customers">고객 정보 관리</NavLink></li>
                     </ul>
-                    )}
+
                 </li>
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("program")}>프로그램</a>
