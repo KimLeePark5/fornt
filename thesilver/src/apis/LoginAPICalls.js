@@ -13,15 +13,12 @@ export const callLoginAPI = ({loginForm}) => {
             JSON.stringify(loginForm)
         )
 
-        console.log(result)
-
         if(result?.status === 200) {
             saveToken(result.headers);
             dispatch(loginSuccess());
         } else {
             dispatch(loginFailure());
         }
-
-
     }
 }
+
