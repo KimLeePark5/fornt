@@ -1,7 +1,9 @@
 
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
+html{
+    background-color: #F7F8F8;
+}
 /**** Layout ****************************************/
 .layout {
     display: flex;
@@ -169,3 +171,136 @@ hr {
     margin: 20px;
 }
 
+/* -----------------------Attend-------------------------*/
+.attend-main{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    width:  970px;
+    height: 800px;
+    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+}
+
+.attend-box{
+    display: flex;
+}
+.commute-btn-box{
+    background-color: white;
+    margin-top: 10px;
+    width: 380px;
+    margin-left: 55px;
+    height: 445px;
+    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    position: relative;
+}
+.attend-detail-box{
+    display: flex;
+    margin-left: 120px;
+    margin-top: 30px;
+}
+.attend-detail{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    width: 500px;
+}
+.detail-count{
+    text-align: center;
+}
+.detailname{
+    font-size: 25px;
+    font-weight: bold;
+    color: #01092B;
+}
+.detail-name{
+    margin-top: 25px;
+    font-size: 18px;
+}
+.attendhead{
+    margin-left: 350px;
+}
+.detail-count{
+    font-size: 25px;
+}
+.attendTime{
+    margin-top: 30px;
+    font-weight: bolder;
+    font-size: 35px;
+}
+.attend-month{
+    margin-top: 14px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.attend-button{
+    font-size: 30px;
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    width: 315px;
+    height: 70px;
+    background-color: #01092B;
+    color: white;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+}
+
+.attend-sub-menu{
+    margin-left: 23px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.attend-sub-menu2{
+     margin-left: 23px;
+     margin-top: 20px;
+     font-size: 18px;
+     font-weight: bolder;
+
+ }
+
+.attend-sub-menu3{
+    letter-spacing: 0.5px;
+    margin-left: 35px;
+    font-weight: bold;
+    font-size: 19px;
+}
+.progress-bar {
+    border-radius: 15px;
+    width: 75%;
+    margin-left: 35px;
+    height: 22px;
+    background-color: #dedede;
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+.progress-bar .progress {
+    width: 65%;
+    height: 22px;
+    padding: 0;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #01092B;
+    color: #111;
+}
+.attend-Time{
+    margin-top: 30px;
+    line-height: 40px;
+}
+.attend-btn{
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.leaveBt{
+    background-color: #002249;
+}
+.admin-attend-head{
+    display: flex;
+    justify-content: space-between;
+}
