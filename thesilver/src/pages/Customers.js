@@ -1,8 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {callCustomerListAPI} from "../apis/CustomerAPICalls";
+import {callCustomerListAPI, callCustomersAPI} from "../apis/CustomerAPICalls";
 import CustomerList from "../components/customer/lists/CustomerList";
 import PagingBar from "../components/common/PagingBar";
+import {jwtDecode} from "jwt-decode";
+import {isLogin} from "../utils/TokenUtils";
 
 function Customers() {
 
@@ -12,9 +14,16 @@ function Customers() {
 
     useEffect(() => {
         /* 모든 상품에 대한 정보 요청 */
-        dispatch(callCustomerListAPI({currentPage}));
+        // dispatch(callCustomerListAPI({currentPage}));
+        dispatch(callCustomersAPI({currentPage}));
     }, [currentPage]);
 
+
+
+    console.log("customers : ", customers)
+    if(isLogin()) {
+        console.log(jwtDecode(window.localStorage.getItem('access-token')))
+    }
     return (
         <>
             {customers && (

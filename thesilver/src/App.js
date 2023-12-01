@@ -8,6 +8,8 @@ import MyAttend from "./pages/MyAttend";
 import AttendAdmin from "./pages/admin/AttendAdmin";
 import Employees from "./pages/Employees";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/router/ProtectedRoute";
+import Error from "./pages/Error";
 import Vacation from "./pages/Vacation";
 
 
@@ -15,7 +17,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/login" element={<ProtectedRoute loginCheck={false}> <Login/> </ProtectedRoute>}/>
                 <Route path="/" element={<Layout/>}>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
@@ -24,6 +26,7 @@ function App() {
                     <Route path="/vacation" element={<Vacation/>}></Route>
 
                 </Route>
+                <Route path="*" element={<Error/>}/>
             </Routes>
         </BrowserRouter>
     );
