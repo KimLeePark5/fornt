@@ -15,6 +15,9 @@ function Customers() {
         dispatch(callCustomerListAPI({currentPage}));
     }, [currentPage]);
 
+    console.log("customers : ", customers)
+
+
     return (
         <>
             {customers && (
