@@ -1,7 +1,47 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+/**** Layout ****************************************/
+.layout {
+    display: flex;
+}
 
+.layout > div:nth-child(1) {
+    width: 280px;
+    min-width: 280px;
+}
+
+.layout > div:nth-child(2) {
+    flex: auto;
+    margin: 50px;
+}
+
+/** 스크롤바 없애기 **/
+/*::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
+
+body{
+    margin-left: 0;
+}
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #1A1A1C;
+    background-color: #F7F8F8;
+}
+
+hr {
+    margin: 0;
+}
+
+.pageTitle-div {
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+
+/**** 하현 ********************************************/
 /**** nav bar ****************************************/
 .navbar-div {
     height: 98vh;
@@ -76,6 +116,87 @@
     cursor: pointer;
 }
 
+/**** vacation *************************************************************************/
+/**** vacation state ****************************************/
+.vacation-today {
+    text-align: center;
+}
+
+.vacation-state-content {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 1540px;
+    height: 100px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/****require state **************************************/
+.require-state {
+    padding-top: 20px;
+}
+
+.require-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vacation-require-btn {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    margin: 10px 10px 20px 0;
+}
+
+.vacation-require-btn:hover {
+    background-color: #08335B;
+    color: #FFFFFF;
+}
+
+.require-content h3 {
+    margin-bottom: 10px;
+}
+
+.require-list {
+    width: 1540px;
+    height: 200px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/******** use list**************************/
+
+.use-state {
+    padding-top: 20px;
+}
+
+.use-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.use-content h3 {
+    margin-bottom: 10px;
+}
+
+.select-days {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.use-vacation-list {
+    width: 1540px;
+    height: 200px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+
 /* paging bar ------------------------------------------------------------------------ */
 
 .paging-ul {
@@ -97,7 +218,83 @@
     background-color: burlywood;
 }
 
-/* customers ------------------------------------------------------------------------ */
+/* 용민 ------------------------------------------------------------------------ */
+/* login */
+.login-img {
+    margin: 15px;
+    width: 110px;
+}
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F7F8F8;
+}
+
+.login-header {
+    background-color: #01092B;
+    width: 100vw;
+    height: 100px;
+}
+
+.login-content {
+    background-color: white;
+    box-shadow: 2px 2px 5px 0 #787878;
+    margin: auto;
+    border-radius: 20px;
+    height: 270px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+.login-input:focus {
+    outline: none;
+}
+.login-input {
+    border-width: 0 0 2px 0;
+    border-color: #080808;
+    font-size: 105%;
+}
+
+.login-content-autologin {
+    font-size: 95%;
+    margin-right: 110px;
+}
+
+.login-content-button {
+    height: 40px;
+    width: 215px;
+    background-color: #01092B;
+    color: white;
+    border-radius: 20px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.login-content-find {
+    font-size: 80%;
+    cursor: pointer;
+    border-bottom: 1px solid #bbbbbb;
+    color: #666666;
+}
+
+.login-footer {
+    background-color: #01092B;
+    width: 100vw;
+    height: 50px;
+    bottom: 1px;
+    color: #eaeaea;
+    text-align: center;
+    font-size: 70%;
+}
+
+/* customers */
 .customers-list-head {
     background-color: #01092b;
     color: #FFFFFF;
@@ -144,5 +341,138 @@
     margin: 20px;
 }
 
+/* -----------------------Attend-------------------------*/
+.attend-main{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    width:  970px;
+    height: 800px;
+    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+}
+
+.attend-box{
+    display: flex;
+}
+.commute-btn-box{
+    background-color: white;
+    margin-top: 10px;
+    width: 380px;
+    margin-left: 55px;
+    height: 445px;
+    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    position: relative;
+}
+.attend-detail-box{
+    display: flex;
+    margin-left: 120px;
+    margin-top: 30px;
+}
+.attend-detail{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    width: 500px;
+}
+.detail-count{
+    text-align: center;
+}
+.detailname{
+    font-size: 25px;
+    font-weight: bold;
+    color: #01092B;
+}
+.detail-name{
+    margin-top: 25px;
+    font-size: 18px;
+}
+.attendhead{
+    margin-left: 350px;
+}
+.detail-count{
+    font-size: 25px;
+}
+.attendTime{
+    margin-top: 30px;
+    font-weight: bolder;
+    font-size: 35px;
+}
+.attend-month{
+    margin-top: 14px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.attend-button{
+    font-size: 30px;
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    width: 315px;
+    height: 70px;
+    background-color: #01092B;
+    color: white;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+}
+
+.attend-sub-menu{
+    margin-left: 23px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.attend-sub-menu2{
+     margin-left: 23px;
+     margin-top: 20px;
+     font-size: 18px;
+     font-weight: bolder;
+
+ }
+
+.attend-sub-menu3{
+    letter-spacing: 0.5px;
+    margin-left: 35px;
+    font-weight: bold;
+    font-size: 19px;
+}
+.progress-bar {
+    border-radius: 15px;
+    width: 75%;
+    margin-left: 35px;
+    height: 22px;
+    background-color: #dedede;
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+.progress-bar .progress {
+    width: 65%;
+    height: 22px;
+    padding: 0;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #01092B;
+    color: #111;
+}
+.attend-Time{
+    margin-top: 30px;
+    line-height: 40px;
+}
+.attend-btn{
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.leaveBt{
+    background-color: #002249;
+}
+.admin-attend-head{
+    display: flex;
+    justify-content: space-between;
+}
 
 /**                               employee                               **/

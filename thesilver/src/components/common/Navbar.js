@@ -53,7 +53,7 @@ function Navbar(){
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("attendance")}>근태/연차 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.attendance ? 'active' : ''}`}>
-                        <li><NavLink to="">근태 관리</NavLink></li>
+                        <li><NavLink to="/myAttend">근태 관리</NavLink></li>
                         <li><NavLink to="">연차 관리</NavLink></li>
                     </ul>
                  </li>
@@ -61,7 +61,7 @@ function Navbar(){
                     <a className={`Menu`} onClick={() => onClickMenuHandler("employee")}>직원 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.employee ? 'active' : ''}`}>
                         <li><NavLink to="/employees">직원 정보 관리</NavLink></li>
-                        <li><NavLink to="">직원 근태 관리</NavLink></li>
+                        <li><NavLink to="/attend-management">직원 근태 관리</NavLink></li>
                         <li><NavLink to="">직원 연차 관리</NavLink></li>
                     </ul>
                 </li>
