@@ -6,9 +6,9 @@ import Layout from "./layouts/Layout";
 import Customers from "./pages/Customers";
 import MyAttend from "./pages/MyAttend";
 import AttendAdmin from "./pages/admin/AttendAdmin";
-=======
 import Employees from "./pages/Employees";
 import Login from "./pages/Login";
+import Vacation from "./pages/Vacation";
 
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
                     <Route path="myAttend" element={<MyAttend/>}></Route>
                     <Route path="attend-management" element={<AttendAdmin/>}></Route>
                     <Route path="/employees" element={<Employees/>}></Route>
+                    <Route path="/vacation" element={<Vacation/>}></Route>
+
                 </Route>
             </Routes>
         </BrowserRouter>

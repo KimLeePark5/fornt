@@ -1,6 +1,7 @@
 import {NavLink} from "react-router-dom"
 import {useState} from "react";
 
+
 function Navbar(){
 
     const [isSubMenuOpen, setSubMenuOpen] = useState({
@@ -48,7 +49,6 @@ function Navbar(){
                     <ul className={`subMenu ${isSubMenuOpen.schedule ? 'active' : ''}`}>
                         <li><NavLink to="">월간 스케줄</NavLink></li>
                     </ul>
-                    )}
                 </li>
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("attendance")}>근태/연차 관리</a>
@@ -56,7 +56,7 @@ function Navbar(){
                         <li><NavLink to="/myAttend">근태 관리</NavLink></li>
                         <li><NavLink to="">연차 관리</NavLink></li>
                     </ul>
-                 </li>
+                </li>
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("employee")}>직원 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.employee ? 'active' : ''}`}>
@@ -74,6 +74,9 @@ function Navbar(){
             </ul>
             <img src='/img/logout.png' className="imgLogout" title="로그아웃"/>
         </div>
+
+
+
     );
 }
 
