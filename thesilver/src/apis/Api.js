@@ -29,9 +29,6 @@ export const authRequest = axios.create({
 
 // request 시 항상 토큰을 담아 보낸다.
 authRequest.interceptors.request.use((config) => {
-    if((getAccessToken()===null) && (getRefreshToken()===null)) {
-        window.location.replace("/login")
-    }
 
     config.headers['Access-Token'] = getAccessTokenHeader();
     return config;
