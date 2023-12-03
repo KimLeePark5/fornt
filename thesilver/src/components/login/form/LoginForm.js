@@ -48,7 +48,7 @@ function LoginForm() {
                     <input
                         placeholder="비밀번호"
                         className="login-input"
-                        type="text"
+                        type="password"
                         name="employeePassword"
                         onChange={onChangeHandler}
                         onKeyUp={ onKeyUpHandler }

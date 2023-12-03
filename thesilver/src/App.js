@@ -17,8 +17,8 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/login" element={<ProtectedRoute loginCheck={false}> <Login/> </ProtectedRoute>}/>
-                <Route path="/" element={<Layout/>}>
+                <Route path="/login" element={<ProtectedRoute onlyUnLogin={true} > <Login/> </ProtectedRoute>}/>
+                <Route path="/" element={<ProtectedRoute onlyLogin={true}><Layout/></ProtectedRoute>}>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
                     <Route path="attend-management" element={<AttendAdmin/>}></Route>
