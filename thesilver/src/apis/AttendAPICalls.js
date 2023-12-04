@@ -48,11 +48,24 @@ export const callTodayAttendAPI = () => {
     }
 }
 
-export const callGetAttendAdminResultAPI = ()=>{
+export const callGetAttendAdminResultAPI = (month,page)=>{
     return async (dispatch,getState) => {
-        const result = await request('GET','/api/v1/getAttendAdmin')
+        const result = await request('GET',`/api/v1/getAttendAdmin?month=${month}&page=${page}`)
         if(result?.status == 200){
             dispatch(attendAdmin(result))
         }
     }
+}
+
+export const callSearchNameAPICalls = (month,empName,page) => {
+    return async (dispatch,getState) => {
+        const result = await request('GET',`/api/v1/getAttendAdminByEmpName?month=${month}&name=${empName}&page=${page}`)
+        if(result?.status == 200){
+            dispatch(attendAdmin(result))
+        }
+        if(result == null){
+            toast.error("존재하는 사원이 없습니다.")
+        }
+    }
+
 }

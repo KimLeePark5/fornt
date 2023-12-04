@@ -561,6 +561,7 @@
     font-weight: bold;
     letter-spacing: 2px;
     border: none;
+    cursor: pointer;
 }
 
 .attend-sub-menu{
@@ -569,6 +570,7 @@
     font-size: 20px;
     font-weight: bold;
 }
+
 .attend-sub-menu2{
      margin-left: 23px;
      margin-top: 20px;
@@ -617,7 +619,187 @@
 }
 .admin-attend-head{
     display: flex;
-    justify-content: space-between;
+    margin-top: 15px;
 }
 
+.attendNameBox{
+    border: 1px solid #B6B6B6;
+    border-radius: 5px;
+    padding: 0px 13px 1px 13px;
+    height: 30px;
+    width: 120px;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.attendNameBtn{
+    margin-left: 5px;
+    border: 1px solid #B6B6B6;
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 1px 13px 1px 13px;
+    height: 34px;
+}
+.attendMonth{
+    display: flex;
+    letter-spacing:2px;
+    margin-left: 400px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.attendMonthbtn{
+    padding-top: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    font-size: 25px;
+}
+
+.attendTable{
+    margin-left: 50px;
+}
+.attendTable th,td{
+    padding: 10px;
+    width: 105px;
+    font-size: 20px;
+    text-align: left;
+    padding-top: 30px;
+}
+.att-late{
+    padding-left: 170px;
+}
+
+.attendmodalcontent{
+    margin-left: 100px;
+}
+
+.modifiedHeader{
+    background-color: white;
+    z-index: 1;
+    font-size: 25px;
+    position: fixed;
+    width: 915px;
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding-left: 70px;
+    padding-bottom: 25px;
+    margin-left: -100px;
+    padding-top: 20px;
+}
+.attendmodalHead{
+    background: white;
+    margin-top: 30px;
+    width: 883px;
+    position: fixed;
+    padding-top: 30px;
+    border-bottom: 1px solid black;
+    padding-left: 100px;
+    margin-left: -101px;
+}
+.attendBackAdmin{
+    background-color: white;
+    padding: 10px 10px 10px 70px;
+    height: 80vh;
+    border: 2px #B6B6B6 solid;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.att-empName{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+.attendAdminHead{
+    font-size: 28px;
+    font-weight: bold;
+}
+.attenddetailbtn{
+    background-color: white;
+    font-size: 17px;
+    border: 1px solid #B6B6B6;
+    padding: 7px 10px;
+    border-radius: 10px;
+    font-weight: bolder;
+    width: 110px;
+    height: 40px;
+}
+.attendModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+.attendModal-container{
+    position: absolute;
+    width: 1000px;
+    height: 800px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000;
+    overflow: auto;
+}
+.historyModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;
+}
+.historyModal-container{
+    position: absolute;
+    width: 800px;
+    height: 700px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1002;
+    overflow: auto;
+}
+.historyattend{
+    display: flex;
+}
+.attendhistoryHead{
+    display: flex;
+}
+.AttendhistoryContent{
+    display: flex;
+
+}
+.historyModalContent{
+    margin-left: 80px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+.historyTime{
+margin-left: 130px;
+}
+.historymodifiedAt{
+    margin-left: 70px;
+}
+
+.attendHistoryContainer{
+    margin-top: 18px;
+}
 /**                               employee                               **/

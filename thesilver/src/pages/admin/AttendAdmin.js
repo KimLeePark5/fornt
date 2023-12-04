@@ -1,48 +1,37 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {callGetAttendAdminResultAPI} from "../../apis/AttendAPICalls";
 import {useDispatch, useSelector} from "react-redux";
+import EmployeeInfo from "../../components/items/AttendItems/EmployeeInfo";
+import AdminAttendHeader from "../../components/items/AttendItems/AdminAttendHeader";
+import PagingBar from "../../components/common/PagingBar";
 
 function AttendAdmin(){
+    const date = new Date();
+    const today = String(date.getFullYear()) +'-'+ String(date.getMonth()+1);
+    const[month, setMonth]=useState(today);
+    const[page, setCurrentPage] = useState(1);
     const dispatch = useDispatch();
     const {attendAdmin} = useSelector(state=>state.attendReducer)
 
     useEffect(() => {
-        dispatch(callGetAttendAdminResultAPI())
-    }, []);
+        dispatch(callGetAttendAdminResultAPI(month,page))
+    }, [month,page]);
+
+    useEffect(() => {
+        dispatch(callGetAttendAdminResultAPI(month,page))
+    },[])
 
 
     return(
         <>
         {attendAdmin &&
             <div>
-                <div>직원 근태 관리</div>
-                <div>
-                    <div className="admin-attend-head">
-                        <input type="text"/>
-                        <div>2023년 11월</div>
-                        <select>
-                            <option>123</option>
-                            <option>123</option>
-                            <option>123</option>
-                        </select>
-                    </div>
+                <div className="attendAdminHead">직원 근태 관리</div>
+                <div className="attendBackAdmin">
+                <AdminAttendHeader month={month} setMonth={setMonth} />
+                <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
+                <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo} />
                 </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>이름</td>
-                            <td>근무율</td>
-                            <td>결근</td>
-                            <td>지각</td>
-                            <td>조퇴</td>
-                            <td>휴가</td>
-                            <td>연장근무</td>
-                            <td>상세정보</td>
-                        </tr>
-                        {(attendAdmin.data.responseAttendAdmin.content).map( emp => <tr><td>{emp.empName}</td></tr>)}
-                    </tbody>
-                </table>
-
             </div>
         }
         </>
