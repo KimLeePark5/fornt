@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {resetLoginState} from "../modules/LoginModule";
 import {isLogin} from "../utils/TokenUtils";
+import {jwtDecode} from "jwt-decode";
 
 function Login() {
     const dispatch = useDispatch();
@@ -12,16 +13,13 @@ function Login() {
 
     useEffect(() => {
         if(loginSuccess === true) {
-            console.log("로그인 성공이당~~")
-
             window.location.replace("/customers");
         } else if(loginSuccess === false) {
             alert("로그인에 실패하였습니다. 아이디와 비밀번호를 확인해주세요.");
-            console.log("로그인실패당~~")
-            console.log("하이" + new Date(1701363430*1000).toUTCString())
             isLogin();
         }
     }, );
+
 
 
 
