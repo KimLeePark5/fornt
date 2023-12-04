@@ -22,6 +22,7 @@ export const request = async (method, url, headers, data) => {
         .catch(error => console.log(error));
 }
 
+
 // 인증이 필요한 기능을 요청할 때 사용 하는 객체
 export const authRequest = axios.create({
     baseURL: DEFAULT_URL
@@ -74,3 +75,4 @@ export async function postRefreshToken() {
         {'Refresh-Token': getRefreshTokenHeader()}
     )
 }
+
