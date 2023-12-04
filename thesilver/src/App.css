@@ -301,6 +301,7 @@
 .login-page {
     width: 100vw;
     height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -365,6 +366,77 @@
     color: #eaeaea;
     text-align: center;
     font-size: 70%;
+}
+
+/* findPassword */
+.findModal-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    position: absolute;
+    z-index: 1;
+}
+.findModal-box {
+    background-color: white;
+    width: 350px;
+    height: 400px;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 120%;
+
+}
+
+.findModal-close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    cursor: pointer;
+}
+.findModal-close img {
+    width: 20px;
+    height: auto;
+}
+
+.findModal-header {
+    margin-top: 20px;
+}
+
+.findModal-content input {
+    width: 200px;
+    padding: 10px;
+    border: #c0c0c0 solid 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.findModal-button {
+    margin: auto;
+    width: 200px;
+    padding: 10px;
+    background-color: #FFCF00;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.findModal-comment {
+    font-size: 90%;
+    margin-right: 60px;
+}
+
+.findModal-result {
+    font-size: 80%;
+}
+
+.findModal-result-fail {
+    font-size: 80%;
+    color: #f30000;
 }
 
 /* customers */
