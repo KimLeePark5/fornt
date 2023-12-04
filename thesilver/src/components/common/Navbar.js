@@ -1,8 +1,11 @@
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import {useState} from "react";
+import {getDecodeAccessToken, isAdmin, isLogin, isMaster, removeToken} from "../../utils/TokenUtils";
+import ProtectedRoute from "../router/ProtectedRoute";
 
+function Navbar() {
 
-function Navbar(){
+    const navigate = useNavigate();
 
     const [isSubMenuOpen, setSubMenuOpen] = useState({
         customer: false,
@@ -23,7 +26,12 @@ function Navbar(){
         }));
     };
 
-    return(
+    const onClickLogoutHandler = () => {
+        removeToken();
+        window.location.replace("/login");
+    }
+
+    return (
         <div className="navbar-div">
             <NavLink to="/">
                 <img src='/img/logo.png' className="imgLogo"/>
@@ -31,9 +39,9 @@ function Navbar(){
             <ul className="nav-list-ul">
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("customer")}>고객 관리</a>
-                    <ul className={`subMenu ${isSubMenuOpen.customer ? 'active' : ''}`} >
-                        <li><NavLink to="">고객 신규 등록</NavLink></li>
-                        <li><NavLink to="">고객 정보 관리</NavLink></li>
+                    <ul className={`subMenu ${isSubMenuOpen.customer ? 'active' : ''}`}>
+                        <li><NavLink to="/regist-customer">고객 신규 등록</NavLink></li>
+                        <li><NavLink to="/customers">고객 정보 관리</NavLink></li>
                     </ul>
 
                 </li>
@@ -56,15 +64,18 @@ function Navbar(){
                         <li><NavLink to="/myAttend">근태 관리</NavLink></li>
                         <li><NavLink to="">연차 관리</NavLink></li>
                     </ul>
+
                 </li>
-                <li>
-                    <a className={`Menu`} onClick={() => onClickMenuHandler("employee")}>직원 관리</a>
-                    <ul className={`subMenu ${isSubMenuOpen.employee ? 'active' : ''}`}>
-                        <li><NavLink to="/employees">직원 정보 관리</NavLink></li>
-                        <li><NavLink to="/attend-management">직원 근태 관리</NavLink></li>
-                        <li><NavLink to="">직원 연차 관리</NavLink></li>
-                    </ul>
-                </li>
+                <ProtectedRoute onlyAdminMaster={true}>
+                    <li>
+                        <a className={`Menu`} onClick={() => onClickMenuHandler("employee")}>직원 관리</a>
+                        <ul className={`subMenu ${isSubMenuOpen.employee ? 'active' : ''}`}>
+                            <li><NavLink to="/employees">직원 정보 관리</NavLink></li>
+                            <li><NavLink to="/attend-management">직원 근태 관리</NavLink></li>
+                            <li><NavLink to="">직원 연차 관리</NavLink></li>
+                        </ul>
+                    </li>
+                </ProtectedRoute>
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("myInfo")}>내정보 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.myInfo ? 'active' : ''}`}>
@@ -72,9 +83,13 @@ function Navbar(){
                     </ul>
                 </li>
             </ul>
-            <img src='/img/logout.png' className="imgLogout" title="로그아웃"/>
+            <img
+                src='/img/logout.png'
+                className="imgLogout"
+                title="로그아웃"
+                onClick={onClickLogoutHandler}
+            />
         </div>
-
 
 
     );

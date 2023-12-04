@@ -281,6 +281,17 @@
 }
 
 /* 용민 ------------------------------------------------------------------------ */
+/* error */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.error-content {
+    display: flex;
+    justify-content: center;
+}
+
 /* login */
 .login-img {
     margin: 15px;
