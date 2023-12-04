@@ -1,11 +1,13 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {callLoginAPI} from "../../../apis/LoginAPICalls";
+import FindPwModal from "./FindPwModal";
 
 function LoginForm() {
 
     const [form, setForm] = useState({});
     const dispatch = useDispatch();
+    const [modal, setModal] = useState(false);
 
     const onChangeHandler = (e) => {
         setForm({
@@ -17,13 +19,17 @@ function LoginForm() {
     const onKeyUpHandler = (e) => {
         if (e.key === 'Enter') {
             console.log(form)
-            dispatch(callLoginAPI({"loginForm" : form}))
+            dispatch(callLoginAPI({"loginForm": form}))
         }
     }
 
     const onClickHandler = () => {
         console.log(form)
-        dispatch(callLoginAPI({"loginForm" : form}))
+        dispatch(callLoginAPI({"loginForm": form}))
+    }
+
+    const onClickModalHandler = () => {
+        setModal(true)
     }
 
     return (
@@ -40,7 +46,7 @@ function LoginForm() {
                         type="text"
                         name="employeeNumber"
                         onChange={onChangeHandler}
-                        onKeyUp={ onKeyUpHandler }
+                        onKeyUp={onKeyUpHandler}
                     />
                 </div>
 
@@ -51,7 +57,7 @@ function LoginForm() {
                         type="password"
                         name="employeePassword"
                         onChange={onChangeHandler}
-                        onKeyUp={ onKeyUpHandler }
+                        onKeyUp={onKeyUpHandler}
                     />
                 </div>
 
@@ -63,13 +69,24 @@ function LoginForm() {
                 <div>
                     <div
                         className="login-content-button"
-                        onClick={ onClickHandler }
+                        onClick={onClickHandler}
                     >
                         로그인
                     </div>
                 </div>
 
-                <div className="login-content-find">비밀번호 찾기</div>
+                <div
+                    className="login-content-find"
+                    onClick={onClickModalHandler}
+                >
+                    비밀번호 찾기
+                </div>
+
+                { modal && (
+                    <FindPwModal setModal={setModal}/>
+                )}
+
+
             </div>
         </>
     )
