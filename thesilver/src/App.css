@@ -1,9 +1,6 @@
-
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-html{
-    background-color: #F7F8F8;
-}
+
 /**** Layout ****************************************/
 .layout {
     display: flex;
@@ -25,10 +22,10 @@ html{
 /*}*/
 
 /*상의하기*/
-body{
-    margin: 0;
-}
 
+
+
+/**** 하현 ********************************************/
 /**** nav bar ****************************************/
 .navbar-div {
     height: 98vh;
@@ -56,7 +53,7 @@ body{
 
 .nav-list-ul li {
     font-size: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 25px;
 }
 
 .nav-list-ul a {
@@ -67,7 +64,7 @@ body{
 }
 
 .Menu {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .nav-list-ul a:hover {
@@ -81,7 +78,16 @@ body{
     padding-bottom: 5px;
     margin-top: 20px;
     background-color: #08335B;
-    transition: opacity 3s ease-in-out;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.1s ease-in;
+    /**** 천천히 열리고 빨리 닫히게 수정해보기!! ****/
+}
+
+.subMenu.active {
+    opacity: 1;
+    max-height: 200px;
 }
 
 .subMenu li {
@@ -103,18 +109,155 @@ body{
     cursor: pointer;
 }
 
+/**** vacation *************************************************************************/
+/**** vacation state ****************************************/
+.vacation-today {
+    text-align: center;
+}
 
+.vacation-state-content {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 1540px;
+    height: 100px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
 
+/****require state **************************************/
+.require-state {
+    padding-top: 20px;
+}
 
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.require-content{
+    display: flex;
+    justify-content: space-between;
+}
 
-html {
+.vacation-require-btn {
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    margin: 10px 10px 20px 0;
+
 }
 
-hr {
-    margin: 0;
+.vacation-require-btn:hover {
+    background-color: #08335B;
+    color: #FFFFFF;
 }
+
+.require-content h3 {
+    margin-bottom: 10px;
+}
+
+.require-list {
+    width: 1540px;
+    height: 200px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/*** 연차 신청 폼 **********************************/
+
+.require-form-btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-right: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.vacation-require-form {
+    margin: 0 25px 50px 25px;
+}
+
+.vacation-require-form1 p {
+    /*padding-left: 10px;*/
+    margin-left: 10px ;
+}
+
+.vacation-require-form1 {
+    display: grid;
+    grid-template-columns: 130px 220px 130px 220px;
+    border: #1A1A1C 1px solid;
+    height: 40px;
+}
+
+.form1-1 {
+    width: 130px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.form1-2 {
+    width: 220px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.vacation-require-form2 {
+    display: grid;
+    grid-template-columns: 130px 570px;
+    border-right: #1A1A1C 1px solid;
+    border-left: #1A1A1C 1px solid;
+    height: 230px;
+    grid-template-rows: 50px 50px 130px;
+}
+
+.vacation-require-form3 {
+    display: grid;
+    border: #1A1A1C 1px solid;
+    margin-bottom: 5px;
+}
+
+.vacation-require-form4 {
+    display: grid;
+    grid-template-columns: 130px 220px;
+    border: #1A1A1C 1px solid;
+    margin-bottom: 5px;
+    height: 130px;
+}
+
+.vacation-require-form5 {
+    border: #1A1A1C 1px solid;
+}
+
+
+
+
+/******** use list**************************/
+
+.use-state {
+    padding-top: 20px;
+}
+
+.use-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.use-content h3 {
+    margin-bottom: 10px;
+}
+
+.select-days {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.use-vacation-list {
+    width: 1540px;
+    height: 200px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+
 
 /* paging bar ------------------------------------------------------------------------ */
 
@@ -138,6 +281,17 @@ hr {
 }
 
 /* 용민 ------------------------------------------------------------------------ */
+/* error */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.error-content {
+    display: flex;
+    justify-content: center;
+}
+
 /* login */
 .login-img {
     margin: 15px;
@@ -147,6 +301,7 @@ hr {
 .login-page {
     width: 100vw;
     height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -211,6 +366,77 @@ hr {
     color: #eaeaea;
     text-align: center;
     font-size: 70%;
+}
+
+/* findPassword */
+.findModal-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    position: absolute;
+    z-index: 1;
+}
+.findModal-box {
+    background-color: white;
+    width: 350px;
+    height: 400px;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 120%;
+
+}
+
+.findModal-close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    cursor: pointer;
+}
+.findModal-close img {
+    width: 20px;
+    height: auto;
+}
+
+.findModal-header {
+    margin-top: 20px;
+}
+
+.findModal-content input {
+    width: 200px;
+    padding: 10px;
+    border: #c0c0c0 solid 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.findModal-button {
+    margin: auto;
+    width: 200px;
+    padding: 10px;
+    background-color: #FFCF00;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.findModal-comment {
+    font-size: 90%;
+    margin-right: 60px;
+}
+
+.findModal-result {
+    font-size: 80%;
+}
+
+.findModal-result-fail {
+    font-size: 80%;
+    color: #f30000;
 }
 
 /* customers */
