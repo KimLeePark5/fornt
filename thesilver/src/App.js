@@ -8,7 +8,7 @@ import MyAttend from "./pages/MyAttend";
 import AttendAdmin from "./pages/admin/AttendAdmin";
 import Employees from "./pages/Employees";
 import Login from "./pages/Login";
-import Vacation from "./pages/Vacation";
+import Vacation from "./pages/vacation/Vacation";
 
 
 function App() {

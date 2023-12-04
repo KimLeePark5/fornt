@@ -1,9 +1,6 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-html{
-    background-color: #F7F8F8;
 
-}
 /**** Layout ****************************************/
 .layout {
     display: flex;
@@ -25,24 +22,7 @@ html{
 /*}*/
 
 /*상의하기*/
-body{
-    margin: 0;
-}
 
-html {
-    font-family: 'Noto Sans KR', sans-serif;
-    color: #1A1A1C;
-    background-color: #F7F8F8;
-}
-
-hr {
-    margin: 0;
-}
-
-.pageTitle-div {
-    font-size: 40px;
-    font-weight: bolder;
-}
 
 
 /**** 하현 ********************************************/
@@ -159,6 +139,7 @@ hr {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     margin: 10px 10px 20px 0;
+
 }
 
 .vacation-require-btn:hover {
@@ -177,6 +158,73 @@ hr {
     border-radius: 5px;
     background-color: white;
 }
+
+/*** 연차 신청 폼 **********************************/
+
+.require-form-btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-right: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.vacation-require-form {
+    margin: 0 25px 50px 25px;
+}
+
+.vacation-require-form1 p {
+    /*padding-left: 10px;*/
+    margin-left: 10px ;
+}
+
+.vacation-require-form1 {
+    display: grid;
+    grid-template-columns: 130px 220px 130px 220px;
+    border: #1A1A1C 1px solid;
+    height: 40px;
+}
+
+.form1-1 {
+    width: 130px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.form1-2 {
+    width: 220px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.vacation-require-form2 {
+    display: grid;
+    grid-template-columns: 130px 570px;
+    border-right: #1A1A1C 1px solid;
+    border-left: #1A1A1C 1px solid;
+    height: 230px;
+    grid-template-rows: 50px 50px 130px;
+}
+
+.vacation-require-form3 {
+    display: grid;
+    border: #1A1A1C 1px solid;
+    margin-bottom: 5px;
+}
+
+.vacation-require-form4 {
+    display: grid;
+    grid-template-columns: 130px 220px;
+    border: #1A1A1C 1px solid;
+    margin-bottom: 5px;
+    height: 130px;
+}
+
+.vacation-require-form5 {
+    border: #1A1A1C 1px solid;
+}
+
+
+
 
 /******** use list**************************/
 
