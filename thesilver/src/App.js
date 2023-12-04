@@ -10,7 +10,7 @@ import Employees from "./pages/Employees";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
-import Vacation from "./pages/Vacation";
+import Vacation from "./pages/vacation/Vacation";
 
 
 
