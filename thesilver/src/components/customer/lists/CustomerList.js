@@ -4,8 +4,22 @@ function CustomerList({ data }) {
 
     return (
         <>
-            <div className="customers-list-title"><h4>고객정보</h4></div>
-            {/*<div className="customers-list-search"><input value="검색내용"/><input/><button>검색</button></div>*/}
+            <div></div>
+            <div className="customers-list-search">
+                <select>
+                    <option>검색분류</option>
+                    <option>고객코드</option>
+                    <option>이름</option>
+                    <option>전화번호</option>
+                    <option>주소</option>
+                </select>
+                <input/>
+                <div className="customers-search-button">검색</div>
+                <input style={{zoom: 1.5, margin: 0}} type="checkbox"/>
+                <div>비활성 고객 포함</div>
+            </div>
+
+
             <div className="customers-list-head">
                 <div>고객코드</div>
                 <div>등록상태</div>
