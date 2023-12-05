@@ -13,7 +13,7 @@ function RequireVacation() {
 
     useEffect(() => {
         if(requireSuccess === true) {
-            navigate('/vacation/{employeeCode}');
+            navigate('/vacation');
         }
     })
 

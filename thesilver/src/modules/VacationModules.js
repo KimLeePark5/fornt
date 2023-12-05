@@ -1,28 +1,20 @@
-// import {createActions, handleActions} from "redux-actions";
-//
-// const initialState = {};
-//
-// const GET_VACATION = 'vacation/GET_VACATION';
-//
-// export const {vacation : {getVacation}} = createActions({
-//     [GET_VACATION] : result => ({data: result.data})
-// });
-//
-// const vacationReducer = handleActions({
-//     [GET_VACATION]: (state, {payload}) => payload,
-// }, initialState);
-//
-// export default vacationReducer;
-import {handleActions} from "redux-actions";
+import { createActions, handleActions} from "redux-actions";
 
 const initialState = {};
 
-const REQUIRE_SUCCESS = 'vacation/REQUIRE_SUCCESS';
+const VACATION = 'VACATION';
+
+export const { vacation, setVacation } = createActions({
+    [VACATION]: result => ({ payload: result.data })
+});
 
 
-
-const vacationReducer = handleActions({
-    [REQUIRE_SUCCESS] : (state, {payload}) => payload
-}, initialState)
-
-export default vacationReducer;
+export const vacationReducer = handleActions({
+    [VACATION]: (state, { payload }) => {
+        console.log("API 응답 구조 확인: ", payload);
+        return {
+            ...state,
+            ...payload
+        };
+    }
+}, initialState);
