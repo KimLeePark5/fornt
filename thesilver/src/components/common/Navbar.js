@@ -48,7 +48,7 @@ function Navbar() {
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("program")}>프로그램</a>
                     <ul className={`subMenu ${isSubMenuOpen.program ? 'active' : ''}`}>
-                        <li><NavLink to="">프로그램 소개</NavLink></li>
+                        <li><NavLink to="/programs">프로그램 소개</NavLink></li>
                         <li><NavLink to="">프로그램 일지</NavLink></li>
                     </ul>
                 </li>
