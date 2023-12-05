@@ -14,6 +14,7 @@ function CustomerList({ data }) {
                 <div>생년월일</div>
                 <div>전화번호</div>
                 <div>주소</div>
+                <div>상세조회</div>
             </div>
             {data.map(customer => <CustomerListItem key={customer.customerCode} customer={customer} /> )}
         </>
