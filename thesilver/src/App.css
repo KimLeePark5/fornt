@@ -299,14 +299,15 @@
 
 .paging-btn {
     margin: 5px;
-    border-radius: 25px;
+    border-radius: 20%;
     background-color: white;
     font-weight: bold;
+    border-color: #000000;
 }
 
 .paging-btn:hover {
     cursor: pointer;
-    background-color: burlywood;
+    background-color: #e0e0e0;
 }
 
 /* 용민 ------------------------------------------------------------------------ */
@@ -480,8 +481,10 @@
     font-size: 12px;
     background-color: #03166C;
     color: white;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .customers-subtitle {
@@ -536,6 +539,91 @@
 }
 .customers-list-search {
     margin: 20px;
+}
+
+/* customers regist */
+.customers-regist-content {
+    width: 550px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #01092b;
+    box-shadow: 5px 5px 10px #b4b4b4; /* 그림자 추가 */
+    background-color: white;
+}
+.customers-regist-row, .customers-regist-row-h {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.customers-regist-row-h {
+    background-color: #01092b;
+    color: white;
+    padding: 10px;
+    font-size: 110%;
+    padding-left: 15px;
+}
+
+.customers-regist-row > div:first-child {
+    width: 120px;
+    min-width: 100px;
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가로 가운데 정렬 */
+    font-weight: bold;
+}
+
+.customers-regist-row input {
+    width: 300px;
+    height: 20px;
+    font-size: 100%;
+}
+
+.customers-regist-row-phone input {
+    width: 100px;
+    margin-right: 7px;
+}
+.customers-regist-select {
+    width: 100px;
+    height: 27px;
+    margin-right: 7px;
+    text-align: center;
+    font-size: 105%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.customers-regist-button-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.customers-regist-button {
+    width: 200px;
+    height: 50px;
+    background-color: #03166C;
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/*카카오api*/
+#postButton {
+    width: 80px;
+    height: 32px;
+    font-size: 14px;
+    background-color: #03166C;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
 }
 
 /* -----------------------Attend-------------------------*/
