@@ -5,6 +5,7 @@
 /**** Layout ****************************************/
 .layout {
     display: flex;
+    background-color: #F7F8F8;
 }
 
 .layout > div:nth-child(1) {
@@ -28,7 +29,7 @@ body{
 
 /**** nav bar ****************************************/
 .navbar-div {
-    height: 98vh;
+    height: 100vh;
     width: 280px;
     background-color: #01092B ;
     font-family: 'Noto Sans KR', sans-serif;
@@ -183,3 +184,462 @@ hr {
 
 
 /**                               employee                               **/
+
+.employees-list-body {
+    height: 66px;
+    width: 1506px;
+    vertical-align: center;
+}
+
+.employees-list-line{
+    width: 1486px;
+    margin-left: 18px;
+    border-bottom: 0;
+}
+
+.employees-list-button{
+    width: 142px;
+    height: 46px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    border: 1px solid #B6B6B6;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.employees-list-body-detail{
+    width: 229.578px;
+}
+
+.employees-list-button:hover{
+    background-color: #01092B;
+    color: #FFFFFF;
+    border: 1px solid #B6B6B6;
+}
+
+.employees-list-regist-btn:hover{
+    background-color: #01092B;
+    color: #FFFFFF;
+    border: 1px solid #B6B6B6;
+}
+.employees-list-update-btn:hover{
+    background-color: #01092B;
+    color: #FFFFFF;
+    border: 1px solid #B6B6B6;
+}
+.employees-list-delete-btn:hover{
+    background-color: #01092B;
+    color: #FFFFFF;
+    border: 1px solid #B6B6B6;
+}
+
+.employees-list-body-joinDate{
+    width: 199.562px;
+}
+
+.employees-list-body-phone{
+    width: 219.422px;
+}
+
+.employees-list-body-rN{
+    width: 179.469px;
+}
+
+.employees-list-body-gender{
+    width: 99.703px;
+}
+
+.employees-list-body-name{
+    width: 149.484px;
+}
+
+.employees-list-body-team{
+    width: 159.375px;
+}
+ .employees-list-body-rank{
+    width: 127.250px;
+ }
+
+.employees-list-body-code{
+    width: 126.562px;
+    collapse: 2;
+}
+
+.employees-title{
+    margin-bottom: 33px;
+}
+
+.employees-list-items{
+    width: 1506px;
+    margin-left: 20px;
+    border-bottom: 1px solid #B6B6B6;
+    height: 66px;
+    &.active{
+        background-color: lightyellow;
+    }
+}
+
+.employees-list-items:hover{
+    background-color: lightyellow;
+}
+
+.clicked{
+    background-color: #FFCF00;
+}
+
+
+
+.EmployeesPaging-ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: right;
+    margin-right: 48px;
+    width: 142px;
+    justify-content: flex-start;
+    margin-left: auto;
+}
+
+.EmployeesPaging-btn {
+    margin: 5px;
+    background-color: white;
+    font-weight: bold;
+    border:none;
+}
+
+.EmployeesPaging-btn:hover {
+    cursor: pointer;
+    background-color: burlywood;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.modal-open-button, .modal-close-btn {
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-title{
+    margin-left: 0;
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+.modal-content {
+    background-color: #F7F8F8;
+    width: 1526px;
+    height: 732px;
+    padding: 21px;
+    border-radius: 5px;
+    border: 1px solid #B6B6B6;
+    position: absolute;
+}
+
+.employees-list-select{
+    border-radius: 5px;
+    border: 1px solid #B6B6B6;
+    font-size: 18px;
+    font-weight: bold;
+    width: 114px;
+    height: 46px;
+    margin-left: 34px;
+    text-align: center;
+    padding-right: 16px;
+
+    -webkit-appearance:none; /* for chrome */
+
+    -moz-appearance:none; /*for firefox*/
+
+    appearance:none;
+    background:url('/public/img/Polygon 8.png') no-repeat center right 10px;
+    /*97% 50%/14px auto;*/
+}
+
+.EmployeesModalDiv{
+    display: flex;
+    float: left;
+    margin-top: 57px;
+}
+.EmployeesModalDivUp-1, .EmployeesModalDivUp-2{
+    height: 165px;
+}
+
+.EmployeesModalDivUp-1-DivBox-1{
+    width: 255px;
+    height: 54px;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    background-color: #08335B;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.EmployeesModalDivUp-1-DivBox-2{
+    width: 255px;
+    height: 54px;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    border-bottom: 1px solid #C8C8C8;
+    background-color: #08335B;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.EmployeesModalDivUp-2-DivBox-1{
+    width: 386px;
+    height: 54px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+}
+.EmployeesModalDivUp-2-DivBox-1 input, .EmployeesModalDivUp-2-DivBox-2 input{
+    background-color: #FFFFFF;
+    border: none;
+    width: 381px;
+    height: 52px;
+    padding-left: 16px;
+    font-size: 16px;
+}
+.EmployeesModalDivUp-2-DivBox-2 input{
+    width: 1030px;
+    height: 52px;
+    background-color: #FFFFFF;
+    border: none;
+    padding-left: 16px;
+    font-size: 16px;
+}
+
+.EmployeesModalDivUp-2-DivBox-1 input:focus, .EmployeesModalDivUp-2-DivBox-2 input:focus{
+    outline:none;
+}
+.EmployeesModalDivUp-2-DivBox-1 input::placeholder{
+    margin-left: 10px;
+}
+.EmployeesModalDivUp-4-DivBox-1 input{
+    background-color: #FFFFFF;
+    border: none;
+    width: 381px;
+    height: 52px;
+    padding-left: 16px;
+    font-size: 16px;
+}
+
+.EmployeesModalDivUp-6-DivBox-1 input[type=date] {
+
+}
+
+.EmployeesModalDivUp-6-DivBox-3{
+    width: 245px;
+    height: 54px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    border-bottom: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+}
+
+.EmployeesModalDivUp-2-DivBox-2{
+    width: 1032px;
+    height: 54px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    border-bottom: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+    position: absolute;
+}
+
+.EmployeesModalDivUp-3-DivBox-1{
+    width: 255px;
+    height: 54px;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    background-color: #08335B;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.EmployeesModalDivUp-4-DivBox-1{
+    width: 389px;
+    height: 54px;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #FFFFFF;
+}
+
+.EmployeesModalDivUp-5-DivBox-1{
+    width: 246px;
+    height: 54px;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    background-color: #08335B;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.EmployeesModalDivUp-5-DivBox-2{
+    width: 246px;
+    height: 54px;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    border-bottom: 1px solid #C8C8C8;
+    background-color: #08335B;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.EmployeesModalDivUp-6-DivBox-1{
+    width: 245px;
+    height: 54px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid #C8C8C8;
+    border-top: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+}
+
+.EmployeesModalDivImage{
+    width: 188px;
+    height: 218px;
+    border: 1px solid #C8C8C8;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #FFFFFF;
+}
+
+.EmployeesModalDiv-2{
+    margin-top: 58px;
+    display: inline-block;
+}
+.EmployeesModalDiv-2-2{
+    display: flex;
+}
+
+.employees-list-select::-ms-expand{
+
+    display:none;/*for IE10,11*/
+
+}
+
+.employees-list-search{
+    border-radius: 5px;
+    border: 1px solid #B6B6B6;
+    font-size: 18px;
+    font-weight: bold;
+    width: 240px;
+    height: 42px;
+    margin-left: 5px;
+    text-align: left;
+    padding-left: 16px;
+}
+
+.employees-list-search-btn{
+    height: 46px;
+    width: 68px;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #B6B6B6;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align:middle;
+    background-color: #ffffff;
+}
+
+.employees-list-regist-btn, .employees-list-update-btn, .employees-list-delete-btn{
+    width: 142px;
+    height: 46px;
+    border-radius: 5px;
+    border: 1px solid #B6B6B6;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.employees-list-regist-btn{
+    margin-left: 579px;
+}
+
+.employees-list-update-btn{
+    margin-left: 8px;
+}
+
+.employees-list-delete-btn{
+    margin-left: 8px;
+}
+
+.employees-div{
+    width: 1563px;
+    height: 928px;
+    background-color: #FFFFFF;
+    border: 1px solid #B6B6B6;
+    border-radius: 5px;
+}
+.employees-list-btn{
+    display: flex;
+    margin-top: 28px;
+    align-items: center;
+}
+
+.employees-list-header{
+    background-color: #01092b;
+    color: #FFFFFF;
+    height: 72px;
+    border: none;
+}
+
+.employees-list-table{
+    margin-top: 24px;
+    margin-left: 18px;
+    border-collapse : collapse;
+    width: 1506px;
+}
+
+
