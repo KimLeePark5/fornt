@@ -29,7 +29,7 @@
 /**** nav bar ****************************************/
 .navbar-div {
     height: 98vh;
-    width: 280px;
+    margin-top: 6px;
     background-color: #01092B ;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
@@ -49,11 +49,6 @@
     padding-inline-start: 0;
     margin-block-end: 0;
     padding-bottom: 43px;
-}
-
-.nav-list-ul li {
-    font-size: 20px;
-    margin-bottom: 25px;
 }
 
 .nav-list-ul a {
@@ -77,11 +72,12 @@
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #08335B;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out, opacity 0.1s ease-in;
+    /*transition: max-height 0.5s ease-out, opacity 0.1s ease-in;*/
     /**** 천천히 열리고 빨리 닫히게 수정해보기!! ****/
 }
 
@@ -91,8 +87,12 @@
 }
 
 .subMenu li {
-    margin-bottom: 10px;
+    font-size: 20px;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 25px;
 }
+
 .subMenu a {
     font-size: 18px;
 }
@@ -113,10 +113,13 @@
 /**** vacation state ****************************************/
 .vacation-today {
     text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
 }
 
 .vacation-state-content {
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 30px;
     width: 1540px;
     height: 100px;
@@ -133,12 +136,18 @@
 .require-content{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px 10px 10px;
+}
+.require-state h3 {
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .vacation-require-btn {
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 20px;
-    margin: 10px 10px 20px 0;
+    font-size: 18px;
+
 
 }
 
@@ -147,16 +156,13 @@
     color: #FFFFFF;
 }
 
-.require-content h3 {
-    margin-bottom: 10px;
-}
-
 .require-list {
     width: 1540px;
     height: 200px;
     border: #1A1A1C 1px solid;
     border-radius: 5px;
     background-color: white;
+    margin-bottom: 30px;
 }
 
 /*** 연차 신청 폼 **********************************/
@@ -169,12 +175,7 @@
 }
 
 .vacation-require-form {
-    margin: 0 25px 50px 25px;
-}
-
-.vacation-require-form1 p {
-    /*padding-left: 10px;*/
-    margin-left: 10px ;
+    margin: 40px 25px 40px 25px;
 }
 
 .vacation-require-form1 {
@@ -202,7 +203,26 @@
     border-right: #1A1A1C 1px solid;
     border-left: #1A1A1C 1px solid;
     height: 230px;
-    grid-template-rows: 50px 50px 130px;
+    grid-template-rows: 40px 40px 150px;
+}
+
+.form2-1 {
+    width: 130px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+    border-bottom: #1A1A1C 1px solid;
+}
+
+.form2-2 {
+    width: 570px;
+    height: 40px;
+    border-bottom: #1A1A1C 1px solid;
+}
+
+.form2-3 {
+    width: 130px;
+    height: 150px;
+    border-right: #1A1A1C 1px solid;
 }
 
 .vacation-require-form3 {
@@ -213,17 +233,23 @@
 
 .vacation-require-form4 {
     display: grid;
-    grid-template-columns: 130px 220px;
+    grid-template-columns: 300px 400px;
     border: #1A1A1C 1px solid;
     margin-bottom: 5px;
     height: 130px;
 }
 
-.vacation-require-form5 {
-    border: #1A1A1C 1px solid;
+.form4-1 {
+    width: 300px;
+    height: 130px;
+    border-right: #1A1A1C 1px solid;
+    overflow-y: auto; /* 너무 길 때 스크롤 표시 */
 }
 
-
+.vacation-require-form5 {
+    border: #1A1A1C 1px solid;
+    height: 70px;
+}
 
 
 /******** use list**************************/
@@ -235,10 +261,13 @@
 .use-content{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px 10px 10px;
 }
 
 .use-content h3 {
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .select-days {
@@ -555,7 +584,6 @@
     font-size: 20px;
 }
 .attend-button{
-    font-size: 30px;
     position: absolute;
     bottom: 35px;
     left: 35px;
@@ -583,7 +611,6 @@
      margin-top: 20px;
      font-size: 18px;
      font-weight: bolder;
-
  }
 
 .attend-sub-menu3{
@@ -611,6 +638,7 @@
     background-color: #01092B;
     color: #111;
 }
+
 .attend-Time{
     margin-top: 30px;
     line-height: 40px;

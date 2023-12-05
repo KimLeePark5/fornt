@@ -29,7 +29,6 @@ function App() {
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
-
                 </Route>
                 <Route path="*" element={<Error/>}/>
             </Routes>
