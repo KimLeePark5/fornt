@@ -482,8 +482,8 @@
     font-size: 12px;
     background-color: #03166C;
     color: white;
-    border-radius: 15px;
-    padding: 4px;
+    border-radius: 8px;
+    padding: 3.5px;
     padding-left: 6px;
     padding-right: 6px;
 }
@@ -492,6 +492,8 @@
     font-size: 20px;
     margin: 10px;
     margin-left: 30px;
+    font-weight: bold;
+    color: #1d1d1d;
 }
 
 .customers-list-head {
@@ -515,6 +517,10 @@
     flex: 0.5; /* 첫 번째 자식에게 1의 비율 부여 */
 }
 
+.customers-list-body > div:nth-child(7), .customers-list-head > div:nth-child(7) {
+    flex: 2.5; /* 첫 번째 자식에게 1의 비율 부여 */
+}
+
 .customers-type {
     display: flex;
     justify-content: center;
@@ -535,11 +541,39 @@
     border-radius: 15px;
 }
 
-.customers-list-title {
-    margin: 20px;
-}
 .customers-list-search {
-    margin: 20px;
+    padding: 15px;
+    display: flex;
+    gap: 5px;
+    text-align: center;
+    line-height: 26px;
+    align-items: center;
+}
+
+.customers-list-search input {
+    height: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+.customers-list-search select {
+    height: 29px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+.customers-list-search input[type="checkbox"] {
+    height: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+.customers-search-button {
+    border: 1px solid #03166C;
+    width: 60px;
+    height: 28px;
+    border-radius: 3px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
 }
 
 /* customers regist */

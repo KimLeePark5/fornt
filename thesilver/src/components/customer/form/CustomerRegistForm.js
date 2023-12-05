@@ -1,7 +1,15 @@
 import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {callCustomerRegistAPI} from "../../../apis/CustomerAPICalls";
 
 function CustomerRegistForm() {
+    const dispatch = useDispatch();
     const [currentDate, setCurrentDate] = useState('');
+    const [form, setForm] = useState({
+        gender : "FEMALE",
+        phone1 : "010",
+    });
+    const { postSuccess } = useSelector(state => state.customerReducer);
 
     useEffect(() => {
         // 페이지가 로드될 때 한 번 실행되는 부분
@@ -16,10 +24,10 @@ function CustomerRegistForm() {
 
 
 
-    ///////////////////////////////////////
-    const [postcode, setPostcode] = useState();
-    const [address, setAddress] = useState();
-    const [extraAddress, setExtraAddress] = useState();
+    ///////////////////// 카카오 지도 api ////////////////////
+    const [postcode, setPostcode] = useState("");
+    const [address, setAddress] = useState("");
+    const [extraAddress, setExtraAddress] = useState("");
 
 
     useEffect(() => {
@@ -58,13 +66,35 @@ function CustomerRegistForm() {
                 setPostcode(data.zonecode);
                 setAddress(addr);
                 setExtraAddress(extraAddr);
-
-
             },
         }).open();
     };
+    ///////////////////// 카카오 지도 api ////////////////////
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const onClickRegistHandler = () => {
+        const updateForm = {
+            ...form,
+            postalCode : postcode,
+            primaryAddress : address
+        }
+
+        dispatch(callCustomerRegistAPI({registForm : updateForm}))
+    }
 
 
+    useEffect(() => {
+        if (postSuccess) {
+            alert('고객 등록이 성공했습니다 !');
+            window.location.href = "/customers";
+        }
+    }, [postSuccess]);
 
     return (
         <>
@@ -74,32 +104,32 @@ function CustomerRegistForm() {
                     <div className="customers-regist-row-h">기본 정보</div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">이름</div>
-                        <div><input type="text"/></div>
+                        <div><input name="name" onChange={onChangeHandler} type="text"/></div>
                     </div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">성별</div>
-                        <select className="customers-regist-select">
-                            <option value="여성">여성</option>
-                            <option value="남성">남성</option>
+                        <select name="gender" onChange={onChangeHandler}  className="customers-regist-select">
+                            <option value="FEMALE">여성</option>
+                            <option value="MALE">남성</option>
                         </select>
                     </div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">생년월일(6자리)</div>
-                        <div><input/></div>
+                        <div><input name="birthDate" onChange={onChangeHandler} /></div>
                     </div>
                     <div className="customers-regist-row customers-regist-row-phone">
                         <div className="customers-regist-head">전화번호</div>
                         <div>
-                            <select className="customers-regist-select">
+                            <select name="phone1" onChange={onChangeHandler}  className="customers-regist-select">
                                 <option value="010">010</option>
                                 <option value="011">011</option>
                                 <option value="012">012</option>
                             </select>
                         </div>
                         -   &nbsp;
-                        <div><input/></div>
+                        <div><input name="phone2" onChange={onChangeHandler} /></div>
                         -    &nbsp;
-                        <div><input/></div>
+                        <div><input name="phone3" onChange={onChangeHandler} /></div>
                     </div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">고객 등록일</div>
@@ -125,31 +155,31 @@ function CustomerRegistForm() {
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">상세주소</div>
                         <div>
-                            <input type="text" id="sample6_detailAddress" placeholder="상세주소"  />
+                            <input name="detailAddress" onChange={onChangeHandler} type="text" id="sample6_detailAddress" placeholder="상세주소"  />
                         </div>
                     </div>
 
                     <div className="customers-regist-row-h">고객 특이사항</div>
                     <div className="customers-regist-row">
                         <div>특이사항</div>
-                        <div><textarea rows="4" cols="50"></textarea></div>
+                        <div><textarea name="memo" onChange={onChangeHandler}  rows="4" cols="50"></textarea></div>
                     </div>
 
                     <div className="customers-regist-row-h">보호자 정보</div>
                     <div className="customers-regist-row">
                         <div>보호자 이름</div>
-                        <div><input/></div>
+                        <div><input name="guardianName" onChange={onChangeHandler} /></div>
                     </div>
                     <div className="customers-regist-row">
                         <div>보호자 관계</div>
-                        <div><input/></div>
+                        <div><input name="guardianRelationship" onChange={onChangeHandler} /></div>
                     </div>
                     <div className="customers-regist-row">
                         <div>보호자 연락처</div>
-                        <div><input/></div>
+                        <div><input name="guardianPhone" onChange={onChangeHandler} /></div>
                     </div>
                     <div className="customers-regist-button-div">
-                        <div className="customers-regist-button">신규 고객 등록</div>
+                        <div onClick={onClickRegistHandler} className="customers-regist-button">신규 고객 등록</div>
                     </div>
                 </div>
 

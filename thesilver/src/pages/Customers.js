@@ -41,6 +41,8 @@ function Customers() {
                         <div className="customers-type-second"></div>
                         <div className="customers-type-third"></div>
                     </div>
+
+                    <div className="customers-subtitle">고객정보</div>
                     <div className="customers-list">
                         <CustomerList data={customers.data}/>
                         <PagingBar pageInfo={customers.pageInfo} setCurrentPage={setCurrentPage}/>
