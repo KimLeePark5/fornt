@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -23,14 +22,15 @@
 /*    display: none;*/
 /*}*/
 
-body{
-    margin-left: 0;
-}
+/*상의하기*/
 
+
+
+/**** 하현 ********************************************/
 /**** nav bar ****************************************/
 .navbar-div {
-    height: 100vh;
-    width: 280px;
+    height: 98vh;
+    margin-top: 6px;
     background-color: #01092B ;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
@@ -52,11 +52,6 @@ body{
     padding-bottom: 43px;
 }
 
-.nav-list-ul li {
-    font-size: 20px;
-    margin-bottom: 60px;
-}
-
 .nav-list-ul a {
     text-decoration: none;
     font-size: 20px;
@@ -65,7 +60,7 @@ body{
 }
 
 .Menu {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .nav-list-ul a:hover {
@@ -78,13 +73,27 @@ body{
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #08335B;
-    transition: opacity 3s ease-in-out;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    /*transition: max-height 0.5s ease-out, opacity 0.1s ease-in;*/
+    /**** 천천히 열리고 빨리 닫히게 수정해보기!! ****/
+}
+
+.subMenu.active {
+    opacity: 1;
+    max-height: 200px;
 }
 
 .subMenu li {
-    margin-bottom: 10px;
+    font-size: 20px;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 25px;
 }
+
 .subMenu a {
     font-size: 18px;
 }
@@ -101,18 +110,184 @@ body{
     cursor: pointer;
 }
 
+/**** vacation *************************************************************************/
+/**** vacation state ****************************************/
+.vacation-today {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}
 
+.vacation-state-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 1540px;
+    height: 100px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
 
+/****require state **************************************/
+.require-state {
+    padding-top: 20px;
+}
 
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.require-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px 10px 10px;
+}
+.require-state h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
 
-html {
+.vacation-require-btn {
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+
+
 }
 
-hr {
-    margin: 0;
+.vacation-require-btn:hover {
+    background-color: #08335B;
+    color: #FFFFFF;
 }
+
+.require-list {
+    width: 1540px;
+    height: 200px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+/*** 연차 신청 폼 **********************************/
+
+.require-form-btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-right: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.vacation-require-form {
+    margin: 40px 25px 40px 25px;
+}
+
+.vacation-require-form1 {
+    display: grid;
+    grid-template-columns: 130px 220px 130px 220px;
+    border: #1A1A1C 1px solid;
+    height: 40px;
+}
+
+.form1-1 {
+    width: 130px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.form1-2 {
+    width: 220px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.vacation-require-form2 {
+    display: grid;
+    grid-template-columns: 130px 570px;
+    border-right: #1A1A1C 1px solid;
+    border-left: #1A1A1C 1px solid;
+    height: 230px;
+    grid-template-rows: 40px 40px 150px;
+}
+
+.form2-1 {
+    width: 130px;
+    height: 40px;
+    border-right: #1A1A1C 1px solid;
+    border-bottom: #1A1A1C 1px solid;
+}
+
+.form2-2 {
+    width: 570px;
+    height: 40px;
+    border-bottom: #1A1A1C 1px solid;
+}
+
+.form2-3 {
+    width: 130px;
+    height: 150px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.vacation-require-form3 {
+    display: grid;
+    border: #1A1A1C 1px solid;
+    margin-bottom: 5px;
+}
+
+.vacation-require-form4 {
+    display: grid;
+    grid-template-columns: 300px 400px;
+    border: #1A1A1C 1px solid;
+    margin-bottom: 5px;
+    height: 130px;
+}
+
+.form4-1 {
+    width: 300px;
+    height: 130px;
+    border-right: #1A1A1C 1px solid;
+    overflow-y: auto; /* 너무 길 때 스크롤 표시 */
+}
+
+.vacation-require-form5 {
+    border: #1A1A1C 1px solid;
+    height: 70px;
+}
+
+
+/******** use list**************************/
+
+.use-state {
+    padding-top: 20px;
+}
+
+.use-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10px 10px 10px;
+}
+
+.use-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.select-days {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.use-vacation-list {
+    width: 1540px;
+    height: 200px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+
 
 /* paging bar ------------------------------------------------------------------------ */
 
@@ -125,17 +300,200 @@ hr {
 
 .paging-btn {
     margin: 5px;
-    border-radius: 25px;
+    border-radius: 20%;
     background-color: white;
     font-weight: bold;
+    border-color: #000000;
 }
 
 .paging-btn:hover {
     cursor: pointer;
-    background-color: burlywood;
+    background-color: #e0e0e0;
 }
 
-/* customers ------------------------------------------------------------------------ */
+/* 용민 ------------------------------------------------------------------------ */
+/* error */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.error-content {
+    display: flex;
+    justify-content: center;
+}
+
+/* login */
+.login-img {
+    margin: 15px;
+    width: 110px;
+}
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F7F8F8;
+}
+
+.login-header {
+    background-color: #01092B;
+    width: 100vw;
+    height: 100px;
+}
+
+.login-content {
+    background-color: white;
+    box-shadow: 2px 2px 5px 0 #787878;
+    margin: auto;
+    border-radius: 20px;
+    height: 270px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+.login-content-title {
+    margin: 25px;
+    font-weight: bold;
+    font-size: 140%;
+}
+
+.login-input:focus {
+    outline: none;
+}
+.login-input {
+    border-width: 0 0 2px 0;
+    border-color: #080808;
+    font-size: 105%;
+}
+
+.login-content-autologin {
+    font-size: 95%;
+    margin-right: 110px;
+}
+
+.login-content-button {
+    height: 40px;
+    width: 215px;
+    background-color: #01092B;
+    color: white;
+    border-radius: 20px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.login-content-find {
+    font-size: 80%;
+    cursor: pointer;
+    border-bottom: 1px solid #bbbbbb;
+    color: #666666;
+}
+
+.login-footer {
+    background-color: #01092B;
+    width: 100vw;
+    height: 50px;
+    bottom: 1px;
+    color: #eaeaea;
+    text-align: center;
+    font-size: 70%;
+}
+
+/* findPassword */
+.findModal-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    position: absolute;
+    z-index: 1;
+}
+.findModal-box {
+    background-color: white;
+    width: 350px;
+    height: 400px;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 120%;
+
+}
+
+.findModal-close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    cursor: pointer;
+}
+.findModal-close img {
+    width: 20px;
+    height: auto;
+}
+
+.findModal-header {
+    margin-top: 20px;
+}
+
+.findModal-content input {
+    width: 200px;
+    padding: 10px;
+    border: #c0c0c0 solid 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.findModal-button {
+    margin: auto;
+    width: 200px;
+    padding: 10px;
+    background-color: #FFCF00;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 80%;
+}
+
+.findModal-comment {
+    font-size: 90%;
+    margin-right: 60px;
+}
+
+.findModal-result {
+    font-size: 80%;
+}
+
+.findModal-result-fail {
+    font-size: 80%;
+    color: #f30000;
+}
+
+/* customers */
+.customers-customer-button, .customers-license-button {
+    font-size: 12px;
+    background-color: #03166C;
+    color: white;
+    border-radius: 15px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.customers-subtitle {
+    font-size: 20px;
+    margin: 10px;
+    margin-left: 30px;
+}
+
 .customers-list-head {
     background-color: #01092b;
     color: #FFFFFF;
@@ -145,6 +503,8 @@ hr {
 .customers-list-body, .customers-list-head {
     display: flex;
     text-align: center;
+    height: 30px;
+    line-height: 30px;
 }
 
 .customers-list-body > div, .customers-list-head > div {
@@ -182,7 +542,406 @@ hr {
     margin: 20px;
 }
 
+/* customers regist */
+.customers-regist-content {
+    width: 550px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #01092b;
+    box-shadow: 5px 5px 10px #b4b4b4; /* 그림자 추가 */
+    background-color: white;
+}
+.customers-regist-row, .customers-regist-row-h {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid #c0c0c0;
+}
 
+.customers-regist-row-h {
+    background-color: #01092b;
+    color: white;
+    padding: 10px;
+    font-size: 110%;
+    padding-left: 15px;
+}
+
+.customers-regist-row > div:first-child {
+    width: 120px;
+    min-width: 100px;
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가로 가운데 정렬 */
+    font-weight: bold;
+}
+
+.customers-regist-row input {
+    width: 300px;
+    height: 20px;
+    font-size: 100%;
+}
+
+.customers-regist-row-phone input {
+    width: 100px;
+    margin-right: 7px;
+}
+.customers-regist-select {
+    width: 100px;
+    height: 27px;
+    margin-right: 7px;
+    text-align: center;
+    font-size: 105%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.customers-regist-button-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.customers-regist-button {
+    width: 200px;
+    height: 50px;
+    background-color: #03166C;
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/*카카오api*/
+#postButton {
+    width: 80px;
+    height: 32px;
+    font-size: 14px;
+    background-color: #03166C;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* -----------------------Attend-------------------------*/
+.attend-main{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    width:  970px;
+    height: 800px;
+    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+}
+
+.attend-box{
+    display: flex;
+}
+.commute-btn-box{
+    background-color: white;
+    margin-top: 10px;
+    width: 380px;
+    margin-left: 55px;
+    height: 445px;
+    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    position: relative;
+}
+.attend-detail-box{
+    display: flex;
+    margin-left: 120px;
+    margin-top: 30px;
+}
+.attend-detail{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    width: 500px;
+}
+.detail-count{
+    text-align: center;
+}
+.detailname{
+    font-size: 25px;
+    font-weight: bold;
+    color: #01092B;
+}
+.detail-name{
+    margin-top: 25px;
+    font-size: 18px;
+}
+.attendhead{
+    margin-left: 350px;
+}
+.detail-count{
+    font-size: 25px;
+}
+.attendTime{
+    margin-top: 30px;
+    font-weight: bolder;
+    font-size: 35px;
+}
+.attend-month{
+    margin-top: 14px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.attend-button{
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    width: 315px;
+    height: 70px;
+    background-color: #01092B;
+    color: white;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.attend-sub-menu{
+    margin-left: 23px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.attend-sub-menu2{
+     margin-left: 23px;
+     margin-top: 20px;
+     font-size: 18px;
+     font-weight: bolder;
+ }
+
+.attend-sub-menu3{
+    letter-spacing: 0.5px;
+    margin-left: 35px;
+    font-weight: bold;
+    font-size: 19px;
+}
+.progress-bar {
+    border-radius: 15px;
+    width: 75%;
+    margin-left: 35px;
+    height: 22px;
+    background-color: #dedede;
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+.progress-bar .progress {
+    width: 65%;
+    height: 22px;
+    padding: 0;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #01092B;
+    color: #111;
+}
+
+.attend-Time{
+    margin-top: 30px;
+    line-height: 40px;
+}
+.attend-btn{
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.leaveBt{
+    background-color: #002249;
+}
+.admin-attend-head{
+    display: flex;
+    margin-top: 15px;
+}
+
+.attendNameBox{
+    border: 1px solid #B6B6B6;
+    border-radius: 5px;
+    padding: 0px 13px 1px 13px;
+    height: 30px;
+    width: 120px;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.attendNameBtn{
+    margin-left: 5px;
+    border: 1px solid #B6B6B6;
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 1px 13px 1px 13px;
+    height: 34px;
+}
+.attendMonth{
+    display: flex;
+    letter-spacing:2px;
+    margin-left: 400px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.attendMonthbtn{
+    padding-top: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    font-size: 25px;
+}
+
+.attendTable{
+    margin-left: 50px;
+}
+.attendTable th,td{
+    padding: 10px;
+    width: 105px;
+    font-size: 20px;
+    text-align: left;
+    padding-top: 30px;
+}
+.att-late{
+    padding-left: 170px;
+}
+
+.attendmodalcontent{
+    margin-left: 100px;
+}
+
+.modifiedHeader{
+    background-color: white;
+    z-index: 1;
+    font-size: 25px;
+    position: fixed;
+    width: 915px;
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding-left: 70px;
+    padding-bottom: 25px;
+    margin-left: -100px;
+    padding-top: 20px;
+}
+.attendmodalHead{
+    background: white;
+    margin-top: 30px;
+    width: 883px;
+    position: fixed;
+    padding-top: 30px;
+    border-bottom: 1px solid black;
+    padding-left: 100px;
+    margin-left: -101px;
+}
+.attendBackAdmin{
+    background-color: white;
+    padding: 10px 10px 10px 70px;
+    height: 80vh;
+    border: 2px #B6B6B6 solid;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.att-empName{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+.attendAdminHead{
+    font-size: 28px;
+    font-weight: bold;
+}
+.attenddetailbtn{
+    background-color: white;
+    font-size: 17px;
+    border: 1px solid #B6B6B6;
+    padding: 7px 10px;
+    border-radius: 10px;
+    font-weight: bolder;
+    width: 110px;
+    height: 40px;
+}
+.attendModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+.attendModal-container{
+    position: absolute;
+    width: 1000px;
+    height: 800px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000;
+    overflow: auto;
+}
+.historyModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;
+}
+.historyModal-container{
+    position: absolute;
+    width: 800px;
+    height: 700px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1002;
+    overflow: auto;
+}
+.historyattend{
+    display: flex;
+}
+.attendhistoryHead{
+    display: flex;
+}
+.AttendhistoryContent{
+    display: flex;
+
+}
+.historyModalContent{
+    margin-left: 80px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+.historyTime{
+margin-left: 130px;
+}
+.historymodifiedAt{
+    margin-left: 70px;
+}
+
+.attendHistoryContainer{
+    margin-top: 18px;
+}
 /**                               employee                               **/
 
 .employees-list-body {
