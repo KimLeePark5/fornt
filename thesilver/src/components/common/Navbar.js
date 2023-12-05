@@ -65,7 +65,7 @@ function Navbar() {
                         <li><NavLink to="">연차 관리</NavLink></li>
                     </ul>
                 </li>
-                <ProtectedRoute onlyAdminMaster={true}>
+                {(isAdmin() || isMaster()) &&
                     <li>
                         <a className="Menu" onClick={() => onClickMenuHandler("employee")}>직원 관리</a>
                         {isSubMenuOpen.employee && (
@@ -77,8 +77,7 @@ function Navbar() {
                         )}
 
                     </li>
-                </ProtectedRoute>
-
+                }
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("myInfo")}>내정보 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.myInfo ? 'active' : ''}`}>
