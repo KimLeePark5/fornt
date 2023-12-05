@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
+import Programs from "./components/programs/Programs";
 
 
 
@@ -31,6 +32,7 @@ function App() {
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
+                    <Route path="programs" element={<Programs/>}></Route>
                 </Route>
                 <Route path="*" element={<Error/>}/>
             </Routes>
