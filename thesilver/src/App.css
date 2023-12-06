@@ -12,6 +12,7 @@
     min-width: 280px;
 }
 
+
 .layout > div:nth-child(2) {
     flex: auto;
     margin: 50px;
