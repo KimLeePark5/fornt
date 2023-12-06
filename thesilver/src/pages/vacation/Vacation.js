@@ -1,9 +1,10 @@
-import VacationStateItem from "../../components/vacation/items/VacationStateItem";
+
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {callVacationStateAPI} from "../../apis/VacationAPICalls";
-import RequireStateItem from "../../components/vacation/items/RequireStateItem";
 import UseVacationListItem from "../../components/vacation/items/UseVacationListItem";
+import VacationStateList from "../../components/vacation/lists/VacationStateList";
+import RequireStateList from "../../components/vacation/lists/RequireStateList";
 
 
 
@@ -20,8 +21,8 @@ function Vacation() {
         <>
             <div className="pageTitle-div">연차 관리</div>
             <div className="vacationStateContent">
-                <VacationStateItem/>
-                <RequireStateItem/>
+                <VacationStateList/>
+                <RequireStateList/>
                 <UseVacationListItem/>
             </div>
         </>
