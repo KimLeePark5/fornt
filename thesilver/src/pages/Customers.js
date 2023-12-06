@@ -33,27 +33,16 @@ function Customers() {
         <>
             {customers && (
                 <>
-                    <input
-                        style={ { display: 'none' }}
-                        type="file"
-                        name='productImage'
-                        accept='image/jpg,image/png,image/jpeg,image/gif'
-                        ref={ imageInput }
-                        // onChange={ onChangeImageUpload }
-                    />
-                    <button
-                        className="product-image-button"
-                        onClick={ onClickImageUpload }
-                    >
-                        이미지 업로드
-                    </button>
-
+                    <div className="pageTitle-div">고객 관리</div>
+                    <div className="customers-subtitle">고객 관리 현황</div>
 
                     <div className="customers-type">
                         <div className="customers-type-first"></div>
                         <div className="customers-type-second"></div>
                         <div className="customers-type-third"></div>
                     </div>
+
+                    <div className="customers-subtitle">고객정보</div>
                     <div className="customers-list">
                         <CustomerList data={customers.data}/>
                         <PagingBar pageInfo={customers.pageInfo} setCurrentPage={setCurrentPage}/>
