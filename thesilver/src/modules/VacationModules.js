@@ -1,20 +1,18 @@
-import { createActions, handleActions} from "redux-actions";
+import {createActions, handleActions} from "redux-actions";
 
 const initialState = {};
+/* 액션 타입 */
+const GET_VACATION = 'vacation/GET_VACATION';
 
-const VACATION = 'VACATION';
-
-export const { vacation, setVacation } = createActions({
-    [VACATION]: result => ({ payload: result.data })
+/* 액션 함수*/
+export const {vacation: {getVacation}} = createActions({
+    [GET_VACATION]: (result) => ({vacation: result.data})
 });
 
-
+/* 리듀서 함수 */
 export const vacationReducer = handleActions({
-    [VACATION]: (state, { payload }) => {
-        console.log("API 응답 구조 확인: ", payload);
-        return {
-            ...state,
-            ...payload
-        };
-    }
+    [GET_VACATION]: (state, {payload}) => payload,
 }, initialState);
+
+
+export default vacationReducer;
