@@ -1,4 +1,8 @@
-function CustomerListItem({customer}) {
+
+function CustomerListItem({customer, setCustomerCode}) {
+
+
+
     return (
         <>
             <div className="customers-list-body">
@@ -10,7 +14,7 @@ function CustomerListItem({customer}) {
                 <div>{customer.phone}</div>
                 <div>{customer.primaryAddress}</div>
                 <div>
-                    <span className="customers-customer-button">정보조회</span>
+                    <span className="customers-customer-button" onClick={() => {setCustomerCode(customer.customerCode)} }>정보조회</span>
                     &nbsp;
                     <span className="customers-license-button">회원권조회</span>
                 </div>
