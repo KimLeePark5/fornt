@@ -19,7 +19,7 @@ function VacationStateItem() {
         dispatch(callVacationStateAPI());
     }, [employeeCode]);
 
-    console.log("데이터 있나요? : ", vacation)
+    console.log("vacation 데이터 있나요? : ", vacation)
 
     return (
 
