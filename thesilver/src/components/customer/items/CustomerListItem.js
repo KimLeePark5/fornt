@@ -7,7 +7,7 @@ function CustomerListItem({customer, setCustomerCode}) {
         <>
             <div className="customers-list-body">
                 <div className="customers-list-item">{customer.customerCode}</div>
-                <div>{customer.status}</div>
+                <div style={{ fontWeight:"bold", color: customer.status === '등록' ? 'blue' : 'red' }}>{customer.status}</div>
                 <div>{customer.name}</div>
                 <div>{customer.gender}</div>
                 <div>{customer.birthDate}</div>
