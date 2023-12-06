@@ -5,6 +5,7 @@ import ProgramListItem from "../items/ProgramListItem";
 function ProgramList({data}) {
 
     console.log("::: ProgramList js 파일 진입 :::");
+
     return(
         <div className="programs-div"
         >
