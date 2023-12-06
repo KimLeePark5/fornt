@@ -1,13 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
-import {callCustomersAPI} from "../apis/CustomerAPICalls";
-import {callCustomerAPI, callCustomerListAPI, callCustomersAPI} from "../apis/CustomerAPICalls";
 import CustomerList from "../components/customer/lists/CustomerList";
 import PagingBar from "../components/common/PagingBar";
-import {jwtDecode} from "jwt-decode";
-import {isLogin} from "../utils/TokenUtils";
-import CustomerRegistForm from "../components/customer/form/CustomerRegistForm";
 import CustomerModifyForm from "../components/customer/form/CustomerModifyForm";
+import {callCustomerAPI, callCustomersAPI} from "../apis/CustomerAPICalls";
 
 function Customers() {
 
