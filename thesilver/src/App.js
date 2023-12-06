@@ -12,7 +12,8 @@ import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
 import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
-import Programs from "./pages/programs/Programs";
+import CustomerRegist from "./pages/CustomerRegist";
+import Programs from "./components/programs/Programs";
 
 
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<ProtectedRoute onlyUnLogin={true} > <Login/> </ProtectedRoute>}/>
                 <Route path="/" element={<ProtectedRoute onlyLogin={true}><Layout/></ProtectedRoute>}>
+                    <Route path="/regist-customers" element={<CustomerRegist/>}></Route>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
                     <Route path="attend-management">

@@ -1,4 +1,4 @@
-function PagingBar({ pageInfo, setCurrentPage }) {
+function EmployeesPagingBar({ pageInfo, setCurrentPage }) {
 
     // const pageNumber = [...Array(pageInfo.endPage - pageInfo.startPage + 1).keys()]
     //                                 .map(key => key + pageInfo.startPage);
@@ -11,10 +11,10 @@ function PagingBar({ pageInfo, setCurrentPage }) {
 
 
     return (
-        <ul className="paging-ul">
+        <ul className="EmployeesPaging-ul">
             <li>
                 <button
-                    className="paging-btn"
+                    className="EmployeesPaging-btn"
                     onClick={ () => setCurrentPage(pageInfo.currentPage - 1) }
                     disabled={ pageInfo.currentPage <= 1 }
                 >
@@ -25,8 +25,8 @@ function PagingBar({ pageInfo, setCurrentPage }) {
                 pageNumber.map(num => (
                     <li key={num}>
                         <button
-                            className="paging-btn"
-                            style={ pageInfo.currentPage === num ? { color: 'white', backgroundColor : '#01092b'} : null }
+                            className="EmployeesPaging-btn"
+                            style={ pageInfo.currentPage === num ? { color : 'orange'} : null }
                             onClick={ () => setCurrentPage(num) }
                             disabled={ pageInfo.currentPage === num }
                         >
@@ -37,7 +37,7 @@ function PagingBar({ pageInfo, setCurrentPage }) {
             }
             <li>
                 <button
-                    className="paging-btn"
+                    className="EmployeesPaging-btn"
                     onClick={ () => setCurrentPage(pageInfo.currentPage + 1) }
                     disabled={ pageInfo.currentPage >= pageInfo.maxPage }
                 >
@@ -47,5 +47,4 @@ function PagingBar({ pageInfo, setCurrentPage }) {
         </ul>
     );
 }
-
-export default PagingBar;
+export default EmployeesPagingBar

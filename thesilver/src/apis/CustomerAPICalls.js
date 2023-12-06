@@ -1,5 +1,5 @@
 import {authRequest, request} from "./Api";
-import {getCustomers} from "../modules/CustomerModule";
+import {getCustomers, postSuccess} from "../modules/CustomerModule";
 
 export const callTestAPI = () => {
     return async (dispatch, getState) => {
@@ -27,6 +27,19 @@ export const callCustomersAPI = ({ currentPage = 1 }) => {
 
         if (result.status === 200) {
             dispatch(getCustomers(result));
+        }
+    }
+}
+
+export const callCustomerRegistAPI = ({ registForm }) => {
+    return async (dispatch, getState) => {
+        console.log('레지스트폼 : ', registForm);
+
+        const result = await authRequest.post("/api/v1/customers", registForm)
+        console.log('callCustomersAPI : ', result);
+
+        if (result.status === 201) {
+            dispatch(postSuccess());
         }
     }
 }
