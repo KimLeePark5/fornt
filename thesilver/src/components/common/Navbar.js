@@ -1,7 +1,7 @@
 import {NavLink, useNavigate} from "react-router-dom"
 import {useState} from "react";
 import {getDecodeAccessToken, isAdmin, isLogin, isMaster, removeToken} from "../../utils/TokenUtils";
-import ProtectedRoute from "../router/ProtectedRoute";
+
 
 function Navbar() {
 
