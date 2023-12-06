@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
+import {callCustomersAPI} from "../apis/CustomerAPICalls";
 import {callCustomerAPI, callCustomerListAPI, callCustomersAPI} from "../apis/CustomerAPICalls";
 import CustomerList from "../components/customer/lists/CustomerList";
 import PagingBar from "../components/common/PagingBar";

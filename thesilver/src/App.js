@@ -13,7 +13,7 @@ import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
-import Programs from "./components/programs/Programs";
+import Programs from "./pages/programs/Programs";
 
 
 
