@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
-import {callCustomerListAPI, callCustomersAPI} from "../apis/CustomerAPICalls";
+import {callCustomersAPI} from "../apis/CustomerAPICalls";
 import CustomerList from "../components/customer/lists/CustomerList";
 import PagingBar from "../components/common/PagingBar";
 import {jwtDecode} from "jwt-decode";
