@@ -13,17 +13,7 @@ function Customers() {
     const {customers, customer} = useSelector(state => state.customerReducer);
     const [customerCode, setCustomerCode] = useState();
     const [modal, setModal] = useState(false);
-    const [condition, setCondition] = useState({
-        searchType : "이름",
-        searchContent : " "
-    })
-
-    const onChangeConditionHandler = (e) => {
-        setCondition({
-            ...condition,
-            [e.target.name] : e.value
-        })
-    }
+    const [condition, setCondition] = useState({});
 
     useEffect(() => {
         dispatch(callCustomersAPI({condition, currentPage}));
@@ -78,7 +68,7 @@ function Customers() {
                         </div>
 
                         <div className="customers-list">
-                            <CustomerList onChangeConditionHandler={onChangeConditionHandler} data={customers.data} setCustomerCode={setCustomerCode}/>
+                            <CustomerList setCurrentPage={setCurrentPage} setCondition={setCondition} data={customers.data} setCustomerCode={setCustomerCode}/>
                             <PagingBar pageInfo={customers.pageInfo} setCurrentPage={setCurrentPage}/>
                         </div>
                     </div>

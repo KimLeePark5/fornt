@@ -5,9 +5,9 @@ import {getCustomer, getCustomers, postSuccess} from "../modules/CustomerModule"
 export const callCustomersAPI = ({ condition, currentPage = 1 }) => {
     return async (dispatch, getState) => {
 
-        console.log("컨디션", condition)
+        console.log("액티브체크", condition)
 
-        const result = await authRequest.get(`/api/v1/customers/condition?page=${currentPage}&searchType=${condition.searchType}&searchContent=${condition.searchContent}`)
+        const result = await authRequest.get(`/api/v1/customers/condition?page=${currentPage}&searchType=${condition.searchType}&searchContent=${condition.searchContent}&searchActiveCheck=${condition.searchActiveCheck}`)
 
         if (result.status === 200) {
             dispatch(getCustomers(result));
