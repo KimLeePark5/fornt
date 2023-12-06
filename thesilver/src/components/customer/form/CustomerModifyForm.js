@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callCustomerRegistAPI} from "../../../apis/CustomerAPICalls";
+import customers from "../../../pages/Customers";
 
-function CustomerRegistForm() {
+function CustomerModifyForm({customer, onClickCloseHandler}) {
     const dispatch = useDispatch();
     const [currentDate, setCurrentDate] = useState('');
     const [form, setForm] = useState({
@@ -98,13 +99,15 @@ function CustomerRegistForm() {
 
     return (
         <>
-
-            <div>
-                <div className="customers-regist-content">
+            <div className="customers-regist-content">
+                <div className="findModal-close" onClick={onClickCloseHandler}><img
+                    src="https://static.thenounproject.com/png/26894-200.png"/></div>
+                <div className="customers-modify-title"><span>고객 정보 수정</span></div>
                     <div className="customers-regist-row-h">기본 정보</div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">이름</div>
                         <div><input name="name" onChange={onChangeHandler} type="text"/></div>
+                        <div>하이 {customer?.name}</div>
                     </div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">성별</div>
@@ -194,11 +197,10 @@ function CustomerRegistForm() {
                     <div className="customers-regist-button-div">
                         <div onClick={onClickRegistHandler} className="customers-regist-button">신규 고객 등록</div>
                     </div>
-                </div>
 
             </div>
         </>
     )
 }
 
-export default CustomerRegistForm;
+export default CustomerModifyForm;
