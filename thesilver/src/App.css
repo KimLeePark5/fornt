@@ -12,10 +12,12 @@
     min-width: 280px;
 }
 
+
 .layout > div:nth-child(2) {
     flex: auto;
     margin: 50px;
 }
+
 
 /** 스크롤바 없애기 **/
 /*::-webkit-scrollbar {*/
