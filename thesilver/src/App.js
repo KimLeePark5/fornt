@@ -12,8 +12,6 @@ import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
 import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
-
-import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
 import Main from "./pages/Main";
 
 
