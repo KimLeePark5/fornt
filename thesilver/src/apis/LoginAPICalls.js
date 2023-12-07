@@ -1,7 +1,8 @@
 import async from "async";
 import {authRequest, request} from "./Api";
 import {isLogin, saveToken} from "../utils/TokenUtils";
-import {loginFailure, loginSuccess} from "../modules/LoginModule";
+import {loginFailure, loginSuccess, resetFailure, resetSuccess} from "../modules/LoginModule";
+import {getCustomers} from "../modules/CustomerModule";
 
 export const callLoginAPI = ({loginForm}) => {
 
@@ -26,5 +27,11 @@ export const callResetPasswordAPI = ({resetPasswordForm}) => {
     return async (dispatch, getState) => {
     const result = await request("POST","/api/v1/password-reset",'application/json', resetPasswordForm)
         console.log('callResetPasswordAPI : ', result);
+
+        if (result?.status === 200) {
+            dispatch(resetSuccess());
+        } else {
+            dispatch(resetFailure())
+        }
 }}
 

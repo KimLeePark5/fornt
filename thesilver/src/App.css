@@ -16,7 +16,9 @@
 .layout > div:nth-child(2) {
     flex: auto;
     margin: 50px;
+    margin-bottom: 0;
 }
+
 
 
 /** 스크롤바 없애기 **/
@@ -428,7 +430,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+    gap: 12px;
 }
 .login-content-title {
     margin: 25px;
@@ -492,7 +494,7 @@
 .findModal-box {
     background-color: white;
     width: 350px;
-    height: 400px;
+    height: 350px;
     position: absolute;
     border-radius: 10px;
     display: flex;
@@ -504,11 +506,18 @@
 
 .findModal-close {
     position: absolute;
-    top: 15px;
-    right: 18px;
+    top: 12px;
+    right: 12px;
     cursor: pointer;
 }
-.findModal-close img {
+
+.modifyModal-close {
+    position: absolute;
+    top: -25px;
+    right: -28px;
+    cursor: pointer;
+}
+.findModal-close img, .modifyModal-close img {
     width: 20px;
     height: auto;
 }
@@ -516,6 +525,8 @@
 .findModal-header {
     margin-top: 20px;
 }
+
+
 
 .findModal-content input {
     width: 200px;
@@ -533,6 +544,10 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 80%;
+    cursor: pointer;
+}
+.findModal-result {
+    padding-bottom: 20px;
 }
 
 .findModal-comment {
@@ -708,6 +723,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    gap: 10px;
 }
 
 .customers-regist-button {
@@ -741,11 +757,36 @@
 
 .customers-modify-title {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     width: auto;
     background-color: white;
     text-align: center;
     padding: 20px;
+}
+
+.customers-modify-box {
+    width: 640px;
+    height: 900px;
+    border-radius: 30px;
+    background-color: #F7F8F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.customers-modify-content {
+    margin: 0;
+    margin-top: 40px;
+    height: 780px;
+}
+
+#customers-modify-save {
+    background-color: #171717;
+}
+
+.customers-modify-box input, .customers-modify-box textarea{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 100%;
 }
 
 

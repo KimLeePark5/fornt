@@ -61,10 +61,7 @@ function LoginForm() {
                     />
                 </div>
 
-                <div className="login-content-autologin">
-                    <input type="checkbox" id="login-checkbox"/><label className="login-content-label"
-                                                                       htmlFor="login-checkbox">자동 로그인</label>
-                </div>
+
 
                 <div>
                     <div
