@@ -13,7 +13,8 @@ import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
-import Programs from "./pages/programs/Programs";
+import Programs from "./pages/board/Programs";
+import Journals from "./pages/Journals";
 
 
 
@@ -33,6 +34,8 @@ function App() {
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
                     <Route path="programs" element={<Programs/>}></Route>
+                    <Route path="journals" element={<Journals/>}></Route>
+
                 </Route>
                 <Route path="*" element={<Error/>}/>
             </Routes>

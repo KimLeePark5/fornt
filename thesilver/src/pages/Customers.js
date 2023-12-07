@@ -24,9 +24,8 @@ function Customers() {
     }, [currentPage]);
 
 
-
     console.log("customers : ", customers)
-    if(isLogin()) {
+    if (isLogin()) {
         console.log(jwtDecode(window.localStorage.getItem('access-token')))
     }
     return (
