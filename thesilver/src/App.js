@@ -8,6 +8,7 @@ import MyAttend from "./pages/MyAttend";
 import AttendAdmin from "./pages/admin/AttendAdmin";
 import Employees from "./pages/Employees";
 import Login from "./pages/Login";
+import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
 import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
