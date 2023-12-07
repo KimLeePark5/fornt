@@ -14,6 +14,7 @@ import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
 import Main from "./pages/Main";
+import Programs from "./pages/programs/Programs";
 
 
 function App() {
