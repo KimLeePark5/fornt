@@ -1,6 +1,6 @@
 import CustomerListItem from "../items/CustomerListItem";
 
-function CustomerList({ onChangeConditionHandler, data, setCustomerCode }) {
+function  CustomerList({ onChangeConditionHandler, data, setCustomerCode }) {
 
 
 
