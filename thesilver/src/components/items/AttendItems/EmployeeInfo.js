@@ -18,18 +18,18 @@ function EmployeeInfo({attendAdmin, setMonth,month}) {
                               setMonth={setMonth} month={month}
             />}
 
-
             <table className="attendTable">
                 <thead>
                 <tr>
-                    <th></th>
-                    <td className="att-late">근무율</td>
+                    <th>1</th>
+                    <td className="att-late" style={{
+                        fontSize:20
+                    }}>근무율</td>
                     <th>결근</th>
                     <th>지각</th>
                     <th>조퇴</th>
                     <th>휴가</th>
                     <th>연장근무</th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody className="att-tbody">
