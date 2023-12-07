@@ -1,28 +1,21 @@
-// import {createActions, handleActions} from "redux-actions";
-//
-// const initialState = {};
-//
-// const GET_VACATION = 'vacation/GET_VACATION';
-//
-// export const {vacation : {getVacation}} = createActions({
-//     [GET_VACATION] : result => ({data: result.data})
-// });
-//
-// const vacationReducer = handleActions({
-//     [GET_VACATION]: (state, {payload}) => payload,
-// }, initialState);
-//
-// export default vacationReducer;
-import {handleActions} from "redux-actions";
+import {createActions, handleActions} from "redux-actions";
 
 const initialState = {};
+/* 액션 타입 */
+const GET_VACATION = 'vacation/GET_VACATION';
+const GET_REQUIRE_STATE = 'vacation/GET_REQUIRE_STATE'
 
-const REQUIRE_SUCCESS = 'vacation/REQUIRE_SUCCESS';
+/* 액션 함수*/
+export const {vacation: {getVacation, getRequireState}} = createActions({
+    [GET_VACATION]: result => ({vacation: result.data}),
+    [GET_REQUIRE_STATE]: result => ({require: result.data})
+});
 
+/* 리듀서 함수 */
+export const vacationReducer = handleActions({
+    [GET_VACATION]: (state, {payload}) =>({...state, ...payload}),
+    [GET_REQUIRE_STATE]: (state, {payload}) => ({...state, ...payload})
+}, initialState);
 
-
-const vacationReducer = handleActions({
-    [REQUIRE_SUCCESS] : (state, {payload}) => payload
-}, initialState)
 
 export default vacationReducer;

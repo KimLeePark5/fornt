@@ -12,6 +12,7 @@ import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
 import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
+import CustomerRegist from "./pages/CustomerRegist";
 import Main from "./pages/Main";
 
 
@@ -21,6 +22,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<ProtectedRoute onlyUnLogin={true} > <Login/> </ProtectedRoute>}/>
                 <Route path="/" element={<ProtectedRoute onlyLogin={true}><Layout/></ProtectedRoute>}>
+                    <Route path="/regist-customers" element={<CustomerRegist/>}></Route>
                     <Route index element={<Main/>}/>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
@@ -30,7 +32,7 @@ function App() {
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
-
+                    <Route path="programs" element={<Programs/>}></Route>
                 </Route>
                 <Route path="*" element={<Error/>}/>
             </Routes>
