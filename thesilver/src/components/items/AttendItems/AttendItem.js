@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callGetAttendResultAPI} from "../../../apis/AttendAPICalls";
+import AttendCalender from "./AttendCalender";
 
 function AttendItem() {
     const date = new Date();
@@ -15,13 +16,16 @@ function AttendItem() {
     const dispatch = useDispatch();
     const inputmonth = useRef();
 
-
+    useEffect(() => {
+        dispatch(callGetAttendResultAPI({month: month}));
+    }, []);
 
 
     useEffect(() => {
         dispatch(callGetAttendResultAPI({month: month}));
-        console.log(myAttend);
+        console.log('myAttend : ',myAttend);
     }, [month]);
+
     const monthChangeHandler = (e) => {
         setMonth(e.target.value)
     }
@@ -33,7 +37,6 @@ function AttendItem() {
         }else(month1.current = month1.current-1)
 
         setMonth(year1.current+'-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current))
-        // console.log(String(month1.current).length);
     }
     const onClickDownHandler = () => {
 
@@ -43,6 +46,9 @@ function AttendItem() {
         }else(month1.current = month1.current+1)
         setMonth(year1.current+'-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current))
     }
+
+
+
     return (
         <div className="attend-main">
 
@@ -88,8 +94,11 @@ function AttendItem() {
                         </div>
                     </div>
 
+
                 </div>
             }
+
+            {myAttend && <AttendCalender myAttend={myAttend}/>}
         </div>
 
     )

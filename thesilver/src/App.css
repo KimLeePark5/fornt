@@ -392,6 +392,7 @@
     font-weight: bold;
     margin-top: 50px;
 }
+
 .error-content {
     display: flex;
     justify-content: center;
@@ -803,67 +804,95 @@
 }
 
 /* -----------------------Attend-------------------------*/
-.attend-main{
+.attend-main {
     background-color: white;
     margin-top: 10px;
     margin-left: 20px;
-    width:  970px;
+    width: 970px;
     height: 800px;
-    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+}
+.Mainattend-main {
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 970px;
+    height: 200px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
 }
 
-.attend-box{
+.attend-box {
     display: flex;
 }
-.commute-btn-box{
+
+.commute-btn-box {
     background-color: white;
     margin-top: 10px;
     width: 380px;
     margin-left: 55px;
     height: 445px;
-    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     position: relative;
 }
-.attend-detail-box{
+.Maincommute-btn-box {
+    background-color: white;
+    margin-top: 10px;
+    width: 380px;
+    margin-left: 55px;
+    height: 445px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+.attend-detail-box {
     display: flex;
     margin-left: 120px;
     margin-top: 30px;
 }
-.attend-detail{
+
+.attend-detail {
     display: flex;
     justify-content: space-between;
     margin-left: 150px;
     width: 500px;
 }
-.detail-count{
+
+.detail-count {
     text-align: center;
 }
-.detailname{
+
+.detailname {
     font-size: 25px;
     font-weight: bold;
     color: #01092B;
 }
-.detail-name{
+
+.detail-name {
     margin-top: 25px;
     font-size: 18px;
 }
-.attendhead{
+
+.attendhead {
     margin-left: 350px;
 }
-.detail-count{
+
+.detail-count {
     font-size: 25px;
 }
-.attendTime{
+
+.attendTime {
     margin-top: 30px;
     font-weight: bolder;
     font-size: 35px;
 }
-.attend-month{
+
+.attend-month {
     margin-top: 14px;
     margin-left: 20px;
     font-size: 20px;
 }
-.attend-button{
+
+.attend-button {
+    font-size: 30px;
     position: absolute;
     bottom: 35px;
     left: 35px;
@@ -879,26 +908,28 @@
     cursor: pointer;
 }
 
-.attend-sub-menu{
+.attend-sub-menu {
     margin-left: 23px;
     margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
 }
 
-.attend-sub-menu2{
-     margin-left: 23px;
-     margin-top: 20px;
-     font-size: 18px;
-     font-weight: bolder;
- }
+.attend-sub-menu2 {
+    margin-left: 23px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bolder;
 
-.attend-sub-menu3{
+}
+
+.attend-sub-menu3 {
     letter-spacing: 0.5px;
     margin-left: 35px;
     font-weight: bold;
     font-size: 19px;
 }
+
 .progress-bar {
     border-radius: 15px;
     width: 75%;
@@ -907,37 +938,41 @@
     background-color: #dedede;
     font-weight: 600;
     font-size: .8rem;
+    margin-top: 18px;
 }
 
 .progress-bar .progress {
-    width: 65%;
     height: 22px;
     padding: 0;
+    width: 15%;
     border-radius: 15px;
     text-align: center;
     background-color: #01092B;
     color: #111;
 }
 
-.attend-Time{
+.attend-Time {
     margin-top: 30px;
     line-height: 40px;
 }
-.attend-btn{
+
+.attend-btn {
     background-color: white;
     border: none;
     font-size: 20px;
     cursor: pointer;
 }
-.leaveBt{
+
+.leaveBt {
     background-color: #002249;
 }
-.admin-attend-head{
+
+.admin-attend-head {
     display: flex;
     margin-top: 15px;
 }
 
-.attendNameBox{
+.attendNameBox {
     border: 1px solid #B6B6B6;
     border-radius: 5px;
     padding: 0px 13px 1px 13px;
@@ -947,7 +982,7 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.attendNameBtn{
+.attendNameBtn {
     margin-left: 5px;
     border: 1px solid #B6B6B6;
     border-radius: 5px;
@@ -958,14 +993,16 @@
     padding: 1px 13px 1px 13px;
     height: 34px;
 }
-.attendMonth{
+
+.attendMonth {
     display: flex;
-    letter-spacing:2px;
+    letter-spacing: 2px;
     margin-left: 400px;
     font-size: 25px;
     font-weight: bold;
 }
-.attendMonthbtn{
+
+.attendMonthbtn {
     padding-top: 6px;
     font-weight: bold;
     cursor: pointer;
@@ -974,48 +1011,123 @@
     font-size: 25px;
 }
 
-.attendTable{
+.attendTable {
+    margin-top: -13px;
     margin-left: 50px;
+    line-height: 50px;
+    font-weight: bold;
 }
-.attendTable th,td{
+
+.attendTable th, td {
     padding: 10px;
     width: 105px;
     font-size: 20px;
     text-align: left;
     padding-top: 30px;
 }
-.att-late{
+
+.att-late {
     padding-left: 170px;
 }
 
-.attendmodalcontent{
-    margin-left: 100px;
+.att-tbody {
+    font-weight: normal;
 }
 
-.modifiedHeader{
+.attendmodalcontent {
+}
+
+.modifiedHeader {
     background-color: white;
     z-index: 1;
     font-size: 25px;
     position: fixed;
     width: 915px;
     text-align: left;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #BABABA;
     padding-left: 70px;
-    padding-bottom: 25px;
-    margin-left: -100px;
     padding-top: 20px;
+    padding-bottom: 15px;
 }
-.attendmodalHead{
-    background: white;
-    margin-top: 30px;
-    width: 883px;
+
+.attendmodalHead {
+    background: #F7F8F8;
+    margin-top: 75px;
+    width: 890px;
     position: fixed;
-    padding-top: 30px;
-    border-bottom: 1px solid black;
-    padding-left: 100px;
-    margin-left: -101px;
+    border-bottom: 1px solid #BABABA;
+    padding: 13px 0px 13px 95px;
+    font-weight: bold;
+
 }
-.attendBackAdmin{
+
+.adminattendbody {
+    font-size: 16px;
+
+}
+
+.attendbodyTable {
+    margin-top: 120px;
+    margin-bottom: 20px;
+    line-height: 50px;
+    width: 100%;
+    font-weight: bold;
+
+}
+
+.attendbodyTable td:nth-child(2) {
+    padding-left: 35px;
+
+}
+
+.attendbodyTable td:nth-child(3) {
+    padding-left: 45px;
+}
+
+.attendbodyTable td:nth-child(4) {
+    padding-left: 56px;
+}
+
+.attendbodyTable td:nth-child(5) {
+    padding-left: 25px;
+}
+
+.attendbodyTable td:nth-child(6) {
+    padding-left: 37px;
+}
+
+.getmodibtn {
+    background: white;
+    border: 1px solid #B6B6B6;
+    width: 65px;
+    height: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.tbodyattend {
+    border-bottom: 1px solid #B6B6B6;
+    width: 900px;
+}
+
+.headattend td:nth-child(2) {
+    padding-left: 47px;
+}
+
+.headattend td:nth-child(3) {
+    padding-left: 60px;
+}
+
+.headattend td:nth-child(4) {
+    padding-left: 70px;
+}
+
+.headattend td:nth-child(5) {
+    padding-left: 53px;
+}
+
+.attendBackAdmin {
     background-color: white;
     padding: 10px 10px 10px 70px;
     height: 80vh;
@@ -1025,17 +1137,19 @@
     margin-top: 20px;
 }
 
-.att-empName{
+.att-empName {
     font-size: 20px;
     font-weight: bold;
     text-align: right;
 }
-.attendAdminHead{
+
+.attendAdminHead {
     font-size: 28px;
     font-weight: bold;
 }
-.attenddetailbtn{
-    background-color: white;
+
+.attenddetailbtn {
+
     font-size: 17px;
     border: 1px solid #B6B6B6;
     padding: 7px 10px;
@@ -1044,7 +1158,8 @@
     width: 110px;
     height: 40px;
 }
-.attendModal{
+
+.attendModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -1058,7 +1173,7 @@
 }
 
 
-.attendModal-container{
+.attendModal-container {
     position: absolute;
     width: 1000px;
     height: 800px;
@@ -1069,7 +1184,8 @@
     z-index: 1000;
     overflow: auto;
 }
-.historyModal{
+
+.historyModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -1081,7 +1197,8 @@
     align-items: center;
     z-index: 10001;
 }
-.historyModal-container{
+
+.historyModal-container {
     position: absolute;
     width: 800px;
     height: 700px;
@@ -1092,30 +1209,349 @@
     z-index: 1002;
     overflow: auto;
 }
-.historyattend{
+
+.historyattend {
     display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+    margin-top: -19px;
 }
-.attendhistoryHead{
-    display: flex;
+.att-text{
+    margin-left: 10px;
+    margin-top: 8px;
+    font-size: 20px;
+    color : #B6B6B6;
 }
-.AttendhistoryContent{
+.atttbtn{
+    background: none;
+    border: none;
+    font-size: 30px;
+    margin-left: 480px;
+    margin-top: -10px;
+}
+.attime{
+    margin-left: -20px;
+    line-height: 23px;
+}
+.attendhistoryHead {
     display: flex;
+    border-bottom: 1px solid #BABABA;
+    padding-left: 70px;
+
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.AttendhistoryContent {
+    display: flex;
+    border-bottom: 1px solid #BABABA;
+    padding-left: 70px;
+    padding-bottom: 20px;
 
 }
-.historyModalContent{
-    margin-left: 80px;
+
+.historyModalContent {
     margin-top: 30px;
     font-size: 18px;
 }
-.historyTime{
-margin-left: 130px;
+.historyattend,attendhistoryHead{
+    border-bottom: 1px solid #BABABA;
 }
-.historymodifiedAt{
+.attmodifier{
+}
+
+.attContent{
+    margin-left: 220px;
+
+}
+.attdate{
+    margin-left: 230px;
+}
+.historyTime {
+    margin-left: 130px;
+}
+
+.historymodifiedAt {
     margin-left: 70px;
 }
 
-.attendHistoryContainer{
+.attendHistoryContainer {
     margin-top: 18px;
+}
+
+
+.att33 {
+    margin-top: 26px;
+}
+
+.att44 {
+    margin-top: 20px;
+}
+
+.tbodyattend td:nth-child(1) {
+    padding-left: 75px;
+    width: 70px;
+
+}
+
+.tbodyattend td:nth-child(2) {
+    padding-left: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.tbodyattend td:nth-child(3) {
+    padding-left: 40px;
+    width: 150px;
+}
+
+.tbodyattend td:nth-child(4) {
+    padding-left: 0px;
+    text-align: center;
+}
+
+.tbodyattend td:nth-child(5) {
+    padding-left: 0px;
+    text-align: center;
+}
+
+.tbodyattend td:nth-child(6) {
+    padding-left: -15px;
+}
+
+.attendEmpName {
+    font-weight: bold;
+    display: inline-block;
+
+}
+
+.attendcal {
+
+    margin-left: 600px;
+    border: 1px solid #B6B6B6;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    padding: 5px 10px 8px 20px;
+    border-radius: 12px;
+    margin-top: -50px;
+
+}
+
+.modifibtn {
+
+    margin-left: 30px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+
+
+
+
+.MainAttendDetail{
+    height: 100px;
+}
+.todobox{
+    display: flex;
+}
+
+.modifyModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+
+.modifyModal-container {
+    position: absolute;
+    width: 550px;
+    height: 450px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000000;
+    overflow: auto;
+}
+.attmodifyHead{
+    display: flex;
+    font-size: 25px;
+    margin-top: 25px;
+    padding-left: 50px;
+    border-bottom: #B6B6B6 solid 1px;
+    height: 50px;
+
+}
+.attmodifyHead2{
+    height: 20px;
+    margin-left: 20px;
+    background: black;
+    color: white;
+    font-size: 13px;
+    padding-top: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    letter-spacing: 1px;
+}
+.attmodifyHead3{
+    margin-top: -12px;
+    cursor: pointer;
+    height: 50px;
+    font-size: 40px;
+    margin-left: 230px;
+}
+.attmodifyHead4{
+    margin-top: 5px;
+    width: 80px;
+    margin-left: 5px;
+   color: #B6B6B6;
+    font-size: 20px;
+}
+
+.attselectForm{
+    width: 200px;
+    height: 44px;
+    background: #D9D9D9;
+    padding-left: 15px;
+    font-size: 15px;
+    border: none;
+    margin-top: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    margin-left: -10px;
+
+}
+.atttimecon{
+    display: flex;
+    margin-top: 50px;
+    margin-left: 70px;
+    font-size: 18px;
+}
+.inputtimeatt{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 30px;
+    border: none;
+    font-size: 20px;
+}
+.attmodifyBtn{
+    border: none;
+    background: black;
+    color: white;
+    width: 130px;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 90px;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+.attmodifyBtn1{
+    border: none;
+    background: white;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 90px;
+    margin-left: 200px;
+    cursor: pointer;
+}
+/* MyCalendar.css */
+
+/* 일요일 날짜: 빨간색 */
+.fc-day-sun a {
+    color: red;
+}
+
+/* 토요일 날짜: 파란색 */
+.fc-day-sat a {
+    color: blue;
+}
+.fc-today-button{
+    font-size: 900px;
+}
+.fc-icon{
+}
+.fc .fc-button-primary{
+    /*display: none;*/
+    background-color: white;
+    color: white;
+}
+
+.fc-media-screen{
+    height: 600px;
+
+}
+
+.fc-toolbar-title{
+
+}
+
+.todomodal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+.todomodalcontainer {
+    position: absolute;
+    width: 650px;
+    height: 450px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000;
+    overflow: auto;
+}
+.todoregiHead{
+    font-size: 33px;
+    font-weight: bolder;
+    color: #01092B;
+    margin-top: 32px;
+}
+.todoregistInput{
+    margin-top: 75px;
+    height: 50px;
+    padding-left: 15px;
+    font-size: 15px;
+    width: 300px;
+}
+.todoregistbtn{
+    margin-top: 90px;
+}
+.toregibtn{
+    border: none;
+    background-color: #01092B;
+    color: white;
+    width: 200px;
+    height: 80px;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 15px;
 }
 /**                               employee                               **/
 
