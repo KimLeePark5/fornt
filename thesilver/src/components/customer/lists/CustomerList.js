@@ -1,22 +1,49 @@
 import CustomerListItem from "../items/CustomerListItem";
+import {useState} from "react";
 
-function CustomerList({ data }) {
+function CustomerList({setCurrentPage, setCondition, data, setCustomerCode}) {
+    const [form, setForm] = useState({
+        searchType: "이름",
+        searchContent: "",
+        searchActiveCheck: false
+    })
+
+    const onChangeConditionHandler = (e) => {
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+        setForm({
+            ...form,
+            [e.target.name]: value
+        });
+        console.log(form)
+    };
+
+    const onClickHandler = () => {
+        setCurrentPage(1)
+        setCondition(form)
+    }
+    const onKeyDownHandler = (e) => {
+        if (e.key === "Enter") {
+            setCurrentPage(1)
+            setCondition(form)
+        }
+    }
 
     return (
         <>
             <div></div>
             <div className="customers-list-search">
-                <select>
-                    <option>검색분류</option>
-                    <option>고객코드</option>
+                <select name="searchType" onChange={onChangeConditionHandler}>
                     <option>이름</option>
+                    <option>고객코드</option>
                     <option>전화번호</option>
                     <option>주소</option>
                 </select>
-                <input/>
-                <div className="customers-search-button">검색</div>
-                <input style={{zoom: 1.5, margin: 0}} type="checkbox"/>
-                <div>비활성 고객 포함</div>
+                <input onKeyDown={onKeyDownHandler} name="searchContent" onChange={onChangeConditionHandler}/>
+                <div onClick={onClickHandler} className="customers-search-button">검색</div>
+                <input checked={form.searchActiveCheck} name="searchActiveCheck" style={{zoom: 1.5, margin: 0}}
+                       type="checkbox" onChange={onChangeConditionHandler}/>
+                <div>해지된 고객 포함</div>
             </div>
 
 
@@ -30,7 +57,8 @@ function CustomerList({ data }) {
                 <div>주소</div>
                 <div>상세조회</div>
             </div>
-            {data.map(customer => <CustomerListItem key={customer.customerCode} customer={customer} /> )}
+            {data.map(customer => <CustomerListItem setCustomerCode={setCustomerCode} key={customer.customerCode}
+                                                    customer={customer}/>)}
         </>
     )
 

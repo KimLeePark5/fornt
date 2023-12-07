@@ -1376,7 +1376,7 @@
     margin-top: 5px;
     width: 80px;
     margin-left: 5px;
-    color: #B6B6B6;
+   color: #B6B6B6;
     font-size: 20px;
 }
 
@@ -1585,9 +1585,9 @@
 .employees-list-body-team{
     width: 159.375px;
 }
-.employees-list-body-rank{
+ .employees-list-body-rank{
     width: 127.250px;
-}
+ }
 
 .employees-list-body-code{
     width: 126.562px;

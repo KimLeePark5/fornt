@@ -15,7 +15,7 @@ import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
 import Programs from "./pages/board/Programs";
 import Journals from "./pages/Journals";
-
+import Main from "./pages/Main";
 
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
                 <Route path="/login" element={<ProtectedRoute onlyUnLogin={true} > <Login/> </ProtectedRoute>}/>
                 <Route path="/" element={<ProtectedRoute onlyLogin={true}><Layout/></ProtectedRoute>}>
                     <Route path="/regist-customers" element={<CustomerRegist/>}></Route>
+                    <Route index element={<Main/>}/>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
                     <Route path="attend-management">
