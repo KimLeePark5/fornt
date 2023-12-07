@@ -1,6 +1,7 @@
-import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {callResetPasswordAPI} from "../../../apis/LoginAPICalls";
+import loginReducer, {resetReset} from "../../../modules/LoginModule";
 
 function FindPwModal({setModal}) {
 
@@ -8,14 +9,17 @@ function FindPwModal({setModal}) {
     const [successResult, setSuccessResult] = useState(false)
     const [failResult, setFailResult] = useState(false);
     const [form, setForm] = useState()
+    const {resetSuccess} = useSelector(state => state.loginReducer);
 
     const onClickOutsideHandler = (e) => {
         if (e.target === e.currentTarget) {
             setModal(false)
+            dispatch(resetReset())
         }
     }
     const onClickCloseHandler = () => {
         setModal(false)
+        dispatch(resetReset())
     }
 
     const onChangeHandler = (e) => {
@@ -24,6 +28,12 @@ function FindPwModal({setModal}) {
             [e.target.name] : e.target.value
         })
     }
+    useEffect(() => {
+            setSuccessResult(resetSuccess === "on");
+            setFailResult(resetSuccess === "off");
+
+    }, [resetSuccess]);
+
 
     const onClickHandler = () => {
         dispatch(callResetPasswordAPI({resetPasswordForm : form}))
@@ -31,7 +41,7 @@ function FindPwModal({setModal}) {
 
 
     return (
-        <div className="findModal-page" onClick={onClickOutsideHandler}>
+        <div className="findModal-page" onMouseDown={onClickOutsideHandler}>
             <div className="findModal-box">
                 <div className="findModal-header">비밀번호 찾기</div>
                 <div className="findModal-content">
@@ -55,6 +65,7 @@ function FindPwModal({setModal}) {
                     <div className="findModal-result-fail"> 등록하신 사번과 <br/>이메일이 일치하지 않습니다.</div>
                     }
                 </div>
+
                 <div className="findModal-footer"></div>
 
                 <div className="findModal-close" onClick={onClickCloseHandler}><img

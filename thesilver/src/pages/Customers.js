@@ -10,7 +10,7 @@ function Customers() {
 
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
-    const {customers, customer} = useSelector(state => state.customerReducer);
+    const {customers, customer, putSuccess, putSuccessReset} = useSelector(state => state.customerReducer);
     const [customerCode, setCustomerCode] = useState();
     const [modal, setModal] = useState(false);
     const [condition, setCondition] = useState({});
@@ -18,7 +18,12 @@ function Customers() {
     useEffect(() => {
         dispatch(callCustomersAPI({condition, currentPage}));
         console.log("@@@@@@@@@@@@ 첫번째이펙트 @@@@@@@@@@@@@@@@")
-    }, [currentPage, condition]);
+
+        if(putSuccess) {
+            alert("등록이 완료되었당께")
+            onSuccessCloseHandler()
+        }
+    }, [currentPage, condition, putSuccess]);
 
     useEffect(() => {
         if (customerCode) {
@@ -45,13 +50,15 @@ function Customers() {
         const confirmResult = confirm("작성을 중단하고 창을 닫으시겠습니까 ?");
         if (confirmResult) {
             setModal(false)
-            console.log("타겟클릭")
             setCustomerCode();
         }
     }
 
-    console.log("최종 커스토머 : ", customer)
-    console.log("최종 customers : ", customers)
+    const onSuccessCloseHandler = () => {
+            setModal(false)
+            setCustomerCode();
+    }
+
 
     return (
         <>
@@ -73,8 +80,8 @@ function Customers() {
                         </div>
                     </div>
                     {modal && (
-                        <div className="customers-modify-page" onClick={onClickOutsideHandler}>
-                            <CustomerModifyForm customer={customer} onClickCloseHandler={onClickCloseHandler}/>
+                        <div className="customers-modify-page" onMouseDown={onClickOutsideHandler}>
+                            <CustomerModifyForm onSuccessCloseHandler={onSuccessCloseHandler} customer={customer} onClickCloseHandler={onClickCloseHandler}/>
                         </div>
                     )}
                 </>
