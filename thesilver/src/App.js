@@ -13,6 +13,7 @@ import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 
 import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
+import Main from "./pages/Main";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<ProtectedRoute onlyUnLogin={true} > <Login/> </ProtectedRoute>}/>
                 <Route path="/" element={<ProtectedRoute onlyLogin={true}><Layout/></ProtectedRoute>}>
+                    <Route index element={<Main/>}/>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
                     <Route path="attend-management">

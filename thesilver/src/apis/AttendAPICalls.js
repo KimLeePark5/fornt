@@ -1,4 +1,4 @@
-import {request} from "./Api";
+import {authRequest, request} from "./Api";
 import {attendAdmin, myAttend, todayAttend} from "../modules/AttendModule";
 import {toast} from "react-toastify";
 
@@ -36,10 +36,10 @@ export const callLeaveBtAPI = () => {
 
 export const callTodayAttendAPI = () => {
     return async (dispatch, getState) => {
-        const result = await request('GET', '/api/v1/todayMyAttend')
+        const result = await request('GET','/api/v1/todayMyAttend')
 
-        if (!result) {
-            return
+        if(result == null){
+            return;
         }
 
         if (result.status == 200) {
@@ -67,5 +67,16 @@ export const callSearchNameAPICalls = (month,empName,page) => {
             toast.error("존재하는 사원이 없습니다.")
         }
     }
+}
+export const callModifyAttendAPI = (form,attendNo) => {
+    return async (dispatch,getState) => {
+        const result = await request('PUT',`/api/v1/modifyAttend/${attendNo}`,{'Content-type' : 'application/json'},
+            JSON.stringify(form))
 
+        console.log(result);
+        if(result){
+            console.log('수정완료')
+        }
+
+    }
 }
