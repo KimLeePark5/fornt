@@ -1,8 +1,6 @@
 
 function CustomerListItem({customer, setCustomerCode}) {
 
-
-
     return (
         <>
             <div className="customers-list-body">
