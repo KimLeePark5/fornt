@@ -15,7 +15,7 @@
 
 .layout > div:nth-child(2) {
     flex: auto;
-    margin: 50px;
+    margin: 50px 50px 0 50px;
 }
 
 
@@ -175,7 +175,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 0 10px 0;
+    padding: 20px 0 10px 0;
     margin: 0 30px 0 20px;
 }
 
@@ -199,7 +199,7 @@
 
 .require-state {
     width: 1470px;
-    height: 200px;
+    height: 190px;
     margin-left: 20px;
     padding: 0 15px 0 15px;
     border: #1A1A1C 1px solid;
@@ -320,21 +320,30 @@
 }
 
 
-/******** use list**************************/
+/******** used vacation list**************************/
 
-.use-state {
-    padding-top: 20px;
+.used-vacation {
+    width: 1470px;
+    height: 250px;
     margin-left: 20px;
+    padding: 0 15px 0 15px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
 }
 
-.use-content{
+.used-vacation-content {
+    width: 1500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px 10px 10px;
+    padding: 20px 0 10px 0;
+    margin: 0 30px 0 20px;
 }
 
-.use-content h3 {
+.used-vacation-content h3 {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     font-weight: 600;
 }
@@ -342,19 +351,35 @@
 .select-days {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
 }
 
-
-.use-vacation-list {
-    width: 1500px;
-    height: 200px;
-    border: #1A1A1C 1px solid;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+.used-vacation-head {
+    width: 1470px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    border-bottom: rgba(108, 106, 106, 0.5) 1px solid;
 }
+
+.used-vacation-body {
+    width: 1470px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+
+
 
 
 

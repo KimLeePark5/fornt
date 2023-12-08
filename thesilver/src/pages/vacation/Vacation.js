@@ -1,10 +1,10 @@
-
 import {useDispatch} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {callVacationStateAPI} from "../../apis/VacationAPICalls";
-import UseVacationListItem from "../../components/vacation/items/UseVacationListItem";
 import VacationStateList from "../../components/vacation/lists/VacationStateList";
 import RequireStateList from "../../components/vacation/lists/RequireStateList";
+import UsedVacationList from "../../components/vacation/lists/UsedVacationList";
+import PagingBar from "../../components/common/PagingBar";
 
 
 
@@ -12,9 +12,6 @@ function Vacation() {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(callVacationStateAPI)
-    }, []);
 
 
     return (
@@ -23,7 +20,7 @@ function Vacation() {
             <div className="vacationStateContent">
                 <VacationStateList/>
                 <RequireStateList/>
-                <UseVacationListItem/>
+                <UsedVacationList/>
             </div>
         </>
     );
