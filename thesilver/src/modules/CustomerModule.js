@@ -6,14 +6,14 @@ const GET_CUSTOMERS = 'customers/GET_CUSTOMERS';
 const POST_SUCCESS = 'customers/POST_SUCCESS';
 const GET_CUSTOMER = 'customers/GET_CUSTOMER';
 const PUT_SUCCESS = 'customers/PUT_SUCCESS';
-const PUT_SUCCESS_RESET = 'customers/PUT_SUCCESS_RESET';
+const GET_LICENSE = 'customers/GET_LICENSE';
 
-export const {customers: {getCustomers, postSuccess, getCustomer, putSuccess, putSuccessReset}} = createActions({
+export const {customers: {getCustomers, postSuccess, getCustomer, putSuccess, getLicense }} = createActions({
     [GET_CUSTOMERS]: result => ({customers: result.data}),
-    [POST_SUCCESS]: result => ({postSuccess: true}),
+    [POST_SUCCESS]: () => ({postSuccess: true}),
     [GET_CUSTOMER]: result => ({customer: result.data}),
     [PUT_SUCCESS]: () => ({putSuccess: true}),
-    [PUT_SUCCESS_RESET]: () => ({putSuccess: false})
+    [GET_LICENSE]: (result) => ({license: result.data})
 });
 
 /* 리듀서 함수 */
@@ -22,7 +22,7 @@ const customerReducer = handleActions({
     [POST_SUCCESS]: (state, {payload}) => payload,
     [GET_CUSTOMER]: (state, {payload}) => ({...state, ...payload}),
     [PUT_SUCCESS]: (state, {payload}) => payload,
-    [PUT_SUCCESS_RESET]: (state, {payload}) => payload
+    [GET_LICENSE]: (state, {payload}) => ({...state, ...payload})
 }, initialState);
 
 export default customerReducer;
