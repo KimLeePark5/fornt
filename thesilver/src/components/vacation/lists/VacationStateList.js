@@ -6,7 +6,7 @@ import { callVacationStateAPI } from "../../../apis/VacationAPICalls";
 function VacationStateList() {
     const { vacation } = useSelector((state) => state.vacationReducer);
     const dispatch = useDispatch();
-    const employeeCode = useSelector(state => state.employeeCode);
+
 
 
 
@@ -14,10 +14,7 @@ function VacationStateList() {
     const currentDate = new Date();
     const vacationDate = `${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${currentDate.getDate()}일`;
     const occurYear = `${currentDate.getFullYear()}년 기준`;
-    useEffect(() => {
-        console.log("employeeCode : ", employeeCode)
-        dispatch(callVacationStateAPI());
-    }, [employeeCode]);
+
 
     console.log("vacation 데이터 있나요? : ", vacation)
 

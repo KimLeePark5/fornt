@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {useSelector} from "react-redux";
 import RequireForm from "../../components/vacation/form/RequireForm";
 
-function RequireVacation() {
+function RequireState() {
 
     const navigate = useNavigate();
 
@@ -27,4 +27,4 @@ function RequireVacation() {
     )
 }
 
-export default RequireVacation;
+export default RequireState;

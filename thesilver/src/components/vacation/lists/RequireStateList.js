@@ -15,9 +15,6 @@ function RequireStateList() {
     const employeeCode = useSelector(state => state.employeeCode);
     const {require} = useSelector(state => state.vacationReducer);
 
-    useEffect(() => {
-        dispatch(callRequireStateAPI());
-    }, [employeeCode]);
 
     console.log("requireState 데이터 있나요? : ", require)
 

@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 import AttendAdminSearch from "./pages/admin/AttendAdminSearch";
 import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
-import Vacation from "./pages/vacation/Vacation";
+import VacationState from "./pages/vacation/VacationState";
 import CustomerRegist from "./pages/CustomerRegist";
 import Main from "./pages/Main";
 import Programs from "./pages/programs/Programs";
@@ -32,7 +32,7 @@ function App() {
                         <Route path="search" element={<AttendAdminSearch/>}/>
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
-                    <Route path="/vacation" element={<Vacation/>}></Route>
+                    <Route path="/vacation" element={<VacationState/>}></Route>
                     <Route path="programs" element={<Programs/>}></Route>
                 </Route>
                 <Route path="*" element={<Error/>}/>

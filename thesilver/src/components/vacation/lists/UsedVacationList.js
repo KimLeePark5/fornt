@@ -6,8 +6,14 @@ import DatePicker from "../items/DatePicker";
 import PagingBar from "../../common/PagingBar";
 
 
+function UsedVacationList({setcurrentPage}) {
 
-function UsedVacationList() {
+
+
+    const dispatch = useDispatch();
+    const [currentPage, setCurrentPage] = useState(1);
+    const employeeCode = useSelector(state => state.employeeCode);
+    const {usedVacation} = useSelector(state => state.vacationReducer);
 
     // 날짜로 조회 하기
     // 시작 날짜와 종료 날짜의 상태
@@ -21,14 +27,10 @@ function UsedVacationList() {
         setEndDate(date);
     };
 
-    const dispatch = useDispatch();
-    // const [currentPage, setCurrentPage] = useState(1);
-    const employeeCode = useSelector(state => state.employeeCode);
-    const {usedVacation} = useSelector(state => state.vacationReducer);
 
     useEffect(() => {
-        dispatch(callUsedVacationAPI());
-    }, [employeeCode]);
+        dispatch(callUsedVacationAPI({currentPage}));
+    }, [currentPage]);
 
     console.log("usedVacation 필터링 한 데이터 있나요? : ", usedVacation)
 
