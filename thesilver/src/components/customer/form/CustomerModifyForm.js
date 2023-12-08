@@ -152,7 +152,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
             {customer && (
                 <div className="customers-modify-box">
                     <div className="customers-regist-content customers-modify-content">
-                        <div className="modifyModal-close" onClick={onClickCloseHandler}><img
+                        <div name="closeModal" className="modifyModal-close" onClick={onClickCloseHandler}><img
                             src="https://static.thenounproject.com/png/26894-200.png"/></div>
                         <div className="customers-modify-title"><span>고객 상세 정보</span></div>
                         <div className="customers-regist-row-h">기본 정보</div>

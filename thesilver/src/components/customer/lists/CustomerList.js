@@ -1,7 +1,7 @@
 import CustomerListItem from "../items/CustomerListItem";
 import {useState} from "react";
 
-function CustomerList({setCurrentPage, setCondition, data, setCustomerCode}) {
+function CustomerList({setCurrentPage, setCondition, data, setCustomerCode, openLicenseModal}) {
     const [form, setForm] = useState({
         searchType: "이름",
         searchContent: "",
@@ -57,7 +57,7 @@ function CustomerList({setCurrentPage, setCondition, data, setCustomerCode}) {
                 <div>주소</div>
                 <div>상세조회</div>
             </div>
-            {data.map(customer => <CustomerListItem setCustomerCode={setCustomerCode} key={customer.customerCode}
+            {data.map(customer => <CustomerListItem openLicenseModal={openLicenseModal} setCustomerCode={setCustomerCode} key={customer.customerCode}
                                                     customer={customer}/>)}
         </>
     )

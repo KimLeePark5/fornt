@@ -1,5 +1,5 @@
 
-function CustomerListItem({customer, setCustomerCode}) {
+function CustomerListItem({customer, setCustomerCode, openLicenseModal}) {
 
 
 
@@ -16,7 +16,7 @@ function CustomerListItem({customer, setCustomerCode}) {
                 <div>
                     <span className="customers-customer-button" onClick={() => {setCustomerCode(customer.customerCode)} }>정보조회</span>
                     &nbsp;
-                    <span className="customers-license-button">회원권조회</span>
+                    <span className="customers-license-button" onClick={() => openLicenseModal(customer.customerCode)}>회원권조회</span>
                 </div>
             </div>
             <hr/>

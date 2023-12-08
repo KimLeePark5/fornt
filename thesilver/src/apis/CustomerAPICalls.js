@@ -1,5 +1,5 @@
 import {authRequest, request} from "./Api";
-import {getCustomer, getCustomers, postSuccess, putSuccess} from "../modules/CustomerModule";
+import {getCustomer, getCustomers, getLicense, postSuccess, putSuccess} from "../modules/CustomerModule";
 
 // 고객 리스트 조회
 export const callCustomersAPI = ({ condition, currentPage = 1 }) => {
@@ -52,6 +52,20 @@ export const callCustomerAPI = ({customerCode}) => {
 
         if (result.status === 200) {
             dispatch(getCustomer(result));
+        }
+    }
+}
+
+// 고객 회원권 조회
+export const callLicenseAPI = ({customerCode}) => {
+    return async (dispatch, getState) => {
+        console.log("커스토머코드 : " + customerCode)
+        const result = await authRequest.get(`/api/v1/customers/licenses/${customerCode}`)
+
+        console.log("api라이센스결과 : ", result)
+
+        if (result.status === 200) {
+            dispatch(getLicense(result));
         }
     }
 }
