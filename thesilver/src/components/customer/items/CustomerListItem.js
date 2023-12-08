@@ -1,8 +1,6 @@
 
 function CustomerListItem({customer, setCustomerCode, openLicenseModal}) {
 
-
-
     return (
         <>
             <div className="customers-list-body">
