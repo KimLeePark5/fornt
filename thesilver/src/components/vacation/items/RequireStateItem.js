@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from "react";
-
 
 function RequireStateItem({data}) {
 
-    console.log("requireState : ", data)
+    console.log("requireStateItem 데이터가 있나요? : ", data)
 
     const startDate = new Date(data.startDate);
     const endDate = new Date(data.endDate);
@@ -15,10 +13,10 @@ function RequireStateItem({data}) {
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
 
     if (data.reqStatus !== "PASS" && endDate >= today) {
-    return (
 
+    return (
         <div>
-            {require && (
+            {data && (
                 <div className="require-state-body">
                     <div>{data.vacationName}</div>
                     <div>{data.startDate} ~ {data.endDate}</div>

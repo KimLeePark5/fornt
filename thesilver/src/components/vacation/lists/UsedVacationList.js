@@ -3,11 +3,14 @@ import UsedVacationItem from "../items/UsedVacationItem";
 import {useDispatch, useSelector} from "react-redux";
 import { callUsedVacationAPI} from "../../../apis/VacationAPICalls";
 import DatePicker from "../items/DatePicker";
-import PagingBar from "../../common/PagingBar";
 
 
 
-function UsedVacationList() {
+function UsedVacationList({usedVacation}) {
+
+
+
+
 
     // 날짜로 조회 하기
     // 시작 날짜와 종료 날짜의 상태
@@ -21,16 +24,9 @@ function UsedVacationList() {
         setEndDate(date);
     };
 
-    const dispatch = useDispatch();
-    // const [currentPage, setCurrentPage] = useState(1);
-    const employeeCode = useSelector(state => state.employeeCode);
-    const {usedVacation} = useSelector(state => state.vacationReducer);
 
-    useEffect(() => {
-        dispatch(callUsedVacationAPI());
-    }, [employeeCode]);
 
-    console.log("usedVacation 필터링 한 데이터 있나요? : ", usedVacation)
+    console.log("usedVacation 데이터가 있나요? : ", usedVacation)
 
     return (
         <>
@@ -65,9 +61,9 @@ function UsedVacationList() {
                     <div>사용 기간</div>
                     <div>사용 일자</div>
                     <div>내용</div>
+                    <div>상태</div>
                 </div>
-                {usedVacation?.data.map(data => <UsedVacationItem key={require.employeeCode} data={data}/>)}
-                {/*<PagingBar pageInfo={usedVacation.pageInfo} setCurrentPage={setCurrentPage}/>*/}
+                {usedVacation?.data.map(data => <UsedVacationItem key={data.employeeCode} data={data}/>)}
             </div>
 
         </>
