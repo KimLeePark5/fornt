@@ -2,6 +2,7 @@ import {authRequest} from "./Api";
 import {getRequireState, getUsedVacation, getVacation} from "../modules/VacationModules";
 
 export const callVacationStateAPI = () => {
+
     return async (dispatch, getState) => {
         const result = await authRequest.get(`/api/v1/vacation`)
         console.log("callVacationStateAPI 호출 성공: ", result);
