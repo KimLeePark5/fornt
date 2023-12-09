@@ -29,7 +29,7 @@ function Login() {
             <div className="login-page">
                 <div className="login-header"><img src='/img/logo.png' className="login-img"/></div>
                 <LoginForm/>
-                <div className="login-footer"><p>Copyright 2023. Ohgiraffers All rights reserved.</p></div>
+                <div className="login-footer"><p>© 2023 KimLeePark. All Rights Reserved.</p></div>
             </div>
         </>
     )
