@@ -1,12 +1,59 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import LicenseItem from "../items/LicenseItem";
 import PagingBar from "../../common/PagingBar";
+import {callLicenseAPI, callLicenseRegistAPI} from "../../../apis/CustomerAPICalls";
+import {useDispatch, useSelector} from "react-redux";
+import customerReducer, {deleteLicenseReset, postLicenseReset} from "../../../modules/CustomerModule";
 
-function LicenseModifyForm ({customer, licenses, onClickCloseHandler, pageInfo}) {
+function LicenseModifyForm({openLicenseModal, customer, licenses, onClickCloseHandler, pageInfo}) {
     const [currentPage, setCurrentPage] = useState(1);
+    const dispatch = useDispatch();
+    const [licenseDate, setLicenseDate] = useState({});
+    const {postLicenseSuccess} = useSelector(state => state.customerReducer)
+    const {deleteLicenseSuccess} = useSelector(state => state.customerReducer)
+
+    useEffect(() => {
+        if (deleteLicenseSuccess) {
+            alert("회원권 삭제가 완료되었습니다.");
+            openLicenseModal(customer.customerCode);
+            dispatch(deleteLicenseReset())
+            setCurrentPage(1)
+        }
+    }, [deleteLicenseSuccess]);
+
+    useEffect(() => {
+        if (postLicenseSuccess) {
+            alert("회원권 등록이 완료되었습니다.");
+            openLicenseModal(customer.customerCode);
+            dispatch(postLicenseReset())
+
+        }
+    }, [postLicenseSuccess]);
+
+    useEffect(() => {
+        const customerCode = customer.customerCode;
+        console.log("라이센스 모디파이 폼 로그")
+        dispatch(callLicenseAPI({customerCode, currentPage}))
+    }, [currentPage]);
+
 
     console.log("라이센스라이센스스 : ", licenses)
     console.log("라이센스커스토머 : ", customer)
+
+    const onChangeLicenseDate = (e) => {
+        setLicenseDate({
+                ...licenseDate,
+                [e.target.name]: e.target.value
+            }
+        )
+        console.log("licenseDate", licenseDate)
+    }
+
+    const onClickLicenseRegist = () => {
+        const customerCode = customer.customerCode;
+        dispatch(callLicenseRegistAPI({customerCode, licenseDate}))
+    }
+
 
     return (
         <>
@@ -27,11 +74,31 @@ function LicenseModifyForm ({customer, licenses, onClickCloseHandler, pageInfo})
                         </div>
                         <div className="customers-regist-row" id="customers-license-row">
                             <div className="customers-regist-head">회원권 등록</div>
-                            <div><input type="date"/></div>
+                            <div>
+                                <input
+                                    type="date"
+                                    name="startDate"
+                                    onChange={onChangeLicenseDate}
+                                />
+                            </div>
                             &nbsp;-&nbsp;
-                            <div><input id="license-input" type="date"/></div>
+                            <div>
+                                <input
+                                    id="license-input"
+                                    type="date"
+                                    name="endDate"
+                                    onChange={onChangeLicenseDate}
+                                />
+                            </div>
                             &nbsp;&nbsp;
-                            <div><input id="license-button" type="button" value="등록"/></div>
+                            <div>
+                                <input
+                                    id="license-button"
+                                    type="button"
+                                    value="등록"
+                                    onClick={onClickLicenseRegist}
+                                />
+                            </div>
                         </div>
                         <div className="customers-regist-row-h">회원권 등록 내역</div>
                         <div className="customers-license-row-h">
@@ -46,8 +113,6 @@ function LicenseModifyForm ({customer, licenses, onClickCloseHandler, pageInfo})
                             <PagingBar pageInfo={pageInfo} setCurrentPage={setCurrentPage}/>
                         </div>
                     </div>
-
-
 
 
                 </div>

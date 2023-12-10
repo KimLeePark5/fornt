@@ -647,6 +647,32 @@
     margin: 20px;
     border-radius: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.customers-graph-title {
+    position: absolute;
+    font-size: 22px;
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}
+.customers-graph-select {
+    position: absolute;
+    width: 85px;
+    height: 30px;
+    right: 5%;
+    top: 15px;
+    z-index: 1;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    background-color: #F7F8F8;
+    box-shadow: 0 0 15px #f1f1f1;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 85%;
+    text-align: center;
 }
 
 .customers-list {
@@ -702,6 +728,8 @@
     background-color: white;
     margin-left: 45px;
     position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .customers-regist-row, .customers-regist-row-h {
     display: flex;
@@ -805,6 +833,7 @@
     margin: 0;
     margin-top: 40px;
     height: 780px;
+    border-radius: 0 0 10px 10px;
 }
 
 #customers-modify-save {
@@ -815,13 +844,17 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 100%;
 }
+.customers-modify-box textarea{
+    width: 400px;
+}
 
 /*license modify*/
 #customers-license-box {
-    height: 850px;
+    height: 580px;
 }
 #customers-license-content {
     margin-top: 5px;
+    height: 490px;
 }
 
 #customers-license-row input {
@@ -837,7 +870,30 @@
     background-color: #03166C;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
+#customers-license-status {
+    color: white;
+    border-radius: 5px;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 2px;
+    margin-left: 5px;
+    font-size: 90%;
+}
+
+.customers-license-delete {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 15px;
+    width: 15px;
+    line-height: 10px;
+    margin: auto;
+    margin-left: 0;
+    cursor: pointer;
+}
+
 .customers-license-row-h {
     display: flex;
     font-size: 18px;
@@ -872,22 +928,23 @@
 }
 
 .customers-license-row div:nth-child(3), .customers-license-row-h div:nth-child(3) {
-    width: 140px;
+    width: 130px;
 }
 .customers-license-row div:nth-child(4), .customers-license-row-h div:nth-child(4) {
     width: 5px;
 }
 .customers-license-row div:nth-child(5), .customers-license-row-h div:nth-child(5) {
-    width: 140px;
+    width: 130px;
 }
 
 #customers-license-pagingbar {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
+/*customer graph*/
 
 /*카카오api*/
 #postButton {
