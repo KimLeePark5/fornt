@@ -18,13 +18,11 @@ function LoginForm() {
 
     const onKeyUpHandler = (e) => {
         if (e.key === 'Enter') {
-            console.log(form)
             dispatch(callLoginAPI({"loginForm": form}))
         }
     }
 
     const onClickHandler = () => {
-        console.log(form)
         dispatch(callLoginAPI({"loginForm": form}))
     }
 
