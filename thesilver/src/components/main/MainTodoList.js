@@ -26,12 +26,22 @@ function MainTodoList(){
         setDay(e.target.value)
     }
 
-    return(
+    return(<>
+        {todoRegist && <TodoRegist setTodoRegist={setTodoRegist}/>}
             <div className='todoContainer'>
-                <input type='text'/><button onClick={()=>setTodoRegist(true)}>추가</button>
-                {todoRegist && <TodoRegist setTodoRegist={setTodoRegist}/>}
-                    {myTodo && <TodoListList data={myTodo.data} setPage={setPage}/>}
+
+                <div className='todoccc'>
+                <div>
+                <input type='date' onChange={dateChangeHandler} className='tododate'/>
+                    <button onClick={()=>setTodoRegist(true)} className='todoregistbnt'>추가+</button>
+                <h1 style={{fontWeight:'bold',fontSize:25,marginTop: 50,paddingLeft:40}}>TO DO LIST</h1>
+                </div>
+
+                </div>
+                {myTodo && <TodoListList data={myTodo.data} setPage={setPage}/>}
+
             </div>
+        </>
     )
 }
 export default MainTodoList

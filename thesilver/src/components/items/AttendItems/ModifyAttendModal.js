@@ -1,20 +1,23 @@
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {callModifyAttendAPI} from "../../../apis/AttendAPICalls";
 
 function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data: {responseAttendAdmin: {content}}}}) {
-    const history = content.map(a => a.attendList.filter(att => att.attendCode == attendNo))
+    const modifyhistory = (content.filter(con => con.empName == empName))[0].attendList.filter(att => att.attendCode == attendNo)[0]
 
-    const modifyhistory = history[0][0];
+    console.log("modifyHistory",modifyhistory)
     const dispatch = useDispatch();
     const [form, setForm] = useState({})
-
+    const {attendModifySuccess}=useSelector(state=>state.attendReducer)
     const formChangeHandler = e => {
         setForm({
             ...form,
             [e.target.name]: e.target.value
         });
         console.log(form)
+    }
+    if(attendModifySuccess){
+        window.location.reload()
     }
 
     const onClickHandler = () => {
@@ -50,7 +53,7 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
                                 <input className='inputtimeatt' type='time' name='enterTime' value={form.enterTime || modifyhistory.enterTime}
                                        onChange={formChangeHandler}/>
                             </div>
-                            <div style={{marginLeft:'140px'}}>
+                            <div style={{marginLeft:'80px'}}>
                                 <p>퇴근시간</p>
                                 <input  className='inputtimeatt' type='time' name='leaveTime' value={form.leaveTime || modifyhistory.leaveTime}
                                        onChange={formChangeHandler}/>

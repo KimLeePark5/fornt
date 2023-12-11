@@ -15,8 +15,7 @@ function TodoRegist({setTodoRegist}){
         dispatch(callRegistTodo(text));
     }
     if(registSuccess){
-        toast.info("등록이 완료되었습니다.")
-        setTodoRegist(false);
+        window.location.reload();
     }
     return(
         <div class="todomodal">
