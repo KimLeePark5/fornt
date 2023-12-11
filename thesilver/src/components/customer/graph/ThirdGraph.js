@@ -9,7 +9,8 @@ import {useState} from "react";
 // website examples showcase many properties,
 // you'll often use just a few of them.
 const ThirdGraph = ({data /* see data tab */}) => {
-    const [keys, setKeys] = useState(['여성','남성']);
+    const [keys, setKeys] = useState(['여성', '남성']);
+    const [graphType, setGraphType] = useState("vertical")
     const onChangeKeys = (e) => {
         switch (e.target.value) {
             case '여성':
@@ -23,11 +24,20 @@ const ThirdGraph = ({data /* see data tab */}) => {
                 break;
         }
     }
-
+    const onClickType = () => {
+        graphType === "horizontal" ? setGraphType("vertical"):setGraphType("horizontal")
+    }
 
     return (
         <>
             <div className="customers-graph-title">누적 고객 등록 수</div>
+            <div
+                className="customers-graph-button"
+                onClick={onClickType}
+                name="typeButton"
+            >
+                O
+            </div>
             <select
                 className="customers-graph-select"
                 onChange={onChangeKeys}
@@ -45,7 +55,8 @@ const ThirdGraph = ({data /* see data tab */}) => {
                 indexBy="country"
                 margin={{top: 50, right: 130, bottom: 50, left: 60}}
                 padding={0.3}
-                valueScale={{type: 'linear'}}
+                layout={graphType}
+                valueScale={{type: "linear"}}
                 groupMode="grouped"
                 indexScale={{type: 'band', round: true}}
                 colors={{scheme: 'nivo'}}

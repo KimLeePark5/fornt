@@ -602,6 +602,9 @@
     padding-right: 6px;
     cursor: pointer;
 }
+.customers-customer-button:hover, .customers-license-button:hover {
+    color: #FFCF00;
+}
 
 .customers-subtitle {
     font-size: 20px;
@@ -661,8 +664,8 @@
 }
 .customers-graph-select {
     position: absolute;
-    width: 85px;
-    height: 30px;
+    width: 80px;
+    height: 25px;
     right: 5%;
     top: 15px;
     z-index: 1;
@@ -671,8 +674,33 @@
     background-color: #F7F8F8;
     box-shadow: 0 0 15px #f1f1f1;
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 80%;
+    text-align: center;
+    cursor: pointer;
+}
+.customers-graph-select:hover {
+    background-color: #efefef;
+}
+.customers-graph-button {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 5%;
+    top: 15px;
+    z-index: 1;
+    border-radius: 5px;
+    border: 1px solid rgb(232, 193, 160);
+    background-color: #F7F8F8;
+    box-shadow: 0 0 15px #f1f1f1;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 85%;
     text-align: center;
+    color: rgb(232, 193, 160);
+    cursor: pointer;
+    line-height: 17px;
+}
+.customers-graph-button:hover {
+    background-color: #efefef;
 }
 
 .customers-list {
