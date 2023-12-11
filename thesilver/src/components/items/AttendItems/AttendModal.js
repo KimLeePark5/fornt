@@ -15,17 +15,22 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
     const [attendNo, setAttendNo] = useState(0);
     const [attendHistoryBtn, setattendHistoryBtn] = useState(false);
     const [attModifyBtn, setAttModifyBtn] = useState(false);
+    const day22 =useRef();
+
     const attendHistoryOnclickHandler = (code) => {
-        console.log('code',code)
+
         setattendHistoryBtn(true);
         setAttendNo(code)
-        console.log('attno',attendNo)
+
 
     }
     const attendModifyBtnHandler = (code)=>{
-        console.log('cccccddd',code)
-        setAttModifyBtn(true)
+        if(!code){
+            return;
+        }
+        console.log(code)
         setAttendNo(code)
+        setAttModifyBtn(true)
     }
 
 
@@ -45,9 +50,8 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
             let dayInfo = matchDay(`${month}-${ String(i+1).length == 1 ? '0'+(i+1) : i+1 }`);
             console.log('day :',dayInfo)
             arr.push(
-                <>
-                <tr key={i} className="tbodyattend" onClick={(e) => attendModifyBtnHandler(dayInfo[0]?.attendCode) }>
-                    <td style=
+                <div key={i} className="attenddiv" onClick={(e) => attendModifyBtnHandler(dayInfo[0]?.attendCode) }>
+                    <div  ref={day22} style=
                             {
                             curDay%7 == 0 ? {
                         color:'red'
@@ -55,20 +59,19 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
                            color:'blue'
                         } : {}
                     }>
-                        {curMonth}. {i + 1} {day[curDay%7]} </td>
-                    <td>{dayInfo[0]?.type}</td>
-                    <td>{dayInfo[0]?.enterTime}{dayInfo[0]?.enterTime ? '  ~ ' : ''}{dayInfo[0]?.leaveTime}</td>
-                    <td>{dayInfo[0]?.attendTime}{dayInfo[0]?.attendTime ? '시간' : ''} </td>
-                    <td>{dayInfo[0]?.note}</td>
-                    <td>
+                        {curMonth}. {i + 1} {day[curDay%7]} </div>
+                    <div style={{marginLeft:10}}>{dayInfo[0]?.type}</div>
+                    <div style={{width:220,marginLeft:10}}>{dayInfo[0]?.enterTime}{dayInfo[0]?.enterTime ? '  ~ ' : ''}{dayInfo[0]?.leaveTime}</div>
+                    <div style={{marginLeft:5}}>{dayInfo[0]?.attendTime}{dayInfo[0]?.attendTime ? '시간' : ''} </div>
+                    <div style={{marginLeft:28}}>{dayInfo[0]?.note}</div>
+                    <div style={{marginLeft:26}}>
                         <button ref={keyValue} value={dayInfo[0]?.attendCode} className="getmodibtn" onClick={(e) => {
                             e.stopPropagation();
                             attendHistoryOnclickHandler(e.target.value);
                         }}>확인
                         </button>
-                    </td>
-                </tr>
-                </>
+                    </div>
+                </div>
 
             )
             curDay += 1;
@@ -79,37 +82,32 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
     }
     return (
         <>
-        {attendHistoryBtn && <AttendHistoryModal attendNo={attendNo} setattendHistoryBtn={setattendHistoryBtn} attendAdmin={attendAdmin} month={month}/>}
+        {attendHistoryBtn && <AttendHistoryModal attendNo={attendNo} setattendHistoryBtn={setattendHistoryBtn} attendAdmin={attendAdmin} month={month} today={day22.current ? day22.current.textContent : ''}/>}
         {attModifyBtn && <ModifyAttendModal setModifyBtn={setAttModifyBtn} attendNo={attendNo} empName={empAttendInfo[0].empName} attendAdmin={attendAdmin}/>}
+
         <div className="attendModal">
             <div className="attendModal-container">
                 <div className="attendmodalcontent">
                     <div className="modifiedHeader">
-                        <span className="attendEmpName">{empAttendInfo[0].empName}</span>
+                        <span>{empAttendInfo[0].empName} </span><span style={{fontSize:18,color:'#a3a1a1'}}> {empAttendInfo[0].empRank}</span>
                         <input value={month} className="attendcal" type="month" onChange={(e) => setMonth(e.target.value)}/>
                         <button className="modifibtn" onClick={() => {
                             setAttendModal(false)
                         }}>X
                         </button>
                     </div>
-                    <table className="headattend">
-                        <thead>
-                        <tr className="attendmodalHead">
-                            <td>날짜</td>
-                            <td>구분</td>
-                            <td>근무시간</td>
-                            <td>연장 근무</td>
-                            <td>비고</td>
-                            <td>수정이력</td>
-                        </tr>
-                        </thead>
-                    </table>
+                    <div className="headattend">
+                            <div style={{marginLeft:75}}>날짜</div>
+                            <div style={{marginLeft:75}}>구분</div>
+                            <div style={{marginLeft:110}}>출/퇴근시간</div>
+                            <div style={{marginLeft:80}}>근무시간</div>
+                            <div style={{marginLeft:75}}>비고</div>
+                            <div style={{marginLeft:75}}>수정이력</div>
+                    </div>
 
-                    <table className="attendbodyTable">
-                        <tbody className="adminattendbody">
+                    <div className="attendbodyTable">
                         {getAttend(month)}
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>

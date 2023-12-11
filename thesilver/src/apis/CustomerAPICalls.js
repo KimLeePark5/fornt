@@ -21,6 +21,7 @@ export const callCustomersAPI = ({condition, currentPage = 1}) => {
         if (result.status === 200) {
             dispatch(getCustomers(result));
         }
+
     }
 }
 
