@@ -1,11 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {callGetAttendResultAPI} from "../../../apis/AttendAPICalls";
-import AttendCalender from "./AttendCalender";
-import AttendItems from "./AttendItems";
-import MyAttend from "../../../pages/MyAttend";
-
-function AttendItem() {
+import {callGetAttendResultAPI} from "../../apis/AttendAPICalls";
+function MainAttend() {
     const date = new Date();
     const month1 = useRef(Number(date.getMonth()+1));
     const year1 = useRef(Number(date.getFullYear()));
@@ -37,20 +33,14 @@ function AttendItem() {
 
     const dispatch = useDispatch();
 
-
-
     useEffect(() => {
         dispatch(callGetAttendResultAPI({month: month}));
         console.log('myAttend : ',myAttend);
     }, [month]);
 
-
-
-
-
     return (
-        <div className='attend-main'>
-            <div className="attend-month">
+        <div className='main-attend-main'>
+            <div className="attend-month" style={{marginTop:30,marginLeft:30}}>
                 <button onClick={onClickUpHandler} className="attend-btn">&lt;</button>
                 <input ref={inputmonth} type="month" onChange={monthChangeHandler} value={month} style={{
                     display:"none"
@@ -59,7 +49,7 @@ function AttendItem() {
                 <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
             </div>
             {myAttend &&
-                <div className="attend-detail-box">
+                <div className="attend-detail-box" style={{marginTop:50,marginLeft:220}}>
                     <div>
                         <div className="detailname">근무시간</div>
                         <div className="detail-count attendTime">
@@ -71,7 +61,7 @@ function AttendItem() {
                         <div className="attend-detail">
                             <div>
                                 <div className="detail-name">출근</div>
-                                <div className="detail-count">{myAttend.responseAttend.length-myAttend.responseAttendType.absentCount-myAttend.responseAttendType.vacationCount}</div>
+                                <div className="detail-count">{myAttend.responseAttend.length}</div>
                             </div>
                             <div>
                                 <div className="detail-name">결근</div>
@@ -93,10 +83,9 @@ function AttendItem() {
                     </div>
                 </div>
             }
-            {myAttend && <AttendCalender myAttend={myAttend}/>}
         </div>
 
     )
 }
 
-export default AttendItem;
+export default MainAttend;

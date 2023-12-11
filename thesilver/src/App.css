@@ -26,7 +26,66 @@
 
 /*상의하기*/
 
+/*Main*/
 
+
+.todoContainer{
+    margin-top: -215px;
+    background-color: white;
+    height: 200px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    grid-column: 2/3;
+    grid-row: 3/4;
+    display: flex;
+}
+.dhodksehla{
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+}
+.mainContainer{
+    display: grid;
+    grid-template-columns: 260px 1200px;
+    grid-template-rows: 170px 350px 00px  250px;
+    column-gap: 30px;
+    row-gap: 15px;
+}
+.Main-commute-btn-box{
+    grid-column: 1/2;
+    grid-row: 2/5;
+}
+.mainProfile{
+    background-color: #0c58a5;
+    grid-column : 1 / 2;
+    grid-row: 1 / 2;
+}
+.mainCal{
+    background-color: blue;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    height: 300px;
+
+
+}
+.mainMiniCal{
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+.main-attend-main{
+    background-color: white;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    grid-column: 2/3;
+    grid-row: 4/6;
+
+}
+.mainbtn{
+    width: 190px !important;
+    height: 50px !important;
+    position: relative !important;
+    bottom: -10px !important;
+    font-size: 20px !important;
+    margin-top: 10px !important;
+}
 
 /**** 하현 ********************************************/
 /**** nav bar ****************************************/
@@ -763,6 +822,7 @@
 }
 
 /* -----------------------Attend-------------------------*/
+
 .attend-main {
     background-color: white;
     margin-top: 10px;
@@ -770,7 +830,10 @@
     width: 970px;
     height: 800px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
 }
+
+
 .Mainattend-main {
     background-color: white;
     margin-top: 10px;
@@ -792,6 +855,7 @@
     height: 445px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     position: relative;
+    border-radius: 10px;
 }
 .Maincommute-btn-box {
     background-color: white;
@@ -928,6 +992,7 @@
 
 .admin-attend-head {
     display: flex;
+    position: relative;
     margin-top: 15px;
 }
 
@@ -936,8 +1001,8 @@
     border-radius: 5px;
     padding: 0px 13px 1px 13px;
     height: 30px;
-    width: 120px;
-    font-size: 15px;
+    width: 170px;
+    font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -952,17 +1017,37 @@
     padding: 1px 13px 1px 13px;
     height: 34px;
 }
+.headattend{
 
+    background-color: white;
+    position: fixed;
+    top: 146px;
+    display: flex;
+    font-size: 19px;
+    font-weight: bolder;
+    background-color: #01092b;
+    color: white;
+    width: 944px;
+    padding: 20px 20px 20px 20px;
+
+}
+.attenddiv{
+    display: flex;
+    cursor: pointer;
+
+}
+.attenddiv div{
+    width: 100px;
+}
 .attendMonth {
     display: flex;
     letter-spacing: 2px;
-    margin-left: 400px;
+    margin-left: 300px;
     font-size: 25px;
     font-weight: bold;
 }
 
 .attendMonthbtn {
-    padding-top: 6px;
     font-weight: bold;
     cursor: pointer;
     border: none;
@@ -971,22 +1056,45 @@
 }
 
 .attendTable {
-    margin-top: -13px;
-    margin-left: 50px;
+    margin-top: 20px;
+    margin-left: 70px;
     line-height: 50px;
     font-weight: bold;
+    height: 630px;
 }
 
 .attendTable th, td {
-    padding: 10px;
     width: 105px;
     font-size: 20px;
-    text-align: left;
-    padding-top: 30px;
+    text-align: center;
+    padding: 30px 50px 50px;
+}
+
+.attendTable td:nth-child(2){
+    padding-right: 30px;
+
+}
+.attendTable td:nth-child(3){
+    padding-right: 30px;
+
+}
+.attendTable td:nth-child(4){
+    padding-right: 30px;
+}
+.attendTable td:nth-child(5){
+    padding-right: 30px;
+}
+.attendTable td:nth-child(6){
+    padding-right: 30px;
+}
+.attendTable td{
+
 }
 
 .att-late {
-    padding-left: 170px;
+    padding-left: 100px;
+    font-weight: bolder;
+
 }
 
 .att-tbody {
@@ -997,16 +1105,18 @@
 }
 
 .modifiedHeader {
-    background-color: white;
-    z-index: 1;
-    font-size: 25px;
-    position: fixed;
-    width: 915px;
+    font-size: 24px;
+    font-weight: bolder;
     text-align: left;
-    border-bottom: 1px solid #BABABA;
-    padding-left: 70px;
-    padding-top: 20px;
-    padding-bottom: 15px;
+    position: fixed;
+    top: 66px;
+    left: 460px;
+    width: 920px;
+    padding-left: 60px;
+    background-color: white;
+    border-bottom: 1px solid #B6B6B6;
+    height: 50px;
+    padding-top: 30px;
 }
 
 .attendmodalHead {
@@ -1025,34 +1135,11 @@
 
 }
 
-.attendbodyTable {
-    margin-top: 120px;
-    margin-bottom: 20px;
-    line-height: 50px;
-    width: 100%;
-    font-weight: bold;
-
-}
-
-.attendbodyTable td:nth-child(2) {
-    padding-left: 35px;
-
-}
-
-.attendbodyTable td:nth-child(3) {
-    padding-left: 45px;
-}
-
-.attendbodyTable td:nth-child(4) {
-    padding-left: 56px;
-}
-
-.attendbodyTable td:nth-child(5) {
-    padding-left: 25px;
-}
-
-.attendbodyTable td:nth-child(6) {
-    padding-left: 37px;
+.attendbodyTable{
+    margin-top: 145px;
+    font-size: 17px;
+    margin-left: 64px;
+    line-height: 40px;
 }
 
 .getmodibtn {
@@ -1063,27 +1150,15 @@
     font-family: 'Noto Sans KR', sans-serif;
     border-radius: 15px;
     font-weight: bold;
+    cursor: pointer;
 }
-
+.attemprank{
+    color: #B6B6B6;
+    font-size: 13px;
+}
 .tbodyattend {
     border-bottom: 1px solid #B6B6B6;
     width: 900px;
-}
-
-.headattend td:nth-child(2) {
-    padding-left: 47px;
-}
-
-.headattend td:nth-child(3) {
-    padding-left: 60px;
-}
-
-.headattend td:nth-child(4) {
-    padding-left: 70px;
-}
-
-.headattend td:nth-child(5) {
-    padding-left: 53px;
 }
 
 .attendBackAdmin {
@@ -1094,10 +1169,12 @@
     border-radius: 5px;
     position: relative;
     margin-top: 20px;
+    width: 1300px;
+    margin-left: 50px;
 }
 
 .att-empName {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     text-align: right;
 }
@@ -1106,16 +1183,38 @@
     font-size: 28px;
     font-weight: bold;
 }
+.simpleinfoCon{
+    margin : 0 auto;
+    text-align: center;
+    width: 260px;
+    background-color: white;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+}
+.simpleinfoName{
+    margin: 0 auto;
+    margin-top: 20px;
 
+    font-size: 23px;
+}
+.simpleinfoimg{
+    margin-top: 25px;
+    width: 70px;
+    height: 70px;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 100px;
+}
 .attenddetailbtn {
 
-    font-size: 17px;
-    border: 1px solid #B6B6B6;
+    font-size: 12px;
+    border: none;
     padding: 7px 10px;
     border-radius: 10px;
     font-weight: bolder;
-    width: 110px;
-    height: 40px;
+    color: white;
+    background-color: #a3a1a1;
+    width: 80px;
+
 }
 
 .attendModal {
@@ -1178,6 +1277,7 @@
     padding-top: 15px;
     margin-top: -19px;
 }
+
 .att-text{
     margin-left: 10px;
     margin-top: 8px;
@@ -1192,14 +1292,15 @@
     margin-top: -10px;
 }
 .attime{
-    margin-left: -20px;
+    margin-left: 0px;
     line-height: 23px;
 }
 .attendhistoryHead {
     display: flex;
     border-bottom: 1px solid #BABABA;
     padding-left: 70px;
-
+background-color: #01092b;
+    color: white;
 
     padding-top: 10px;
     padding-bottom: 10px;
@@ -1210,6 +1311,7 @@
     border-bottom: 1px solid #BABABA;
     padding-left: 70px;
     padding-bottom: 20px;
+    font-size: 16px;
 
 }
 
@@ -1235,7 +1337,7 @@
 }
 
 .historymodifiedAt {
-    margin-left: 70px;
+    margin-left: 100px;
 }
 
 .attendHistoryContainer {
@@ -1248,7 +1350,7 @@
 }
 
 .att44 {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .tbodyattend td:nth-child(1) {
@@ -1289,8 +1391,7 @@
 }
 
 .attendcal {
-
-    margin-left: 600px;
+    margin-left: 550px;
     border: 1px solid #B6B6B6;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 15px;
@@ -1299,15 +1400,43 @@
     margin-top: -50px;
 
 }
+.empatinfohead{
+    display: flex;
+    column-gap: 80px;
+    margin: 30px 0px;
+    background-color: #01092b;
+    color: white;
+    padding: 15px 20px 15px 250px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bolder;
+    width: 70%;
+}
+.allempatinfo{
+    line-height: 50px;
+    margin-top: 0px;
+    padding-left: 70px;
+    height: 530px;
+}
+.empatinfo{
+    display: flex;
+    row-gap: 20px;
+    column-gap: 30px;
+    font-size: 17px;
+}
+.empatinfo div{
+    width: 70px;
+
+}
 
 .modifibtn {
-
-    margin-left: 30px;
+    position: absolute;
+    bottom: 15px;
+    margin-left: 50px;
     border: none;
     background: none;
     font-size: 30px;
     cursor: pointer;
-
 }
 
 
@@ -1430,6 +1559,20 @@
     margin-left: 200px;
     cursor: pointer;
 }
+.emalte{
+height: 30px;
+margin-left: 22px;
+margin-top: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+.ele2{
+    margin-top: -10px;
+}
+
+
+
 /* MyCalendar.css */
 
 /* 일요일 날짜: 빨간색 */
@@ -1448,10 +1591,13 @@
 }
 .fc .fc-button-primary{
     /*display: none;*/
-    background-color: white;
-    color: white;
+    /*background-color: white;*/
+    /*color: white;*/
 }
+.fc-next-button fc-button fc-button-primary{
+    display: none;
 
+}
 .fc-media-screen{
     height: 600px;
 
@@ -1972,8 +2118,32 @@
     border-collapse : collapse;
     width: 1506px;
 }
+.attendAdminMain{
+    margin-left: 10px ;
 
+}
+.tododate{
+    border: none;
+    font-weight: bolder;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    width: 120px;
+}
 
+.todoregistbnt{
+
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 30px;
+    border-radius: 3px;
+    border: none;
+    font-size: 13px;
+    background-color: #6aafe6;
+    color: white;
+}
 
 
 
@@ -2032,4 +2202,107 @@
     display: flex;
     flex-direction: column;
 }
+.todoccc{
+    display: flex;
+}
+.todobox{
 
+    margin-top: 85px;
+    font-size: 20px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+}
+.todopage{
+    margin-left: 350px;
+}
+.setttodo{
+   display: flex;
+    margin-left: 20px;
+}
+.wrapper{
+    height: 262px;
+    width: fit-content;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+header .icons{
+    display: flex;
+}
+header .icons span{
+    height: 20px;
+    width: 20px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 20px;
+    font-size: 1.7rem;
+    user-select: none;
+    border-radius: 50%;
+}
+
+.icons span:last-child{
+    margin-right: -10px;
+}
+
+header .current-date{
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+.calendar{
+    padding: 20px;
+}
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+.calendar .days{
+    margin-bottom: 20px;
+}
+.calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 0.7rem;
+}
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 15px;
+}
+.days li.inactive{
+    color: #aaa;
+}
+.days li.active{
+    color: #fff;
+}
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 25px;
+    width: 25px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before{
+    background: #9B59B6;
+}
+.days li:not(.active):hover::before{
+    background: #f2f2f2;
+}

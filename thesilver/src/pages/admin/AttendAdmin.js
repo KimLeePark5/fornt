@@ -30,7 +30,7 @@ function AttendAdmin(){
                 <div className="attendBackAdmin">
                 <AdminAttendHeader month={month} setMonth={setMonth} />
                 <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
-                <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo} />
+                <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo}/>
                 </div>
             </div>
         }
