@@ -16,7 +16,9 @@
 .layout > div:nth-child(2) {
     flex: auto;
     margin: 50px;
+    margin-bottom: 0;
 }
+
 
 
 /** 스크롤바 없애기 **/
@@ -234,7 +236,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 0 10px 0;
+    padding: 20px 0 10px 0;
     margin: 0 30px 0 20px;
 }
 
@@ -258,7 +260,7 @@
 
 .require-state {
     width: 1470px;
-    height: 200px;
+    height: 190px;
     margin-left: 20px;
     padding: 0 15px 0 15px;
     border: #1A1A1C 1px solid;
@@ -379,21 +381,30 @@
 }
 
 
-/******** use list**************************/
+/******** used vacation list**************************/
 
-.use-state {
-    padding-top: 20px;
+.used-vacation {
+    width: 1470px;
+    height: 250px;
     margin-left: 20px;
+    padding: 0 15px 0 15px;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
 }
 
-.use-content{
+.used-vacation-content {
+    width: 1500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px 10px 10px;
+    padding: 20px 0 10px 0;
+    margin: 0 30px 0 20px;
 }
 
-.use-content h3 {
+.used-vacation-content h3 {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     font-weight: 600;
 }
@@ -401,19 +412,35 @@
 .select-days {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
 }
 
-
-.use-vacation-list {
-    width: 1500px;
-    height: 200px;
-    border: #1A1A1C 1px solid;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+.used-vacation-head {
+    width: 1470px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    border-bottom: rgba(108, 106, 106, 0.5) 1px solid;
 }
+
+.used-vacation-body {
+    width: 1470px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+
+
 
 
 
@@ -488,7 +515,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+    gap: 12px;
 }
 .login-content-title {
     margin: 25px;
@@ -535,6 +562,7 @@
     color: #eaeaea;
     text-align: center;
     font-size: 70%;
+    line-height: 50px;
 }
 
 /* findPassword */
@@ -552,8 +580,8 @@
 .findModal-box {
     background-color: white;
     width: 350px;
-    height: 400px;
-    position: absolute;
+    height: 350px;
+    position: fixed;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -564,11 +592,18 @@
 
 .findModal-close {
     position: absolute;
-    top: 15px;
-    right: 18px;
+    top: 12px;
+    right: 12px;
     cursor: pointer;
 }
-.findModal-close img {
+
+.modifyModal-close {
+    position: absolute;
+    top: -25px;
+    right: -28px;
+    cursor: pointer;
+}
+.findModal-close img, .modifyModal-close img {
     width: 20px;
     height: auto;
 }
@@ -576,6 +611,8 @@
 .findModal-header {
     margin-top: 20px;
 }
+
+
 
 .findModal-content input {
     width: 200px;
@@ -593,6 +630,10 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 80%;
+    cursor: pointer;
+}
+.findModal-result {
+    padding-bottom: 20px;
 }
 
 .findModal-comment {
@@ -665,6 +706,32 @@
     margin: 20px;
     border-radius: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.customers-graph-title {
+    position: absolute;
+    font-size: 22px;
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}
+.customers-graph-select {
+    position: absolute;
+    width: 85px;
+    height: 30px;
+    right: 5%;
+    top: 15px;
+    z-index: 1;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    background-color: #F7F8F8;
+    box-shadow: 0 0 15px #f1f1f1;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 85%;
+    text-align: center;
 }
 
 .customers-list {
@@ -716,10 +783,12 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #01092b;
-    box-shadow: 5px 5px 10px #b4b4b4; /* 그림자 추가 */
+    box-shadow: 5px 5px 10px #d3d3d3; /* 그림자 추가 */
     background-color: white;
     margin-left: 45px;
     position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .customers-regist-row, .customers-regist-row-h {
     display: flex;
@@ -768,6 +837,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    gap: 10px;
 }
 
 .customers-regist-button {
@@ -790,7 +860,7 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     margin: 0;
@@ -801,13 +871,139 @@
 
 .customers-modify-title {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     width: auto;
     background-color: white;
     text-align: center;
     padding: 20px;
 }
 
+.customers-modify-box {
+    width: 640px;
+    height: 885px;
+    border-radius: 30px;
+    background-color: #F7F8F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.customers-modify-content {
+    margin: 0;
+    margin-top: 40px;
+    height: 780px;
+    border-radius: 0 0 10px 10px;
+}
+
+#customers-modify-save {
+    background-color: #171717;
+}
+
+.customers-modify-box input, .customers-modify-box textarea{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 100%;
+}
+.customers-modify-box textarea{
+    width: 400px;
+}
+
+/*license modify*/
+#customers-license-box {
+    height: 580px;
+}
+#customers-license-content {
+    margin-top: 5px;
+    height: 490px;
+}
+
+#customers-license-row input {
+    width: 110px;
+    height: 30px;
+}
+#customers-license-row {
+    line-height: 30px;
+    align-items: center;
+}
+#license-button {
+    border: none;
+    background-color: #03166C;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#customers-license-status {
+    color: white;
+    border-radius: 5px;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 2px;
+    margin-left: 5px;
+    font-size: 90%;
+}
+
+.customers-license-delete {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 15px;
+    width: 15px;
+    line-height: 10px;
+    margin: auto;
+    margin-left: 0;
+    cursor: pointer;
+}
+
+.customers-license-row-h {
+    display: flex;
+    font-size: 18px;
+    background-color: #edf6ff;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+}
+.customers-license-row {
+    display: flex;
+    font-size: 18px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.customers-license-row div:nth-child(1) {
+    width: 180px;
+    border-right: 1px solid black;
+}
+.customers-license-row-h div:nth-child(1) {
+    width: 180px;
+    border-right: 1px solid black;
+}
+
+.customers-license-row div:nth-child(2) {
+    width: 60px;
+}
+.customers-license-row-h div:nth-child(2) {
+    width: 60px;
+}
+
+.customers-license-row div:nth-child(3), .customers-license-row-h div:nth-child(3) {
+    width: 130px;
+}
+.customers-license-row div:nth-child(4), .customers-license-row-h div:nth-child(4) {
+    width: 5px;
+}
+.customers-license-row div:nth-child(5), .customers-license-row-h div:nth-child(5) {
+    width: 130px;
+}
+
+#customers-license-pagingbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*customer graph*/
 
 /*카카오api*/
 #postButton {

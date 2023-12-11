@@ -1,23 +1,16 @@
-import React, {useState} from "react";
-import 'react-datepicker/dist/react-datepicker.css';
-import * as PropTypes from "prop-types";
+import React, {useEffect, useState} from "react";
+import UsedVacationItem from "../items/UsedVacationItem";
+import {useDispatch, useSelector} from "react-redux";
+import { callUsedVacationAPI} from "../../../apis/VacationAPICalls";
+import DatePicker from "../items/DatePicker";
 
 
-function DatePicker(props) {
-    return null;
-}
 
-DatePicker.propTypes = {
-    onChange: PropTypes.func,
-    selectsStart: PropTypes.bool,
-    endDate: PropTypes.any,
-    dateFormat: PropTypes.string,
-    placeholderText: PropTypes.string,
-    selected: PropTypes.any,
-    startDate: PropTypes.any
-};
+function UsedVacationList({usedVacation}) {
 
-function RequireStateItem() {
+
+
+
 
     // 날짜로 조회 하기
     // 시작 날짜와 종료 날짜의 상태
@@ -25,16 +18,19 @@ function RequireStateItem() {
     const [endDate, setEndDate] = useState(null);
     // 날짜가 선택됐을 때 실행되는 콜백 함수
     const handleStartDateChange = (date) => {
-        setStartDate(date);};
+        setStartDate(date);
+    };
     const handleEndDateChange = (date) => {
-        setEndDate(date);};
+        setEndDate(date);
+    };
 
 
+
+    console.log("usedVacation 데이터가 있나요? : ", usedVacation)
 
     return (
-
-        <div className="use-state">
-            <div className="use-content">
+        <>
+            <div className="used-vacation-content">
                 <h3>사용 내역</h3>
                 <div className="select-days">
                     <span>기간 :&nbsp;&nbsp;</span>
@@ -59,11 +55,21 @@ function RequireStateItem() {
                     />
                 </div>
             </div>
-            <div className="use-vacation-list">
-                {/*<PagingBar pageInfo={vacation.pageInfo} setCurrentPage={setCurrentPage}/>*/}
+            <div className="used-vacation">
+                <div className="used-vacation-head">
+                    <div>종류</div>
+                    <div>사용 기간</div>
+                    <div>사용 일자</div>
+                    <div>내용</div>
+                    <div>상태</div>
+                </div>
+                {usedVacation?.data.map(data => <UsedVacationItem key={data.employeeCode} data={data}/>)}
             </div>
-        </div>
-    );
+
+        </>
+
+
+    )
 }
 
-export default RequireStateItem;
+export default UsedVacationList;

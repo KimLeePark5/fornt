@@ -3,22 +3,41 @@ import {useEffect, useRef, useState} from "react";
 import CustomerList from "../components/customer/lists/CustomerList";
 import PagingBar from "../components/common/PagingBar";
 import CustomerModifyForm from "../components/customer/form/CustomerModifyForm";
-import {callCustomerAPI, callCustomersAPI} from "../apis/CustomerAPICalls";
+import {callCustomerAPI, callCustomersAPI, callLicenseAPI} from "../apis/CustomerAPICalls";
+import LicenseModifyForm from "../components/customer/form/LicenseModifyForm";
+import FirstGraph from "../components/customer/graph/FirstGraph";
+import {firstGraphData, secondGraphData, thirdGraphData} from "../components/customer/data/graphData";
+import secondGraph from "../components/customer/graph/SecondGraph";
+import SecondGraph from "../components/customer/graph/SecondGraph";
+import thirdGraph from "../components/customer/graph/ThirdGraph";
+import ThirdGraph from "../components/customer/graph/ThirdGraph";
+import {getLicenseReset} from "../modules/CustomerModule";
 
 function Customers() {
 
 
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
-    const {customers, customer} = useSelector(state => state.customerReducer);
+    const {customers, customer, putSuccess, license} = useSelector(state => state.customerReducer);
     const [customerCode, setCustomerCode] = useState();
     const [modal, setModal] = useState(false);
+    const [licenseModal, setLicenseModal] = useState(false);
     const [condition, setCondition] = useState({});
+
+    // 그래프 연습
+    const firstData = firstGraphData
+    const secondData = secondGraphData
+    const thirdData = thirdGraphData
 
     useEffect(() => {
         dispatch(callCustomersAPI({condition, currentPage}));
         console.log("@@@@@@@@@@@@ 첫번째이펙트 @@@@@@@@@@@@@@@@")
-    }, [currentPage, condition]);
+
+        if (putSuccess) {
+            alert("고객 정보 수정이 완료되었습니다.")
+            onSuccessCloseHandler("customer")
+        }
+    }, [currentPage, condition, putSuccess]);
 
     useEffect(() => {
         if (customerCode) {
@@ -28,14 +47,28 @@ function Customers() {
         console.log("@@@@@@@@@@@@ 두번째이펙트 @@@@@@@@@@@@@@@@")
     }, [customerCode]);
 
+    const openLicenseModal = (customerCode) => {
+        console.log("첫번째 코스토머스 로그")
+        dispatch(callLicenseAPI({customerCode}))
+    }
+
+    useEffect(() => {
+        if (license) {
+            console.log("라이센스! : ", license);
+            setLicenseModal(true);
+        }
+    }, [license]);
+
     const onClickOutsideHandler = (e) => {
         if (e.target === e.currentTarget) {
             // eslint-disable-next-line no-restricted-globals
             const confirmResult = confirm("작성을 중단하고 창을 닫으시겠습니까 ?");
             if (confirmResult) {
                 setModal(false)
+                setLicenseModal(false)
                 console.log("타겟클릭")
                 setCustomerCode();
+                dispatch(getLicenseReset())
             }
         }
     }
@@ -45,13 +78,23 @@ function Customers() {
         const confirmResult = confirm("작성을 중단하고 창을 닫으시겠습니까 ?");
         if (confirmResult) {
             setModal(false)
-            console.log("타겟클릭")
+            setLicenseModal(false)
             setCustomerCode();
+            dispatch(getLicenseReset());
         }
     }
 
-    console.log("최종 커스토머 : ", customer)
-    console.log("최종 customers : ", customers)
+    const onSuccessCloseHandler = (type) => {
+        if (type === "customer") {
+            setModal(false)
+            setCustomerCode();
+        }
+
+        if (type === "license") {
+
+        }
+    }
+
 
     return (
         <>
@@ -62,19 +105,36 @@ function Customers() {
                         <div className="customers-subtitle">고객 관리 현황</div>
 
                         <div className="customers-type">
-                            <div className="customers-type-first"></div>
-                            <div className="customers-type-second"></div>
-                            <div className="customers-type-third"></div>
+
+                            <div className="customers-type-first">
+                                <FirstGraph data={firstData}/>
+                            </div>
+                            <div className="customers-type-second">
+                                <SecondGraph data={secondData}/>
+                            </div>
+                            <div className="customers-type-third">
+                                <ThirdGraph data={thirdData}/>
+                            </div>
                         </div>
 
                         <div className="customers-list">
-                            <CustomerList setCurrentPage={setCurrentPage} setCondition={setCondition} data={customers.data} setCustomerCode={setCustomerCode}/>
+                            <CustomerList openLicenseModal={openLicenseModal} setCurrentPage={setCurrentPage}
+                                          setCondition={setCondition} data={customers.data}
+                                          setCustomerCode={setCustomerCode}/>
                             <PagingBar pageInfo={customers.pageInfo} setCurrentPage={setCurrentPage}/>
                         </div>
                     </div>
+
                     {modal && (
-                        <div className="customers-modify-page" onClick={onClickOutsideHandler}>
-                            <CustomerModifyForm customer={customer} onClickCloseHandler={onClickCloseHandler}/>
+                        <div className="customers-modify-page" onMouseDown={onClickOutsideHandler}>
+                            <CustomerModifyForm onSuccessCloseHandler={onSuccessCloseHandler} customer={customer}
+                                                onClickCloseHandler={onClickCloseHandler}/>
+                        </div>
+                    )}
+                    {licenseModal && (
+                        <div className="customers-modify-page" onMouseDown={onClickOutsideHandler}>
+                            <LicenseModifyForm openLicenseModal={openLicenseModal} onSuccessCloseHandler={onSuccessCloseHandler} licenses={license?.data.licenses} customer={license?.data.customer} pageInfo={license?.pageInfo}
+                                               onClickCloseHandler={onClickCloseHandler}/>
                         </div>
                     )}
                 </>
