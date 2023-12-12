@@ -15,6 +15,7 @@ import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
 import Main from "./pages/Main";
 import Programs from "./pages/programs/Programs";
+import VacationManagement from "./pages/vacation/VacationManagement";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
+                    <Route path="/vacation-management" element={<VacationManagement/>}></Route>
                     <Route path="programs" element={<Programs/>}></Route>
                 </Route>
                 <Route path="*" element={<Error/>}/>

@@ -20,7 +20,7 @@ function RequireStateList({require}) {
                         onClick={openModal}>
                     연차 신청
                 </button>
-                <RequireForm isOpen={isModalOpen} closeModal={closeModal}/>
+                <RequireForm isOpen={isModalOpen} closeModal={closeModal} require={require}/>
             </div>
             <div className="require-state">
                 <div className="require-state-head">

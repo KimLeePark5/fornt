@@ -5,11 +5,11 @@ import employeeInfo from "../../items/AttendItems/EmployeeInfo";
 import {callVacationRequireAPI} from "../../../apis/VacationAPICalls";
 import {useDispatch, useSelector} from "react-redux";
 
-function RequireForm({isOpen, closeModal}) {
+function RequireForm({ isOpen, closeModal}) {
 
     const dispatch = useDispatch();
     const [form, setForm] = useState({
-        vacationType: "1",
+        vacationType: "연차"
     });
 
     const {requireSuccess} = useSelector(state => state.vacationReducer);
@@ -81,7 +81,7 @@ function RequireForm({isOpen, closeModal}) {
                     left: "50%",
                     transform: "translate(-50%,-50%)",
                     width: 750,
-                    height: 900,
+                    height: 850,
                     overflowY: "auto",
                     backgroundColor: "white",
                     border: "#1A1A1C 1px solid",
@@ -97,21 +97,23 @@ function RequireForm({isOpen, closeModal}) {
                             margin:"25px 0 20px 0"}}>연차 신청</h1>
                     <div className="vacation-require-form">
                         <div className="vacation-require-form1">
-                            <p  className="form1-1">성명</p>
-                            <p name="name" className="form1-2">{employeeInfo.name}</p>
-                            <p className="form1-1">직급</p>
-                            <p name="rank">{employeeInfo.rankname}</p>
+                            <div  className="form1-1">성명</div>
+                            <div name="name" className="form1-2">{}</div>
+                            <div className="form1-1">직급</div>
+                            <div name="rank">{employeeInfo.rankname}</div>
                         </div>
                         <div  className="vacation-require-form2">
-                            <p className="form2-1">구분</p>
-                            <select name="vacationType" className="form2-2" onChange={onChangeHandler}>
+                            <div className="form2-1">구분</div>
+                            <div className="form2-2">
+                            <select name="vacationType" value={form.vacationType}  onChange={onChangeHandler} style={{width: "150px"}}>
                                 <option value="1">연차</option>
                                 <option value="2">오전 반차</option>
                                 <option value="3">오후 반차</option>
                                 <option value="4">경조사</option>
                             </select>
-                            <p name="srattAndEndDate" className="form2-1" >기간</p>
-                            <p className="form2-2" onChange={onChangeHandler}>
+                            </div>
+                            <div name="srattAndEndDate" className="form2-1" >기간</div>
+                            <div className="form2-2" onChange={onChangeHandler}>
                                 <DatePicker
                                     selected={startDate}
                                     onChange={handleStartDateChange}
@@ -131,31 +133,31 @@ function RequireForm({isOpen, closeModal}) {
                                     placeholderText="종료 날짜"
                                     dateFormat="yyyy년 MM월 dd일"
                                 />
-                                <span name="countDate">{daysDiff}일</span>
-                            </p>
+                                <span name="countDate" style={{paddingLeft: "50px"}}>{daysDiff} 일</span>
+                            </div>
 
-                            <p className="form2-3">내용</p>
-                            <p>
-                                <input name="content" onChange={onChangeHandler} type="text"/>
-                            </p>
+                            <div className="form2-3" >내용</div>
+                            <div style={{margin: "0", textAlign: "left", borderLeft: "#1A1A1C 1px solid"} }>
+                                <input name="content" value={form.content} onChange={onChangeHandler} type="text"/>
+                            </div>
                         </div>
                         <div className="vacation-require-form3">
-                            <p style={{fontSize: "14px", paddingLeft: "55px"}}>
+                            <pdiv style={{fontSize: "15px", paddingLeft: "30px", height: "150px"}}>
                                 <br/>
                                 <br/>
                                 1.연차의 사용은 근로기준법에 따라 전년도에 발생한 개인별 잔여 연차에 한하여 사용함을 원칙으로 한다.<br/>
-                                단, 최초 입사시에는 근로 기준법에 따라 발생 예정 된 연차를 차용하여 월 1회 사용할 수 있다.<br/>
-                                2. 경조사 휴가는 행사일을 증명할 수 있는 가족 관계 증명서 또는 등본 ,청첩장 등 제출 한다.<br/>
+                                단, 최초 입사시에는 근로 기준법에 따라 발생 예정 된 연차를 차용하여 월 1회 사용할 수 있다.<br/><br/>
+                                2. 경조사 휴가는 행사일을 증명할 수 있는 가족 관계 증명서 또는 등본 ,청첩장 등 제출 한다.<br/><br/>
                                 3. 공가(예비군/민방위)는 사전에 통지서를, 사후에는 참석증을 반드시 제출 한다.
                                 <br/>
                                 <br/>
-                            </p>
-                            <p name="today" style={{fontSize: "15px", textAlign: "center", marginTop:"25px"}}>{formattedDate}</p>
-                            <p name="RequirePerson" style={{fontSize: "15px", textAlign: "right", padding: "20px 50px 30px 0"}}>서명 : </p>
+                            </pdiv>
+                            <div name="today" style={{fontSize: "15px", textAlign: "center", marginTop:"25px"}}>{formattedDate}</div>
+                            <div name="RequirePerson" style={{fontSize: "15px", textAlign: "right", padding: "20px 50px 30px 0"}}>서명 : </div>
                         </div>
                         <div className="vacation-require-form4">
-                            <p className="form4-1">조직도자리</p>
-                            <p name="approver">선택한 사람 넘어오는 자리</p>
+                            <div className="form4-1">결재자</div>
+                            <pdiv name="approver">000 팀장 또는 000 센터장</pdiv>
                         </div>
                     </div>
                 </>
