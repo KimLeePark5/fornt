@@ -15,6 +15,7 @@ function UsedVacationItem ({data}) {
 // 일(day)로 변환
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
 
+
     return (
         <div>
             {data && (

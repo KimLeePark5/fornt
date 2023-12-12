@@ -33,6 +33,7 @@ function Vacation() {
 
     return (
         <>
+            <div className="pageTitle-div">연차 관리</div>
             {vacation &&
                 <div>
                     <VacationStateItem/>
