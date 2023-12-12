@@ -563,6 +563,35 @@
     font-size: 70%;
     line-height: 50px;
 }
+/*changePwModal*/
+#pwc-modal-page {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+#pwc-modal-box {
+    align-items: center;
+    height: 400px;
+}
+
+.pwc-modal-text {
+    font-size: 14px;
+    text-align: center;
+    color: #989898;
+}
+.pwc-modal-input-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+#pwc-modal-button {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
 
 /* findPassword */
 .findModal-page {
@@ -630,9 +659,13 @@
     margin-bottom: 10px;
     font-size: 80%;
     cursor: pointer;
+    height: 25px;
+    line-height: 25px;
 }
 .findModal-result {
     padding-bottom: 20px;
+    font-size: 80%;
+    color: #0028e8;
 }
 
 .findModal-comment {
@@ -640,9 +673,6 @@
     margin-right: 60px;
 }
 
-.findModal-result {
-    font-size: 80%;
-}
 
 .findModal-result-fail {
     font-size: 80%;

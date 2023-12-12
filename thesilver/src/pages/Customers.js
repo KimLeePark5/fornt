@@ -12,6 +12,7 @@ import SecondGraph from "../components/customer/graph/SecondGraph";
 import thirdGraph from "../components/customer/graph/ThirdGraph";
 import ThirdGraph from "../components/customer/graph/ThirdGraph";
 import {getLicenseReset} from "../modules/CustomerModule";
+import {useSearchParams} from "react-router-dom";
 
 function Customers() {
 
@@ -23,6 +24,8 @@ function Customers() {
     const [modal, setModal] = useState(false);
     const [licenseModal, setLicenseModal] = useState(false);
     const [condition, setCondition] = useState({});
+    const [searchParams] = useSearchParams();
+    const accountStatus = searchParams.get('accountStatus')
 
     // 그래프 연습
     const firstData = firstGraphData

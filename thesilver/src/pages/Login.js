@@ -9,12 +9,13 @@ import {jwtDecode} from "jwt-decode";
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { loginSuccess } = useSelector(state => state.loginReducer);
+    const { loginSuccess, accountStatus } = useSelector(state => state.loginReducer);
 
     useEffect(() => {
         if(loginSuccess === true) {
-            console.log("확인@@@@@@@@@@@@@@@@@@@@@")
-            window.location.replace("/customers");
+            // console.log("어카운트스테이트 : " + accountStatus)
+            navigate(`/?accountStatus=${accountStatus}`)
+            // window.location.replace("/customers");
         } else if(loginSuccess === false) {
             alert("로그인에 실패하였습니다. 아이디와 비밀번호를 확인해주세요.");
             isLogin();
