@@ -1,17 +1,18 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {callGetJournalListAPI} from "../apis/JournalAPICalls";
-import PagingBar from "../components/common/PagingBar";
-import {useSearchParams} from "react-router-dom";
-import JournalList from "../components/board/journals/lists/JournalList";
+import {callGetJournalListAPI} from "../../../apis/JournalAPICalls";
+import PagingBar from "../../../components/common/PagingBar";
+
+import JournalList from "../../../components/board/journals/lists/JournalList";
 
 
-function Journals() {
+function Journals() {  // 전체조회
 
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
 
     const {journals} = useSelector(state => state.journalReducer);
+
     //const [searchParams] = useSearchParams(); //
 
     useEffect(() => {

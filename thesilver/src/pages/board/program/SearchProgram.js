@@ -1,10 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import PagingBar from "../../components/common/PagingBar";
-import ProgramList from "../../components/board/program/lists/ProgramList";
-import programReducer from "../../modules/ProgramsModule";
-import {callprogramSearchListAPI} from "../../apis/ProgramAPICalls";
+import PagingBar from "../../../components/common/PagingBar";
+import ProgramList from "../../../components/board/program/lists/ProgramList";
+import {callProgramSearchListAPI} from "../../../apis/ProgramAPICalls";
 
 function SearchProgram(){
 
@@ -14,8 +13,9 @@ function SearchProgram(){
     const {programs} = useSelector(state => state.programReducer);
     const [currentPage, setCurrentPage] = useState(1);
 
+
     useEffect(() => {
-        dispatch(callprogramSearchListAPI({categoryName, currentPage}));
+        dispatch(callProgramSearchListAPI({categoryName, currentPage}));
     }, [categoryName, currentPage]);
 
     return(

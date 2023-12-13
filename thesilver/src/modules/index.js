@@ -10,7 +10,7 @@ import journalReducer from "./JournalsModule";
 
 
 const rootReducer = combineReducers({
-    customerReducer,attendReducer,loginReducer, vacationReducer, programReducer,employeesReducer, journalReducer, todoListReducer
+    customerReducer,attendReducer,loginReducer, vacationReducer, programReducer, employeesReducer, journalReducer, todoListReducer
 
 });
 

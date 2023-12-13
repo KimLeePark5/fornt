@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 
-function JournalListItem({journal}) {
+function JournalListItem({journal}) { //상세조회
 
     console.log("::: JournalListItem js 파일 진입 :::");
 
@@ -9,6 +9,8 @@ function JournalListItem({journal}) {
     const onClickJournalHandler = () => {
         navigate(`/journals/${journal.journalCode}`);
     }
+
+    console.log("JournalListItem 저널" , journal)
 
     return (
 

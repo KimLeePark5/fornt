@@ -1,9 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {callGetProgramListAPI} from "../../apis/ProgramAPICalls";
-import ProgramList from "../../components/board/program/lists/ProgramList";
-import PagingBar from "../../components/common/PagingBar";
-import {useSearchParams} from "react-router-dom";
+import {callGetProgramListAPI} from "../../../apis/ProgramAPICalls";
+import ProgramList from "../../../components/board/program/lists/ProgramList";
+import PagingBar from "../../../components/common/PagingBar";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {isAdmin, isMaster} from "../../../utils/TokenUtils";
 
 
 function Programs() {
@@ -25,15 +26,25 @@ function Programs() {
     //     console.log("-----token 확인 end -----");
     // }
     // // 추가 내용 //
+    const navigate = useNavigate();
+    const onclickProgramInsert = () => {
+        navigate('/program-regist');
+    }
 
     return (
         <>
             {programs && (
                 <>
                     <div className="program-list">
-                        <ProgramList data={programs.data}/>
-                        <br/>
+                        <ProgramList data={programs.data}/><br/>
+
+                        <div className="program-detail-div">
                         <PagingBar pageInfo={programs.pageInfo} setCurrentPage={setCurrentPage}/>
+                            <div className="management-div">
+                                {isAdmin() && <button onClick={onclickProgramInsert}>등록</button>}
+                                {isMaster() && <button onClick={onclickProgramInsert}>등록</button>}
+                            </div>
+                        </div>
                     </div>
                 </>
             )}

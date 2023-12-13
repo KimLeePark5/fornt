@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import {isAdmin, isMaster} from "../../../../utils/TokenUtils";
 
 function ProgramListItem({program: {code, categoryName, shortStory, teacherName}}) {
 
@@ -9,7 +10,10 @@ function ProgramListItem({program: {code, categoryName, shortStory, teacherName}
         navigate(`/programs/${code}`);
     }
 
+
+
     return (
+
         <div className="program-list-div">
             <div className="program-list-body">
                 <div className="program-list-content">
