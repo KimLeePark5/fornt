@@ -2,15 +2,19 @@ import DatePicker from "react-datepicker";
 import React, {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import employeeInfo from "../../items/AttendItems/EmployeeInfo";
-import {callVacationRequireAPI} from "../../../apis/VacationAPICalls";
+import {callRequireFormOpen, callVacationRequireAPI} from "../../../apis/VacationAPICalls";
 import {useDispatch, useSelector} from "react-redux";
+import vacation from "../../../pages/vacation/Vacation";
+import {useParams} from "react-router-dom";
 
 function RequireForm({ isOpen, closeModal}) {
 
     const dispatch = useDispatch();
+
     const [form, setForm] = useState({
         vacationType: "연차"
     });
+
 
     const {requireSuccess} = useSelector(state => state.vacationReducer);
 
@@ -98,14 +102,14 @@ function RequireForm({ isOpen, closeModal}) {
                     <div className="vacation-require-form">
                         <div className="vacation-require-form1">
                             <div  className="form1-1">성명</div>
-                            <div name="name" className="form1-2">{}</div>
+                            <div name="name" className="form1-2">{vacation.employeename}</div>
                             <div className="form1-1">직급</div>
-                            <div name="rank">{employeeInfo.rankname}</div>
+                            <div name="rank">{vacation.authorities}</div>
                         </div>
                         <div  className="vacation-require-form2">
                             <div className="form2-1">구분</div>
                             <div className="form2-2">
-                            <select name="vacationType" value={form.vacationType}  onChange={onChangeHandler} style={{width: "150px"}}>
+                            <select name="vacationType" value={form.vacationType}  onChange={onChangeHandler} style={{width: "150px", height: "35px"}}>
                                 <option value="1">연차</option>
                                 <option value="2">오전 반차</option>
                                 <option value="3">오후 반차</option>
@@ -122,6 +126,7 @@ function RequireForm({ isOpen, closeModal}) {
                                     endDate={endDate}
                                     placeholderText="시작 날짜"
                                     dateFormat="yyyy년 MM월 dd일"
+                                    style={{width: "200px", height: "35px"}}
                                 />
                                 <span>&nbsp; ~ &nbsp;</span>
                                 <DatePicker
@@ -138,7 +143,7 @@ function RequireForm({ isOpen, closeModal}) {
 
                             <div className="form2-3" >내용</div>
                             <div style={{margin: "0", textAlign: "left", borderLeft: "#1A1A1C 1px solid"} }>
-                                <input name="content" value={form.content} onChange={onChangeHandler} type="text"/>
+                                <div><textarea name="content" className="form2-4" onChange={onChangeHandler}></textarea></div>
                             </div>
                         </div>
                         <div className="vacation-require-form3">
@@ -157,7 +162,7 @@ function RequireForm({ isOpen, closeModal}) {
                         </div>
                         <div className="vacation-require-form4">
                             <div className="form4-1">결재자</div>
-                            <pdiv name="approver">000 팀장 또는 000 센터장</pdiv>
+                            <div className="form4-2" name="approver">000 팀장 또는 000 센터장</div>
                         </div>
                     </div>
                 </>

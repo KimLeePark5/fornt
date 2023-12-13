@@ -131,6 +131,7 @@
     cursor: pointer;
 }
 
+
 .subMenu {
     list-style: none;
     padding-top: 5px;
@@ -258,32 +259,31 @@
 }
 
 .require-state {
-    width: 1470px;
+    width: 1500px;
     height: 190px;
     margin-left: 20px;
-    padding: 0 15px 0 15px;
     border: #1A1A1C 1px solid;
     border-radius: 5px;
     background-color: white;
     margin-bottom: 30px;
     box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
-
 }
 
 .require-state-head {
-    width: 1470px;
+    width: 1500px;
     display: grid;
     grid-template-columns: 150px 500px 150px 250px 150px 300px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    padding: 10px 0 10px 0;
-    border-bottom: rgba(108, 106, 106, 0.5) 1px solid;
+    padding: 13px 0 13px 0;
+    background-color: #01092B;
+    color: #F7F8F8;;
 }
 
 .require-state-body {
-    width: 1470px;
+    width: 1500px;
     display: grid;
     grid-template-columns: 150px 500px 150px 250px 150px 300px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -332,11 +332,12 @@
     border-right: #1A1A1C 1px solid;
     border-left: #1A1A1C 1px solid;
     height: 230px;
-    grid-template-rows: 40px 40px 150px;
+    grid-template-rows: 40px 40px 140px;
 }
 
 .form2-1 {
     text-align: center;
+    height: 30px;
     padding-top: 10px;
     border-right: #1A1A1C 1px solid;
     border-bottom: #1A1A1C 1px solid;
@@ -346,13 +347,24 @@
     padding-left: 10px;
     border-bottom: #1A1A1C 1px solid;
     display: flex;
+    align-items: center;
 }
 
 .form2-3 {
     text-align: center;
     padding-top: 63px;
-    height: 150px;
+}
 
+.form2-4 {
+    padding-left: 10px;
+    width: 552px;
+    height: 140px;
+    border: none;
+    resize: none;
+}
+
+.form2-4:focus {
+    outline: none;
 }
 
 .vacation-require-form3 {
@@ -364,32 +376,32 @@
 
 .vacation-require-form4 {
     display: grid;
-    grid-template-columns: 300px 400px;
+    grid-template-columns: 130px 570px;
     border: #1A1A1C 1px solid;
     margin-bottom: 5px;
-    height: 80px;
+    height: 40px;
 }
 
 .form4-1 {
-    width: 300px;
-    height: 80px;
+    width: 130px;
+    text-align: center;
+    padding-top: 10px;
     border-right: #1A1A1C 1px solid;
-    overflow-y: auto; /* 너무 길 때 스크롤 표시 */
 }
 
-.vacation-require-form5 {
-    border: #1A1A1C 1px solid;
-    height: 70px;
+.form4-2 {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 
 /******** used vacation list**************************/
 
 .used-vacation {
-    width: 1470px;
+    width: 1500px;
     height: 250px;
     margin-left: 20px;
-    padding: 0 15px 0 15px;
     border: #1A1A1C 1px solid;
     border-radius: 5px;
     background-color: white;
@@ -419,21 +431,22 @@
 }
 
 .used-vacation-head {
-    width: 1470px;
+    width: 1500px;
     display: grid;
-    grid-template-columns: 150px 500px 150px 250px 300px;
+    grid-template-columns: 150px 500px 150px 250px 150px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    padding: 10px 0 10px 0;
-    border-bottom: rgba(108, 106, 106, 0.5) 1px solid;
+    padding: 13px 0 13px 0;
+    background-color: #01092B;
+    color: #F7F8F8;;
 }
 
 .used-vacation-body {
-    width: 1470px;
+    width: 1500px;
     display: grid;
-    grid-template-columns: 150px 500px 150px 250px 300px;
+    grid-template-columns: 150px 500px 150px 250px 150px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -470,8 +483,54 @@
     cursor: pointer
 }
 
-.require-nav-nav:hover {
+/*.require-nav-nav:hover {*/
+/*    color: #FFCF00;*/
+/*}*/
+
+.require-nav-nav.selected {
     color: #FFCF00;
+
+}
+
+/* proceedRequire */
+.require-proceed-list{
+    width: 1500px;
+    padding: 30px 15px 0 15px;
+    margin-bottom: 30px;
+
+}
+
+.require-proceed-head {
+
+    display: grid;
+    grid-template-columns: 180px 180px 450px 150px 150px 300px;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+    text-align: center;
+    padding: 13px 0 13px 0;
+    background-color: #01092B;
+    color: #F7F8F8;
+}
+
+.require-proceed-body {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 180px 180px 450px 150px 150px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+    text-align: center;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
+    background-color: white;
 }
 
 
