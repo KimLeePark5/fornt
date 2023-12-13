@@ -21,6 +21,8 @@ import ProgramDetail from "./pages/board/program/ProgramDetail";
 import JournalDetail from "./pages/board/journal/JournalDetail";
 import SearchJournal from "./pages/board/journal/SearchJournal";
 import ProgramRegist from "./pages/admin/ProgramRegist";
+import Programs from "./pages/programs/Programs";
+import VacationManagement from "./pages/vacation/VacationManagement";
 
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
+                    <Route path="/vacation-management" element={<VacationManagement/>}></Route>
 
                     <Route path="journals" element={<Journals/>}></Route>
                     <Route path="journals">

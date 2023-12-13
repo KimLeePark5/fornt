@@ -1,4 +1,4 @@
-function AttendHistoryModal({month, attendNo, setattendHistoryBtn, attendAdmin: {data: {responseModifiedAttend}}}) {
+function AttendHistoryModal({today, month, attendNo, setattendHistoryBtn, attendAdmin: {data: {responseModifiedAttend}}}) {
     console.log("bcde : ", attendNo)
 
     const attend = responseModifiedAttend.filter(attend => attend.attendNo == attendNo);
@@ -8,7 +8,7 @@ function AttendHistoryModal({month, attendNo, setattendHistoryBtn, attendAdmin: 
                 <div className="historyModal-container">
                     <div className="historyModalContent" style={{marginBottom : "30px"}}>
                         <div className="historyattend">
-                            <div>{month}월 </div>
+                            <div>{today}</div>
                             <div className="att-text">수정기록</div>
                             <button className="atttbtn" onClick={() => {
                                 setattendHistoryBtn(false)
@@ -35,7 +35,8 @@ function AttendHistoryModal({month, attendNo, setattendHistoryBtn, attendAdmin: 
                                          style={{paddingTop: history.afterEntertime && history.afterLeavetime ? '13px' : ''}}>{history.modifiedAt.replace("T"," ")}</div>
                                 </div>
                             </div>
-                        )}
+                        )
+                        }
                         {attend.length == 0 && <h1 style={{
                             marginTop:'30px'
                         }}>수정 기록이 없습니다</h1>}

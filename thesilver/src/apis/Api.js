@@ -6,6 +6,7 @@ import {
     getRefreshTokenHeader,
     saveToken
 } from "../utils/TokenUtils";
+import {loginFailure} from "../modules/LoginModule";
 
 const SERVER_IP = `${process.env.REACT_APP_RESTAPI_SERVER_IP}`;
 const SERVER_PORT = `${process.env.REACT_APP_RESTAPI_SERVER_PORT}`;
@@ -13,13 +14,15 @@ const DEFAULT_URL = `http://${SERVER_IP}:${SERVER_PORT}`;
 
 /* 인증이 불필요한 기능을 요청할 때 사용하는 메소드 */
 export const request = async (method, url, headers, data) => {
+
     return await axios({
         method,
         url: `${DEFAULT_URL}${url}`,
         headers,
         data
     })
-        .catch(error => console.log(error));
+        // .catch(error => console.log(error))
+
 }
 
 
@@ -55,7 +58,7 @@ authRequest.interceptors.response.use((response) => {
             const response = await postRefreshToken();
             console.log("access없어서 refresh 재요청 : ", response);
 
-            if(response?.status === 200) {
+            if (response?.status === 200) {
                 // 토큰 재발급에 성공했을 때
                 saveToken(response.headers);
                 // 실패했던 요청을 다시 요청

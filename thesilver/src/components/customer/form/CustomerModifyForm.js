@@ -1,17 +1,67 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {callCustomerRegistAPI} from "../../../apis/CustomerAPICalls";
+import {callCustomerModifyAPI, callCustomerRegistAPI} from "../../../apis/CustomerAPICalls";
 import customers from "../../../pages/Customers";
 
-function CustomerModifyForm({customer, onClickCloseHandler}) {
+function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandler}) {
     const dispatch = useDispatch();
     const [currentDate, setCurrentDate] = useState('');
-    const [form, setForm] = useState({
-        gender: "FEMALE",
-        phone1: "010",
-        guardianPhone1: "010"
-    });
-    const {postSuccess} = useSelector(state => state.customerReducer);
+    const [form, setForm] = useState({});
+
+    // modify 모드
+    const [modifyMode, setModifyMode] = useState(false);
+
+    const phone = customer?.phone.split('-');
+    const guardianPhone = customer?.guardianPhone.split('-');
+
+    const inputStyle = !modifyMode ? {
+        outline: 'none',
+        cursor: 'auto',
+        paddingLeft: '5px',
+        borderRadius: '2px',
+        border: 'none',
+        backgroundColor: '#f8f8f8',
+        color: 'black'
+    } : null;
+
+    const onClickModifyModeHandler = () => {
+        setModifyMode(true)
+    }
+
+    const setFormValues = () => {
+        setForm({
+            birthDate: customer.birthDate,
+            detailAddress: customer.detailAddress,
+            gender: customer.gender,
+            guardianName: customer.guardianName,
+            guardianPhone1: guardianPhone[0],
+            guardianPhone2: guardianPhone[1],
+            guardianPhone3: guardianPhone[2],
+            guardianRelationship: customer.guardianRelationship,
+            memo: customer.memo,
+            name: customer.name,
+            phone1: phone[0],
+            phone2: phone[1],
+            phone3: phone[2],
+            postalCode: customer.postalCode,
+            primaryAddress: customer.primaryAddress,
+            customerStatus: customer.status
+        });
+    };
+
+    useEffect(() => {
+        customer && (setFormValues());
+        console.log("셋폼", form)
+    }, [customer]);
+
+
+    const onClickModifyCancle = () => {
+        setFormValues();
+        setModifyMode(false)
+    }
+
+
+    // modify 모드
 
     useEffect(() => {
         // 페이지가 로드될 때 한 번 실행되는 부분
@@ -77,128 +127,291 @@ function CustomerModifyForm({customer, onClickCloseHandler}) {
             ...form,
             [e.target.name]: e.target.value
         })
+        console.log("현재 폼", form)
     }
 
-    const onClickRegistHandler = () => {
-        const updateForm = {
-            ...form,
-            postalCode: postcode,
-            primaryAddress: address
-        }
+    const onClickModifyHandler = () => {
 
-        dispatch(callCustomerRegistAPI({registForm: updateForm}))
+        console.log(form)
+
+        dispatch(callCustomerModifyAPI({modifyForm: form, customerCode: customer.customerCode}))
     }
-
 
     useEffect(() => {
-        if (postSuccess) {
-            alert('고객 등록이 성공했습니다 !');
-            window.location.href = "/customers";
-        }
-    }, [postSuccess]);
+        form && setForm(
+            {
+                ...form,
+                postalCode: postcode,
+                primaryAddress: address
+            }
+        )
+    }, [postcode, address]);
 
     return (
         <>
-            <div className="customers-regist-content">
-                <div className="findModal-close" onClick={onClickCloseHandler}><img
-                    src="https://static.thenounproject.com/png/26894-200.png"/></div>
-                <div className="customers-modify-title"><span>고객 정보 수정</span></div>
-                    <div className="customers-regist-row-h">기본 정보</div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">이름</div>
-                        <div><input name="name" onChange={onChangeHandler} type="text"/></div>
-                        <div>하이 {customer?.name}</div>
-                    </div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">성별</div>
-                        <select name="gender" onChange={onChangeHandler} className="customers-regist-select">
-                            <option value="FEMALE">여성</option>
-                            <option value="MALE">남성</option>
-                        </select>
-                    </div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">생년월일(6자리)</div>
-                        <div><input name="birthDate" onChange={onChangeHandler}/></div>
-                    </div>
-                    <div className="customers-regist-row customers-regist-row-phone">
-                        <div className="customers-regist-head">전화번호</div>
-                        <div>
-                            <select name="phone1" onChange={onChangeHandler} className="customers-regist-select">
-                                <option value="010">010</option>
-                                <option value="011">011</option>
-                                <option value="012">012</option>
+            {customer && (
+                <div className="customers-modify-box">
+                    <div className="customers-regist-content customers-modify-content">
+                        <div name="closeModal" className="modifyModal-close" onClick={onClickCloseHandler}><img
+                            src="https://static.thenounproject.com/png/26894-200.png"/></div>
+                        <div className="customers-modify-title"><span>고객 상세 정보</span></div>
+                        <div className="customers-regist-row-h">기본 정보</div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">이름</div>
+                            <div>
+                                <input
+                                    name="name"
+                                    onChange={onChangeHandler}
+                                    type="text"
+                                    value={!modifyMode ? customer.name : form.name}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">성별</div>
+                            <select
+                                name="gender"
+                                onChange={onChangeHandler}
+                                className="customers-regist-select"
+                                value={!modifyMode ? customer.gender : form.gender}
+                                disabled={!modifyMode}
+                                style={inputStyle}
+                            >
+                                <option value="FEMALE">여성</option>
+                                <option value="MALE">남성</option>
                             </select>
                         </div>
-                        -   &nbsp;
-                        <div><input name="phone2" onChange={onChangeHandler}/></div>
-                        -    &nbsp;
-                        <div><input name="phone3" onChange={onChangeHandler}/></div>
-                    </div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">고객 등록일</div>
-                        <div><input style={{border: "none"}} readOnly={true} value={currentDate}/></div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">생년월일(6자리)</div>
+                            <div>
+                                <input
+                                    name="birthDate"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? customer.birthDate : form.birthDate}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
+                        <div className="customers-regist-row customers-regist-row-phone">
+                            <div className="customers-regist-head">전화번호</div>
+                            <div>
+                                <select
+                                    name="phone1"
+                                    onChange={onChangeHandler}
+                                    className="customers-regist-select"
+                                    value={!modifyMode ? phone[0] : form.phone1}
+                                    disabled={!modifyMode}
+                                    style={inputStyle}
+                                >
+                                    <option value="010">010</option>
+                                    <option value="011">011</option>
+                                    <option value="012">012</option>
+                                </select>
+                            </div>
+                            -   &nbsp;
+                            <div>
+                                <input
+                                    name="phone2"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? phone[1] : form.phone2}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                            -    &nbsp;
+                            <div>
+                                <input
+                                    name="phone3"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? phone[2] : form.phone3}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">고객 등록일</div>
+                            <div>
+                                <input
+                                    style={{border: "none"}}
+                                    readOnly={true}
+                                    value={currentDate}
+                                />
+                            </div>
+                        </div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">등록상태</div>
+                            <div>
+                                <select
+                                    name="customerStatus"
+                                    onChange={onChangeHandler}
+                                    className="customers-regist-select"
+                                    value={!modifyMode ? customer.status : form.customerStatus}
+                                    disabled={!modifyMode}
+                                    style={inputStyle}
+                                >
+                                    <option value="ACTIVE">등록</option>
+                                    <option value="INACTIVE">해지</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="customers-regist-row-h">거주지 정보</div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">우편번호</div>
+                            <div>
+                                <input
+                                    className="customers-regist-head"
+                                    type="text"
+                                    id="sample6_postcode"
+                                    placeholder="우편번호"
+                                    readOnly
+                                    value={!modifyMode ? customer.postalCode : form.postalCode}
+                                    style={inputStyle}
+                                />
+                                &nbsp;
+                                <input
+                                    id="postButton"
+                                    type="button"
+                                    onClick={handleExecDaumPostcode}
+                                    value="주소검색"
+                                    disabled={!modifyMode}
+                                    style={inputStyle}
+                                />
+                                <br/>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">기본주소</div>
+                            <div>
+                                <input
+                                    type="text"
+                                    id="sample6_address"
+                                    placeholder="기본주소"
+                                    readOnly
+                                    value={!modifyMode ? customer.primaryAddress : form.primaryAddress}
+                                    style={inputStyle}
+                                />
+                                <br/>
+                            </div>
+                        </div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">상세주소</div>
+                            <div>
+                                <input
+                                    name="detailAddress"
+                                    onChange={onChangeHandler}
+                                    type="text"
+                                    id="sample6_detailAddress"
+                                    placeholder="상세주소"
+                                    value={!modifyMode ? customer.detailAddress : form.detailAddress}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="customers-regist-row-h">고객 특이사항</div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">특이사항</div>
+                            <div>
+                            <textarea
+                                name="memo"
+                                onChange={onChangeHandler}
+                                rows="4"
+                                cols="50"
+                                value={!modifyMode ? customer.memo : form.memo}
+                                readOnly={!modifyMode}
+                                style={inputStyle}
+                            >
+                            </textarea>
+                            </div>
+                        </div>
+
+                        <div className="customers-regist-row-h">보호자 정보</div>
+                        <div className="customers-regist-row">
+                            <div>보호자 이름</div>
+                            <div>
+                                <input
+                                    name="guardianName"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? customer.guardianName : form.guardianName}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
+                        <div className="customers-regist-row">
+                            <div className="customers-regist-head">보호자 관계</div>
+                            <div>
+                                <input
+                                    name="guardianRelationship"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? customer.guardianRelationship : form.guardianRelationship}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
+                        <div className="customers-regist-row customers-regist-row-phone">
+                            <div className="customers-regist-head">보호자 연락처</div>
+                            <div>
+                                <select
+                                    name="guardianPhone1"
+                                    onChange={onChangeHandler}
+                                    className="customers-regist-select"
+                                    value={!modifyMode ? guardianPhone[0] : form.guardianPhone1}
+                                    disabled={!modifyMode}
+                                    style={inputStyle}
+                                >
+                                    <option value="010">010</option>
+                                    <option value="011">011</option>
+                                    <option value="012">012</option>
+                                </select>
+                            </div>
+                            -   &nbsp;
+                            <div>
+                                <input
+                                    name="guardianPhone2"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? guardianPhone[1] : form.guardianPhone2}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                            -    &nbsp;
+                            <div>
+                                <input
+                                    name="guardianPhone3"
+                                    onChange={onChangeHandler}
+                                    value={!modifyMode ? guardianPhone[2] : form.guardianPhone3}
+                                    readOnly={!modifyMode}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="customers-regist-row-h">거주지 정보</div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">우편번호</div>
-                        <div>
-                            <input className="customers-regist-head" type="text" id="sample6_postcode"
-                                   placeholder="우편번호" readOnly value={postcode}/>
-                            &nbsp;
-                            <input id="postButton" type="button" onClick={handleExecDaumPostcode} value="주소검색"/><br/>
-                        </div>
-                        <div></div>
-                    </div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">기본주소</div>
-                        <div>
-                            <input type="text" id="sample6_address" placeholder="주소" readOnly value={address}/><br/>
-                        </div>
-                    </div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">상세주소</div>
-                        <div>
-                            <input name="detailAddress" onChange={onChangeHandler} type="text"
-                                   id="sample6_detailAddress" placeholder="상세주소"/>
-                        </div>
-                    </div>
 
-                    <div className="customers-regist-row-h">고객 특이사항</div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">특이사항</div>
-                        <div><textarea name="memo" onChange={onChangeHandler} rows="4" cols="50"></textarea></div>
-                    </div>
-
-                    <div className="customers-regist-row-h">보호자 정보</div>
-                    <div className="customers-regist-row">
-                        <div>보호자 이름</div>
-                        <div><input name="guardianName" onChange={onChangeHandler}/></div>
-                    </div>
-                    <div className="customers-regist-row">
-                        <div className="customers-regist-head">보호자 관계</div>
-                        <div><input name="guardianRelationship" onChange={onChangeHandler}/></div>
-                    </div>
-                    <div className="customers-regist-row customers-regist-row-phone">
-                        <div className="customers-regist-head">보호자 연락처</div>
-                        <div>
-                            <select name="guardianPhone1" onChange={onChangeHandler}
-                                    className="customers-regist-select">
-                                <option value="010">010</option>
-                                <option value="011">011</option>
-                                <option value="012">012</option>
-                            </select>
+                    {!modifyMode &&
+                        <div className="customers-regist-button-div">
+                            <div onClick={onClickModifyModeHandler} className="customers-regist-button">고객 정보 수정</div>
                         </div>
-                        -   &nbsp;
-                        <div><input name="guardianPhone2" onChange={onChangeHandler}/></div>
-                        -    &nbsp;
-                        <div><input name="guardianPhone3" onChange={onChangeHandler}/></div>
-                    </div>
-                    <div className="customers-regist-button-div">
-                        <div onClick={onClickRegistHandler} className="customers-regist-button">신규 고객 등록</div>
-                    </div>
-
-            </div>
+                    }
+                    {modifyMode &&
+                        <div className="customers-regist-button-div">
+                            <div onClick={onClickModifyHandler} id="customers-modify-save"
+                                 className="customers-regist-button">수정완료
+                            </div>
+                            <div onClick={onClickModifyCancle} className="customers-regist-button">취소</div>
+                        </div>
+                    }
+                </div>
+            )}
         </>
     )
 }

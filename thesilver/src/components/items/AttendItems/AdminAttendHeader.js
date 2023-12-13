@@ -47,7 +47,9 @@ function AdminAttendHeader({month, setMonth}) {
 
                         <div className="attendMonth">
                         <button onClick={onClickUpHandler} className="attendMonthbtn">&lt;</button>
-                        <div>{inputMonth.current && inputMonth.current.value}</div>
+                        <div style={{
+                            paddingTop:3
+                        }}>{inputMonth.current && inputMonth.current.value}</div>
                         <button onClick={onClickDownHandler} className="attendMonthbtn">&gt;</button>
                         </div>
                         <select>

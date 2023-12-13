@@ -18,13 +18,11 @@ function LoginForm() {
 
     const onKeyUpHandler = (e) => {
         if (e.key === 'Enter') {
-            console.log(form)
             dispatch(callLoginAPI({"loginForm": form}))
         }
     }
 
     const onClickHandler = () => {
-        console.log(form)
         dispatch(callLoginAPI({"loginForm": form}))
     }
 
@@ -61,10 +59,7 @@ function LoginForm() {
                     />
                 </div>
 
-                <div className="login-content-autologin">
-                    <input type="checkbox" id="login-checkbox"/><label className="login-content-label"
-                                                                       htmlFor="login-checkbox">자동 로그인</label>
-                </div>
+
 
                 <div>
                     <div

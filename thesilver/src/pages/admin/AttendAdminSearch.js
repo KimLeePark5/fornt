@@ -22,16 +22,17 @@ function AttendAdminSearch(){
 
     return(
         <>
-            123
             {attendAdmin &&
-                <>
-                    <AdminAttendHeader month={month} setMonth={setMonth} />
-                    <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
-                    <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo} />
-                </>
+                <div>
+                    <div className="attendAdminHead">직원 근태 관리</div>
+                    <div className="attendBackAdmin">
+                        <AdminAttendHeader month={month} setMonth={setMonth} />
+                        <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
+                        <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo}/>
+                    </div>
+                </div>
             }
         </>
-
     )
 }
 export default AttendAdminSearch;
