@@ -115,5 +115,17 @@ export const callLicenseDeleteAPI = ({licenseCode}) => {
     }
 }
 
+export const callGraphCustomers = () => {
+    return async (dispatch, getState) => {
+        const result = await authRequest.delete(`/api/v1/customers/graph`)
+            .catch(e => {
+                    console.log(e)
+                }
+            )
+        if (result.status === 200) {
+            console.log(result)
+        }
+    }
+}
 
 

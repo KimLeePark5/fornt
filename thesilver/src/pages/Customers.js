@@ -28,9 +28,18 @@ function Customers() {
     const accountStatus = searchParams.get('accountStatus')
 
     // 그래프 연습
-    const firstData = firstGraphData
-    const secondData = secondGraphData
-    const thirdData = thirdGraphData
+    useEffect(() => {
+        dispatch(callCustomersAPI({condition, currentPage}));
+
+        if (putSuccess) {
+            alert("고객 정보 수정이 완료되었습니다.")
+            onSuccessCloseHandler("customer")
+        }
+    }, [currentPage, condition, putSuccess]);
+
+    const firstData = firstGraphData()
+    const secondData = secondGraphData()
+    const thirdData = thirdGraphData()
 
     useEffect(() => {
         dispatch(callCustomersAPI({condition, currentPage}));
