@@ -3,22 +3,17 @@ import {useDispatch} from "react-redux";
 import {callSearchNameAPICalls} from "../../../apis/AttendAPICalls";
 import {useNavigate} from "react-router-dom";
 
-function AdminAttendHeader({month, setMonth, name}) {
-    const inputMonth = useRef('');
+function AdminAttendHeader({month, setMonth}) {
+    const inputMonth = useRef();
     const date = new Date();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [searchName, setSearchName] = useState();
-    const [value,setValue]=useState('');
+    const [searchName, setSearchName] = useState('');
     const onChangeSearchNameHnadler = (e) => {
         setSearchName(e.target.value)
     }
     const onClickSearchHandler = () => {
         navigate(`/attend-management/search?name=${searchName}`)
-    }
-    const attendSearchCategory = (e)=>{
-        console.log(e.target.value)
-        setValue(e.target.value)
-        navigate(`/attend-management/sort?sort=${e.target.value}`)
     }
     const month1 = useRef(Number(date.getMonth() + 1));
     const year1 = useRef(Number(date.getFullYear()));
@@ -43,11 +38,10 @@ function AdminAttendHeader({month, setMonth, name}) {
     const onChangeMonthHandler = (e) => {
         setMonth(e.target.value)
     }
-
     return (
         <>
                     <div className="admin-attend-head">
-                        <input type="text" placeholder="이름으로 검색" value={ searchName != null ? searchName : name != null ? name : ''} onChange={onChangeSearchNameHnadler} className="attendNameBox"/>
+                        <input type="text" placeholder="이름으로 검색" value={searchName} onChange={onChangeSearchNameHnadler} className="attendNameBox"/>
                         <button type="button" onClick={onClickSearchHandler} className="attendNameBtn">검색</button>
                         <input type="month" value={month} onChange={onChangeMonthHandler} ref={inputMonth} style={{display:"none"}}/>
 
@@ -55,18 +49,13 @@ function AdminAttendHeader({month, setMonth, name}) {
                         <button onClick={onClickUpHandler} className="attendMonthbtn">&lt;</button>
                         <div style={{
                             paddingTop:3
-                        }}>{inputMonth.current ? inputMonth.current.value : date.getFullYear()+'-'+(date.getMonth()+1)}</div>
-
+                        }}>{inputMonth.current && inputMonth.current.value}</div>
                         <button onClick={onClickDownHandler} className="attendMonthbtn">&gt;</button>
                         </div>
-                        <select onChange={attendSearchCategory} className='categoryInput' >
-                            <option value='default'>기본</option>
-                            <option value='team'>팀</option>
-                            <option value='abs'>결근</option>
-                            <option value='late'>지각</option>
-                            <option value='vac'>휴가</option>
-                            <option value='leaveE'>조퇴</option>
-                            <option value='atTime'>근무시간</option>
+                        <select>
+                            <option>123</option>
+                            <option>123</option>
+                            <option>123</option>
                         </select>
                     </div>
 

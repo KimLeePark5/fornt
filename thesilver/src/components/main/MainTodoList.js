@@ -10,15 +10,15 @@ function MainTodoList(){
     const [day,setDay]=useState(today);
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
-    const {myTodo,modifySuccess,deleteSuccess,registSuccess,completeSuccess} = useSelector(state=>state.todoListReducer);
-
-    // if(modifySuccess){
-    //     window.location.reload();
-    // }
+    const {myTodo} = useSelector(state=>state.todoListReducer);
+    console.log("mytodo",myTodo)
 
     useEffect(() => {
         dispatch(callTodoListAPI(page,day))
-    }, [day,page,modifySuccess,deleteSuccess,registSuccess,completeSuccess]);
+    }, [day,page]);
+    useEffect(() => {
+        dispatch(callTodoListAPI(page,day))
+    }, []);
 
     const [todoRegist,setTodoRegist]=useState(false);
 

@@ -7,11 +7,10 @@ function MainCommuteBt(){
     const dispatch = useDispatch();
     const {todayAttend} = useSelector(state => state.attendReducer);
     const progress = useRef()
-    const {enterSuccess,leaveSuccess}=useSelector(state  => state.attendReducer)
+
     useEffect(() => {
         dispatch(callTodayAttendAPI());
-    }, [enterSuccess,leaveSuccess]);
-
+    }, []);
 
     const onClickEnterBtHandler = () => {
         dispatch(callEnterBtAPI());
@@ -33,17 +32,17 @@ function MainCommuteBt(){
         const mins = min - (days * 60 * 24) - (hours * 60);
         return hours + 'H ' + mins + 'M';
     }
-    const getCurentWorkTime = (enterTime, leaveTime, attendDate) => {
-        const dateA = new Date(attendDate + ' ' + enterTime);
-        const dateC = new Date(attendDate + ' ' + leaveTime);
+    const getCurentWorkTime = (enterTime,leaveTime,attendDate) => {
+
+        const dateA = new Date(attendDate +' '+ enterTime);
+        const dateC = new Date(attendDate +' '+ leaveTime);
         const dateB = new Date();
         const dateE = new Date(attendDate + ' 09:00:00')
-        const dateD = new Date(attendDate + ' 18:00:00');
+        const dateD = new Date(attendDate +' 18:00:00');
         let workTime = 0;
-        if (leaveTime == null) {
+        if(leaveTime == null){
             workTime = parseInt((dateB - dateA.getTime()) / (1000 * 60));
-        } else {
-
+        }else{
             workTime = parseInt((dateC.getTime() - dateA.getTime()) / (1000 * 60));
         }
 
@@ -51,13 +50,12 @@ function MainCommuteBt(){
         let perc = dateB - dateE;
         console.log(total);
         console.log(perc);
-        console.log(perc / total)
-        const a = Math.round(perc / total * 100);
+        console.log(perc/total)
+        const a = Math.round(perc/total * 100);
         console.log(progress.current)
         // progress.current.style.width=`${a}%`
 
-        if (progress.current) {
-
+        if(progress.current){
             progress.current.style.width = `${a}%`
         }
 
