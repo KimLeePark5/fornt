@@ -12,6 +12,7 @@ const POST_LICENSE = 'customers/POST_LICENSE';
 const POST_LICENSE_RESET = 'customers/POST_LICENSE_RESET';
 const DELETE_LICENSE = 'customers/DELETE_LICENSE';
 const DELETE_LICENSE_RESET = 'customers/DELETE_LICENSE_RESET';
+const GET_GRAPH_DATA = 'customers/GET_GRAPH_DATA';
 
 export const {
     customers: {
@@ -24,7 +25,8 @@ export const {
         postLicense,
         postLicenseReset,
         deleteLicense,
-        deleteLicenseReset
+        deleteLicenseReset,
+        getGraphData
     }
 } = createActions({
     [GET_CUSTOMERS]: result => ({customers: result.data}),
@@ -36,7 +38,8 @@ export const {
     [POST_LICENSE]: () => ({postLicenseSuccess: true}),
     [POST_LICENSE_RESET]: () => ({postLicenseSuccess: false}),
     [DELETE_LICENSE]: () => ({deleteLicenseSuccess: true}),
-    [DELETE_LICENSE_RESET]: () => ({deleteLicenseSuccess: false})
+    [DELETE_LICENSE_RESET]: () => ({deleteLicenseSuccess: false}),
+    [GET_GRAPH_DATA]: (result) => ({graphData: result.data})
 });
 
 /* 리듀서 함수 */
@@ -50,7 +53,8 @@ const customerReducer = handleActions({
     [POST_LICENSE]: (state, {payload}) => ({...state, ...payload}),
     [POST_LICENSE_RESET]: (state, {payload}) => ({...state, ...payload}),
     [DELETE_LICENSE]: (state, {payload}) => ({...state, ...payload}),
-    [DELETE_LICENSE_RESET]: (state, {payload}) => ({...state, ...payload})
+    [DELETE_LICENSE_RESET]: (state, {payload}) => ({...state, ...payload}),
+    [GET_GRAPH_DATA]: (state, {payload}) => payload
 }, initialState);
 
 export default customerReducer;
