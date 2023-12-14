@@ -7,6 +7,7 @@ import {
     myAttend,
     todayAttend
 } from "../modules/AttendModule";
+
 import {toast} from "react-toastify";
 
 export const callGetAttendResultAPI = ({month}) => {
@@ -16,6 +17,7 @@ export const callGetAttendResultAPI = ({month}) => {
 
         if (result?.status == 200) {
             dispatch(myAttend(result));
+
         }
     }
 }
@@ -24,9 +26,11 @@ export const callEnterBtAPI = () => {
     return async (dispatch, getState) => {
         const result = await authRequest.put('/api/v1/enter').catch(e => {
             if (e.response.status === 400) {
+
                 toast.error('이미 출근 등록이 되어있습니다.')
             }
         })
+
 
         if (result?.status == 201) {
             toast.info("출근등록이 완료되었습니다")
@@ -52,6 +56,7 @@ export const callTodayAttendAPI = () => {
         const result = await authRequest.get('/api/v1/todayMyAttend').catch(e => console.log(e))
 
 
+
         if (result?.status == 200) {
             dispatch(todayAttend(result))
         }
@@ -62,6 +67,7 @@ export const callGetAttendAdminResultAPI = (month, page) => {
     return async (dispatch, getState) => {
         const result = await authRequest.get(`/api/v1/getAttendAdmin?month=${month}&page=${page}`)
         if (result?.status == 200) {
+
             dispatch(attendAdmin(result))
         }
     }
@@ -71,6 +77,7 @@ export const callSearchNameAPICalls = (month, empName, page) => {
     return async (dispatch, getState) => {
         const result = await authRequest.get(`/api/v1/getAttendAdminByEmpName?month=${month}&name=${empName}&page=${page}`)
         if (result?.status == 200) {
+
             dispatch(attendAdmin(result))
         }
         if (result == null) {
@@ -78,6 +85,7 @@ export const callSearchNameAPICalls = (month, empName, page) => {
         }
     }
 }
+
 export const callGetAttendAdminByCategoryResultAPI = (month, page, sort) => {
     return async (dispatch, getState) => {
         console.log("avababababa", sort)
@@ -103,6 +111,7 @@ export const callModifyAttendAPI = (form, attendNo) => {
         ).catch(e => console.log(e))
 
         if (result.status == 201) {
+
             dispatch(attendModifySuccess(result))
         }
 

@@ -12,6 +12,7 @@ function AttendItem() {
     const today = year1.current + '-' + (String(month1.current).length == 1 ? '0' + month1.current : month1.current);
     const inputmonth = useRef();
 
+
     const monthChangeHandler = (e) => {
         setMonth(e.target.value)
     }
@@ -172,6 +173,7 @@ function AttendItem() {
                     <span>{inputmonth.current && (inputmonth.current.value).replace("-", "년 ")}월</span>
                     <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
                 </div>
+
             </div>
             {myAttend &&
                 <div className="attend-detail-box">
@@ -188,6 +190,7 @@ function AttendItem() {
                                 <div className="detail-name">출근</div>
                                 <div
                                     className="detail-count">{myAttend.responseAttend.length - myAttend.responseAttendType.absentCount - myAttend.responseAttendType.vacationCount-getDayof(month1) >=0 ? myAttend.responseAttend.length - myAttend.responseAttendType.absentCount - myAttend.responseAttendType.vacationCount-getDayof(month1) : 0+myAttend.responseAttend.length}</div>
+
                             </div>
                             <div className='testxxat'>
                                 <div className="detail-name">결근</div>

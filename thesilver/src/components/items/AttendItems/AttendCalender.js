@@ -9,6 +9,7 @@ function AttendCalender({myAttend: {responseAttend}}) {
     console.log(cal.current)
     const attcal = (responseAttend) => {
         const arr = []
+
         responseAttend.map(attend => arr.push({
             title: attend.note=='결근'? '' : attend.note=='휴가'? '' : attend.leaveTime != '' ? /*'퇴근 : ' +*/ attend.leaveTime : '',
             date: attend.note=='결근'? '' : attend.note=='휴가'? '' : attend.attendDate,
@@ -23,6 +24,7 @@ function AttendCalender({myAttend: {responseAttend}}) {
             textColor: attend.note == '지각' ? 'red' : 'white',
             color:'white',
             backgroundColor: attend.note=='결근'? '#c20000' : attend.note == '지각' ? '#FFB2B2' : attend.note=='휴가' ? '#2a50ae' : attend.enterTime ? '#262065' : 'inherit'
+
         }))
         return arr
     }
