@@ -8,7 +8,9 @@ import EmpSimpleInfo from "../components/main/EmpSimpleInfo";
 function Main(){
 
     return(
+
         <>
+
         <ToastContainer hideProgressBar={true} position="top-center"/>
         <div class='mainContainer'>
             <EmpSimpleInfo/>

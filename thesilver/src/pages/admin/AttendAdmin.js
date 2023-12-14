@@ -11,16 +11,10 @@ function AttendAdmin(){
     const[month, setMonth]=useState(today);
     const[page, setCurrentPage] = useState(1);
     const dispatch = useDispatch();
-    const {attendAdmin} = useSelector(state=>state.attendReducer)
-
+    const {attendAdmin,attendModifySuccess} = useSelector(state=>state.attendReducer)
     useEffect(() => {
         dispatch(callGetAttendAdminResultAPI(month,page))
-    }, [month,page]);
-
-    useEffect(() => {
-        dispatch(callGetAttendAdminResultAPI(month,page))
-    },[])
-
+    }, [month,page,attendModifySuccess]);
 
     return(
         <>

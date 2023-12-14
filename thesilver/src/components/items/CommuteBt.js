@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {callEnterBtAPI, callLeaveBtAPI, callTodayAttendAPI} from "../../apis/AttendAPICalls";
+import {callEnterBtAPI, callGetAttendResultAPI, callLeaveBtAPI, callTodayAttendAPI} from "../../apis/AttendAPICalls";
 import {useEffect, useRef, useState} from "react";
 import {ToastContainer} from "react-toastify";
 
@@ -8,10 +8,10 @@ function CommuteBt() {
     const dispatch = useDispatch();
     const {todayAttend} = useSelector(state => state.attendReducer);
     const progress = useRef()
-
+    const {enterSuccess,leaveSuccess}=useSelector(state  => state.attendReducer)
     useEffect(() => {
         dispatch(callTodayAttendAPI());
-    }, []);
+    }, [enterSuccess,leaveSuccess]);
 
     const onClickEnterBtHandler = () => {
         dispatch(callEnterBtAPI());
