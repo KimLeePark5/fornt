@@ -26,7 +26,8 @@ function AttendAdminSearch(){
                 <div>
                     <div className="attendAdminHead">직원 근태 관리</div>
                     <div className="attendBackAdmin">
-                        <AdminAttendHeader month={month} setMonth={setMonth} />
+                        <AdminAttendHeader month={month} setMonth={setMonth} name={nameValue} />
+
                         <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
                         <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo}/>
                     </div>

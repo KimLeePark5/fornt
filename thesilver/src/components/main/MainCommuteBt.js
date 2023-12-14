@@ -10,7 +10,8 @@ function MainCommuteBt(){
 
     useEffect(() => {
         dispatch(callTodayAttendAPI());
-    }, []);
+    }, [enterSuccess,leaveSuccess]);
+
 
     const onClickEnterBtHandler = () => {
         dispatch(callEnterBtAPI());
@@ -42,7 +43,9 @@ function MainCommuteBt(){
         let workTime = 0;
         if(leaveTime == null){
             workTime = parseInt((dateB - dateA.getTime()) / (1000 * 60));
-        }else{
+
+        } else {
+
             workTime = parseInt((dateC.getTime() - dateA.getTime()) / (1000 * 60));
         }
 
@@ -55,7 +58,9 @@ function MainCommuteBt(){
         console.log(progress.current)
         // progress.current.style.width=`${a}%`
 
-        if(progress.current){
+
+        if (progress.current) {
+
             progress.current.style.width = `${a}%`
         }
 

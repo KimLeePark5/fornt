@@ -1,5 +1,7 @@
 import {authRequest, request} from "./Api";
-import {deleteSuccess, getTodolist, modifySuccess, registSuccess} from "../modules/TodoListModule";
+
+import {completeSuccess, deleteSuccess, getTodolist, modifySuccess, registSuccess} from "../modules/TodoListModule";
+
 
 export const callTodoListAPI = (page=1,day)=>{
     console.log(day)
@@ -43,7 +45,9 @@ export const callTodoComplete = (todoNo,message) =>{
     return async (dispatch,getState)=>{
         const result = await authRequest.put(`api/v1/todoListComplete/${todoNo}?message=${message}`)
         if(result?.status == 201){
-            window.location.reload()
+
+            dispatch(completeSuccess(result))
+
         }
     }
 

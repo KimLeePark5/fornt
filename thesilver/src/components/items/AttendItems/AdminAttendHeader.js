@@ -49,7 +49,9 @@ function AdminAttendHeader({month, setMonth}) {
                         <button onClick={onClickUpHandler} className="attendMonthbtn">&lt;</button>
                         <div style={{
                             paddingTop:3
-                        }}>{inputMonth.current && inputMonth.current.value}</div>
+
+                        }}>{inputMonth.current ? inputMonth.current.value : date.getFullYear()+'-'+(date.getMonth()+1)}</div>
+
                         <button onClick={onClickDownHandler} className="attendMonthbtn">&gt;</button>
                         </div>
                         <select>

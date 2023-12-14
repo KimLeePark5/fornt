@@ -2,26 +2,36 @@ import React, {useState} from "react";
 import AttendModal from "./AttendModal";
 import AttendAdmin from "../../../pages/admin/AttendAdmin";
 
-function EmployeeInfo({attendAdmin, setMonth,month}) {
-
+function EmployeeInfo({attendAdmin, setMonth, month}) {
     const [attendModal, setAttendModal] = useState(false);
     const [empNo, setEmpNo] = useState(0);
 
-    const getAttlate = (attendAdmin,i)=>{
+    const getAttlate = (attendAdmin, i, month) => {
         const date = new Date();
-
-        let start =new Date(date.getFullYear(),date.getMonth(),1)
-        console.log("start:",start)
+        let start = new Date(String(month).substring(0, 4), (String(month).substring(5,7))-1, 1)
+        let end = new Date(start.getFullYear(), start.getMonth()+1,0)
         let now = new Date(date)
+
         let dayoff = 0;
-        console.log("now",now)
-        for(let i = 1; start <= now; i++){
-            if(start.getDay() == 0){
-                dayoff += 1
-            }else if(start.getDay() == 6){
-                dayoff += 1
+        const thisMonth = Boolean(start.getMonth()==date.getMonth());
+        if (thisMonth) {
+            for (let i = 1; start <= now; i++) {
+                if (start.getDay() == 0) {
+                    dayoff += 1
+                } else if (start.getDay() == 6) {
+                    dayoff += 1
+                }
+                start.setDate(start.getDate() + 1)
             }
-            start.setDate(start.getDate()+1)
+        }else{
+            for (let i = 1; start <= end; i++) {
+                if (start.getDay() == 0) {
+                    dayoff += 1
+                } else if (start.getDay() == 6) {
+                    dayoff += 1
+                }
+                start.setDate(start.getDate() + 1)
+            }
 
         }
         console.log("dayof",dayoff)
@@ -29,43 +39,36 @@ function EmployeeInfo({attendAdmin, setMonth,month}) {
         let abs = 0;
         let vac = 0;
         attendAdmin.data.responseAttendAdmin.content[i].attendList.map(att => {
-            if(att.note == '결근'){
+            if (att.note == '결근') {
                 abs += 1;
-            }else if(att.note == '휴가'){
+            } else if (att.note == '휴가') {
                 vac += 1;
             }
         })
-
-        console.log('abs',abs)
-        console.log('vac',vac)
-
         const attendDate = attendAdmin.data.responseAttendAdmin.content[i].attendList.length - abs - vac;
-
         let week = 0;
-        attendAdmin.data.responseAttendAdmin.content[i].attendList.map(att=>{
-            if(new Date(att.attendDate).getDay() == 0){
+        attendAdmin.data.responseAttendAdmin.content[i].attendList.map(att => {
+            if (new Date(att.attendDate).getDay() == 0) {
                 week += 1;
-            }else if(new Date(att.attendDate).getDay() == 6){
+            } else if (new Date(att.attendDate).getDay() == 6) {
                 week += 1;
             }
         })
-        console.log(attendAdmin.data.responseAttendAdmin.content[i].attendList)
 
-        console.log('week',week);
-
-
-        return parseInt(((attendDate-week) / (date.getDate()-dayoff) ) * 100);
+        return parseInt(((attendDate - week) /  ( (thisMonth ? date.getDate() : end.getDate()) - dayoff)) * 100);
     }
-    const attendDetailOnclickHandler = (empNo,index)=>{
+
+    const attendDetailOnclickHandler = (empNo, index) => {
         setEmpNo(empNo);
         setAttendModal(true);
     }
+
     return (
         <div className="attendAdminMain">
             {attendModal &&
-                <AttendModal  setAttendModal={setAttendModal} empNo={empNo} attendAdmin={attendAdmin}
-                              setMonth={setMonth} month={month}
-            />}
+                <AttendModal setAttendModal={setAttendModal} empNo={empNo} attendAdmin={attendAdmin}
+                             setMonth={setMonth} month={month}
+                />}
             <div className='empatinfohead'>
                 <div>근무율</div>
                 <div>결근</div>

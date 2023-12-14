@@ -13,6 +13,10 @@ export const {attend : {myAttend, todayAttend, attendAdmin,attendModifySuccess}}
     [MY_ATTEND] : result => ({ myAttend : result.data}),
     [TODAY_ATTEND] : result => ({todayAttend : result.data}),
     [ATTEND_ADMIN] : result => ({attendAdmin : result.data}),
+    [ATTEND_MODIFY_SUCCESS] : result => ({attendModifySuccess : true}),
+    [ENTER_SUCCESS] : result => ({enterSuccess : true}),
+    [LEAVE_SUCCESS] : result =>({leaveSuccess : true}),
+    [ATTEND_ADMIN_BY_TYPE] : result => ({attendAdminType : result.data})
     [ATTEND_MODIFY_SUCCESS] : result => ({attendModifySuccess : true})
 });
 
@@ -27,6 +31,12 @@ export const attendReducer = handleActions({
         ...payload
     }),
     [ATTEND_ADMIN] : (state, {payload}) => payload,
+    [ATTEND_MODIFY_SUCCESS] : (state,{payload})=>({
+        ...state,
+        ...payload
+    }),
+    [ENTER_SUCCESS] : (state,{payload}) => payload,
+    [LEAVE_SUCCESS] : (state,{payload}) => payload,
+    [ATTEND_ADMIN_BY_TYPE] : (state,{payload}) => payload,
     [ATTEND_MODIFY_SUCCESS] : (state,{payload})=>payload
-
 },initialState)

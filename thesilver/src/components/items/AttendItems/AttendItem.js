@@ -51,12 +51,16 @@ function AttendItem() {
     return (
         <div className='attend-main'>
             <div className="attend-month">
-                <button onClick={onClickUpHandler} className="attend-btn">&lt;</button>
-                <input ref={inputmonth} type="month" onChange={monthChangeHandler} value={month} style={{
-                    display:"none"
-                }}/>
-                <span>{inputmonth.current && (inputmonth.current.value).replace("-","년 ")}월</span>
-                <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
+
+                <div style={{height: '100%', lineHeight: 2}}>
+                    <button onClick={onClickUpHandler} className="attend-btn">&lt;</button>
+                    <input ref={inputmonth} type="month" onChange={monthChangeHandler} value={month} style={{
+                        display: "none"
+                    }}/>
+                    <span>{inputmonth.current && (inputmonth.current.value).replace("-", "년 ")}월</span>
+                    <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
+                </div>
+
             </div>
             {myAttend &&
                 <div className="attend-detail-box">
@@ -71,7 +75,10 @@ function AttendItem() {
                         <div className="attend-detail">
                             <div>
                                 <div className="detail-name">출근</div>
-                                <div className="detail-count">{myAttend.responseAttend.length-myAttend.responseAttendType.absentCount-myAttend.responseAttendType.vacationCount}</div>
+
+                                <div
+                                    className="detail-count">{myAttend.responseAttend.length - myAttend.responseAttendType.absentCount - myAttend.responseAttendType.vacationCount-getDayof(month1) >=0 ? myAttend.responseAttend.length - myAttend.responseAttendType.absentCount - myAttend.responseAttendType.vacationCount-getDayof(month1) : 0+myAttend.responseAttend.length}</div>
+
                             </div>
                             <div>
                                 <div className="detail-name">결근</div>
