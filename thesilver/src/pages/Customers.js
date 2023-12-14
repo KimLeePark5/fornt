@@ -32,11 +32,28 @@ function Customers() {
         dispatch(callGraphDataAPI())
     }, []);
 
-    console.log("데이터확인 : ", graphData)
+    var firstData = []
+    var secondData = []
+    var thirdData = []
 
-    const firstData = firstGraphData
-    const secondData = secondGraphData
-    const thirdData = thirdGraphData
+    if (graphData) {
+
+        const slicedData1 = graphData.firstGraphData.slice(0, 12)
+        const slicedData2 = graphData.firstGraphData.slice(12, 24)
+        const slicedData3 = graphData.firstGraphData.slice(24, 36)
+        const slicedData4 = graphData.firstGraphData.slice(36, 48)
+        console.log(slicedData1)
+        console.log(slicedData2)
+        console.log(slicedData3)
+        console.log(slicedData4)
+
+        firstData = firstGraphData({slicedData1: slicedData1,slicedData2: slicedData2,slicedData3: slicedData3,slicedData4: slicedData4})
+        secondData = secondGraphData({secondGraphData: graphData?.secondGraphData})
+        thirdData = thirdGraphData({thirdGraphData: graphData?.thirdGraphData})
+    }
+
+    console.log("데이터확인 : ", graphData
+    )
 
     useEffect(() => {
         dispatch(callCustomersAPI({condition, currentPage}));

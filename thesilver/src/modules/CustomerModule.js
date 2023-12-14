@@ -44,7 +44,7 @@ export const {
 
 /* 리듀서 함수 */
 const customerReducer = handleActions({
-    [GET_CUSTOMERS]: (state, {payload}) => payload,
+    [GET_CUSTOMERS]: (state, {payload}) => ({...state, ...payload}),
     [POST_SUCCESS]: (state, {payload}) => payload,
     [GET_CUSTOMER]: (state, {payload}) => ({...state, ...payload}),
     [PUT_SUCCESS]: (state, {payload}) => payload,
@@ -54,7 +54,7 @@ const customerReducer = handleActions({
     [POST_LICENSE_RESET]: (state, {payload}) => ({...state, ...payload}),
     [DELETE_LICENSE]: (state, {payload}) => ({...state, ...payload}),
     [DELETE_LICENSE_RESET]: (state, {payload}) => ({...state, ...payload}),
-    [GET_GRAPH_DATA]: (state, {payload}) => payload
+    [GET_GRAPH_DATA]: (state, {payload}) => ({...state, ...payload})
 }, initialState);
 
 export default customerReducer;
