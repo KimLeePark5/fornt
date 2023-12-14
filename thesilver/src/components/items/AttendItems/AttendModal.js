@@ -22,6 +22,7 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
     const attendHistoryOnclickHandler = (code) => {
         setattendHistoryBtn(true);
         setAttendNo(code)
+
     }
     const attendModifyBtnHandler = (code)=>{
         if(!code){
@@ -48,6 +49,7 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
             console.log('day :',dayInfo)
             arr.push(
                 <div key={i} className="attenddiv" onClick={(e) => attendModifyBtnHandler(dayInfo?.attendCode) }>
+
                     <div  ref={day22} style=
                             {
                             curDay%7 == 0 ? {
@@ -63,6 +65,7 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
                     <div style={{marginLeft:28}}>{dayInfo?.note}</div>
                     <div style={{marginLeft:26}}>
                         <button ref={keyValue} value={dayInfo?.attendCode} className="getmodibtn" onClick={(e) => {
+
                             e.stopPropagation();
                             attendHistoryOnclickHandler(e.target.value);
                         }} style={ i < new Date().getDate() ? null : {display:"none"}}>확인
@@ -82,11 +85,13 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
         {attendHistoryBtn && <AttendHistoryModal attendNo={attendNo} setattendHistoryBtn={setattendHistoryBtn} attendAdmin={attendAdmin} month={month} today={day22.current ? day22.current.textContent : ''}/>}
         {attModifyBtn && <ModifyAttendModal setModifyBtn={setAttModifyBtn} attendNo={attendNo} empName={empAttendInfo.empName} attendAdmin={attendAdmin}/>}
 
+
         <div className="attendModal">
             <div className="attendModal-container">
                 <div className="attendmodalcontent">
                     <div className="modifiedHeader">
                         <span>{empAttendInfo.empName} </span><span style={{fontSize:18,color:'#a3a1a1'}}> {empAttendInfo.empRank}</span>
+
                         <input value={month} className="attendcal" type="month" onChange={(e) => setMonth(e.target.value)}/>
                         <button className="modifibtn" onClick={() => {
                             setAttendModal(false)

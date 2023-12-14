@@ -20,6 +20,7 @@ function TodoRegist({setTodoRegist}){
     }
     if(registSuccess){
         setTodoRegist(false)
+
     }
     return(
         <div class="todomodal">
