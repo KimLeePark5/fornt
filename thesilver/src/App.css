@@ -32,9 +32,9 @@
 
 
 .todoContainer{
-    margin-top: -215px;
+    margin-top: -170px;
     background-color: white;
-    height: 200px;
+    height: 150px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     grid-column: 2/3;
     grid-row: 3/4;
@@ -44,7 +44,7 @@
 
     border-radius: 20px;
     background-color: white;
-    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.25);
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
 }
 .mainContainer{
     display: grid;
@@ -63,12 +63,31 @@
     grid-row: 1 / 2;
 }
 .mainCal{
-    background-color: blue;
+    background-color: white;
     grid-column: 2/3;
     grid-row: 1/2;
-    height: 300px;
-
-
+    height: 355px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    text-align: center;
+}
+.calitem{
+    border-right: 1px solid #B6B6B6;
+    font-size: 20px;
+}
+.calDate{
+    height: 50px;
+    line-height: 50px;
+}
+.calConten{
+    text-align: left;
+    padding-top: 10px;
+    font-size: 17px;
+    padding-left: 20px;
+}
+.calitem:last-child{
+    border-right: none;
 }
 .mainMiniCal{
     grid-column: 1/2;
@@ -1702,7 +1721,9 @@ background-color: #01092b;
 .todobox{
     display: flex;
 }
-
+.itemboxtodo{
+    margin-left: 10px;
+}
 .modifyModal {
     position: fixed;
     top: 0;
@@ -2495,13 +2516,14 @@ display: none;
     display: flex;
 }
 .todobox{
-    height: 25px;
-    margin-top: 85px;
+
+    margin-top: 62px;
     font-size: 20px;
     margin-left: 70px;
     margin-bottom: 50px;
 }
 .todopage{
+    margin-top: -20px;
     margin-left: -90px;
 }
 .setttodo{

@@ -4,6 +4,7 @@ import MainAttend from "../components/main/MainAttend";
 import MainCommuteBt from "../components/main/MainCommuteBt";
 import SideCalendar from "../components/main/SideCalender";
 import EmpSimpleInfo from "../components/main/EmpSimpleInfo";
+import MainCal from "../components/main/MainCal";
 
 function Main(){
 
@@ -14,7 +15,7 @@ function Main(){
         <ToastContainer hideProgressBar={true} position="top-center"/>
         <div class='mainContainer'>
             <EmpSimpleInfo/>
-            <div class='mainCal'>일정 달력</div>
+           <MainCal/>
             <MainCommuteBt/>
             <MainTodoList/>
             <div class='mainMiniCal'><SideCalendar/></div>

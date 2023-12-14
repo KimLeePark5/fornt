@@ -76,7 +76,10 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
                 <div>휴가</div>
                 <div>연장근무</div>
             </div>
+
+
             <div className='allempatinfo'>
+                {attendAdmin.data.responseAttendAdmin.content.length == 0?  <div style={{fontSize:20,marginLeft:480,}}>검색결과가 없습니다.</div> : ''}
                 {(attendAdmin.data.responseAttendAdmin.content).map((emp, index) =>
                     <div className='empatinfo'>
                         <div style={{width: 150}}><span>{emp.empName} </span><span style={{
@@ -107,6 +110,7 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
                             }} className='attenddetailbtn' style={{marginLeft: 50}}>상세정보
                             </button>
                         </div>
+
                     </div>
                 )}
             </div>

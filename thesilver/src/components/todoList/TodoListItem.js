@@ -35,7 +35,7 @@ const textDecoStyle = (content)=>{
             {content && content.map(content =>
                 <div className='setttodo'>
                 <input type='checkbox'
-                       value={content.todoNo} checked={content.todoComplete == 'complete'} onChange={checkboxOnchangeHandler}/>
+                       value={content.todoNo} checked={content.todoComplete == 'complete'} onChange={checkboxOnchangeHandler} style={{marginTop:5}}/>
                 <div className='itemboxtodo'
                      style={textDecoStyle(content)}
                      onClick={()=> {
