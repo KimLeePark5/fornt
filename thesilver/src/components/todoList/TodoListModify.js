@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callTodoDeleteAPI, callTodoModifyAPI} from "../../apis/TodoListAPI";
 import {toast} from "react-toastify";
@@ -9,27 +9,13 @@ const dispatch = useDispatch();
     const[text,setText]=useState('')
     const {modifySuccess,deleteSuccess} = useSelector(state=>state.todoListReducer)
     const navigate = useNavigate();
-    console.log(todoNo)
-    const [sta,setsta]=useState(false)
-
-    useEffect(() => {
-
-    }, [sta]);
+console.log(todoNo)
     const todoModifyHandler = ()=>{
-        if(!text){
-            toast.error("공백일 수 없습니다.")
-            return;
-        }
+        console.log("text",text)
         dispatch(callTodoModifyAPI(text,todoNo));
-setsta(!sta)
     }
     const todoDeleteHandler = ()=>{
         dispatch(callTodoDeleteAPI(todoNo));
-        setsta(!sta)
-    }
-    if(deleteSuccess){
-    }
-    if(modifySuccess){
     }
     return(
         <div className='todomodal'>

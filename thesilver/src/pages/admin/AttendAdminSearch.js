@@ -11,15 +11,14 @@ function AttendAdminSearch(){
     const today = String(date.getFullYear()) +'-'+ String(date.getMonth()+1);
     const[month, setMonth]=useState(today);
     const[page, setCurrentPage] = useState(1);
-    const dispatch = useDispatch();
-    const {attendAdmin,attendModifySuccess} = useSelector(state=>state.attendReducer)
-
     const [searchParams] = useSearchParams();
     const nameValue = searchParams.get("name");
+    const dispatch = useDispatch();
+    const {attendAdmin} = useSelector(state=>state.attendReducer)
 
     useEffect(() => {
         dispatch(callSearchNameAPICalls(month,nameValue,page));
-    }, [month,page,searchParams,attendModifySuccess]);
+    }, [month,page,searchParams]);
 
     return(
         <>
@@ -28,6 +27,7 @@ function AttendAdminSearch(){
                     <div className="attendAdminHead">직원 근태 관리</div>
                     <div className="attendBackAdmin">
                         <AdminAttendHeader month={month} setMonth={setMonth} name={nameValue} />
+
                         <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
                         <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo}/>
                     </div>

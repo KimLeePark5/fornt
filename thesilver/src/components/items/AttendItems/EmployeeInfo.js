@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import AttendModal from "./AttendModal";
-import {useSelector} from "react-redux";
+import AttendAdmin from "../../../pages/admin/AttendAdmin";
 
 function EmployeeInfo({attendAdmin, setMonth, month}) {
     const [attendModal, setAttendModal] = useState(false);
@@ -77,40 +77,25 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
                 <div>휴가</div>
                 <div>연장근무</div>
             </div>
-            <div className='allempatinfo'>
-                {(attendAdmin.data.responseAttendAdmin.content).map((emp, index) =>
-                    <div className='empatinfo'>
-                        <div style={{width: 150}}><span>{emp.empName} </span><span style={{
-                            fontSize: 14,
-                            color: "#a3a1a1"
-                        }}> {emp.team != '미지정' ? emp.team : ''} {emp.empRank}</span></div>
-                        <div className='emalte' style={getAttlate(attendAdmin, index,month) == 100 ? {
-                            color: '#3CB371',
-                            backgroundColor: '#86ED93'
-                        } : {color: 'red', backgroundColor: '#FFB2B2'}}>
-                            <div className='ele2'>{getAttlate(attendAdmin, index, month)}%</div>
-                        </div>
-                        <div
-                            style={{marginLeft: 42}}>{attendAdmin.data.responseAttendTypes.content[index].absentCount}회
-                        </div>
-                        <div style={{marginLeft: 13}}>{attendAdmin.data.responseAttendTypes.content[index].lateCount}회
-                        </div>
-                        <div
-                            style={{marginLeft: 12}}>{attendAdmin.data.responseAttendTypes.content[index].leaveEarlyCount}회
-                        </div>
-                        <div
-                            style={{marginLeft: 13}}>{attendAdmin.data.responseAttendTypes.content[index].vacationCount}회
-                        </div>
-                        <div style={{marginLeft: 20}}>12시간</div>
-                        <div>
-                            <button onClick={(e) => {
-                                attendDetailOnclickHandler(emp.empCode)
-                            }} className='attenddetailbtn' style={{marginLeft: 50}}>상세정보
-                            </button>
-                        </div>
-                    </div>
-                )}
-            </div>
+        <div className='allempatinfo'>
+            {(attendAdmin.data.responseAttendAdmin.content).map((emp, index) =>
+                <div className='empatinfo'>
+                    <div style={{width:120}}> <span>{emp.empName} </span><span style={{fontSize:14,color:"#a3a1a1"}}> {emp.empRank}</span></div>
+                    <div className='emalte' style={getAttlate(attendAdmin,index) == 100 ? {color:'#3CB371',backgroundColor:'#86ED93'} : {color:'red',backgroundColor:'#FFB2B2'}}><div className='ele2'>{getAttlate(attendAdmin,index)}%</div></div>
+                    <div style={{marginLeft:42}}>{attendAdmin.data.responseAttendTypes.content[index].absentCount}회</div>
+                    <div style={{marginLeft:13}}>{attendAdmin.data.responseAttendTypes.content[index].lateCount}회</div>
+                    <div style={{marginLeft:12}}>{attendAdmin.data.responseAttendTypes.content[index].leaveEarlyCount}회</div>
+                    <div style={{marginLeft:13}}>{attendAdmin.data.responseAttendTypes.content[index].vacationCount}회</div>
+                    <div style={{marginLeft:20}}>12시간</div>
+                    <div> <button onClick={(e) => {
+                        attendDetailOnclickHandler(emp.empCode)
+                    }} className='attenddetailbtn' style={{marginLeft:50}}>상세정보
+                    </button></div>
+                </div>
+            )}
+        </div>
+
+
         </div>
     )
 }

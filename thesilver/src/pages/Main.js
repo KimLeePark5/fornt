@@ -14,7 +14,6 @@ function Main() {
     const accountStatus = searchParams.get('accountStatus')
     const [modal, setModal] = useState(false);
 
-
     useEffect(() => {
         if (accountStatus === "INACTIVE") {
             setModal(true)
