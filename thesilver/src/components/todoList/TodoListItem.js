@@ -31,7 +31,6 @@ const textDecoStyle = (content)=>{
     return(
         <div className='todobox'>
             {todoLIstModifyModal && <TodoListModify settodoLIstModifyModal={settodoLIstModifyModal} todoNo={todoNo}/>}
-            {content.length == 0 && <div style={{fontSize:17,paddingLeft:240}}>오늘 할 일을 등록해보세요</div>}
             {content && content.map(content =>
                 <div className='setttodo'>
                 <input type='checkbox'

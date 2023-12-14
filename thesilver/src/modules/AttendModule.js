@@ -40,4 +40,5 @@ export const attendReducer = handleActions({
     [ENTER_SUCCESS] : (state,{payload}) => payload,
     [LEAVE_SUCCESS] : (state,{payload}) => payload,
     [ATTEND_ADMIN_BY_TYPE] : (state,{payload}) => payload,
+    [ATTEND_MODIFY_SUCCESS] : (state,{payload})=>payload
 },initialState)
