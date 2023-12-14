@@ -1,7 +1,8 @@
-export const firstGraphData = () => [
+export const firstGraphData = ({slicedData1,slicedData2,slicedData3,slicedData4}) =>
+
+    [
     {
-        "id": "60대",
-        "color": "hsl(188, 70%, 50%)",
+        "id": "2023년",
         "data": [
             {
                 "x": "7월",
@@ -32,7 +33,6 @@ export const firstGraphData = () => [
     },
     {
         "id": "70대",
-        "color": "hsl(256, 70%, 50%)",
         "data": [
             {
                 "x": "7월",
@@ -63,7 +63,6 @@ export const firstGraphData = () => [
     },
     {
         "id": "80대",
-        "color": "hsl(81, 70%, 50%)",
         "data": [
             {
                 "x": "7월",
@@ -94,7 +93,6 @@ export const firstGraphData = () => [
     },
     {
         "id": "90세 이상",
-        "color": "hsl(81, 70%, 50%)",
         "data": [
             {
                 "x": "7월",
@@ -125,50 +123,22 @@ export const firstGraphData = () => [
     }
 ]
 
-export const secondGraphData = () => [
-    {
-        "taste": "종로구",
-        "60대": 82,
-        "70대": 115,
-        "80대": 115,
-        "90세 이상": 100
-    },
-    {
-        "taste": "서대문구",
-        "60대": 41,
-        "70대": 92,
-        "80대": 55,
-        "90세 이상": 100
-    },
-    {
-        "taste": "중구",
-        "60대": 27,
-        "70대": 107,
-        "80대": 24,
-        "90세 이상": 100
-    },
-    {
-        "taste": "용산구",
-        "60대": 75,
-        "70대": 76,
-        "80대": 65,
-        "90세 이상": 100
-    },
-    {
-        "taste": "그 외",
-        "60대": 62,
-        "70대": 77,
-        "80대": 55,
-        "90세 이상": 100
-    }
-]
+export const secondGraphData = ({secondGraphData}) =>
+    secondGraphData.map((item) => ({
+        "taste": item.primaryAddress,
+        "50년대": item.fifties,
+        "40년대": item.forties,
+        "30년대": item.thirties,
+        "20년대이하": item.twenties
+    }))
 
-export const thirdGraphData = () => [
+
+export const thirdGraphData = ({thirdGraphData}) => [
     {
-        "country": "9월",
-        "여성": 147,
+        "country": thirdGraphData[3].month + "월",
+        "여성": thirdGraphData[3].countFemale,
         "여성Color": "hsl(72, 70%, 50%)",
-        "남성": 44,
+        "남성": thirdGraphData[3].countMale,
         "남성Color": "hsl(336, 70%, 50%)",
         "sandwich": 44,
         "sandwichColor": "hsl(232, 70%, 50%)",
@@ -180,10 +150,10 @@ export const thirdGraphData = () => [
         "donutColor": "hsl(196, 70%, 50%)"
     },
     {
-        "country": "10월",
-        "여성": 189,
+        "country": thirdGraphData[2].month + "월",
+        "여성": thirdGraphData[2].countFemale,
         "여성Color": "hsl(354, 70%, 50%)",
-        "남성": 180,
+        "남성": thirdGraphData[2].countMale,
         "남성Color": "hsl(201, 70%, 50%)",
         "sandwich": 30,
         "sandwichColor": "hsl(112, 70%, 50%)",
@@ -195,10 +165,10 @@ export const thirdGraphData = () => [
         "donutColor": "hsl(263, 70%, 50%)"
     },
     {
-        "country": "11월",
-        "여성": 17,
+        "country": thirdGraphData[1].month + "월",
+        "여성": thirdGraphData[1].countFemale,
         "여성Color": "hsl(346, 70%, 50%)",
-        "남성": 77,
+        "남성": thirdGraphData[1].countMale,
         "남성Color": "hsl(202, 70%, 50%)",
         "sandwich": 182,
         "sandwichColor": "hsl(114, 70%, 50%)",
@@ -210,10 +180,10 @@ export const thirdGraphData = () => [
         "donutColor": "hsl(349, 70%, 50%)"
     },
     {
-        "country": "12월",
-        "여성": 70,
+        "country": thirdGraphData[0].month + "월",
+        "여성": thirdGraphData[0].countFemale,
         "여성Color": "hsl(287, 70%, 50%)",
-        "남성": 191,
+        "남성": thirdGraphData[0].countMale,
         "남성Color": "hsl(259, 70%, 50%)",
         "sandwich": 184,
         "sandwichColor": "hsl(47, 70%, 50%)",
