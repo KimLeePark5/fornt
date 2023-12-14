@@ -2,13 +2,14 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callModifyAttendAPI} from "../../../apis/AttendAPICalls";
 
-function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data: {responseAttendAdmin: {content}}}}) {
+function ModifyAttendModalTwo({attendNo, setModifyBtn, attendAdmin, empName, attendAdmin : {data:{responseAttendAdminTwos:{content}}}}) {
+    console.log(attendAdmin);
     const modifyhistory = (content.filter(con => con.empName == empName))[0].attendList.filter(att => att.attendCode == attendNo)[0]
 
     console.log("modifyHistory",modifyhistory)
     const dispatch = useDispatch();
     const [form, setForm] = useState({})
-    const {attendModifySuccess}=useSelector(state=>state.attendReducer)
+
     const formChangeHandler = e => {
         setForm({
             ...form,
@@ -20,7 +21,6 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
     //     window.location.reload()
     // }
     const {attendModifySuccess} = useSelector(state=>state.attendReducer)
-
 
     if(attendModifySuccess){
         setModifyBtn(false)
@@ -45,7 +45,6 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
                         </select>
                         <select name='note' onChange={formChangeHandler} value={form.note || modifyhistory.note}
                                 className="attselectForm" style={{marginLeft: '25px'}}>
-                            <option value="기본" className='atop'>결근</option>
                             <option value="결근" className='atop'>결근</option>
                             <option value="지각" className='atop'>지각</option>
                             <option value="조퇴" className='atop'>조퇴</option>
@@ -70,11 +69,10 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
                         setModifyBtn(false)
                     }} className='attmodifyBtn1'>취소</button>
                     <button onClick={onClickHandler} className='attmodifyBtn'>수정하기</button>
-
                 </div>
             </div>
         </>
     )
 }
 
-export default ModifyAttendModal;
+export default ModifyAttendModalTwo;

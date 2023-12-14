@@ -3,29 +3,36 @@ import {useDispatch, useSelector} from "react-redux";
 import {callGetAttendResultAPI} from "../../apis/AttendAPICalls";
 function MainAttend() {
     const date = new Date();
-    const month1 = useRef(Number(date.getMonth()+1));
+    const month1 = useRef(Number(date.getMonth() + 1));
     const year1 = useRef(Number(date.getFullYear()));
-    const today = year1.current + '-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current);
+    const today = year1.current + '-' + (String(month1.current).length == 1 ? '0' + month1.current : month1.current);
     const inputmonth = useRef();
+
+
     const monthChangeHandler = (e) => {
         setMonth(e.target.value)
     }
     const onClickUpHandler = () => {
-        if(month1.current == 1){
-            year1.current = year1.current- 1
+        if (month1.current == 1) {
+            year1.current = year1.current - 1
             month1.current = 12;
-        }else(month1.current = month1.current-1)
+        } else (month1.current = month1.current - 1)
 
-        setMonth(year1.current+'-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current))
+        setMonth(year1.current + '-' + (String(month1.current).length == 1 ? '0' + month1.current : month1.current))
     }
     const onClickDownHandler = () => {
 
-        if(month1.current == 12){
+        if (month1.current == 12) {
             year1.current = year1.current + 1
             month1.current = 1
-        }else(month1.current = month1.current+1)
-        setMonth(year1.current+'-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current))
+        } else (month1.current = month1.current + 1)
+        setMonth(year1.current + '-' + (String(month1.current).length == 1 ? '0' + month1.current : month1.current))
     }
+
+    const abscount = useRef();
+    const latecount = useRef();
+    const vaccount = useRef();
+    const leaveEcount = useRef();
 
 
     const [month, setMonth] = useState('2023-12')
@@ -33,22 +40,131 @@ function MainAttend() {
 
     const dispatch = useDispatch();
 
+    const {enterSuccess, leaveSucess} = useSelector(state => state.attendReducer)
     useEffect(() => {
         dispatch(callGetAttendResultAPI({month: month}));
-        console.log('myAttend : ',myAttend);
-    }, [month]);
+        console.log('myAttend : ', myAttend);
+    }, [month, enterSuccess, leaveSucess]);
+    const getAbsentdate = (type) => {
+        const absDate = [];
+        const leaveDate = [];
+        const vacDate = [];
+        const lateDate = [];
+        myAttend.responseAttend.map(at => {
+            if (at.note == '결근') {
+                absDate.push(<div>{String(at.attendDate).substring(5)}</div>);
+            } else if (at.note == '지각') {
+                lateDate.push(<div>{String(at.attendDate).substring(5)}</div>);
 
+            } else if (at.note == '휴가') {
+                vacDate.push(<div>{String(at.attendDate).substring(5)}</div>);
+
+            } else if (at.note == '조퇴') {
+                leaveDate.push(<div>{String(at.attendDate).substring(5)}</div>);
+            }
+        })
+        switch (type) {
+            case 'abs' :
+                return absDate;
+                break;
+            case 'vac' :
+                return vacDate;
+                break;
+            case 'leaveE' :
+                return leaveDate;
+                break;
+            case 'late' :
+                return lateDate;
+                break;
+        }
+    }
+
+    const MouseOnHandler = (type) => {
+        switch (type) {
+            case 'abs' :
+                if(abscount.current.children.length==0){return}
+                abscount.current.style.display = 'block';
+                break;
+            case 'late' :
+                if(latecount.current.children.length==0){return}
+                latecount.current.style.display = 'block';
+                break;
+            case 'vac' :
+                if(vaccount.current.children.length==0){return}
+                vaccount.current.style.display = 'block';
+                break;
+            case 'leaveE' :
+                if(leaveEcount.current.children.length==0){return}
+                leaveEcount.current.style.display = 'block';
+                break;
+        }
+
+
+    }
+    const MouseLeaveHandler = (type) => {
+        switch (type) {
+            case 'abs' :
+                abscount.current.style.display = 'none';
+                break;
+            case 'late' :
+                latecount.current.style.display = 'none';
+                break;
+            case 'vac' :
+                vaccount.current.style.display = 'none';
+                break;
+            case 'leaveE' :
+                leaveEcount.current.style.display = 'none';
+                break;
+
+        }
+
+    }
+
+    const getDayof = (month) => {
+        console.log(month.current)
+        console.log("231321312331month")
+        const date = new Date();
+
+        let start =new Date(date.getFullYear(),month.current-1,1)
+        let end = new Date(date.getFullYear(),start.getMonth()+1,0)
+        console.log(end)
+        console.log("start:",start)
+        let now = new Date(date)
+        let dayoff = 0;
+        console.log("now",now)
+
+        if(month.current-1 == date.getMonth()){
+            for(let i = 1; start <= now; i++){
+                if(start.getDay() == 0){
+                    dayoff += 1
+                }else if(start.getDay() == 6){
+                    dayoff += 1
+                }
+                start.setDate(start.getDate()+1 )
+
+            }
+        }else{
+            for(let i = 1; start <= end; i++){
+                if(start.getDay() == 0){
+                    dayoff += 1
+                }else if(start.getDay() == 6){
+                    dayoff += 1
+                }
+                start.setDate(start.getDate()+1 )
+
+            }
+        }
+
+        console.log("dayoff",dayoff)
+        return dayoff
+    }
     return (
         <div className='main-attend-main'>
-            <div className="attend-month" style={{marginTop:30,marginLeft:30}}>
-                <button onClick={onClickUpHandler} className="attend-btn">&lt;</button>
-                <input ref={inputmonth} type="month" onChange={monthChangeHandler} value={month} style={{
-                    display:"none"
-                }}/>
-                <span>{inputmonth.current && (inputmonth.current.value).replace("-","년 ")}월</span>
-                <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
-            </div>
+            <div className='mainatt'>이번달 근무 현황</div>
             {myAttend &&
+
+
+
                 <div className="attend-detail-box" style={{marginTop:50,marginLeft:220}}>
                     <div>
                         <div className="detailname">근무시간</div>
@@ -61,7 +177,7 @@ function MainAttend() {
                         <div className="attend-detail">
                             <div>
                                 <div className="detail-name">출근</div>
-                                <div className="detail-count">{myAttend.responseAttend.length}</div>
+                                <div className="detail-count">{myAttend.responseAttend.length != 0 ? myAttend.responseAttend.length - myAttend.responseAttendType.absentCount - myAttend.responseAttendType.vacationCount-getDayof(month1) : 0+myAttend.responseAttend.length}</div>
                             </div>
                             <div>
                                 <div className="detail-name">결근</div>

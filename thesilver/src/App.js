@@ -15,6 +15,8 @@ import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
 import Main from "./pages/Main";
 import Programs from "./pages/programs/Programs";
+import AttendAdminCategory from "./pages/admin/AttendAdminCategory";
+import AttendAdminByType from "./pages/admin/AttendAdminByType";
 import VacationManagement from "./pages/vacation/VacationManagement";
 
 
@@ -31,6 +33,7 @@ function App() {
                     <Route path="attend-management">
                         <Route index element={<AttendAdmin/> }/>
                         <Route path="search" element={<AttendAdminSearch/>}/>
+                        <Route path="sort" element={<AttendAdminByType/>}/>
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>

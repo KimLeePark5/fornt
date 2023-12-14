@@ -1,25 +1,23 @@
-import {useSearchParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {callGetAttendAdminByCategoryResultAPI, callGetAttendAdminResultAPI} from "../../apis/AttendAPICalls";
 import AdminAttendHeader from "../../components/items/AttendItems/AdminAttendHeader";
 import EmployeeInfo from "../../components/items/AttendItems/EmployeeInfo";
-import {useEffect, useState} from "react";
-import {callSearchNameAPICalls} from "../../apis/AttendAPICalls";
 import PagingBar from "../../components/common/PagingBar";
+import {useSearchParams} from "react-router-dom";
 
-function AttendAdminSearch(){
+function AttendAdminCategory(){
     const date = new Date();
     const today = String(date.getFullYear()) +'-'+ String(date.getMonth()+1);
     const[month, setMonth]=useState(today);
     const[page, setCurrentPage] = useState(1);
     const dispatch = useDispatch();
-    const {attendAdmin,attendModifySuccess} = useSelector(state=>state.attendReducer)
-
     const [searchParams] = useSearchParams();
-    const nameValue = searchParams.get("name");
-
+    const sort = searchParams.get("sort");
+    const {attendAdmin,attendModifySuccess}=useSelector(state=>state.attendReducer)
     useEffect(() => {
-        dispatch(callSearchNameAPICalls(month,nameValue,page));
-    }, [month,page,searchParams,attendModifySuccess]);
+        dispatch(callGetAttendAdminByCategoryResultAPI(month,page,sort))
+    }, [month,page,attendModifySuccess]);
 
     return(
         <>
@@ -27,8 +25,7 @@ function AttendAdminSearch(){
                 <div>
                     <div className="attendAdminHead">직원 근태 관리</div>
                     <div className="attendBackAdmin">
-                        <AdminAttendHeader month={month} setMonth={setMonth} name={nameValue} />
-
+                        <AdminAttendHeader month={month} setMonth={setMonth} />
                         <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
                         <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo}/>
                     </div>
@@ -37,4 +34,4 @@ function AttendAdminSearch(){
         </>
     )
 }
-export default AttendAdminSearch;
+export default AttendAdminCategory;
