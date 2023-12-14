@@ -27,19 +27,11 @@ function MainAttend() {
         setMonth(year1.current+'-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current))
     }
 
-    const abscount = useRef();
-    const latecount = useRef();
-    const vaccount = useRef();
-    const leaveEcount = useRef();
-
 
     const [month, setMonth] = useState('2023-12')
     const {myAttend} = useSelector(state => state.attendReducer);
 
     const dispatch = useDispatch();
-
-
-    const {enterSuccess, leaveSucess} = useSelector(state => state.attendReducer)
 
     useEffect(() => {
         dispatch(callGetAttendResultAPI({month: month}));
@@ -57,7 +49,6 @@ function MainAttend() {
                 <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
             </div>
             {myAttend &&
-
                 <div className="attend-detail-box" style={{marginTop:50,marginLeft:220}}>
                     <div>
                         <div className="detailname">근무시간</div>
@@ -91,7 +82,6 @@ function MainAttend() {
                         </div>
                     </div>
                 </div>
-
             }
         </div>
 

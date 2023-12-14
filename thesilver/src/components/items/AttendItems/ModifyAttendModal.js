@@ -8,7 +8,7 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
     console.log("modifyHistory",modifyhistory)
     const dispatch = useDispatch();
     const [form, setForm] = useState({})
-
+    const {attendModifySuccess}=useSelector(state=>state.attendReducer)
     const formChangeHandler = e => {
         setForm({
             ...form,
@@ -16,13 +16,6 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
         });
         console.log(form)
     }
-
-    // if(attendModifySuccess){
-    //     window.location.reload()
-    // }
-    const {attendModifySuccess} = useSelector(state=>state.attendReducer)
-
-
     if(attendModifySuccess){
         window.location.reload()
     }
