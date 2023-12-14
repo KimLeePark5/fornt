@@ -22,6 +22,7 @@ function AttendModal({attendAdmin, setMonth, month, empNo, setAttendModal, atten
     const attendHistoryOnclickHandler = (code) => {
         setattendHistoryBtn(true);
         setAttendNo(code)
+
     }
     const attendModifyBtnHandler = (code)=>{
         if(!code){

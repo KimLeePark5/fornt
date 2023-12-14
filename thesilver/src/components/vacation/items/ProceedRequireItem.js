@@ -1,13 +1,12 @@
-import React from "react";
+import {useSelector} from "react-redux";
+import employeeInfo from "../../items/AttendItems/EmployeeInfo";
 
+function ProceedRequireItem ({data}) {
 
-function UsedVacationItem ({data}) {
-
-    console.log("UsedVacationItem 데이터가 있나요? : ", data)
+    console.log("ProceedRequire 데이터가 있나요? : " , data);
 
     const startDate = new Date(data.startDate);
     const endDate = new Date(data.endDate);
-
 
 // 날짜 차이를 계산
     const timeDiff = endDate - startDate;
@@ -18,16 +17,17 @@ function UsedVacationItem ({data}) {
     return (
         <div>
             {data && (
-                <div className="used-vacation-body">
+                <div className="require-proceed-body">
+                    <div>{data.employeeName}</div>
                     <div>{data.vacationName}</div>
                     <div>{data.startDate} ~ {data.endDate}</div>
-                    <div>{daysDiff}일</div>
-                    <div>{data.reqContent}</div>
+                    <div>{daysDiff} 일</div>
                     <div>{data.reqStatus}</div>
+                    <div>{data.reqDate}</div>
                 </div>
             )}
         </div>
     );
 }
 
-export default UsedVacationItem;
+export default ProceedRequireItem;

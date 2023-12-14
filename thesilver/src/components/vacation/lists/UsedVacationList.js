@@ -1,15 +1,28 @@
 import React, {useEffect, useState} from "react";
 import UsedVacationItem from "../items/UsedVacationItem";
-import {useDispatch, useSelector} from "react-redux";
-import { callUsedVacationAPI} from "../../../apis/VacationAPICalls";
-import DatePicker from "../items/DatePicker";
+
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
+
+import * as PropTypes from "prop-types";
+
 
 
 
 function UsedVacationList({usedVacation}) {
 
 
-
+    DatePicker.propTypes = {
+        onChange: PropTypes.func,
+        selectsStart: PropTypes.bool,
+        endDate: PropTypes.any,
+        dateFormat: PropTypes.string,
+        placeholderText: PropTypes.string,
+        selected: PropTypes.any,
+        startDate: PropTypes.any
+    };
 
 
     // 날짜로 조회 하기
@@ -24,11 +37,11 @@ function UsedVacationList({usedVacation}) {
         setEndDate(date);
     };
 
-
-
     console.log("usedVacation 데이터가 있나요? : ", usedVacation)
 
+
     return (
+
         <>
             <div className="used-vacation-content">
                 <h3>사용 내역</h3>

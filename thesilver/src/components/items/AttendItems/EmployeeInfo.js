@@ -34,6 +34,7 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
             }
 
         }
+        console.log("dayof",dayoff)
 
         let abs = 0;
         let vac = 0;
