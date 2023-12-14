@@ -15,7 +15,7 @@ function TodoRegist({setTodoRegist}){
         dispatch(callRegistTodo(text));
     }
     if(registSuccess){
-        setTodoRegist(false)
+        window.location.reload();
     }
     return(
         <div class="todomodal">
