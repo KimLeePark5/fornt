@@ -29,7 +29,7 @@ function Employees() {
         setRegistModalOpen(true)
     }
     return(
-        <div style={{zoom:0.85}}>
+        <div style={{zoom:0.9}}>
         <h1 className="employees-title">직원 정보 조회</h1>
         <div className="employees-div">
             {employees && (

@@ -2363,7 +2363,7 @@ margin-top: 10px;
 
 
 
-.EmployeesModalDivImage{
+.EmployeesModalDivImage {
     width: 188px;
     height: 218px;
     border: 1px solid #C8C8C8;
@@ -2371,6 +2371,7 @@ margin-top: 10px;
     align-items: center;
     display: flex;
     background-color: #FFFFFF;
+}
 .employeesModalDiv-2{
     margin-top: 58px;
     display: inline-flex;
