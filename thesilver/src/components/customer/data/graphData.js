@@ -1,4 +1,4 @@
-export const firstGraphData = [
+export const firstGraphData = () => [
     {
         "id": "60대",
         "color": "hsl(188, 70%, 50%)",
@@ -125,7 +125,7 @@ export const firstGraphData = [
     }
 ]
 
-export const secondGraphData = [
+export const secondGraphData = () => [
     {
         "taste": "종로구",
         "60대": 82,
@@ -163,7 +163,7 @@ export const secondGraphData = [
     }
 ]
 
-export const thirdGraphData = [
+export const thirdGraphData = () => [
     {
         "country": "9월",
         "여성": 147,

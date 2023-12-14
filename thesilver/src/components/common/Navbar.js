@@ -71,7 +71,7 @@ function Navbar() {
                             <ul className={`subMenu ${isSubMenuOpen.employee ? 'active' : ''}`}>
                                 <li><NavLink to="/attend-management">직원 근태 관리</NavLink></li>
                                 <li><NavLink to="/employees">직원 정보 관리</NavLink></li>
-                                <li><NavLink to="">직원 연차 관리</NavLink></li>
+                                <li><NavLink to="/vacation-management">직원 연차 관리</NavLink></li>
                             </ul>
                     </li>
                 }
