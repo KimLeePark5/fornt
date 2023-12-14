@@ -1,92 +1,92 @@
-import {useRef} from "react";
-import employees from "../../../pages/Employees";
+import {Fragment, useRef, useState} from "react";
+import EmployeesModalItem from "../items/EmployeesModalItem";
+import EmployeesModifyModalItem from "../items/EmployeesModifyModalItem";
+import {callEmployeesListRemoveAPI} from "../../../apis/EmployeesAPICalls";
+import {useDispatch} from "react-redux";
 
+function employeesModal({setModalOpen, employeeCode, data}) {
 
-function EmployeesModal({ employees, setModalOpen }) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const modalBackground = useRef();
-    // const image = employees.employeePicture
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [modify, setModify] = useState(false);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const dispatch = useDispatch();
+    const modifyMode = () => {
+        setModify(true)
+    }
+    const employee = data.filter(employees=>employees.employeeCode==employeeCode)[0]
+
+
+    const onClickModalEmployeeDeleteHandler = () => {
+        if(employeeCode) {
+            setModalOpen(false)
+            dispatch(callEmployeesListRemoveAPI({employeeCode}));
+            // alert("삭제 완료!")
+        } else {
+            alert("선택해주세요.")
+        }
+    }
+
     return(
-        <>
-        {employees&&(
         <div className="modal" ref={modalBackground} onClick={e => {
-            if (e.target === modalBackground.current) {
+            if (e.target === modalBackground.current&&modify===false) {
                 setModalOpen(false);
+            } else if (e.target === modalBackground.current&&modify===true){
+                // eslint-disable-next-line no-restricted-globals
+                const modifyModalConfirm = confirm("정말 나가시겠습니까?")
+                if(modifyModalConfirm){
+                    setModify(false);
+                } else {
+                    return;
+                }
             }
         }}>
-            <div className="modal-content">
-                <h1 className="modal-title" align="left">직원정보</h1>
-                    <div className="EmployeesModalDiv">
-                    <div className="EmployeesModalDivImage">
-                        {employees.employeePicture ? <img src={employees.employeePicture} alt={employees.employeeName}/>
-                            : <span> 등록된 사진이 없습니다.</span>}
+            <div className="modal-content2">
+                {!modify ?
+                    <h1 className="modal-title" align="left" style={{fontSize:32, display:"inline"}}>직원정보</h1>
+                    :
+                    <h1 className="modal-title" align="left" style={{fontSize:32, display:"inline"}}>직원정보 수정</h1>
+                }
+                <button className="employees-list-delete-btn" onClick={onClickModalEmployeeDeleteHandler} style={{display:"inline", float:"right"}}>삭제</button>
+                {!modify &&
+                <button onClick={modifyMode} className="employees-list-update-btn" style={{display:"inline", float:"right"}}>수정</button>
+                }
+                {!modify ?
+                    <EmployeesModalItem employee={employee}/>
+                    :
+                    <EmployeesModifyModalItem employees={employee} setModify={setModify}/>
+                }
+
+                <h1 className="employeesModalGrid-3-title" align="left">직급 변경 이력</h1>
+
+                <div className="employee-history-div">
+                    <div className="employee-history-fix-row">
+                        <div className="employee-history-fix-row-item">번호</div>
+                        <div className="employee-history-fix-row-item">변경 사항</div>
+                        <div className="employee-history-fix-row-item">변경 전</div>
+                        <div className="employee-history-fix-row-item">변경 후</div>
+                        <div className="employee-history-fix-row-item">변경 일자</div>
+                        <div className="employee-history-fix-row-item2">비고</div>
                     </div>
-                    <div className="EmployeesModalDivUp-1">
-                        <div className="EmployeesModalDivUp-1-DivBox-1"><span>이름</span></div>
-                        <div className="EmployeesModalDivUp-1-DivBox-1"><span>사번</span></div>
-                        <div className="EmployeesModalDivUp-1-DivBox-1"><span>직급</span></div>
-                        <div className="EmployeesModalDivUp-1-DivBox-2"><span>주소</span></div>
-                    </div>
-                    <div className="EmployeesModalDivUp-2">
-                        <div className="EmployeesModalDivUp-2-DivBox-1"><span>{employees.employeeName}</span></div>
-                        <div className="EmployeesModalDivUp-2-DivBox-1"><span>{employees.employeeCode}</span></div>
-                        <div className="EmployeesModalDivUp-2-DivBox-1"><span>{employees.rank}</span></div>
-                        <div className="EmployeesModalDivUp-2-DivBox-2"><span>{employees.employeeAddress}</span></div>
-                    </div>
-                    <div className="EmployeesModalDivUp-3">
-                        <div className="EmployeesModalDivUp-3-DivBox-1"><span>이메일</span></div>
-                        <div className="EmployeesModalDivUp-3-DivBox-1"><span>전화번호</span></div>
-                        <div className="EmployeesModalDivUp-3-DivBox-1"><span>팀</span></div>
-                    </div>
-                    <div className="EmployeesModalDivUp-4">
-                        <div className="EmployeesModalDivUp-4-DivBox-1"><span>{employees.employeeEmail}</span></div>
-                        <div className="EmployeesModalDivUp-4-DivBox-1"><span>{employees.employeePhone}</span></div>
-                        <div className="EmployeesModalDivUp-4-DivBox-1"><span>{employees.team}</span></div>
-                    </div>
+                        {(employee.rankHistory).length > 0 ? employee.rankHistory.map( rankHistory =>
+                                <div className="employee-history-fix-row2" key={rankHistory.rankNum}>
+                                    <div className="employee-history-fix-row2-item">{rankHistory.rankNum}</div>
+                                    <div className="employee-history-fix-row2-item">{rankHistory.upDown == 'UP' ? '진급' : '강등'}</div>
+                                    <div className="employee-history-fix-row2-item">{rankHistory.afterRank}</div>
+                                    <div className="employee-history-fix-row2-item">{rankHistory.beforeRank}</div>
+                                    <div className="employee-history-fix-row2-item">{rankHistory.updateDate}</div>
+                                    <div className="employee-history-fix-row2-item2">{rankHistory.updateNote}</div>
+                                </div>
+                            ) :
+                            <div className="employee-history-fix-row2">
+                                 <div className="employee-history-fix-row3">직급 변경 이력이 없습니다.</div>
+                                </div>
+                            }
                 </div>
-                <div className="EmployeesModalDiv-2">
-                    <div className="EmployeesModalDiv-2-2">
-                        <div className="EmployeesModalDivUp-5">
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>입사일</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>채용구분</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>상태</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-2"><span>장애여부</span></div>
-                        </div>
-                        <div className="EmployeesModalDivUp-6">
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.joinDate}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.employmentType}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.leaveType}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-3"><span>{employees.disability}</span></div>
-                        </div>
-                        <div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>성별</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>주민등록번호</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>결혼여부</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-2"><span>보훈여부</span></div>
-                        </div>
-                        <div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.gender}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.registrationNumberFull}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.marriage}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-3"><span>{employees.patriots}</span></div>
-                        </div>
-                        <div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>퇴사일</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span>퇴사 사유</span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-1"><span></span></div>
-                            <div className="EmployeesModalDivUp-5-DivBox-2"><span></span></div>
-                        </div>
-                        <div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.leaveDate}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span>{employees.leaveReason}</span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-1"><span></span></div>
-                            <div className="EmployeesModalDivUp-6-DivBox-3"><span></span></div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
-        )}
-        </>
     )
 }
-export default EmployeesModal;
+export default employeesModal;
