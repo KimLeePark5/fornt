@@ -13,9 +13,11 @@ import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
-import Programs from "./components/programs/Programs";
 import Employee from "./pages/Employee";
 
+import Main from "./pages/Main";
+import Programs from "./pages/programs/Programs";
+import VacationManagement from "./pages/vacation/VacationManagement";
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
                 <Route path="/login" element={<ProtectedRoute onlyUnLogin={true} > <Login/> </ProtectedRoute>}/>
                 <Route path="/" element={<ProtectedRoute onlyLogin={true}><Layout/></ProtectedRoute>}>
                     <Route path="/regist-customers" element={<CustomerRegist/>}></Route>
+                    <Route index element={<Main/>}/>
                     <Route path="/customers" element={<Customers/>}></Route>
                     <Route path="myAttend" element={<MyAttend/>}></Route>
                     <Route path="attend-management">
@@ -34,6 +37,7 @@ function App() {
                     <Route path="/employees" element={<Employees/>}></Route>
                     <Route path="/employee" element={<Employee/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
+                    <Route path="/vacation-management" element={<VacationManagement/>}></Route>
                     <Route path="programs" element={<Programs/>}></Route>
                 </Route>
                 <Route path="*" element={<Error/>}/>

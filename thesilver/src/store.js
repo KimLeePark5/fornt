@@ -7,6 +7,6 @@ import rootReducer from "./modules";
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(ReduxThunk, ReduxLogger))
-)
+);
 
 export default store;

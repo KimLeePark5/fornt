@@ -12,10 +12,14 @@
     min-width: 280px;
 }
 
+
 .layout > div:nth-child(2) {
     flex: auto;
     margin: 50px;
+    margin-bottom: 0;
 }
+
+
 
 /** 스크롤바 없애기 **/
 /*::-webkit-scrollbar {*/
@@ -24,7 +28,66 @@
 
 /*상의하기*/
 
+/*Main*/
 
+
+.todoContainer{
+    margin-top: -215px;
+    background-color: white;
+    height: 200px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    grid-column: 2/3;
+    grid-row: 3/4;
+    display: flex;
+}
+.dhodksehla{
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+}
+.mainContainer{
+    display: grid;
+    grid-template-columns: 260px 1200px;
+    grid-template-rows: 170px 350px 00px  250px;
+    column-gap: 30px;
+    row-gap: 15px;
+}
+.Main-commute-btn-box{
+    grid-column: 1/2;
+    grid-row: 2/5;
+}
+.mainProfile{
+    background-color: #0c58a5;
+    grid-column : 1 / 2;
+    grid-row: 1 / 2;
+}
+.mainCal{
+    background-color: blue;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    height: 300px;
+
+
+}
+.mainMiniCal{
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+.main-attend-main{
+    background-color: white;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    grid-column: 2/3;
+    grid-row: 4/6;
+
+}
+.mainbtn{
+    width: 190px !important;
+    height: 50px !important;
+    position: relative !important;
+    bottom: -10px !important;
+    font-size: 20px !important;
+    margin-top: 10px !important;
+}
 
 /**** 하현 ********************************************/
 /**** nav bar ****************************************/
@@ -40,13 +103,13 @@
 }
 
 .imgLogo {
-    margin-top: 30px;
-    margin-left: 16px;
+    margin-top: 40px;
+    margin-left: 30px;
 }
 
 .nav-list-ul {
     list-style: none;
-    margin-top: 50px;
+    margin-top: 70px;
     padding-inline-start: 0;
     margin-block-end: 0;
     padding-bottom: 43px;
@@ -55,7 +118,7 @@
 .nav-list-ul a {
     text-decoration: none;
     font-size: 20px;
-    margin-left: 40px;
+    margin-left: 50px;
     color: #FFFFFF;
 }
 
@@ -68,6 +131,7 @@
     cursor: pointer;
 }
 
+
 .subMenu {
     list-style: none;
     padding-top: 5px;
@@ -78,7 +142,7 @@
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    /*transition: max-height 0.5s ease-out, opacity 0.1s ease-in;*/
+    /*transition: max-height 0.5s ease-out, opacity 0.1s linear;*/
     /**** 천천히 열리고 빨리 닫히게 수정해보기!! ****/
 }
 
@@ -114,33 +178,65 @@
 /**** vacation state ****************************************/
 .vacation-today {
     text-align: center;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     margin-top: 20px;
+    color: #01092B;
 }
 
 .vacation-state-content {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 1540px;
+    width: 1500px;
+    margin: 30px 0 30px 20px;
     height: 100px;
     border: #1A1A1C 1px solid;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
     border-radius: 5px;
     background-color: white;
 }
 
-/****require state **************************************/
-.require-state {
-    padding-top: 20px;
+.state-detail {
+    display: grid;
+    grid-template-columns : 380px 280px 280px 280px 280px;
+    font-size: 22px;
+    text-align: center;
 }
 
+.state-name {
+   height: 35px;
+    padding-top: 15px;
+    font-weight: 600;
+
+}
+
+.state-result-name {
+    height: 73px;
+    font-size: 40px;
+    border-right: rgba(108, 106, 106, 0.7) 1px solid;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+    margin-top: 13px;
+}
+
+.state-result {
+    height: 35px;
+    padding-top: 10px;
+    font-weight: 500;
+}
+
+/****require state **************************************/
 .require-content{
+    width: 1500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10px 10px 10px;
+    padding: 20px 0 10px 0;
+    margin: 0 30px 0 20px;
 }
-.require-state h3 {
+
+.require-content h3 {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     font-weight: 600;
 }
@@ -148,22 +244,48 @@
 .vacation-require-btn {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
-
-
+    font-weight: 600;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+    border-radius: 5px;
 }
 
 .vacation-require-btn:hover {
-    background-color: #08335B;
-    color: #FFFFFF;
+    background-color: rgba(255, 127, 80, 0.7);
 }
 
-.require-list {
-    width: 1540px;
-    height: 200px;
+.require-state {
+    width: 1500px;
+    height: 190px;
+    margin-left: 20px;
     border: #1A1A1C 1px solid;
     border-radius: 5px;
     background-color: white;
     margin-bottom: 30px;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+}
+
+.require-state-head {
+    width: 1500px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 150px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 13px 0 13px 0;
+    background-color: #01092B;
+    color: #F7F8F8;;
+}
+
+.require-state-body {
+    width: 1500px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 150px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px 0 10px 0;
 }
 
 /*** 연차 신청 폼 **********************************/
@@ -187,14 +309,14 @@
 }
 
 .form1-1 {
-    width: 130px;
-    height: 40px;
+    text-align: center;
+    padding-top: 10px;
     border-right: #1A1A1C 1px solid;
 }
 
 .form1-2 {
-    width: 220px;
-    height: 40px;
+    text-align: center;
+    padding-top: 10px;
     border-right: #1A1A1C 1px solid;
 }
 
@@ -204,69 +326,93 @@
     border-right: #1A1A1C 1px solid;
     border-left: #1A1A1C 1px solid;
     height: 230px;
-    grid-template-rows: 40px 40px 150px;
+    grid-template-rows: 40px 40px 140px;
 }
 
 .form2-1 {
-    width: 130px;
-    height: 40px;
+    text-align: center;
+    height: 30px;
+    padding-top: 10px;
     border-right: #1A1A1C 1px solid;
     border-bottom: #1A1A1C 1px solid;
 }
 
 .form2-2 {
-    width: 570px;
-    height: 40px;
+    padding-left: 10px;
     border-bottom: #1A1A1C 1px solid;
+    display: flex;
+    align-items: center;
 }
 
 .form2-3 {
-    width: 130px;
-    height: 150px;
-    border-right: #1A1A1C 1px solid;
+    text-align: center;
+    padding-top: 63px;
+}
+
+.form2-4 {
+    padding-left: 10px;
+    width: 552px;
+    height: 140px;
+    border: none;
+    resize: none;
+}
+
+.form2-4:focus {
+    outline: none;
 }
 
 .vacation-require-form3 {
     display: grid;
     border: #1A1A1C 1px solid;
     margin-bottom: 5px;
+    height: 300px;
 }
 
 .vacation-require-form4 {
     display: grid;
-    grid-template-columns: 300px 400px;
+    grid-template-columns: 130px 570px;
     border: #1A1A1C 1px solid;
     margin-bottom: 5px;
-    height: 130px;
+    height: 40px;
 }
 
 .form4-1 {
-    width: 300px;
-    height: 130px;
+    width: 130px;
+    text-align: center;
+    padding-top: 10px;
     border-right: #1A1A1C 1px solid;
-    overflow-y: auto; /* 너무 길 때 스크롤 표시 */
 }
 
-.vacation-require-form5 {
+.form4-2 {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+/******** used vacation list**************************/
+
+.used-vacation {
+    width: 1500px;
+    height: 250px;
+    margin-left: 20px;
     border: #1A1A1C 1px solid;
-    height: 70px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
 }
 
-
-/******** use list**************************/
-
-.use-state {
-    padding-top: 20px;
-}
-
-.use-content{
+.used-vacation-content {
+    width: 1500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10px 10px 10px;
+    padding: 20px 0 10px 0;
+    margin: 0 30px 0 20px;
 }
 
-.use-content h3 {
+.used-vacation-content h3 {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     font-weight: 600;
 }
@@ -274,18 +420,115 @@
 .select-days {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
 }
 
+.used-vacation-head {
+    width: 1500px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 150px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 13px 0 13px 0;
+    background-color: #01092B;
+    color: #F7F8F8;;
+}
 
-.use-vacation-list {
-    width: 1540px;
-    height: 200px;
+.used-vacation-body {
+    width: 1500px;
+    display: grid;
+    grid-template-columns: 150px 500px 150px 250px 150px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+/* vacation-management */
+
+.require-management-content {
+    display: flex;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 30px;
+
+}
+
+.require-nav {
+    display: flex;
+    justify-content: center;
+    width: 450px;
+    margin: 20px 0 20px 0;
+    background-color: #01092B;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.require-nav-nav {
+    width: 120px;
+    padding: 13px 0 13px 0;
+    text-align: center;
+    cursor: pointer
+}
+
+/*.require-nav-nav:hover {*/
+/*    color: #FFCF00;*/
+/*}*/
+
+.require-nav-nav.selected {
+    color: #FFCF00;
+
+}
+
+/* proceedRequire */
+.require-proceed-list{
+    width: 1500px;
+    padding: 30px 15px 0 15px;
+    margin-bottom: 30px;
+
+}
+
+.require-proceed-head {
+
+    display: grid;
+    grid-template-columns: 180px 180px 450px 150px 150px 300px;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
     border: #1A1A1C 1px solid;
     border-radius: 5px;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+    text-align: center;
+    padding: 13px 0 13px 0;
+    background-color: #01092B;
+    color: #F7F8F8;
+}
+
+.require-proceed-body {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 180px 180px 450px 150px 150px 300px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    border: #1A1A1C 1px solid;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 0 rgba(1, 9, 43, 0.2);
+    text-align: center;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
     background-color: white;
 }
+
+
+
 
 
 
@@ -317,7 +560,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
 }
+
 .error-content {
     display: flex;
     justify-content: center;
@@ -356,7 +603,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+    gap: 12px;
 }
 .login-content-title {
     margin: 25px;
@@ -403,7 +650,37 @@
     color: #eaeaea;
     text-align: center;
     font-size: 70%;
+    line-height: 50px;
 }
+/*changePwModal*/
+#pwc-modal-page {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+#pwc-modal-box {
+    align-items: center;
+    height: 400px;
+}
+
+.pwc-modal-text {
+    font-size: 14px;
+    text-align: center;
+    color: #989898;
+}
+.pwc-modal-input-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+#pwc-modal-button {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
 
 /* findPassword */
 .findModal-page {
@@ -420,8 +697,8 @@
 .findModal-box {
     background-color: white;
     width: 350px;
-    height: 400px;
-    position: absolute;
+    height: 350px;
+    position: fixed;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -432,11 +709,18 @@
 
 .findModal-close {
     position: absolute;
-    top: 15px;
-    right: 18px;
+    top: 12px;
+    right: 12px;
     cursor: pointer;
 }
-.findModal-close img {
+
+.modifyModal-close {
+    position: absolute;
+    top: -25px;
+    right: -28px;
+    cursor: pointer;
+}
+.findModal-close img, .modifyModal-close img {
     width: 20px;
     height: auto;
 }
@@ -444,6 +728,8 @@
 .findModal-header {
     margin-top: 20px;
 }
+
+
 
 .findModal-content input {
     width: 200px;
@@ -461,6 +747,14 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 80%;
+    cursor: pointer;
+    height: 25px;
+    line-height: 25px;
+}
+.findModal-result {
+    padding-bottom: 20px;
+    font-size: 80%;
+    color: #0028e8;
 }
 
 .findModal-comment {
@@ -468,9 +762,6 @@
     margin-right: 60px;
 }
 
-.findModal-result {
-    font-size: 80%;
-}
 
 .findModal-result-fail {
     font-size: 80%;
@@ -482,16 +773,22 @@
     font-size: 12px;
     background-color: #03166C;
     color: white;
-    border-radius: 15px;
-    padding: 4px;
+    border-radius: 8px;
+    padding: 3.5px;
     padding-left: 6px;
     padding-right: 6px;
+    cursor: pointer;
+}
+.customers-customer-button:hover, .customers-license-button:hover {
+    color: #FFCF00;
 }
 
 .customers-subtitle {
     font-size: 20px;
     margin: 10px;
-    margin-left: 30px;
+    margin-left: 45px;
+    font-weight: bold;
+    color: #1d1d1d;
 }
 
 .customers-list-head {
@@ -515,6 +812,10 @@
     flex: 0.5; /* 첫 번째 자식에게 1의 비율 부여 */
 }
 
+.customers-list-body > div:nth-child(7), .customers-list-head > div:nth-child(7) {
+    flex: 2.5; /* 첫 번째 자식에게 1의 비율 부여 */
+}
+
 .customers-type {
     display: flex;
     justify-content: center;
@@ -526,20 +827,99 @@
     margin: 20px;
     border-radius: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.customers-graph-title {
+    position: absolute;
+    font-size: 22px;
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}
+.customers-graph-select {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    right: 5%;
+    top: 15px;
+    z-index: 1;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    background-color: #F7F8F8;
+    box-shadow: 0 0 15px #f1f1f1;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 80%;
+    text-align: center;
+    cursor: pointer;
+}
+.customers-graph-select:hover {
+    background-color: #efefef;
+}
+.customers-graph-button {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 5%;
+    top: 15px;
+    z-index: 1;
+    border-radius: 5px;
+    border: 1px solid rgb(232, 193, 160);
+    background-color: #F7F8F8;
+    box-shadow: 0 0 15px #f1f1f1;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 85%;
+    text-align: center;
+    color: rgb(232, 193, 160);
+    cursor: pointer;
+    line-height: 17px;
+}
+.customers-graph-button:hover {
+    background-color: #efefef;
 }
 
 .customers-list {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
-    width: 1280px;
+    width: 1400px;
     margin: auto;
     border-radius: 15px;
 }
 
-.customers-list-title {
-    margin: 20px;
-}
 .customers-list-search {
-    margin: 20px;
+    padding: 15px;
+    display: flex;
+    gap: 5px;
+    text-align: center;
+    line-height: 26px;
+    align-items: center;
+}
+
+.customers-list-search input {
+    height: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+.customers-list-search select {
+    height: 29px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+.customers-list-search input[type="checkbox"] {
+    height: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+.customers-search-button {
+    border: 1px solid #03166C;
+    width: 60px;
+    height: 28px;
+    border-radius: 3px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
 }
 
 /* customers regist */
@@ -549,8 +929,12 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #01092b;
-    box-shadow: 5px 5px 10px #b4b4b4; /* 그림자 추가 */
+    box-shadow: 5px 5px 10px #d3d3d3; /* 그림자 추가 */
     background-color: white;
+    margin-left: 45px;
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .customers-regist-row, .customers-regist-row-h {
     display: flex;
@@ -599,6 +983,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    gap: 10px;
 }
 
 .customers-regist-button {
@@ -615,6 +1000,157 @@
     cursor: pointer;
 }
 
+/*customer modify*/
+.customers-modify-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customers-modify-title {
+    font-weight: bold;
+    font-size: 20px;
+    width: auto;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.customers-modify-box {
+    width: 640px;
+    height: 885px;
+    border-radius: 30px;
+    background-color: #F7F8F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.customers-modify-content {
+    margin: 0;
+    margin-top: 40px;
+    height: 780px;
+    border-radius: 0 0 10px 10px;
+}
+
+#customers-modify-save {
+    background-color: #171717;
+}
+
+.customers-modify-box input, .customers-modify-box textarea{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 100%;
+}
+.customers-modify-box textarea{
+    width: 400px;
+}
+
+/*license modify*/
+#customers-license-box {
+    height: 580px;
+}
+#customers-license-content {
+    margin-top: 5px;
+    height: 490px;
+}
+
+#customers-license-row input {
+    width: 110px;
+    height: 30px;
+}
+#customers-license-row {
+    line-height: 30px;
+    align-items: center;
+}
+#license-button {
+    border: none;
+    background-color: #03166C;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#customers-license-status {
+    color: white;
+    border-radius: 5px;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 2px;
+    margin-left: 5px;
+    font-size: 90%;
+}
+
+.customers-license-delete {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 15px;
+    width: 15px;
+    line-height: 10px;
+    margin: auto;
+    margin-left: 0;
+    cursor: pointer;
+}
+
+.customers-license-row-h {
+    display: flex;
+    font-size: 18px;
+    background-color: #edf6ff;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+}
+.customers-license-row {
+    display: flex;
+    font-size: 18px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.customers-license-row div:nth-child(1) {
+    width: 180px;
+    border-right: 1px solid black;
+}
+.customers-license-row-h div:nth-child(1) {
+    width: 180px;
+    border-right: 1px solid black;
+}
+
+.customers-license-row div:nth-child(2) {
+    width: 60px;
+}
+.customers-license-row-h div:nth-child(2) {
+    width: 60px;
+}
+
+.customers-license-row div:nth-child(3), .customers-license-row-h div:nth-child(3) {
+    width: 130px;
+}
+.customers-license-row div:nth-child(4), .customers-license-row-h div:nth-child(4) {
+    width: 5px;
+}
+.customers-license-row div:nth-child(5), .customers-license-row-h div:nth-child(5) {
+    width: 130px;
+}
+
+#customers-license-pagingbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*customer graph*/
+
 /*카카오api*/
 #postButton {
     width: 80px;
@@ -628,67 +1164,100 @@
 }
 
 /* -----------------------Attend-------------------------*/
-.attend-main{
+
+.attend-main {
     background-color: white;
     margin-top: 10px;
     margin-left: 20px;
-    width:  970px;
+    width: 970px;
     height: 800px;
-    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
 }
 
-.attend-box{
+
+.Mainattend-main {
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 970px;
+    height: 200px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.attend-box {
     display: flex;
 }
-.commute-btn-box{
+
+.commute-btn-box {
     background-color: white;
     margin-top: 10px;
     width: 380px;
     margin-left: 55px;
     height: 445px;
-    box-shadow:  4px 4px 10px 1px rgba(0,0,0,0.25);
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    position: relative;
+    border-radius: 10px;
+}
+.Maincommute-btn-box {
+    background-color: white;
+    margin-top: 10px;
+    width: 380px;
+    margin-left: 55px;
+    height: 445px;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     position: relative;
 }
-.attend-detail-box{
+.attend-detail-box {
     display: flex;
     margin-left: 120px;
     margin-top: 30px;
 }
-.attend-detail{
+
+.attend-detail {
     display: flex;
     justify-content: space-between;
     margin-left: 150px;
     width: 500px;
 }
-.detail-count{
+
+.detail-count {
     text-align: center;
 }
-.detailname{
+
+.detailname {
     font-size: 25px;
     font-weight: bold;
     color: #01092B;
 }
-.detail-name{
+
+.detail-name {
     margin-top: 25px;
     font-size: 18px;
 }
-.attendhead{
+
+.attendhead {
     margin-left: 350px;
 }
-.detail-count{
+
+.detail-count {
     font-size: 25px;
 }
-.attendTime{
+
+.attendTime {
     margin-top: 30px;
     font-weight: bolder;
     font-size: 35px;
 }
-.attend-month{
+
+.attend-month {
     margin-top: 14px;
     margin-left: 20px;
     font-size: 20px;
 }
-.attend-button{
+
+.attend-button {
+    font-size: 30px;
     position: absolute;
     bottom: 35px;
     left: 35px;
@@ -704,26 +1273,28 @@
     cursor: pointer;
 }
 
-.attend-sub-menu{
+.attend-sub-menu {
     margin-left: 23px;
     margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
 }
 
-.attend-sub-menu2{
-     margin-left: 23px;
-     margin-top: 20px;
-     font-size: 18px;
-     font-weight: bolder;
- }
+.attend-sub-menu2 {
+    margin-left: 23px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bolder;
 
-.attend-sub-menu3{
+}
+
+.attend-sub-menu3 {
     letter-spacing: 0.5px;
     margin-left: 35px;
     font-weight: bold;
     font-size: 19px;
 }
+
 .progress-bar {
     border-radius: 15px;
     width: 75%;
@@ -732,47 +1303,52 @@
     background-color: #dedede;
     font-weight: 600;
     font-size: .8rem;
+    margin-top: 18px;
 }
 
 .progress-bar .progress {
-    width: 65%;
     height: 22px;
     padding: 0;
+    width: 15%;
     border-radius: 15px;
     text-align: center;
     background-color: #01092B;
     color: #111;
 }
 
-.attend-Time{
+.attend-Time {
     margin-top: 30px;
     line-height: 40px;
 }
-.attend-btn{
+
+.attend-btn {
     background-color: white;
     border: none;
     font-size: 20px;
     cursor: pointer;
 }
-.leaveBt{
+
+.leaveBt {
     background-color: #002249;
 }
-.admin-attend-head{
+
+.admin-attend-head {
     display: flex;
+    position: relative;
     margin-top: 15px;
 }
 
-.attendNameBox{
+.attendNameBox {
     border: 1px solid #B6B6B6;
     border-radius: 5px;
     padding: 0px 13px 1px 13px;
     height: 30px;
-    width: 120px;
-    font-size: 15px;
+    width: 170px;
+    font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.attendNameBtn{
+.attendNameBtn {
     margin-left: 5px;
     border: 1px solid #B6B6B6;
     border-radius: 5px;
@@ -783,15 +1359,37 @@
     padding: 1px 13px 1px 13px;
     height: 34px;
 }
-.attendMonth{
+.headattend{
+
+    background-color: white;
+    position: fixed;
+    top: 146px;
     display: flex;
-    letter-spacing:2px;
-    margin-left: 400px;
+    font-size: 19px;
+    font-weight: bolder;
+    background-color: #01092b;
+    color: white;
+    width: 944px;
+    padding: 20px 20px 20px 20px;
+
+}
+.attenddiv{
+    display: flex;
+    cursor: pointer;
+
+}
+.attenddiv div{
+    width: 100px;
+}
+.attendMonth {
+    display: flex;
+    letter-spacing: 2px;
+    margin-left: 300px;
     font-size: 25px;
     font-weight: bold;
 }
-.attendMonthbtn{
-    padding-top: 6px;
+
+.attendMonthbtn {
     font-weight: bold;
     cursor: pointer;
     border: none;
@@ -799,48 +1397,113 @@
     font-size: 25px;
 }
 
-.attendTable{
-    margin-left: 50px;
+.attendTable {
+    margin-top: 20px;
+    margin-left: 70px;
+    line-height: 50px;
+    font-weight: bold;
+    height: 630px;
 }
-.attendTable th,td{
-    padding: 10px;
+
+.attendTable th, td {
     width: 105px;
     font-size: 20px;
-    text-align: left;
-    padding-top: 30px;
-}
-.att-late{
-    padding-left: 170px;
+    text-align: center;
+    padding: 30px 50px 50px;
 }
 
-.attendmodalcontent{
-    margin-left: 100px;
+.attendTable td:nth-child(2){
+    padding-right: 30px;
+
+}
+.attendTable td:nth-child(3){
+    padding-right: 30px;
+
+}
+.attendTable td:nth-child(4){
+    padding-right: 30px;
+}
+.attendTable td:nth-child(5){
+    padding-right: 30px;
+}
+.attendTable td:nth-child(6){
+    padding-right: 30px;
+}
+.attendTable td{
+
 }
 
-.modifiedHeader{
-    background-color: white;
-    z-index: 1;
-    font-size: 25px;
-    position: fixed;
-    width: 915px;
-    text-align: left;
-    border-bottom: 1px solid black;
-    padding-left: 70px;
-    padding-bottom: 25px;
-    margin-left: -100px;
-    padding-top: 20px;
-}
-.attendmodalHead{
-    background: white;
-    margin-top: 30px;
-    width: 883px;
-    position: fixed;
-    padding-top: 30px;
-    border-bottom: 1px solid black;
+.att-late {
     padding-left: 100px;
-    margin-left: -101px;
+    font-weight: bolder;
+
 }
-.attendBackAdmin{
+
+.att-tbody {
+    font-weight: normal;
+}
+
+.attendmodalcontent {
+}
+
+.modifiedHeader {
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: left;
+    position: fixed;
+    top: 66px;
+    left: 460px;
+    width: 920px;
+    padding-left: 60px;
+    background-color: white;
+    border-bottom: 1px solid #B6B6B6;
+    height: 50px;
+    padding-top: 30px;
+}
+
+.attendmodalHead {
+    background: #F7F8F8;
+    margin-top: 75px;
+    width: 890px;
+    position: fixed;
+    border-bottom: 1px solid #BABABA;
+    padding: 13px 0px 13px 95px;
+    font-weight: bold;
+
+}
+
+.adminattendbody {
+    font-size: 16px;
+
+}
+
+.attendbodyTable{
+    margin-top: 145px;
+    font-size: 17px;
+    margin-left: 64px;
+    line-height: 40px;
+}
+
+.getmodibtn {
+    background: white;
+    border: 1px solid #B6B6B6;
+    width: 65px;
+    height: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.attemprank{
+    color: #B6B6B6;
+    font-size: 13px;
+}
+.tbodyattend {
+    border-bottom: 1px solid #B6B6B6;
+    width: 900px;
+}
+
+.attendBackAdmin {
     background-color: white;
     padding: 10px 10px 10px 70px;
     height: 80vh;
@@ -848,28 +1511,55 @@
     border-radius: 5px;
     position: relative;
     margin-top: 20px;
+    width: 1300px;
+    margin-left: 50px;
 }
 
-.att-empName{
-    font-size: 20px;
+.att-empName {
+    font-size: 18px;
     font-weight: bold;
     text-align: right;
 }
-.attendAdminHead{
+
+.attendAdminHead {
     font-size: 28px;
     font-weight: bold;
 }
-.attenddetailbtn{
+.simpleinfoCon{
+    margin : 0 auto;
+    text-align: center;
+    width: 260px;
     background-color: white;
-    font-size: 17px;
-    border: 1px solid #B6B6B6;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+}
+.simpleinfoName{
+    margin: 0 auto;
+    margin-top: 20px;
+
+    font-size: 23px;
+}
+.simpleinfoimg{
+    margin-top: 25px;
+    width: 70px;
+    height: 70px;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 100px;
+}
+.attenddetailbtn {
+
+    font-size: 12px;
+    border: none;
     padding: 7px 10px;
     border-radius: 10px;
     font-weight: bolder;
-    width: 110px;
-    height: 40px;
+    color: white;
+    background-color: #a3a1a1;
+    width: 80px;
+
 }
-.attendModal{
+
+.attendModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -883,7 +1573,7 @@
 }
 
 
-.attendModal-container{
+.attendModal-container {
     position: absolute;
     width: 1000px;
     height: 800px;
@@ -894,7 +1584,8 @@
     z-index: 1000;
     overflow: auto;
 }
-.historyModal{
+
+.historyModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -906,7 +1597,8 @@
     align-items: center;
     z-index: 10001;
 }
-.historyModal-container{
+
+.historyModal-container {
     position: absolute;
     width: 800px;
     height: 700px;
@@ -917,30 +1609,397 @@
     z-index: 1002;
     overflow: auto;
 }
-.historyattend{
+
+.historyattend {
     display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+    margin-top: -19px;
 }
-.attendhistoryHead{
-    display: flex;
+
+.att-text{
+    margin-left: 10px;
+    margin-top: 8px;
+    font-size: 20px;
+    color : #B6B6B6;
 }
-.AttendhistoryContent{
+.atttbtn{
+    background: none;
+    border: none;
+    font-size: 30px;
+    margin-left: 480px;
+    margin-top: -10px;
+}
+.attime{
+    margin-left: 0px;
+    line-height: 23px;
+}
+.attendhistoryHead {
     display: flex;
+    border-bottom: 1px solid #BABABA;
+    padding-left: 70px;
+background-color: #01092b;
+    color: white;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.AttendhistoryContent {
+    display: flex;
+    border-bottom: 1px solid #BABABA;
+    padding-left: 70px;
+    padding-bottom: 20px;
+    font-size: 16px;
 
 }
-.historyModalContent{
-    margin-left: 80px;
+
+.historyModalContent {
     margin-top: 30px;
     font-size: 18px;
 }
-.historyTime{
-margin-left: 130px;
+.historyattend,attendhistoryHead{
+    border-bottom: 1px solid #BABABA;
 }
-.historymodifiedAt{
-    margin-left: 70px;
+.attmodifier{
 }
 
-.attendHistoryContainer{
+.attContent{
+    margin-left: 220px;
+
+}
+.attdate{
+    margin-left: 230px;
+}
+.historyTime {
+    margin-left: 130px;
+}
+
+.historymodifiedAt {
+    margin-left: 100px;
+}
+
+.attendHistoryContainer {
     margin-top: 18px;
+}
+
+
+.att33 {
+    margin-top: 26px;
+}
+
+.att44 {
+    margin-top: 10px;
+}
+
+.tbodyattend td:nth-child(1) {
+    padding-left: 75px;
+    width: 70px;
+
+}
+
+.tbodyattend td:nth-child(2) {
+    padding-left: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.tbodyattend td:nth-child(3) {
+    padding-left: 40px;
+    width: 150px;
+}
+
+.tbodyattend td:nth-child(4) {
+    padding-left: 0px;
+    text-align: center;
+}
+
+.tbodyattend td:nth-child(5) {
+    padding-left: 0px;
+    text-align: center;
+}
+
+.tbodyattend td:nth-child(6) {
+    padding-left: -15px;
+}
+
+.attendEmpName {
+    font-weight: bold;
+    display: inline-block;
+
+}
+
+.attendcal {
+    margin-left: 550px;
+    border: 1px solid #B6B6B6;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    padding: 5px 10px 8px 20px;
+    border-radius: 12px;
+    margin-top: -50px;
+
+}
+.empatinfohead{
+    display: flex;
+    column-gap: 80px;
+    margin: 30px 0px;
+    background-color: #01092b;
+    color: white;
+    padding: 15px 20px 15px 250px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bolder;
+    width: 70%;
+}
+.allempatinfo{
+    line-height: 50px;
+    margin-top: 0px;
+    padding-left: 70px;
+    height: 530px;
+}
+.empatinfo{
+    display: flex;
+    row-gap: 20px;
+    column-gap: 30px;
+    font-size: 17px;
+}
+.empatinfo div{
+    width: 70px;
+
+}
+
+.modifibtn {
+    position: absolute;
+    bottom: 15px;
+    margin-left: 50px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+
+
+.MainAttendDetail{
+    height: 100px;
+}
+.todobox{
+    display: flex;
+}
+
+.modifyModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+
+.modifyModal-container {
+    position: absolute;
+    width: 550px;
+    height: 450px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000000;
+    overflow: auto;
+}
+.attmodifyHead{
+    display: flex;
+    font-size: 25px;
+    margin-top: 25px;
+    padding-left: 50px;
+    border-bottom: #B6B6B6 solid 1px;
+    height: 50px;
+
+}
+.attmodifyHead2{
+    height: 20px;
+    margin-left: 20px;
+    background: black;
+    color: white;
+    font-size: 13px;
+    padding-top: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    letter-spacing: 1px;
+}
+.attmodifyHead3{
+    margin-top: -12px;
+    cursor: pointer;
+    height: 50px;
+    font-size: 40px;
+    margin-left: 230px;
+}
+.attmodifyHead4{
+    margin-top: 5px;
+    width: 80px;
+    margin-left: 5px;
+   color: #B6B6B6;
+    font-size: 20px;
+}
+
+.attselectForm{
+    width: 200px;
+    height: 44px;
+    background: #D9D9D9;
+    padding-left: 15px;
+    font-size: 15px;
+    border: none;
+    margin-top: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    margin-left: -10px;
+
+}
+.atttimecon{
+    display: flex;
+    margin-top: 50px;
+    margin-left: 70px;
+    font-size: 18px;
+}
+.inputtimeatt{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 30px;
+    border: none;
+    font-size: 20px;
+}
+.attmodifyBtn{
+    border: none;
+    background: black;
+    color: white;
+    width: 130px;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 90px;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+.attmodifyBtn1{
+    border: none;
+    background: white;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 90px;
+    margin-left: 200px;
+    cursor: pointer;
+}
+.emalte{
+height: 30px;
+margin-left: 22px;
+margin-top: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+.ele2{
+    margin-top: -10px;
+}
+
+
+
+/* MyCalendar.css */
+
+/* 일요일 날짜: 빨간색 */
+.fc-day-sun a {
+    color: red;
+}
+
+/* 토요일 날짜: 파란색 */
+.fc-day-sat a {
+    color: blue;
+}
+.fc-today-button{
+    font-size: 900px;
+}
+.fc-icon{
+}
+.fc .fc-button-primary{
+    /*display: none;*/
+    /*background-color: white;*/
+    /*color: white;*/
+}
+.fc-next-button fc-button fc-button-primary{
+    display: none;
+
+}
+.fc-media-screen{
+    height: 600px;
+    padding: 13px;
+
+}
+
+.fc-toolbar-title{
+
+}
+
+.todomodal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+.todomodalcontainer {
+    position: absolute;
+    width: 650px;
+    height: 450px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000;
+    overflow: auto;
+}
+.todoregiHead{
+    font-size: 33px;
+    font-weight: bolder;
+    color: #01092B;
+    margin-top: 32px;
+}
+.todoregistInput{
+    margin-top: 75px;
+    height: 50px;
+    padding-left: 15px;
+    font-size: 15px;
+    width: 300px;
+}
+.todoregistbtn{
+    margin-top: 90px;
+}
+.toregibtn{
+    border: none;
+    background-color: #01092B;
+    color: white;
+    width: 200px;
+    height: 80px;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 15px;
 }
 /**                               employee                               **/
 
@@ -1288,6 +2347,7 @@ margin-left: 130px;
     align-items: center;
     display: flex;
 }
+
 .EmployeesModalDivUp-5-DivBox-2{
     width: 246px;
     height: 54px;
@@ -1302,6 +2362,15 @@ margin-left: 130px;
 }
 
 
+
+.EmployeesModalDivImage{
+    width: 188px;
+    height: 218px;
+    border: 1px solid #C8C8C8;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #FFFFFF;
 .employeesModalDiv-2{
     margin-top: 58px;
     display: inline-flex;
@@ -1398,7 +2467,55 @@ margin-left: 130px;
     border-collapse : collapse;
     width: 1506px;
 }
+.attendAdminMain{
+    margin-left: 10px ;
 
+}
+.tododate{
+    border: none;
+    font-weight: bolder;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    width: 120px;
+}
+
+.todoregistbnt{
+
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 30px;
+    border-radius: 3px;
+    border: none;
+    font-size: 13px;
+    background-color: #6aafe6;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**  --------------------- 유리   Programs -----------------------  **/
+.programs-contents{
+    margin-left: 14%; /* 박스여백 */
+    margin-right: 4%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
 .employees-list-table td{
     text-align: center;
     vertical-align: middle;
@@ -1601,4 +2718,143 @@ margin-left: 130px;
 
 
 
+
+.programs-tab-pane {
+        transition: opacity .15s linear;
+        position: relative;
+        height: 65px;
+        width: 100%;
+        margin-right: unset;
+        margin-left: auto;
+        border: 1px solid #000000; /* 박스 테투리 */
+    background-color: #ffffff;
+}
+
+.programs-search-button {
+    margin-left: 60%;
+    border-radius: 5px; /* 검색 버튼 사각형 모서리 둥글게 */
+    background-color: #0c58a5; /* 파란색 배경 설정 */
+    color: white; /* 글자 색상 설정 */
+    font-size: 15px; /* 글자 크기 설정 */
+    padding: 7px 20px; /* 안쪽 여백 설정 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 커서 모양 변경 */
+
+}
+
+.programs-searchName{
+    margin-left: 5%;
+}
+
+.programs-div{
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.todoccc{
+    display: flex;
+}
+.todobox{
+
+    margin-top: 85px;
+    font-size: 20px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+}
+.todopage{
+    margin-left: 350px;
+}
+.setttodo{
+   display: flex;
+    margin-left: 20px;
+}
+.wrapper{
+    height: 262px;
+    width: fit-content;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+header .icons{
+    display: flex;
+}
+header .icons span{
+    height: 20px;
+    width: 20px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 20px;
+    font-size: 1.7rem;
+    user-select: none;
+    border-radius: 50%;
+}
+
+.icons span:last-child{
+    margin-right: -10px;
+}
+
+header .current-date{
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+.calendar{
+    padding: 20px;
+}
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+.calendar .days{
+    margin-bottom: 20px;
+}
+.calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 0.7rem;
+}
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 15px;
+}
+.days li.inactive{
+    color: #aaa;
+}
+.days li.active{
+    color: #fff;
+}
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 25px;
+    width: 25px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before{
+    background: #9B59B6;
+}
+.days li:not(.active):hover::before{
+    background: #f2f2f2;
+}
 

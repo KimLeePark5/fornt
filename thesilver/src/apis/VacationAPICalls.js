@@ -1,20 +1,90 @@
-import { request } from "./Api";
-import { vacation } from "../modules/VacationModules";
+import {authRequest} from "./Api";
+import {getProceedRequire, getRequireState, getUsedVacation, getVacation} from "../modules/VacationModules";
+import async from "async";
+import {postSuccess} from "../modules/CustomerModule";
+import {NavigationType} from "react-router-dom";
 
+// 연차 현황 조회
+export const callVacationStateAPI = () => {
 
-export const callVacationStateAPI = (employeeCode) => {
     return async (dispatch, getState) => {
-        try {
-            const result = await request("GET", `/api/v1/vacation/${employeeCode}`);
-            console.log("API 호출 성공: ", result);
-            dispatch(vacation(result)); // 'payload'에 실제 데이터를 담아서 전달
-        } catch (error) {
-            console.log("API 호출 에러: ", error);
-            // API 호출 중에 에러가 발생하면 여기로 들어옴
-            if (error.response && error.response.status === 401) {
-                // Unauthorized (401) 에러인 경우 로그아웃 액션을 디스패치
+        const result = await authRequest.get(`/api/v1/vacation`)
+        console.log("callVacationStateAPI 호출 성공: ", result);
 
-            }
+        if (result?.status === 200) {
+            dispatch(getVacation(result));
         }
-    };
+    }
 };
+
+// 연차 신청 폼 오픈
+export const callRequireFormOpen = () => {
+    return async (dispatch, getState) => {
+        const result = await authRequest.get(`/api/v1/vacation`)
+        console.log("callRequireFormOpen 호출 성공: ", result);
+
+        if (result?.status === 200) {
+            dispatch(getVacation(result));
+        }
+    }
+}
+
+// 연차 신청
+export const callVacationRequireAPI = ({requireForm}) => {
+    return async (dispatch, getState) => {
+
+        console.log("연차 상신 폼 : ", requireForm);
+
+        const result = await authRequest.post(`api/vi/require`, requireForm);
+        console.log("callVacationRequireAPI 호출 성공: ", result);
+        console.log("리절트 : ", result)
+
+        if (result?.status === 201) {
+            dispatch(postSuccess());
+        }
+    }
+}
+
+
+// 연차 신청 현황 조회
+export const callRequireStateAPI = () => {
+
+    return async (dispatch, getState) => {
+
+        const result = await authRequest.get("/api/v1/requireState");
+        console.log("callRequireStateAPI 호출 성공: ", result);
+
+        if (result?.status === 200) {
+            dispatch(getRequireState(result));
+        }
+    }
+};
+
+
+// 연차 사용 리스트 조회
+export const callUsedVacationAPI = ({currentPage = 1}) => {
+
+    return async (dispatch, getState) => {
+
+        const result = await authRequest.get(`/api/v1/usedVacation?page=${currentPage}`);
+        console.log("callUsedVacationAPI 호출 성공: ", result);
+
+        if (result?.status === 200) {
+            dispatch(getUsedVacation(result));
+        }
+    }
+};
+
+export const callProceedRequireAPI = ({currentPage = 1,navType = "상신", proceedRequire}) => {
+    return async (dispatch, getState) => {
+        console.log("확인", navType)
+    const result = await authRequest.get(`/api/v1/ProceedRequireAdmin?page=${currentPage}&signStatus=${navType}`);
+    console.log("callRequireAPI 호출 성공: ", result);
+
+    if (result?.status === 200) {
+        dispatch(getProceedRequire(result));
+    }
+}
+};
+
+
