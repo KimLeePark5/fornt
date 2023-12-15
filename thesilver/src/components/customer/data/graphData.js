@@ -2,134 +2,36 @@ export const firstGraphData = ({slicedData1,slicedData2,slicedData3,slicedData4}
 
     [
     {
-        "id": "2023년",
-        "data": [
-            {
-                "x": "7월",
-                "y": 6
-            },
-            {
-                "x": "8월",
-                "y": 7
-            },
-            {
-                "x": "9월",
-                "y": 8
-            },
-            {
-                "x": "10월",
-                "y": 9
-            },
-            {
-                "x": "11월",
-                "y": 10
-            },
-            {
-                "x": "12월",
-                "y": 11
-            },
-
-        ]
+        "id": slicedData1[0].year + "년",
+        "data": slicedData1.map(item => ({
+            "x": item.month,
+            "y": item.cumulativeCount - slicedData2[11].cumulativeCount
+        }))
     },
     {
-        "id": "70대",
-        "data": [
-            {
-                "x": "7월",
-                "y": 3
-            },
-            {
-                "x": "8월",
-                "y": 5
-            },
-            {
-                "x": "9월",
-                "y": 6
-            },
-            {
-                "x": "10월",
-                "y": 10
-            },
-            {
-                "x": "11월",
-                "y": 6
-            },
-            {
-                "x": "12월",
-                "y": 10
-            },
-
-        ]
+        "id": slicedData2[1].year + "년",
+        "data": slicedData2.map(item => ({
+            "x": item.month,
+            "y": item.cumulativeCount - slicedData3[11].cumulativeCount
+        }))
     },
     {
-        "id": "80대",
-        "data": [
-            {
-                "x": "7월",
-                "y": 2
-            },
-            {
-                "x": "8월",
-                "y": 2
-            },
-            {
-                "x": "9월",
-                "y": 5
-            },
-            {
-                "x": "10월",
-                "y": 7
-            },
-            {
-                "x": "11월",
-                "y": 5
-            },
-            {
-                "x": "12월",
-                "y": 8
-            },
-
-        ]
+        "id": slicedData3[2].year + "년",
+        "data": slicedData3.map(item => ({
+            "x": item.month,
+            "y": item.cumulativeCount - slicedData4[11].cumulativeCount
+        }))
     },
-    {
-        "id": "90세 이상",
-        "data": [
-            {
-                "x": "7월",
-                "y": 1
-            },
-            {
-                "x": "8월",
-                "y": 2
-            },
-            {
-                "x": "9월",
-                "y": 1
-            },
-            {
-                "x": "10월",
-                "y": 3
-            },
-            {
-                "x": "11월",
-                "y": 2
-            },
-            {
-                "x": "12월",
-                "y": 3
-            },
 
-        ]
-    }
 ]
 
 export const secondGraphData = ({secondGraphData}) =>
     secondGraphData.map((item) => ({
         "taste": item.primaryAddress,
-        "50년대": item.fifties,
-        "40년대": item.forties,
-        "30년대": item.thirties,
-        "20년대이하": item.twenties
+        "50-59년생": item.fifties,
+        "40-49년생": item.forties,
+        "30-39년생": item.thirties,
+        "30년생이하": item.twenties
     }))
 
 

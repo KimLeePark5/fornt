@@ -92,7 +92,7 @@ function CustomerRegistForm() {
 
     useEffect(() => {
         if (postSuccess) {
-            alert('고객 등록이 성공했습니다 !');
+            alert('고객 등록이 완료되었습니다.');
             window.location.href = "/customers";
         }
     }, [postSuccess]);
@@ -101,7 +101,7 @@ function CustomerRegistForm() {
         <>
 
             <div>
-                <div className="customers-regist-content">
+                <div id="customers-regist-content-id" className="customers-regist-content">
                     <div className="customers-regist-row-h">기본 정보</div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">이름</div>

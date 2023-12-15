@@ -31,7 +31,7 @@ const FirstGraph = ({data /* see data tab */}) => {
 
     return (
         <>
-            <div className="customers-graph-title">신규 고객 등록 수</div>
+            <div className="customers-graph-title">연도별 누적 고객 등록 수</div>
             <select
                 className="customers-graph-select"
                 onChange={onChangeKeys}
@@ -53,7 +53,7 @@ const FirstGraph = ({data /* see data tab */}) => {
                     reverse: false,
                 }}
                 yFormat=" >-0,.1~"
-                curve="monotoneX"
+                curve="linear"
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
