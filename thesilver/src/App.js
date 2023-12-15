@@ -13,8 +13,13 @@ import ProtectedRoute from "./components/router/ProtectedRoute";
 import Error from "./pages/Error";
 import Vacation from "./pages/vacation/Vacation";
 import CustomerRegist from "./pages/CustomerRegist";
+
 import Programs from "./pages/board/program/Programs";
 import Journals from "./pages/board/journal/Journals";
+
+import Employee from "./pages/Employee";
+
+
 import Main from "./pages/Main";
 import SearchProgram from "./pages/board/program/SearchProgram";
 import ProgramDetail from "./pages/board/program/ProgramDetail";
@@ -22,9 +27,13 @@ import JournalDetail from "./pages/board/journal/JournalDetail";
 import SearchJournal from "./pages/board/journal/SearchJournal";
 import ProgramRegist from "./pages/admin/ProgramRegist";
 import VacationManagement from "./pages/vacation/VacationManagement";
+
 import ProgramModify from "./pages/admin/ProgramModify";
 import JournalModify from "./pages/board/journal/JournalModify";
 import JournalRegist from "./pages/board/journal/JournalRegist";
+
+import AttendAdminByType from "./pages/admin/AttendAdminByType";
+
 
 
 function App() {
@@ -40,8 +49,10 @@ function App() {
                     <Route path="attend-management">
                         <Route index element={<AttendAdmin/>}/>
                         <Route path="search" element={<AttendAdminSearch/>}/>
+                        <Route path="sort" element={<AttendAdminByType/>}/>
                     </Route>
                     <Route path="/employees" element={<Employees/>}></Route>
+                    <Route path="/employee" element={<Employee/>}></Route>
                     <Route path="/vacation" element={<Vacation/>}></Route>
                     <Route path="/vacation-management" element={<VacationManagement/>}></Route>
 
