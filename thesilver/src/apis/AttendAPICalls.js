@@ -1,5 +1,12 @@
 import {authRequest, request} from "./Api";
-import {attendAdmin, attendModifySuccess, myAttend, todayAttend} from "../modules/AttendModule";
+import {
+    attendAdmin,
+    attendAdminByType,
+    attendModifySuccess,
+    enterSuccess, leaveSuccess,
+    myAttend,
+    todayAttend
+} from "../modules/AttendModule";
 import {toast} from "react-toastify";
 
 export const callGetAttendResultAPI = ({month}) => {
@@ -21,9 +28,10 @@ export const callEnterBtAPI = () => {
             }
         })
 
-        if(result?.status == 201) {
+        if (result?.status == 201) {
             toast.info("출근등록이 완료되었습니다")
-        };
+            dispatch(enterSuccess(result));
+        }
 
     }
 }
@@ -33,6 +41,7 @@ export const callLeaveBtAPI = () => {
         const result = await authRequest.put('/api/v1/leave')
         if (result?.status == 201) {
             toast.info("퇴근이 완료되었습니다.")
+            dispatch(leaveSuccess(result))
         }
     }
 }
@@ -84,5 +93,17 @@ export const callModifyAttendAPI = (form,attendNo) => {
             dispatch(attendModifySuccess(result))
         }
 
+    }
+}
+
+export const callAttendByLateAPI = (month, page, standard) => {
+    return async (dispatch, getState) => {
+        const result = await authRequest.get(`api/v1/getAttendByLate?month=${month}&page=${page}&value=${standard}`).catch(e => console.log(e))
+
+        if (result?.status == 200) {
+
+
+            dispatch(attendAdminByType(result))
+        }
     }
 }

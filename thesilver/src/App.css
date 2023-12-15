@@ -31,6 +31,37 @@
 /*Main*/
 
 
+.attendAdminMain{
+    margin-left: 10px ;
+
+}
+.tododate{
+    border: none;
+    font-weight: bolder;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 40px;
+    font-size: 15px;
+    margin-top: 20px;
+    width: 120px;
+}
+
+.todoregistbnt{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20px;
+    border-radius: 3px;
+    border: none;
+    font-size: 13px;
+    background-color: #01092b;
+    color: white;
+}
+.fc .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 10px;
+}
 .todoContainer{
     margin-top: -170px;
     background-color: white;
@@ -40,12 +71,25 @@
     grid-row: 3/4;
     display: flex;
 }
-.dhodksehla{
-
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+.todoccc{
+    display: flex;
 }
+.todobox{
+
+    margin-top: 62px;
+    font-size: 20px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+}
+.todopage{
+    margin-top: -20px;
+    margin-left: -90px;
+}
+.setttodo{
+    display: flex;
+    margin-left: 20px;
+}
+
 .mainContainer{
     display: grid;
     grid-template-columns: 260px 1200px;
@@ -2006,7 +2050,12 @@ background-color: #01092b;
    font-size: 12px;
     text-align: center;
 }
+.dhodksehla{
 
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+}
 
 
 /* MyCalendar.css */
@@ -2576,40 +2625,6 @@ display: none;
     border-collapse : collapse;
     width: 1506px;
 }
-.attendAdminMain{
-    margin-left: 10px ;
-
-}
-.tododate{
-    border: none;
-    font-weight: bolder;
-    font-family: 'Noto Sans KR', sans-serif;
-    margin-left: 40px;
-    font-size: 15px;
-    margin-top: 20px;
-    width: 120px;
-}
-
-.todoregistbnt{
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: bolder;
-    letter-spacing: 1px;
-    height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 20px;
-    border-radius: 3px;
-    border: none;
-    font-size: 13px;
-    background-color: #01092b;
-    color: white;
-}
-.fc .fc-toolbar.fc-header-toolbar{
-    margin-bottom: 10px;
-}
-
-
-
 
 
 
@@ -2866,24 +2881,7 @@ display: none;
     display: flex;
     flex-direction: column;
 }
-.todoccc{
-    display: flex;
-}
-.todobox{
 
-    margin-top: 62px;
-    font-size: 20px;
-    margin-left: 70px;
-    margin-bottom: 50px;
-}
-.todopage{
-    margin-top: -20px;
-    margin-left: -90px;
-}
-.setttodo{
-   display: flex;
-    margin-left: 20px;
-}
 .wrapper{
     height: 262px;
     width: fit-content;
