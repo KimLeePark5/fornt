@@ -4,6 +4,7 @@ import MainAttend from "../components/main/MainAttend";
 import MainCommuteBt from "../components/main/MainCommuteBt";
 import SideCalendar from "../components/main/SideCalender";
 import EmpSimpleInfo from "../components/main/EmpSimpleInfo";
+import MainCal from "../components/main/MainCal";
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ChangePwModal from "../components/login/form/ChangePwModal";
