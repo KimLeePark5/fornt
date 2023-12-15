@@ -6,10 +6,12 @@ import {todoListReducer} from "./TodoListModule";
 import {vacationReducer} from "./VacationModules";
 import programReducer from "./ProgramsModule";
 import employeesReducer from "./EmployeesModule";
+import journalReducer from "./JournalsModule";
 
 
 const rootReducer = combineReducers({
-    customerReducer,attendReducer,loginReducer, vacationReducer, programReducer,employeesReducer,todoListReducer
+    customerReducer,attendReducer,loginReducer, vacationReducer, programReducer, employeesReducer, journalReducer, todoListReducer
+
 });
 
 
