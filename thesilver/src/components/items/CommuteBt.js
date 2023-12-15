@@ -9,9 +9,10 @@ function CommuteBt() {
     const {todayAttend} = useSelector(state => state.attendReducer);
     const progress = useRef()
 
+    const {enterSuccess,leaveSuccess}=useSelector(state  => state.attendReducer)
     useEffect(() => {
         dispatch(callTodayAttendAPI());
-    }, []);
+    }, [enterSuccess,leaveSuccess]);
 
     const onClickEnterBtHandler = () => {
         dispatch(callEnterBtAPI());

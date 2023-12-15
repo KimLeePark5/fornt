@@ -26,7 +26,7 @@ function Main() {
             <ToastContainer hideProgressBar={true} position="top-center"/>
             <div class='mainContainer'>
                 <EmpSimpleInfo/>
-                <div class='mainCal'>일정 달력</div>
+                <MainCal/>
                 <MainCommuteBt/>
                 <MainTodoList/>
                 <div class='mainMiniCal'><SideCalendar/></div>
