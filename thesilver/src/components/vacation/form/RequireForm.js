@@ -4,19 +4,19 @@ import * as PropTypes from "prop-types";
 import employeeInfo from "../../items/AttendItems/EmployeeInfo";
 import {callRequireFormOpen, callVacationRequireAPI} from "../../../apis/VacationAPICalls";
 import {useDispatch, useSelector} from "react-redux";
-import vacation from "../../../pages/vacation/Vacation";
 import {useParams} from "react-router-dom";
 
-function RequireForm({ isOpen, closeModal}) {
+function RequireForm({isOpen, closeModal}) {
 
     const dispatch = useDispatch();
-
     const [form, setForm] = useState({
         vacationType: "연차"
     });
 
+    const {requireSuccess, vacation } = useSelector(state => state.vacationReducer);
 
-    const {requireSuccess} = useSelector(state => state.vacationReducer);
+    console.log("vadssdf", vacation);
+
 
     const currentDate = new Date();
     const formattedDate = `${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${currentDate.getDate()}일`;
@@ -102,11 +102,11 @@ function RequireForm({ isOpen, closeModal}) {
                     <div className="vacation-require-form">
                         <div className="vacation-require-form1">
                             <div  className="form1-1">성명</div>
-                            <div name="name" className="form1-2">{vacation.employeename}</div>
+                            <div name="name" className="form1-2">{vacation.employeeName}</div>
                             <div className="form1-1">직급</div>
-                            <div name="rank">{vacation.authorities}</div>
+                            <div name="rank" className="form1-3">{vacation.rank}</div>
                         </div>
-                        <div  className="vacation-require-form2">
+                        <div className="vacation-require-form2">
                             <div className="form2-1">구분</div>
                             <div className="form2-2">
                             <select name="vacationType" value={form.vacationType}  onChange={onChangeHandler} style={{width: "150px", height: "35px"}}>
@@ -116,8 +116,10 @@ function RequireForm({ isOpen, closeModal}) {
                                 <option value="4">경조사</option>
                             </select>
                             </div>
-                            <div name="srattAndEndDate" className="form2-1" >기간</div>
-                            <div className="form2-2" onChange={onChangeHandler}>
+                        </div>
+                        <div className="vacation-require-form3">
+                            <div name="srattAndEndDate" className="form3-1" >기간</div>
+                            <div className="form3-2" onChange={onChangeHandler}>
                                 <DatePicker
                                     selected={startDate}
                                     onChange={handleStartDateChange}
@@ -140,14 +142,15 @@ function RequireForm({ isOpen, closeModal}) {
                                 />
                                 <span name="countDate" style={{paddingLeft: "50px"}}>{daysDiff} 일</span>
                             </div>
-
-                            <div className="form2-3" >내용</div>
-                            <div style={{margin: "0", textAlign: "left", borderLeft: "#1A1A1C 1px solid"} }>
-                                <div><textarea name="content" className="form2-4" onChange={onChangeHandler}></textarea></div>
+                        </div>
+                        <div  className="vacation-require-form4">
+                            <div className="form4-1" >내용</div>
+                            <div style={{margin: "0", textAlign: "left"} }>
+                                <div><textarea name="content" className="form4-2" onChange={onChangeHandler}></textarea></div>
                             </div>
                         </div>
-                        <div className="vacation-require-form3">
-                            <pdiv style={{fontSize: "15px", paddingLeft: "30px", height: "150px"}}>
+                        <div className="vacation-require-form5">
+                            <div style={{fontSize: "15px", paddingLeft: "30px", paddingTop: "20px", height: "150px"}}>
                                 <br/>
                                 <br/>
                                 1.연차의 사용은 근로기준법에 따라 전년도에 발생한 개인별 잔여 연차에 한하여 사용함을 원칙으로 한다.<br/>
@@ -156,13 +159,13 @@ function RequireForm({ isOpen, closeModal}) {
                                 3. 공가(예비군/민방위)는 사전에 통지서를, 사후에는 참석증을 반드시 제출 한다.
                                 <br/>
                                 <br/>
-                            </pdiv>
+                            </div>
                             <div name="today" style={{fontSize: "15px", textAlign: "center", marginTop:"25px"}}>{formattedDate}</div>
-                            <div name="RequirePerson" style={{fontSize: "15px", textAlign: "right", padding: "20px 50px 30px 0"}}>서명 : </div>
+                            <div name="RequirePerson" style={{fontSize: "15px", textAlign: "right", padding: "40px 60px 30px 0"}}>서명 : {vacation.employeeName}</div>
                         </div>
-                        <div className="vacation-require-form4">
-                            <div className="form4-1">결재자</div>
-                            <div className="form4-2" name="approver">000 팀장 또는 000 센터장</div>
+                        <div className="vacation-require-form6">
+                            <div className="form6-1">결재자</div>
+                            <div className="form6-2" name="approver">{vacation.approverName}</div>
                         </div>
                     </div>
                 </>
