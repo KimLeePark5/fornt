@@ -11,11 +11,14 @@ function TodoRegist({setTodoRegist}){
     const {registSuccess} = useSelector(state => state.todoListReducer)
 
     const todoregistHandler = () => {
-        console.log("클릭됨")
+        if(!text){
+            toast.error("공백일 수 없습니다.")
+            return;
+        }
         dispatch(callRegistTodo(text));
     }
     if(registSuccess){
-        window.location.reload();
+        setTodoRegist(false)
     }
     return(
         <div class="todomodal">

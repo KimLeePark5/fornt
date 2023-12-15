@@ -10,15 +10,13 @@ function MainTodoList(){
     const [day,setDay]=useState(today);
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
-    const {myTodo} = useSelector(state=>state.todoListReducer);
+    const {myTodo,modifySuccess,deleteSuccess,registSuccess,completeSuccess} = useSelector(state=>state.todoListReducer);
     console.log("mytodo",myTodo)
 
     useEffect(() => {
         dispatch(callTodoListAPI(page,day))
-    }, [day,page]);
-    useEffect(() => {
-        dispatch(callTodoListAPI(page,day))
-    }, []);
+    }, [day,page,modifySuccess,deleteSuccess,registSuccess,completeSuccess]);
+
 
     const [todoRegist,setTodoRegist]=useState(false);
 
@@ -34,7 +32,7 @@ function MainTodoList(){
                 <div>
                 <input type='date' onChange={dateChangeHandler} className='tododate'/>
                     <button onClick={()=>setTodoRegist(true)} className='todoregistbnt'>추가+</button>
-                <h1 style={{fontWeight:'bold',fontSize:25,marginTop: 50,paddingLeft:40}}>TO DO LIST</h1>
+                <h1 style={{fontWeight:'bold',fontSize:25,marginTop: 25,paddingLeft:40}}>TO DO LIST</h1>
                 </div>
 
                 </div>

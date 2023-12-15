@@ -1,43 +1,35 @@
-function EmployeesListItem({setToggleEmployee, employees, btnActive, setBtnActive, setModalOpen, setEmployees}) {
+import {useEffect, useMemo} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-    const showModal = () => {
-            setModalOpen(true);
-            setEmployees(employees)
-
-    };
+function EmployeesListItem({setToggleEmployee, employees, btnActive, setBtnActive, setEmployee, setEmployeeCode}) {
     const toggleActive = () => {
         setBtnActive(() => {
             if (btnActive === employees.employeeCode) {
                 setToggleEmployee(null)
-                return false;
+                return null;
             } else {
                 setToggleEmployee(employees.employeeCode)
+                setEmployee(employees)
+                setEmployeeCode(employees.employeeCode)
                 return employees.employeeCode
             }
-
-        });
+        })
     };
 
     return (
+
         <tr align={"center"} onClick={toggleActive}
             className={"employees-list-items" + (employees.employeeCode == btnActive ? " active" : "")}>
             <td>{employees.employeeCode}</td>
-            <td>{employees.rank}</td>
-            <td>{employees.team}</td>
+            <td>{employees.rank.rankName}</td>
+            <td>{employees.team.teamName}</td>
             <td>{employees.employeeName}</td>
             <td>{employees.gender}</td>
             <td>{employees.registrationNumber}</td>
             <td>{employees.employeePhone}</td>
             <td>{employees.joinDate}</td>
-            <td>
-                <button
-                    className="employees-list-button"
-                    onClick={() => showModal(true)}>보기
-                </button>
-            </td>
         </tr>
     )
-
 }
 
 

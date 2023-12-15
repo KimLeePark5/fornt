@@ -7,6 +7,7 @@ function MyAttend(){
 
     return(
         <>
+
             <div className="pageTitle-attend" style={{marginTop : "-20px"}}>근무 현황</div>
             <div className="attend-box">
             <ToastContainer hideProgressBar={true} position="top-center"/>

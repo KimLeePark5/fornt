@@ -2,7 +2,7 @@ import {authRequest, request} from "./Api";
 import {
     deleteLicense, deleteLicenseReset,
     getCustomer,
-    getCustomers,
+    getCustomers, getGraphData,
     getLicense,
     postLicense,
     postSuccess,
@@ -111,6 +111,22 @@ export const callLicenseDeleteAPI = ({licenseCode}) => {
 
         if (result?.status === 204) {
             dispatch(deleteLicense())
+        }
+    }
+}
+
+export const callGraphDataAPI = () => {
+    return async (dispatch, getState) => {
+        const result = await authRequest.get(`/api/v1/customers/graph`)
+            .catch(e => {
+                    if (e.response.status === 409)
+                        alert(e.response.data.message);
+                }
+            )
+        console.log("api라이센스결과 : ", result)
+
+        if (result?.status === 200) {
+            dispatch(getGraphData(result))
         }
     }
 }

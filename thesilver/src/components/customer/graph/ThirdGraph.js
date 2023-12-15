@@ -30,7 +30,7 @@ const ThirdGraph = ({data /* see data tab */}) => {
 
     return (
         <>
-            <div className="customers-graph-title">누적 고객 등록 수</div>
+            <div className="customers-graph-title">신규 고객 등록 수</div>
             <div
                 className="customers-graph-button"
                 onClick={onClickType}
@@ -55,6 +55,7 @@ const ThirdGraph = ({data /* see data tab */}) => {
                 indexBy="country"
                 margin={{top: 50, right: 130, bottom: 50, left: 60}}
                 padding={0.3}
+                maxValue={8}
                 layout={graphType}
                 valueScale={{type: "linear"}}
                 groupMode="grouped"
