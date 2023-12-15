@@ -15,9 +15,6 @@ function JournalItem({journal}) { // 상세 조회
         setSelectedRound(e.target.value);
     };
 
-    const onclickProgramInsert = () => {
-        navigate('/journal-regist');
-    }
 
     console.log("JournalItem 저널 : ", journal)
 
@@ -34,14 +31,14 @@ function JournalItem({journal}) { // 상세 조회
 
                     <tr>
                         <th className="journal-table1">프로그램 명</th>
-                        <td style={{"padding-left": "40px", "padding-right": "150px"}}>{journal.categoryName} </td>
+                        <td style={{"padding-left": "40px", "padding-right": "150px", "text-align" : "left"}}>{journal.categoryName} </td>
                     </tr>
                     <tr>
-                        <th className="journal-table1" style={{"border-left": "2px solid #000000"}}>회 차</th>
-                        <td style={{"padding-left": "40px", "padding-right": "150px"}}>{journal.round} 회 차</td>
+                        <th className="journal-table1" style={{"border-left": "2px solid #000000", "text-align" : "left"}}>회 차</th>
+                        <td style={{"padding-left": "40px", "padding-right": "175px"}}>{journal.round} 회 차</td>
                     </tr>
                     <tr>
-                        <th className="journal-table1" style={{"border-left": "2px solid #000000"}}>참관 일자</th>
+                        <th className="journal-table1" style={{"border-left": "2px solid #000000", "text-align" : "left"}}>참관 일자</th>
                         <td style={{"padding-left": "40px"}}>{journal.observation}</td>
                     </tr>
                 </div>
@@ -118,10 +115,10 @@ function JournalItem({journal}) { // 상세 조회
                 </div>
 
                 <div className="detail-div1">
-                    <div className="journal-imgs" style={{"border-right": "1px solid #000000"}}>첨부 파일</div>
+                    <div className="journal-imgs">첨부 파일</div>
 
                     <div className="attachmentUrl-div">
-                    <div className="attachmentUrls" style={{"width": "1250px", "border-left": "1px solid #000000"}}>
+                    <div className="attachmentUrls" style={{"width": "1250px"}}>
                         <img src={journal.attachmentUrls} alt={journal.programTopic}/>
                         <img src={journal.attachmentUrls} alt={journal.programTopic}/>
                         <img src={journal.attachmentUrls} alt={journal.programTopic}/>
@@ -131,11 +128,6 @@ function JournalItem({journal}) { // 상세 조회
                 </tbody>
             </table>
 
-            {/*<div className="management-div">*/}
-            {/*    <button onClick={onclickProgramInsert}>수정</button>}*/}
-            {/*     프로그램 스케줄에 들어가있는 직원이고 프로그램의 수업종료시간이 지나면 일지 작성이 가능하게. */}
-            {/*     등록버튼은 항상 보임 */}
-            {/*</div>*/}
 
         </div>
 

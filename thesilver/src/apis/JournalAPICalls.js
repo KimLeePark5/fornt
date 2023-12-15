@@ -2,8 +2,10 @@ import {authRequest, request} from "./Api";
 import {
 
     getJournal,
-    getJournals
+    getJournals, postJournalSuccess, putJournalSuccess
 } from "../modules/JournalsModule";
+import {postProgramSuccess, putProgramSuccess} from "../modules/ProgramsModule";
+import {toast} from "react-toastify";
 
 
 export const callGetJournalListAPI = ({currentPage = 1}) => { // 전체 조회
@@ -111,7 +113,7 @@ export const callJournalManySearchListAPI = ({ categoryCode, employeeCode, obser
 
 
 
-export const callJournalDetailAPI = ({ journalCode }) => { // 상세 (관리자는 등록 버튼 보이게)
+export const callJournalDetailAPI = ({ journalCode }) => { // 상세
 
     return async (dispatch, getState) => {
 
@@ -128,3 +130,39 @@ export const callJournalDetailAPI = ({ journalCode }) => { // 상세 (관리자�
 
     }
 };
+
+export const callJournalRegistAPI = ({registJournalRequest}) => { //등록
+
+    return async (dispatch, getState) => {
+
+        const result = await authRequest.post('/api/v1/journals', registJournalRequest);
+        console.log('callJournalRegistAPI result : ', result);
+
+        if(result?.status != 200) {
+            console.log("::: 요청 실패 > callJournalRegistAPI :::");
+        } else {
+            console.log("::: 요청 성공 > callJournalRegistAPI :::");
+            console.log('callJournalRegistAPI result : ', result);
+            dispatch(postJournalSuccess());
+            toast.info("프로그램 등록이 완료되었습니다.");
+        }
+    }
+}
+
+export const callJournalModifyAPI = ({journalCode, modifyJournalRequest}) => { // 수정
+
+    return async (dispatch, getState) => {
+
+        const result = await authRequest.put(`/api/v1/journals/${journalCode}`, modifyJournalRequest);
+        console.log('callJournalModifyAPI result : ', result);
+
+        if(result?.status != 200) {
+            console.log("::: 요청 실패 > callJournalModifyAPI :::");
+        } else {
+            console.log("::: 요청 성공 > callJournalModifyAPI :::");
+            console.log('callJournalModifyAPI result : ', result);
+            dispatch(putJournalSuccess());
+            toast.info("프로그램 수정이 완료되었습니다.");
+        }
+    }
+}

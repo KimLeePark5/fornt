@@ -14,7 +14,7 @@ function JournalListItem({journal}) { //상세조회
 
     return (
 
-        <div className="journal-list-div">
+        <div className="journal-list-div" style={{ "background-color": "#FFFFFF"}}>
             <div className="journal-list-body">
                     <div className="journal-list-item" onClick={onClickJournalHandler}>
                         <div className="j-border1">{journal.journalCode}</div>

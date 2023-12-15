@@ -11,24 +11,19 @@ function ProgramRegist() {
     const [imageUrl, setImageUrl] = useState('');
     const imageInput = useRef();
     const dispatch = useDispatch();
-    const {postSuccess} = useSelector(state => state.programReducer);
+    const {postProgramSuccess} = useSelector(state => state.programReducer);
+
+    const [postNo, setPostNo] = useState("");
+    const [address, setAddress] = useState("");
+    const [teacherName, setTeacherName] = useState("");
+    const [extraAddress, setExtraAddress] = useState("");
 
     useEffect(() => {
-        if (postSuccess === true) {
-            navigate('/programs-management', {replace: true});
+        if (postProgramSuccess === true) {
+            navigate('/programs', {replace: true});
         }
-    }, [postSuccess]);
-//-----------------------------------
+    }, [postProgramSuccess]);
 
-    // 상태 변경 핸들러
-    const onChangeHandler = e => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        })
-    }
-
-//---------------------------------------
     // 이미지 업로드 버튼 클릭시 input type file이 클릭 되도록 하는 이벤트
     const onClickImageUpload = () => {
         imageInput.current.click();
@@ -53,28 +48,7 @@ function ProgramRegist() {
         }
     };
 
-    // 등록 버튼 클릭 시 이벤트
-    const onClickProductRegistrationHandler = () => {
-        console.log(form);
-        // 서버로 전달한 FormData 형태의 객체 설정
-        const formData = new FormData();
-
-        if (imageInput.current.files.length > 0) {
-            formData.append("teacherImg", imageInput.current.files[0]);
-        }
-
-        formData.append("programRequest", new Blob([JSON.stringify(form)], {type: 'application/json'}));
-
-        dispatch(callAdminProgramRegistAPI({ registRequest: formData }));
-    }
-
-
     /*-------------*/
-
-    const [postNo, setPostNo] = useState("");
-    const [address, setAddress] = useState("");
-    const [extraAddress, setExtraAddress] = useState("");
-
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -115,6 +89,47 @@ function ProgramRegist() {
             },
         }).open();
     };
+
+    //-----------------------------------
+
+    // 등록 버튼 클릭 시 이벤트
+    const onClickProgramRegistHandler = () => {
+
+        // 폼 상태에 주소 포함
+        const updatedForm = {
+            ...form,
+            postNo: postNo,
+            address: address //이거맞음
+        };
+
+        // 서버로 전달한 FormData 형태의 객체 설정
+        const formData = new FormData();
+
+        if (imageInput.current.files.length > 0) {
+            formData.append("teacherImg", imageInput.current.files[0]);
+        }
+        formData.append("programRequest", new Blob([JSON.stringify(updatedForm)], {type: 'application/json'}));
+
+        dispatch(callAdminProgramRegistAPI({registRequest: formData})); //위에 formData를 안보내고 setForm을 보내고 있어서 안됐음
+    }
+
+    // 상태 변경 핸들러
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+        console.log(form)
+    }
+
+    useEffect(() => {
+        if (postProgramSuccess) {
+            alert('프로그램 등록이 완료되었습니다.');
+            window.location.href = "/programs";
+        }
+    }, [postProgramSuccess]);
+
+//---------------------------------------
 
     return (
         <div>
@@ -159,7 +174,7 @@ function ProgramRegist() {
                                 <option value="목">목</option>
                                 <option value="금">금</option>
                             </select>
-                            {'요일'}
+                            &nbsp;&nbsp;{'요일'}
                         </td>
                     </tr>
 
@@ -243,8 +258,9 @@ function ProgramRegist() {
 
                                 <tr>
                                     <th className="program-table3-body3">이름 :</th>
-                                    <td className="program-table3-body4"><input name='teacherName' type="text"
-                                                                                onChange={onChangeHandler}/></td>
+                                    <td className="program-table3-body4">
+                                        <input name='teacherName'
+                                               onChange={onChangeHandler}/></td>
                                 </tr>
                                 <tr>
                                     <th className="program-table3-body3">성별 :</th>
@@ -278,8 +294,7 @@ function ProgramRegist() {
                                                    id="sample6_postcode"
                                                    placeholder="우편번호"
                                                    readOnly
-                                                   onChange={onChangeHandler}
-                                                   value={postNo || ""}/>
+                                                   value={postNo}/>
                                             &nbsp;
                                             <input id="addressButton"
                                                    type="button"
@@ -292,9 +307,8 @@ function ProgramRegist() {
                                                        name="address"
                                                        id="sample6_address"
                                                        placeholder="주소"
-                                                       onChange={onChangeHandler}
                                                        readOnly
-                                                       value={address || ""}/><br/>
+                                                       value={address}/><br/>
                                             </div>
                                         </div>
                                         <div>
@@ -323,14 +337,10 @@ function ProgramRegist() {
                 >
                     이전으로
                 </button>
+
                 <button
-                    style={{marginLeft: "1200px"}}
-                    onClick={onClickProductRegistrationHandler}
-                >
-                    프로그램 수정
-                </button>
-                <button
-                    onClick={onClickProductRegistrationHandler}
+                    onClick={onClickProgramRegistHandler}
+                    style={{marginLeft: "1320px"}}
                 >
                     프로그램 등록
                 </button>

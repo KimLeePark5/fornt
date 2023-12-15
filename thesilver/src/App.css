@@ -2720,22 +2720,51 @@ margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute; right: 95px; bottom: 95px; /*하단에 고정 시켜주는 스타일*/
+    /*align-items: flex-end;*/
+    /*position: absolute; right: 95px; bottom: 95px; !*하단에 고정 시켜주는 스타일*!*/
 }
 
 .management-div button {
     /*margin-top: 5px;*/
     /*margin-bottom: 5px;*/
-    /*margin-right: 300px;*/
-    padding: 10px;
-    border-radius: 45px;
+    /*margin-left: 300px;*/
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #0c58a5;
+    color: #ffffff;
+}
+
+.management-div button:hover{
+    background-color: #08335B;
+}
+
+.management-detail-div{ /*수정 버튼*/
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    align-items: flex-end;
+    /*position: absolute; right: 95px; bottom: 95px; !*하단에 고정 시켜주는 스타일*!*/
+}
+
+.management-detail-div button {
+    margin-top: 5px;
+    /*margin-bottom: 5px;*/
+    /*margin-left: 300px;*/
+    padding: 5px 10px;
+    border-radius: 10px;
     font-weight: bold;
     background-color: #0c58a5;
     color: #FFFFFF;
 }
 
-.management-div button:hover{
+.management-detail-div button:hover{
     background-color: #08335B;
+}
+
+.paging-program{
+    padding-right: 660px;
+    padding-left: 640px;
 }
 
 .program-head1{
@@ -2770,6 +2799,22 @@ margin-top: 10px;
     font-size: 18px;
 }
 
+.program-table1-round{
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    background-color: #ffffff;
+    width: auto;
+    padding: 15px 15px 15px 80px;
+    text-align : left; /*글ㅆㅣ정렬*/
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.program-table1-round input{
+    width: 40px
+}
+
 .program-head2{
     text-align: center;
     background-color: #e7e7e7;
@@ -2787,6 +2832,20 @@ margin-top: 10px;
     padding: 20px;
     font-size: 15px;
     font-weight: bold;
+}
+
+.program-table2-shortStory{
+    text-align: center;
+    border-top: 1px solid #000000;
+    background-color: #ffffff;
+    /*width: 100%;*/
+    padding: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.program-table2-shortStory input{
+    width: 1300px
 }
 
 .program-head3{
@@ -2813,6 +2872,18 @@ margin-top: 10px;
     padding-bottom: 23px;
 }
 
+.program-table3-postNo{
+    font-size: 21px;
+    font-weight: bold;
+    width: 410px;
+    text-align: left;
+    padding-bottom: 23px;
+}
+
+.input-postNo{
+    width: 80px
+}
+
 .detail-div0 {
     display: flex;
     flex-direction: row;
@@ -2822,7 +2893,7 @@ margin-top: 10px;
 
 .detail-div0 div{
     /*width: 550px;*/
-    height: 350px;
+    height: 320px;
 }
 
 .img-div0 {
@@ -2866,6 +2937,7 @@ margin-top: 10px;
     justify-content: center;
     /*text-align: center;*/
     /*margin-top: 35px;*/
+
 }
 /*프로그램 등록*/
 .program-image-button{
@@ -2945,8 +3017,17 @@ margin-top: 10px;
     margin: auto;
 }
 
+.journal-image-button{ /* 일지 등록 버튼 */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    border-radius: 35px;
+    background-color: #e5e5e5;
+    font-weight: bold;
+}
+
 .journal-list-item:hover{
-    background-color: #e1e1e1;
+    background-color: #eeeeee;
 }
 
 .journal-list-item {
@@ -3076,16 +3157,16 @@ margin-top: 10px;
     border-bottom: 1px solid #000000;
 }
 
-.journal-table1{
+.journal-table1 {
     /*text-align: left;*/
     border-bottom: 1px solid #000000;
     border-right: 2px solid #000000;
     background-color: #e7e7e7;
     width: 150px;
-    padding: 8px 0px 8px 10px;
-    text-align : center; /*글ㅆㅣ 가운데 정렬*/
+    padding: 6px 5px 5px 5px;
+    text-align: center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .journal-subProgress{
@@ -3093,7 +3174,7 @@ margin-top: 10px;
     border-bottom: 1px solid #000000;
     background-color: #e7e7e7;
     width: 150px;
-    padding: 70px 5px 70px 5px;
+    padding: 55px 5px 55px 5px;
     text-align : center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
     font-size: 15px;
@@ -3105,7 +3186,7 @@ margin-top: 10px;
     border-bottom: 1px solid #000000;
     background-color: #e7e7e7;
     width: 150px;
-    padding: 40px 5px 40px 5px;
+    padding: 35px 5px 35px 5px;
     text-align : center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
     font-size: 15px;
@@ -3116,17 +3197,18 @@ margin-top: 10px;
     /*text-align: left;*/
     background-color: #e7e7e7;
     width: 150px;
-    padding: 90px 5px 90px 5px;
+    padding: 90px 5px 120px 5px;
     text-align : center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
     font-size: 15px;
-    border-right: 1px solid #000000;
+    border-right: 2px solid #000000;
 }
 
 .journal-table3-body1{
     font-size: 15px;
     text-align: left;
     padding-left: 40px;
+
 }
 
 .journal-img-div {
@@ -3203,14 +3285,31 @@ header .icons span{
     height: 80%;
 }
 
-.attachmentUrl-div div{
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center
-
+.attachmentUrls2 img{
+    border: 1px solid #000000;
+    margin: 5px;
+    /*width: 20%;*/
+    height: 80%;
 }
+
+.attachmentUrl-div div{
+    height: 230px;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.attachmentUrl2-div div{
+    /*height: 200px;*/
+    display: flex;
+    align-items: center;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 
 .icons span:last-child{
     margin-right: -10px;

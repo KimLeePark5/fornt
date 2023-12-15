@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {callProgramSearchListAPI} from "../../../../apis/ProgramAPICalls";
 import {isAdmin, isMaster} from "../../../../utils/TokenUtils";
 
-function ProgramList({data}) {
+function ProgramList({data, onClickDelete }) {
 
     console.log("::: ProgramList js 파일 진입 :::");
 
@@ -94,12 +94,10 @@ function ProgramList({data}) {
                     <div>프로그램 명</div>
                     <div>프로그램 내용</div>
                     <div>담당 강사</div>
-                    <div></div>
+                    {/*<div></div>*/}
                 </div>
             </div>
-
-
-                {data && data.map(program => <ProgramListItem key={program.code} program={program}/>)}
+                {data && data.map(program => <ProgramListItem key={program.code} program={program} onClickDelete={onClickDelete}/>)}
         </div>
 
     )

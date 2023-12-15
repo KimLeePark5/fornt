@@ -70,9 +70,6 @@ function JournalList({data}) {      //전체조회
         searchJournals();
     }
 
-    const onclickProgramInsert = () => {
-        navigate('/journal-regist'); // 등록 버튼
-    }
 
     return (
 

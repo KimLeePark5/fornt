@@ -1,17 +1,14 @@
-
-
 function ProgramItem({program}) {
 
 
-
     return (
-        <div style={{border: "2px solid #000000"}}>
+        <div style={{border: "2px solid #000000", "backgroundColor": "#FFFFFF"}}>
 
             <div className="program-head1">❮ 프로그램 상세 내용 조회 ❯</div>
             <table className="description-table">
                 <tbody>
                 <tr>
-                    <th className="program-table1" style={{"border-top": "1px solid #000000"}}>프로그램 명</th>
+                    <th className="program-table1" style={{"borderTop": "1px solid #000000"}}>프로그램 명</th>
                     <td className="program-table1-body1">{program.categoryName}</td>
                 </tr>
                 <tr>
@@ -29,7 +26,7 @@ function ProgramItem({program}) {
                 </tbody>
             </table>
 
-{/*----------------------------------------*/}
+            {/*----------------------------------------*/}
 
             <div className="program-head2">프로그램 내용</div>
             <div className="program-table2-body2">{program.shortStory}</div>
@@ -37,48 +34,48 @@ function ProgramItem({program}) {
             <div className="program-head3">담당 강사 프로필</div>
 
             <main className="detail-main">
-            <div className="detail-div0">
+                <div className="detail-div0">
 
-                <div className=" img-div0">
+                    <div className=" img-div0">
 
-                    <img style={{border: "1px solid #000000"}}
-                        src={program.profilePicture} alt={program.teacherName}/>
+                        <img style={{border: "1px solid #000000"}}
+                             src={program.profilePicture} alt={program.teacherName}/>
+                    </div>
+
+                    <div className="description-div0">
+
+                        <table className="description-table0">
+                            <tbody>
+
+                            <tr>
+                                <th className="program-table3-body3">이름 :</th>
+                                <td className="program-table3-body4">{program.teacherName}</td>
+                            </tr>
+                            <tr>
+                                <th className="program-table3-body3">성별 :</th>
+                                <td className="program-table3-body4">{program.gender}</td>
+                            </tr>
+                            <tr>
+                                <th className="program-table3-body3">생년월일 :</th>
+                                <td className="program-table3-body4">{program.birthDate}</td>
+                            </tr>
+                            <tr>
+                                <th className="program-table3-body3">연락처 :</th>
+                                <td className="program-table3-body4">{program.phone}</td>
+                            </tr>
+                            <tr>
+                                <th className="program-table3-body3">주소 :</th>
+                                <td className="program-table3-body4">
+                                    {program.postNo}<br/><br/>
+                                    {program.address}<br/><br/>
+                                    {program.detailAddress}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <div className="description-div0">
-
-                    <table className="description-table0">
-                        <tbody>
-
-                        <tr>
-                            <th className="program-table3-body3">이름 : </th>
-                            <td className="program-table3-body4">{program.teacherName}</td>
-                        </tr>
-                        <tr>
-                            <th className="program-table3-body3">성별 : </th>
-                            <td className="program-table3-body4">{program.gender}</td>
-                        </tr>
-                        <tr>
-                            <th className="program-table3-body3">생년월일 : </th>
-                            <td className="program-table3-body4">{program.birthDate}</td>
-                        </tr>
-                        <tr>
-                            <th className="program-table3-body3">연락처 : </th>
-                            <td className="program-table3-body4">{program.phone}</td>
-                        </tr>
-                        <tr>
-                            <th className="program-table3-body3">주소 : </th>
-                            <td className="program-table3-body4">
-                                {program.postNo}<br/><br/>
-                                {program.address}<br/><br/>
-                                {program.detailAddress}
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
             </main>
 
         </div>

@@ -21,8 +21,10 @@ import ProgramDetail from "./pages/board/program/ProgramDetail";
 import JournalDetail from "./pages/board/journal/JournalDetail";
 import SearchJournal from "./pages/board/journal/SearchJournal";
 import ProgramRegist from "./pages/admin/ProgramRegist";
-import Programs from "./pages/programs/Programs";
 import VacationManagement from "./pages/vacation/VacationManagement";
+import ProgramModify from "./pages/admin/ProgramModify";
+import JournalModify from "./pages/board/journal/JournalModify";
+import JournalRegist from "./pages/board/journal/JournalRegist";
 
 
 function App() {
@@ -48,14 +50,29 @@ function App() {
                         <Route path="search" element={<SearchJournal/>}/>
                         <Route path=":journalCode" element={<JournalDetail/>}/>
                     </Route>
-
+                    <Route path="journal-regist" element={<ProtectedRoute authCheck={true}><JournalRegist/></ProtectedRoute>}/>
+                    <Route
+                        path="journal-modify/:journalCode"
+                        element={
+                            <ProtectedRoute authCheck={true}>
+                                <JournalModify/>
+                            </ProtectedRoute>
+                        }
+                    />
                     <Route path="programs" element={<Programs/>}></Route>
                     <Route path="programs">
                         <Route path="search" element={<SearchProgram/>}/>
                         <Route path=":code" element={<ProgramDetail/>}/>
                     </Route>
                     <Route path="program-regist" element={<ProtectedRoute authCheck={true}><ProgramRegist/></ProtectedRoute>}/>
-
+                    <Route
+                        path="program-modify/:code"
+                        element={
+                            <ProtectedRoute authCheck={true}>
+                                <ProgramModify/>
+                            </ProtectedRoute>
+                        }
+                    />
                 </Route>
                 <Route path="*" element={<Error/>}/>
             </Routes>
