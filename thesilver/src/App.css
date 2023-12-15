@@ -946,7 +946,7 @@
 }
 .customers-graph-title {
     position: absolute;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     left: 50%;
     transform: translateX(-50%);
@@ -1036,6 +1036,10 @@
 }
 
 /* customers regist */
+#customers-regist-content-id {
+    width: 650px;
+}
+
 .customers-regist-content {
     width: 550px;
     height: 720px;
@@ -3468,7 +3472,6 @@ display: none;
 
 .journal-list-search input {
     height: 25px;
-.journal-list-search input {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
 }

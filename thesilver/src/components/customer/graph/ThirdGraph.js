@@ -30,7 +30,7 @@ const ThirdGraph = ({data /* see data tab */}) => {
 
     return (
         <>
-            <div className="customers-graph-title">신규 고객 등록 수</div>
+            <div className="customers-graph-title">월별 신규 고객 등록 수</div>
             <div
                 className="customers-graph-button"
                 onClick={onClickType}
