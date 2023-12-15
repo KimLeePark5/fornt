@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 function AdminAttendHeader({month, setMonth, name}) {
     const inputMonth = useRef('');
     const date = new Date();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchName, setSearchName] = useState();
     const [value,setValue]=useState('');

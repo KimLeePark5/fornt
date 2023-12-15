@@ -5,21 +5,17 @@ import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 
 function TodoRegist({setTodoRegist}){
-
+    const navigater = useNavigate();
     const dispatch=useDispatch()
     const [text, setText]=useState('')
     const {registSuccess} = useSelector(state => state.todoListReducer)
 
     const todoregistHandler = () => {
         console.log("클릭됨")
-        if(!text){
-            toast.error("공백일 수 없습니다.")
-            return;
-        }
         dispatch(callRegistTodo(text));
     }
     if(registSuccess){
-        setTodoRegist(false)
+        window.location.reload();
     }
     return(
         <div class="todomodal">
