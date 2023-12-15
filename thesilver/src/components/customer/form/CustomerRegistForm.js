@@ -165,7 +165,7 @@ function CustomerRegistForm() {
                     <div className="customers-regist-row-h">고객 특이사항</div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">특이사항</div>
-                        <div><textarea name="memo" onChange={onChangeHandler} rows="4" cols="50"></textarea></div>
+                        <div><textarea name="memo" onChange={onChangeHandler} rows="4" cols="50" style={{resize: "none"}}></textarea></div>
                     </div>
 
                     <div className="customers-regist-row-h">보호자 정보</div>

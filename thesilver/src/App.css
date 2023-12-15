@@ -137,6 +137,12 @@
     grid-column: 1/2;
     grid-row: 4/5;
 }
+
+.pageTitle-attend {
+    font-size: 40px;
+    font-weight: bolder;
+    padding-top: 20px;
+}
 .main-attend-main{
     background-color: white;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
@@ -381,6 +387,13 @@
     text-align: center;
     padding-top: 10px;
     border-right: #1A1A1C 1px solid;
+    font-weight: 500;
+}
+
+.form1-3 {
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 500;
 }
 
 .vacation-require-form2 {
@@ -388,8 +401,9 @@
     grid-template-columns: 130px 570px;
     border-right: #1A1A1C 1px solid;
     border-left: #1A1A1C 1px solid;
-    height: 230px;
-    grid-template-rows: 40px 40px 140px;
+    border-bottom: black 1px solid;
+    height: 40px;
+
 }
 
 .form2-1 {
@@ -402,51 +416,78 @@
 
 .form2-2 {
     padding-left: 10px;
-    border-bottom: #1A1A1C 1px solid;
     display: flex;
     align-items: center;
-}
 
-.form2-3 {
-    text-align: center;
-    padding-top: 63px;
-}
-
-.form2-4 {
-    padding-left: 10px;
-    width: 552px;
-    height: 140px;
-    border: none;
-    resize: none;
-}
-
-.form2-4:focus {
-    outline: none;
 }
 
 .vacation-require-form3 {
     display: grid;
-    border: #1A1A1C 1px solid;
-    margin-bottom: 5px;
-    height: 300px;
+    grid-template-columns: 130px 570px;
+    border-right: #1A1A1C 1px solid;
+    border-left: #1A1A1C 1px solid;
+    height: 40px;
+}
+
+.form3-1 {
+    text-align: center;
+    height: 30px;
+    padding-top: 10px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.form3-2 {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .vacation-require-form4 {
     display: grid;
     grid-template-columns: 130px 570px;
     border: #1A1A1C 1px solid;
-    margin-bottom: 5px;
-    height: 40px;
+    height: 140px;
 }
 
 .form4-1 {
-    width: 130px;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 55px;
     border-right: #1A1A1C 1px solid;
 }
 
 .form4-2 {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    width: 532px;
+    height: 130px;
+    border: none;
+    resize: none;
+    font-size: 15px;
+}
+
+.vacation-require-form5 {
+    border-right: #1A1A1C 1px solid;
+    border-left: #1A1A1C 1px solid;
+    height: 300px;
+}
+
+.vacation-require-form6 {
+    display: grid;
+    grid-template-columns: 130px 570px;
+    border: #1A1A1C 1px solid;
+
+    height: 50px;
+}
+
+.form6-1 {
+    text-align: center;
+    height: 35px;
+    padding-top: 15px;
+    border-right: #1A1A1C 1px solid;
+}
+
+.form6-2 {
     padding-left: 10px;
     display: flex;
     align-items: center;
@@ -478,6 +519,15 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
     font-weight: 600;
+}
+
+.search-div {
+    display: flex;
+}
+
+.search-div button {
+    padding: 3px 13px 3px 13px;
+    margin-left: 20px;
 }
 
 .select-days {
@@ -1230,10 +1280,10 @@
 
 .attend-main {
     background-color: white;
-    margin-top: 20px;
-    margin-left: 40px;
+    margin-left: 20px;
     width: 1000px;
-    height: 800px;
+    height: 780px;
+
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 }
@@ -1250,13 +1300,14 @@
 
 .attend-box {
     display: flex;
+    margin-top: 40px;
+    margin-left: 40px;
 }
 
 .commute-btn-box {
     background-color: white;
-    margin-top: 20px;
-    width: 340px;
-    margin-left: 80px;
+    width: 380px;
+    margin-left: 55px;
     height: 445px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     position: relative;
@@ -1276,7 +1327,7 @@
     display: flex;
     margin-left: 120px;
     margin-top: 20px;
-    position: relative;
+    margin-bottom: 10px;
 }
 
 .attend-detail {
