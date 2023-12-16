@@ -42,10 +42,6 @@ function Customers() {
         const slicedData2 = graphData.firstGraphData.slice(12, 24)
         const slicedData3 = graphData.firstGraphData.slice(24, 36)
         const slicedData4 = graphData.firstGraphData.slice(36, 48)
-        console.log(slicedData1)
-        console.log(slicedData2)
-        console.log(slicedData3)
-        console.log(slicedData4)
 
         firstData = firstGraphData({slicedData1: slicedData1,slicedData2: slicedData2,slicedData3: slicedData3,slicedData4: slicedData4})
         secondData = secondGraphData({secondGraphData: graphData?.secondGraphData})
