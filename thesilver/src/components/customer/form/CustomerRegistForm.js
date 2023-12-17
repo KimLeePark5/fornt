@@ -6,10 +6,27 @@ function CustomerRegistForm() {
     const dispatch = useDispatch();
     const [currentDate, setCurrentDate] = useState('');
     const [form, setForm] = useState({
+        name: "",
         gender: "FEMALE",
+        birthDate: "",
         phone1: "010",
+        phone2: "",
+        phone3: "",
+        postalCode: "",
+        primaryAddress: "",
+        detailAddress: "",
+        memo: "",
+        guardianName: "",
+        guardianRelationship: "",
         guardianPhone1: "010"
     });
+    const [validForm, setValidForm] = useState({
+        name: "",
+        birthDate: "",
+        phone3: "",
+        primaryAddress: ""
+    });
+
     const {postSuccess} = useSelector(state => state.customerReducer);
 
     useEffect(() => {
@@ -79,6 +96,82 @@ function CustomerRegistForm() {
         console.log(form)
     }
 
+    // 고객 등록 유효성 검사
+    const validation = (form) => {
+        let validResult = true
+        const validationBlank = (key) => {
+            if (form[key].trim() === "") {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: " 공백일 수 없습니다. "
+                    })
+                )
+                validResult = false
+            } else {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: ""
+                    })
+                )
+            }
+        }
+
+        const validationBirthDate = (key) => {
+            if(!/^\d{6}$/.test(form[key])) {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: " 숫자 6자리여야 합니다. "
+                    })
+                )
+                validResult = false
+            } else {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: ""
+                    })
+                )
+            }
+        }
+
+        const validationPhone = (key) => {
+            if(!/^\d{4}$/.test(form[key])) {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: " 숫자 4자리여야 합니다. "
+                    })
+                )
+                validResult = false
+            } else {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: ""
+                    })
+                )
+            }
+        }
+
+        for (const key in form) {
+            console.log(key)
+
+            switch (key) {
+                case 'name' :
+                    validationBlank(key)
+                    break;
+                case 'birthDate' :
+                    validationBirthDate(key);
+                    break;
+                case 'phone3' :
+                    validationBlank(key)
+                    validationPhone(key)
+                    break;
+                case 'primaryAddress' :
+                    validationBlank(key)
+                    break;
+            }
+        }
+        return validResult;
+    }
+
     const onClickRegistHandler = () => {
         const updateForm = {
             ...form,
@@ -86,7 +179,12 @@ function CustomerRegistForm() {
             primaryAddress: address
         }
 
-        dispatch(callCustomerRegistAPI({registForm: updateForm}))
+        if (validation(updateForm)) {
+            dispatch(callCustomerRegistAPI({registForm: updateForm}))
+        } else {
+            alert("입력 정보를 다시 확인해주세요.")
+        }
+
     }
 
 
@@ -104,22 +202,24 @@ function CustomerRegistForm() {
                 <div id="customers-regist-content-id" className="customers-regist-content">
                     <div className="customers-regist-row-h">기본 정보</div>
                     <div className="customers-regist-row">
-                        <div className="customers-regist-head">이름</div>
-                        <div><input name="name" onChange={onChangeHandler} type="text"/></div>
+                        <div className="customers-regist-head">이름<span className="customers-valid">*</span></div>
+                        <div><input placeholder="이름 입력" name="name" onChange={onChangeHandler} type="text"/></div>
+                        <div className="customers-valid-form">{validForm.name}</div>
                     </div>
                     <div className="customers-regist-row">
-                        <div className="customers-regist-head">성별</div>
+                        <div className="customers-regist-head">성별<span className="customers-valid">*</span></div>
                         <select name="gender" onChange={onChangeHandler} className="customers-regist-select">
                             <option value="FEMALE">여성</option>
                             <option value="MALE">남성</option>
                         </select>
                     </div>
                     <div className="customers-regist-row">
-                        <div className="customers-regist-head">생년월일(6자리)</div>
-                        <div><input name="birthDate" onChange={onChangeHandler}/></div>
+                        <div className="customers-regist-head">생년월일(6자리)<span className="customers-valid">*</span></div>
+                        <div><input placeholder="6자리 입력" name="birthDate" onChange={onChangeHandler}/></div>
+                        <div className="customers-valid-form">{validForm.birthDate}</div>
                     </div>
                     <div className="customers-regist-row customers-regist-row-phone">
-                        <div className="customers-regist-head">전화번호</div>
+                        <div className="customers-regist-head">전화번호<span className="customers-valid">*</span></div>
                         <div>
                             <select name="phone1" onChange={onChangeHandler} className="customers-regist-select">
                                 <option value="010">010</option>
@@ -131,6 +231,7 @@ function CustomerRegistForm() {
                         <div><input name="phone2" onChange={onChangeHandler}/></div>
                         -    &nbsp;
                         <div><input name="phone3" onChange={onChangeHandler}/></div>
+                        <div className="customers-valid-form">{validForm.phone3}</div>
                     </div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">고객 등록일</div>
@@ -139,7 +240,7 @@ function CustomerRegistForm() {
 
                     <div className="customers-regist-row-h">거주지 정보</div>
                     <div className="customers-regist-row">
-                        <div className="customers-regist-head">우편번호</div>
+                        <div className="customers-regist-head">우편번호<span className="customers-valid">*</span></div>
                         <div>
                             <input className="customers-regist-head" type="text" id="sample6_postcode"
                                    placeholder="우편번호" readOnly value={postcode}/>
@@ -149,10 +250,11 @@ function CustomerRegistForm() {
                         <div></div>
                     </div>
                     <div className="customers-regist-row">
-                        <div className="customers-regist-head">기본주소</div>
+                        <div className="customers-regist-head">기본주소<span className="customers-valid">*</span></div>
                         <div>
                             <input type="text" id="sample6_address" placeholder="주소" readOnly value={address}/><br/>
                         </div>
+                        <div className="customers-valid-form">{validForm.primaryAddress}</div>
                     </div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">상세주소</div>
@@ -165,7 +267,8 @@ function CustomerRegistForm() {
                     <div className="customers-regist-row-h">고객 특이사항</div>
                     <div className="customers-regist-row">
                         <div className="customers-regist-head">특이사항</div>
-                        <div><textarea name="memo" onChange={onChangeHandler} rows="4" cols="50" style={{resize: "none"}}></textarea></div>
+                        <div><textarea name="memo" onChange={onChangeHandler} rows="4" cols="50"
+                                       style={{resize: "none"}}></textarea></div>
                     </div>
 
                     <div className="customers-regist-row-h">보호자 정보</div>

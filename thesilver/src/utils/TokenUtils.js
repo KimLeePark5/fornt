@@ -16,16 +16,23 @@ export const removeToken = () => {
 export const getAccessToken = () => window.localStorage.getItem('access-token');
 export const getRefreshToken = () => window.localStorage.getItem('refresh-token');
 export const getDecodeAccessToken = () => {
-    return getAccessToken() && jwtDecode(getAccessToken());
+    try {
+        return getAccessToken() && jwtDecode(getAccessToken());
+    } catch (error) {
+        console.log("error : " + JSON.stringify(localStorage))
+    }
 }
 const getDecodeRefreshToken = () => {
+    try {
     return getRefreshToken() && jwtDecode(getRefreshToken());
+    } catch (error) {
+        console.log("error : " + JSON.stringify(localStorage)   )
+    }
 }
 
 
 export const getAccessTokenHeader = () => BEARER + getAccessToken();
 export const getRefreshTokenHeader = () => BEARER + getRefreshToken();
-
 
 
 export const isLogin = () => {

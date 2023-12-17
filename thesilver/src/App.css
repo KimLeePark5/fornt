@@ -1088,10 +1088,10 @@
 }
 .customers-regist-select {
     width: 100px;
-    height: 27px;
+    height: 26px;
     margin-right: 7px;
     text-align: center;
-    font-size: 105%;
+    font-size: 100%;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -1115,6 +1115,11 @@
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
+}
+/*customer regist 유효성 검사*/
+.customers-valid-form {
+    color: red;
+    line-height: 20px;
 }
 
 /*customer modify*/
@@ -1142,7 +1147,7 @@
 }
 
 .customers-modify-box {
-    width: 640px;
+    width: 740px;
     height: 885px;
     border-radius: 30px;
     background-color: #F7F8F8;
@@ -1155,6 +1160,7 @@
     margin: 0;
     margin-top: 40px;
     height: 780px;
+    width: 650px;
     border-radius: 0 0 10px 10px;
 }
 
@@ -1168,6 +1174,9 @@
 }
 .customers-modify-box textarea{
     width: 400px;
+}
+.customers-valid {
+    color: #0017f2;
 }
 
 /*license modify*/

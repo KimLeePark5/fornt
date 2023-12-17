@@ -11,7 +11,7 @@ import secondGraph from "../components/customer/graph/SecondGraph";
 import SecondGraph from "../components/customer/graph/SecondGraph";
 import thirdGraph from "../components/customer/graph/ThirdGraph";
 import ThirdGraph from "../components/customer/graph/ThirdGraph";
-import {getLicenseReset} from "../modules/CustomerModule";
+import {getLicenseReset, putSuccessReset} from "../modules/CustomerModule";
 import {useSearchParams} from "react-router-dom";
 
 function Customers() {
@@ -57,6 +57,7 @@ function Customers() {
         if (putSuccess) {
             alert("고객 정보 수정이 완료되었습니다.")
             onSuccessCloseHandler("customer")
+            dispatch(putSuccessReset())
         }
     }, [currentPage, condition, putSuccess]);
 
