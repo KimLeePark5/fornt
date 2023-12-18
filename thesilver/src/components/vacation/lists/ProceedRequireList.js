@@ -11,7 +11,7 @@ function ProceedRequireList({proceedRequire}) {
                 <div>사용 일자</div>
                 <div>사용 일</div>
                 <div>상태</div>
-                <div>상신 일시</div>
+                <div>일시</div>
             </div>
             {proceedRequire?.data.map(data => <ProceedRequireItem key={data.employeeCode} data={data}/>)}
         </div>

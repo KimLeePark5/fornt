@@ -49,13 +49,13 @@ function Navbar() {
                     <a className={`Menu`} onClick={() => onClickMenuHandler("program")}>프로그램</a>
                     <ul className={`subMenu ${isSubMenuOpen.program ? 'active' : ''}`}>
                         <li><NavLink to="/programs">프로그램 소개</NavLink></li>
-                        <li><NavLink to="">프로그램 일지</NavLink></li>
+                        <li><NavLink to="/journals">프로그램 일지</NavLink></li>
                     </ul>
                 </li>
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("schedule")}>일정 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.schedule ? 'active' : ''}`}>
-                        <li><NavLink to="">월간 스케줄</NavLink></li>
+                        <li><NavLink to="/calender">월간 스케줄</NavLink></li>
                     </ul>
                 </li>
                 <li>

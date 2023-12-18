@@ -9,10 +9,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import * as PropTypes from "prop-types";
 
 
-
-
 function UsedVacationList({usedVacation}) {
 
+
+    console.log("usedVacation 데이터가 있나요? : ", usedVacation)
 
     DatePicker.propTypes = {
         onChange: PropTypes.func,
@@ -37,7 +37,37 @@ function UsedVacationList({usedVacation}) {
         setEndDate(date);
     };
 
-    console.log("usedVacation 데이터가 있나요? : ", usedVacation)
+    // const 검색수행 = async () => {
+    //     if (!시작날짜 || !종료날짜) {
+    //         console.log('날짜를 선택하세요.');
+    //         return;
+    //     }
+    //
+    //     try {
+    //         const response = await fetch('/api/연차검색', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({
+    //                 startDate: 시작날짜,
+    //                 endDate: 종료날짜,
+    //             }),
+    //         });
+    //
+    //         if (!response.ok) {
+    //             throw new Error('서버 응답이 실패했습니다.');
+    //         }
+    //
+    //         const 검색결과 = await response.json();
+    //         console.log('검색 결과:', 검색결과);
+    //         // 여기에서 검색 결과를 활용하는 로직을 추가하세요.
+    //     } catch (error) {
+    //         console.error('에러 발생:', error.message);
+    //     }
+    // };
+
+
 
 
     return (
@@ -45,27 +75,30 @@ function UsedVacationList({usedVacation}) {
         <>
             <div className="used-vacation-content">
                 <h3>사용 내역</h3>
-                <div className="select-days">
-                    <span>기간 :&nbsp;&nbsp;</span>
-                    <DatePicker
-                        selected={startDate}
-                        onChange={handleStartDateChange}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        placeholderText="시작 날짜"
-                        dateFormat="yyyy년 MM월 dd일"
-                    />
-                    <span>&nbsp; ~ &nbsp;</span>
-                    <DatePicker
-                        selected={endDate}
-                        onChange={handleEndDateChange}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        placeholderText="종료 날짜"
-                        dateFormat="yyyy년 MM월 dd일"
-                    />
+                <div className="search-div">
+                    <div className="select-days">
+                        <span>기간 :&nbsp;&nbsp;</span>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={handleStartDateChange}
+                            selectsStart
+                            startDate={startDate}
+                            endDate={endDate}
+                            placeholderText="시작 날짜"
+                            dateFormat="yyyy년 MM월 dd일"
+                        />
+                        <span>&nbsp; ~ &nbsp;</span>
+                        <DatePicker
+                            selected={endDate}
+                            onChange={handleEndDateChange}
+                            selectsEnd
+                            startDate={startDate}
+                            endDate={endDate}
+                            placeholderText="종료 날짜"
+                            dateFormat="yyyy년 MM월 dd일"
+                        />
+                    </div>
+                    <button> 조회</button>
                 </div>
             </div>
             <div className="used-vacation">
