@@ -124,10 +124,6 @@
     height: 50px;
     line-height: 50px;
 }
-.calcon{
-    width: 90%;
-    margin: 0 auto;
-}
 .calConten{
     text-align: left;
     padding-top: 10px;
@@ -1352,6 +1348,8 @@
 
 .attend-box {
     display: flex;
+    margin-top: 40px;
+    margin-left: 40px;
 }
 
 .commute-btn-box {
@@ -2204,9 +2202,6 @@ background-color: #01092b;
 .fc-toolbar-title{
 display: none;
 }
-
-
-
 .calcon{
     width: 90%;
     margin: 0 auto;
