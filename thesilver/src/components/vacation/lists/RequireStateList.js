@@ -11,8 +11,15 @@ function RequireStateList({require}) {
 
     // 연차 신청 모달 창
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => {
+        setIsModalOpen(true);
+
+    }
+    const closeModal = () => {
+        setIsModalOpen(false);
+
+    }
+
     const {employeeCode} = useParams();
     const dispatch = useDispatch();
 
@@ -43,8 +50,6 @@ function RequireStateList({require}) {
             </div>
         </>
     )
-
-
 }
 
 export default RequireStateList;

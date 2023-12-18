@@ -11,12 +11,12 @@ function Employee() {
     }, []);
 
     const employee = employees
-
     return(
         <>
             <h1>내 정보</h1>
             {employee&&(
                 <>
+
                     <div className="employeesModalGrid">
                         <div className="employeesModalGrid-item">
                             {employee?.employeePicture ? <img style={{backgroundSize:"cover",height:213,width:185}} src={employee?.employeePicture} alt={employee.employeeName}/>
