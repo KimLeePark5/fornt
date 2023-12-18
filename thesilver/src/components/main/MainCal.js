@@ -1,8 +1,7 @@
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
+import {da} from "date-fns/locale";
 
 function MainCal() {
-
+    console.log("MainCal")
     const curDate = new Date();
     const year = curDate.getFullYear();
     const month = curDate.getMonth();
@@ -19,11 +18,8 @@ function MainCal() {
         dd = String(dd).length === 1 ? '0' + dd : dd;
         thisWeek[i] = yyyy + '-' + mm + '-' + dd;
     }
-
-    const dispatch =useDispatch();
-    useEffect(() => {
-        // dispatch(call)
-    }, []);
+    console.log(thisWeek);
+    console.log("MainCal")
 
     return (
         <div class='mainCal'>

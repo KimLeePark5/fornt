@@ -1,12 +1,5 @@
 
-import {
-    getEmployee,
-    getEmployeeInfo,
-    getEmployees,
-    postSuccess,
-    putRemoveSuccess,
-    putSuccess,
-} from "../modules/EmployeesModule";
+import {getEmployee, getEmployees, postSuccess, putRemoveSuccess, putSuccess,} from "../modules/EmployeesModule";
 import {authRequest} from "./Api";
 
 export const callEmployeesListAPI = ({ currentPage = 1 }) => {
@@ -71,17 +64,6 @@ export const callEmployeeAPI =() => {
 
         if(result?.status === 200){
             dispatch(getEmployee(result))
-        }
-    }
-}
-
-export const callEmployeeInfoAPI = () => {
-    return async (dispatch, getState) => {
-        const result = await authRequest.get(`/api/v1/employee`)
-
-
-        if(result?.status === 200){
-            dispatch(getEmployeeInfo(result))
         }
     }
 }
