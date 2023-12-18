@@ -170,7 +170,9 @@ function AttendItem() {
                         display: "none"
                     }}/>
                     <span>{inputmonth.current && (inputmonth.current.value).replace("-", "년 ")}월</span>
-                    <button onClick={onClickDownHandler} className="attend-btn">&gt;</button>
+                    {console.log(month1.current, date.getMonth())}
+                    {console.log("ddudududurl")}
+                    <button disabled={month1.current-1 >= date.getMonth() ? true : false} onClick={onClickDownHandler} className="attend-btn">&gt;</button>
                 </div>
             </div>
             {myAttend &&
@@ -225,7 +227,9 @@ function AttendItem() {
                     </div>
                 </div>
             }
+            <div className='calcon'>
             {myAttend && <AttendCalender myAttend={myAttend}/>}
+            </div>
         </div>
 
     )

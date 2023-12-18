@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import TodoListModify from "./TodoListModify";
 import {callTodoComplete} from "../../apis/TodoListAPI";
 import {useDispatch} from "react-redux";
+import modifyAttendModal from "../items/AttendItems/ModifyAttendModal";
 
 function TodoListItem({content}){
     const [todoLIstModifyModal,settodoLIstModifyModal]=useState(false);
@@ -26,21 +27,32 @@ const textDecoStyle = (content)=>{
             return {}
         }
 
-
 }
+
+    const escKeyModalClose = (e) => {
+        if(todoLIstModifyModal){
+            settodoLIstModifyModal(false);
+        }
+    };
+    // window.addEventListener("keydown", escKeyModalClose);
+
     return(
         <div className='todobox'>
             {todoLIstModifyModal && <TodoListModify settodoLIstModifyModal={settodoLIstModifyModal} todoNo={todoNo}/>}
-            {content && content.map(content =>
+            {content && content.map((content,i) =>
                 <div className='setttodo'>
                 <input type='checkbox'
-                       value={content.todoNo} checked={content.todoComplete == 'complete'} onChange={checkboxOnchangeHandler} style={{marginTop:5}}/>
-                <div className='itemboxtodo'
+                       className='todocheckbox'
+                       value={content.todoNo} checked={content.todoComplete == 'complete'} onChange={checkboxOnchangeHandler} style={{marginTop:5}}
+                />
+                <label className='itemboxtodo'
+                       for='todoCheckbox'
                      style={textDecoStyle(content)}
                      onClick={()=> {
                     settodoLIstModifyModal(true)
                     setTodoNo(content.todoNo)
-                }}>{content.todoContent}</div>
+                }}
+                >{content.todoContent}</label>
                 </div>
             )}
         </div>

@@ -1,9 +1,6 @@
-import async from "async";
 import {authRequest, request} from "./Api";
 import {isLogin, saveToken} from "../utils/TokenUtils";
 import {changePwSuccess, loginFailure, loginSuccess, resetFailure, resetSuccess} from "../modules/LoginModule";
-import {getCustomers} from "../modules/CustomerModule";
-import error from "../pages/Error";
 
 export const callLoginAPI = ({loginForm}) => {
 
