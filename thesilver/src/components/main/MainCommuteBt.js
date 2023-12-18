@@ -70,7 +70,7 @@ function MainCommuteBt(){
             <div className="Main-commute-btn-box">
                 <div className="attend-sub-menu">출/퇴근 관리</div>
                 <div className="attend-sub-menu2">{today}</div>
-                <p className="attend-sub-menu3 att33" style={{marginLeft:30,fontSize:16,marginTop:17}}>근무 시간</p>
+                <p className="attend-sub-menu3 att33" style={{marginLeft:30,fontSize:16}}>근무 시간</p>
                 {todayAttend ?
                     todayAttend.enterTime ? <>
                         <div className="attendContainer">
@@ -81,9 +81,9 @@ function MainCommuteBt(){
                             </div>
                         </div>
 
-                        <div className="attend-sub-menu3 attend-Time maintime" style={{marginTop:10}}>출근시간
+                        <div className="attend-sub-menu3 attend-Time">출근시간
                             : {todayAttend.enterTime == null ? '미등록' : todayAttend.enterTime}</div>
-                        <div className="attend-sub-menu3 maintime">퇴근시간
+                        <div className="attend-sub-menu3">퇴근시간
                             : {todayAttend.leaveTime ? todayAttend.leaveTime : "미등록"}</div>
                         {todayAttend.leaveTime ?
                             <button className="attend-button mainbtn" onClick={onClickEnterBtHandler}>출근</button> :

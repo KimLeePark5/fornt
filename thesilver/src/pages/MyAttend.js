@@ -12,7 +12,6 @@ function MyAttend(){
             <div className="attend-box">
             <ToastContainer hideProgressBar={true} position="top-center"/>
             <AttendItem/>
-
             <CommuteBt/>
             </div>
 

@@ -83,10 +83,9 @@ function CommuteBt() {
                             </div>
                         </div>
 
-                        <div className="attend-sub-menu3 attend-Time ">출근시간
+                        <div className="attend-sub-menu3 attend-Time">출근시간
                             : {todayAttend.enterTime == null ? '미등록' : todayAttend.enterTime}</div>
-
-                        <div className="attend-sub-menu3 ">퇴근시간
+                        <div className="attend-sub-menu3">퇴근시간
                             : {todayAttend.leaveTime ? todayAttend.leaveTime : "미등록"}</div>
                         {todayAttend.leaveTime ?
                             <button className="attend-button" onClick={onClickEnterBtHandler}>출근</button> :
