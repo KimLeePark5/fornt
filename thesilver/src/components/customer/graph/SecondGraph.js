@@ -11,24 +11,24 @@ import {useState} from "react";
 // you'll often use just a few of them.
 
 const SecondGraph = ({data /* see data tab */}) => {
-    const [keys, setKeys] = useState(['50년대', '40년대', '30년대', '20년대이하']);
+    const [keys, setKeys] = useState(['50-59년생', '40-49년생', '30-39년생', '30년생이하']);
 
     const onChangeKeys = (e) => {
         switch (e.target.value) {
-            case '50년대':
-                setKeys(['50년대']);
+            case '50-59년생':
+                setKeys(['50-59년생']);
                 break;
-            case '40년대':
-                setKeys(['40년대']);
+            case '40-49년생':
+                setKeys(['40-49년생']);
                 break;
-            case '30년대':
-                setKeys(['30년대']);
+            case '30-39년생':
+                setKeys(['30-39년생']);
                 break;
-            case '20년대이하':
-                setKeys(['20년대이하']);
+            case '30년생이하':
+                setKeys(['30년생이하']);
                 break;
             default:
-                setKeys(['50년대', '40년대', '30년대', '20년대이하']);
+                setKeys(['50-59년생', '40-49년생', '30-39년생', '30년생이하']);
                 break;
         }
     }
@@ -42,10 +42,10 @@ const SecondGraph = ({data /* see data tab */}) => {
                 name="selectKey"
             >
                 <option value=''>전체 보기</option>
-                <option value="50년대">50년대</option>
-                <option value="40년대">40년대</option>
-                <option value="30년대">30년대</option>
-                <option value="20년대이하">20년대이하</option>
+                <option value="50-59년생">50-59년생</option>
+                <option value="40-49년생">40-49년생</option>
+                <option value="30-39년생">30-39년생</option>
+                <option value="30년생이하">30년생이하</option>
             </select>
             <ResponsiveRadar
                 data={data}

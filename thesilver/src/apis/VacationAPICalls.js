@@ -37,7 +37,6 @@ export const callVacationRequireAPI = ({requireForm}) => {
 
         const result = await authRequest.post(`api/vi/require`, requireForm);
         console.log("callVacationRequireAPI 호출 성공: ", result);
-        console.log("리절트 : ", result)
 
         if (result?.status === 201) {
             dispatch(postSuccess());

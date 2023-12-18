@@ -6,6 +6,7 @@ const GET_CUSTOMERS = 'customers/GET_CUSTOMERS';
 const POST_SUCCESS = 'customers/POST_SUCCESS';
 const GET_CUSTOMER = 'customers/GET_CUSTOMER';
 const PUT_SUCCESS = 'customers/PUT_SUCCESS';
+const PUT_SUCCESS_RESET = 'customers/PUT_SUCCESS_RESET';
 const GET_LICENSE = 'customers/GET_LICENSE';
 const GET_LICENSE_RESET = 'customers/GET_LICENSE_RESET';
 const POST_LICENSE = 'customers/POST_LICENSE';
@@ -20,6 +21,7 @@ export const {
         postSuccess,
         getCustomer,
         putSuccess,
+        putSuccessReset,
         getLicense,
         getLicenseReset,
         postLicense,
@@ -33,6 +35,7 @@ export const {
     [POST_SUCCESS]: () => ({postSuccess: true}),
     [GET_CUSTOMER]: result => ({customer: result.data}),
     [PUT_SUCCESS]: () => ({putSuccess: true}),
+    [PUT_SUCCESS_RESET]: () => ({putSuccess: false}),
     [GET_LICENSE]: (result) => ({license: result.data}),
     [GET_LICENSE_RESET]: () => ({license: null}),
     [POST_LICENSE]: () => ({postLicenseSuccess: true}),
@@ -47,7 +50,8 @@ const customerReducer = handleActions({
     [GET_CUSTOMERS]: (state, {payload}) => ({...state, ...payload}),
     [POST_SUCCESS]: (state, {payload}) => payload,
     [GET_CUSTOMER]: (state, {payload}) => ({...state, ...payload}),
-    [PUT_SUCCESS]: (state, {payload}) => payload,
+    [PUT_SUCCESS]: (state, {payload}) => ({...state, ...payload}),
+    [PUT_SUCCESS_RESET]: (state, {payload}) => ({...state, ...payload}),
     [GET_LICENSE]: (state, {payload}) => ({...state, ...payload}),
     [GET_LICENSE_RESET]: (state, {payload}) => ({...state, ...payload}),
     [POST_LICENSE]: (state, {payload}) => ({...state, ...payload}),
