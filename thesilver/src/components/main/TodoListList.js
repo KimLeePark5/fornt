@@ -8,8 +8,7 @@ function TodoListList({data, setPage, setDay}) {
 
 
     return (
-        <div>
-            <ToastContainer/>
+        <div className='todococcon'>
             <TodoListItem content={data.data.content}/>
             <div className='todopage'>
             <PagingBar setCurrentPage={setPage} pageInfo={data.pageInfo}/>

@@ -81,9 +81,23 @@
     margin-left: 70px;
     margin-bottom: 50px;
 }
+.todococcon{
+    position: relative;
+}
 .todopage{
-    margin-top: -20px;
-    margin-left: -90px;
+    position: absolute;
+    top: 110px;
+    left: -80px;
+}
+.todocheckbox :checked{
+    background-color: #01092b;
+}
+
+input:checked{
+    content:'✔';
+    font-size: 25px;
+    text-align: center;
+    background-color: #01092b;
 }
 .setttodo{
     display: flex;
@@ -147,10 +161,8 @@
 .mainbtn{
     width: 190px !important;
     height: 50px !important;
-    position: relative !important;
-    bottom: -10px !important;
+    position: absolute !important;
     font-size: 20px !important;
-    margin-top: 10px !important;
 }
 
 /**** 하현 ********************************************/
@@ -602,6 +614,7 @@
     list-style-type: none;
     margin-bottom: 30px;
     justify-content: center;
+    margin-left: 450px;
 }
 
 .paging-btn {
@@ -1232,7 +1245,7 @@
     background-color: white;
     margin-top: 20px;
     margin-left: 40px;
-    width: 1000px;
+    width: 1050px;
     height: 800px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -1255,9 +1268,9 @@
 .commute-btn-box {
     background-color: white;
     margin-top: 20px;
-    width: 340px;
-    margin-left: 80px;
-    height: 445px;
+    width: 325px;
+    margin-left: 50px;
+    height: 425px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     position: relative;
     border-radius: 10px;
@@ -1366,6 +1379,10 @@
     font-weight: bold;
     font-size: 19px;
 }
+.maintime{
+    font-size: 15px;
+}
+
 
 .progress-bar {
     border-radius: 15px;
@@ -1412,6 +1429,7 @@
     display: flex;
     position: relative;
     margin-top: 15px;
+
 }
 
 .attendNameBox {
@@ -1422,6 +1440,7 @@
     width: 170px;
     font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 11px;
 }
 .attendheaad{
     font-size: 28px;
@@ -1538,7 +1557,7 @@
     font-weight: bolder;
     text-align: left;
     position: fixed;
-    top: 66px;
+    top: 60px;
     border-radius: 10px;
     width: 920px;
     padding-left: 60px;
@@ -1552,7 +1571,7 @@
 }
 .headattend{
     background-color: white;
-    top: 143px;
+    top: 140px;
     display: flex;
     font-size: 19px;
     font-weight: bolder;
@@ -1749,6 +1768,7 @@
     cursor: pointer;
 }
 .attime{
+    width: 341px;
     margin-left: 0px;
     line-height: 23px;
 }
@@ -1768,9 +1788,10 @@ background-color: #01092b;
     border-bottom: 1px solid #BABABA;
     padding-left: 70px;
     padding-bottom: 20px;
-    font-size: 16px;
-
+    font-size: 15px;
+    align-items: center;
 }
+
 
 .historyModalContent {
     margin-top: 30px;
@@ -1801,7 +1822,9 @@ background-color: #01092b;
     margin-top: 18px;
 }
 
+.Attendhistorybox{
 
+}
 .att33 {
     margin-top: 26px;
 }
@@ -1988,14 +2011,12 @@ background-color: #01092b;
 
 
 .atttimecon{
-
     display: flex;
     margin-top: 50px;
     font-size: 18px;
     column-gap: 80px;
     width: 550px;
     justify-content: center;
-
 }
 .inputtimeatt{
     font-family: 'Noto Sans KR', sans-serif;
@@ -2029,7 +2050,7 @@ background-color: #01092b;
     cursor: pointer;
 }
 .categoryInput{
-    margin-left: 300px;
+    margin-left: 315px;
     padding-left: 12px;
     font-family: 'Noto Sans KR', sans-serif;
     color: black;
@@ -2051,15 +2072,17 @@ background-color: #01092b;
     text-align: center;
 }
 .dhodksehla{
-
+    position: relative;
     border-radius: 20px;
     background-color: white;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
 }
+.Attendhistorybox{
+
+}
 
 
 /* MyCalendar.css */
-
 /* 일요일 날짜: 빨간색 */
 .fc-day-sun a {
     color: red;
@@ -2069,38 +2092,29 @@ background-color: #01092b;
 .fc-day-sat a {
     color: blue;
 }
-.fc-today-button{
-    font-size: 900px;
-}
-.fc-icon{
-}
+
 .fc .fc-button-primary{
     /*display: none;*/
     /*background-color: white;*/
     /*color: white;*/
     width: 20px;
     height: 20px;
-
 }
 .fc .fc-today-button{
     display: none;
 }
 .fc-icon{
-
     position: absolute;
     top: -1px;
     left: -1px;
-
 }
 
-.fc-media-screen{
-    height: 600px;
 
-}
 
 .fc-toolbar-title{
 display: none;
 }
+
 .calcon{
     width: 90%;
     margin: 0 auto;
