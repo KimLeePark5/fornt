@@ -1,5 +1,12 @@
 
-import {getEmployee, getEmployees, postSuccess, putRemoveSuccess, putSuccess,} from "../modules/EmployeesModule";
+import {
+    getEmployee,
+    getEmployees, getSearchEmployee,
+    postSuccess,
+    putPwdReset,
+    putRemoveSuccess,
+    putSuccess,
+} from "../modules/EmployeesModule";
 import {authRequest} from "./Api";
 
 export const callEmployeesListAPI = ({ currentPage = 1 }) => {
@@ -64,6 +71,30 @@ export const callEmployeeAPI =() => {
 
         if(result?.status === 200){
             dispatch(getEmployee(result))
+        }
+    }
+}
+
+export const EmpSearchAPI = ({searchCategory, searchValue}) => {
+    return async (dispatch, getState) => {
+        const result = await authRequest.get(`/api/v1/employees/search?searchCategory=${searchCategory}&searchValue=${searchValue}`).catch(e=>{
+            alert("검색실패");
+            console.log(e);
+            return;
+        });
+
+        if(result?.status === 200) {
+            console.log(result?.data);
+            dispatch(getEmployees(result))
+        }
+    }
+}
+
+export const callEmployeePwdReset = ({employeeCode})=>{
+    return async (dispatch, getState) => {
+        const result = await authRequest.put(`/api/v1/resetPwd/${employeeCode}`);
+        if(result.status === 201) {
+            dispatch(putPwdReset());
         }
     }
 }

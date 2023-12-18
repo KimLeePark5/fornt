@@ -1,7 +1,7 @@
 import {useEffect, useMemo} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-function EmployeesListItem({setToggleEmployee, employees, btnActive, setBtnActive, setEmployee, setEmployeeCode}) {
+function EmployeesListItem({setToggleEmployee, employees, btnActive, setBtnActive, setEmployee, setEmployeeCode, data}) {
     const toggleActive = () => {
         setBtnActive(() => {
             if (btnActive === employees.employeeCode) {
@@ -15,12 +15,15 @@ function EmployeesListItem({setToggleEmployee, employees, btnActive, setBtnActiv
             }
         })
     };
-
     return (
 
         <tr align={"center"} onClick={toggleActive}
-            className={"employees-list-items" + (employees.employeeCode == btnActive ? " active" : "")}>
-            <td>{employees.employeeCode}</td>
+            className={(employees.account && employees.account.attemptCount==5 ? "employees-list-items-lock" : "employees-list-items") + (employees.employeeCode == btnActive ? " active" : "")}>
+            {employees.account && employees.account.attemptCount==5 ?
+                <td><div className="employees-list-items-lock-div">잠금상태</div>{employees.employeeCode}</td>
+                :
+                <td>{employees.employeeCode}</td>
+            }
             <td>{employees.rank.rankName}</td>
             <td>{employees.team.teamName}</td>
             <td>{employees.employeeName}</td>
