@@ -16,6 +16,7 @@ function RequireStateItem({data}) {
 
     return (
         <div>
+
             {data && (
                 <div className="require-state-body">
                     <div>{data.vacationName}</div>
@@ -26,6 +27,7 @@ function RequireStateItem({data}) {
                     <div>{data.reqDate}</div>
                 </div>
             )}
+
         </div>
     );
     } else {

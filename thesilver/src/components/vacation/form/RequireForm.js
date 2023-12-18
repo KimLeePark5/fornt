@@ -1,21 +1,24 @@
 import DatePicker from "react-datepicker";
 import React, {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
-import employeeInfo from "../../items/AttendItems/EmployeeInfo";
-import {callRequireFormOpen, callVacationRequireAPI} from "../../../apis/VacationAPICalls";
+import { callVacationRequireAPI} from "../../../apis/VacationAPICalls";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+
 
 function RequireForm({isOpen, closeModal}) {
 
-    const dispatch = useDispatch();
-    const [form, setForm] = useState({
-        vacationType: "연차"
-    });
-
     const {requireSuccess, vacation } = useSelector(state => state.vacationReducer);
 
-    console.log("vadssdf", vacation);
+    console.log("베케이션코드", vacation);
+
+    const dispatch = useDispatch();
+    const [form, setForm] = useState({
+        vacationTypeCode: "1",
+        reqStatus: '상신중',
+        approverCode: vacation?.approverCode
+    });
+
+    console.log("상신폼!! : ", form);
 
 
     const currentDate = new Date();
@@ -32,7 +35,7 @@ function RequireForm({isOpen, closeModal}) {
     };
 
 
-    // 날짜로 조회 하기
+
     // 시작 날짜와 종료 날짜의 상태
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -46,23 +49,27 @@ function RequireForm({isOpen, closeModal}) {
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
 
     const onChangeHandler = (e) => {
-        setForm({
-            ...form,
+        setForm(prevForm => ({
+            ...prevForm,
             [e.target.name]: e.target.value
-        })
+        }), () => {
+            console.log("폼내용", form);
+        });
     }
 
     const onClickRequireHandler = () => {
-        const updateForm = {
-            ...form
-        }
+        const updateForm = {...form, startDate, endDate}
+
         dispatch(callVacationRequireAPI({requireForm: updateForm}))
     }
 
     useEffect(() => {
         if(requireSuccess) {
             alert("연차 신청이 완료 되었습니다.");
-            window.location.href = "/vacation"
+            closeModal(); // 모달 닫기
+
+            // 또는 페이지 리로드
+            window.location.reload();
         }
     }, [requireSuccess])
 
@@ -102,14 +109,14 @@ function RequireForm({isOpen, closeModal}) {
                     <div className="vacation-require-form">
                         <div className="vacation-require-form1">
                             <div  className="form1-1">성명</div>
-                            <div name="name" className="form1-2">{vacation.employeeName}</div>
+                            <div name="name" className="form1-2">{vacation?.employeeName}</div>
                             <div className="form1-1">직급</div>
-                            <div name="rank" className="form1-3">{vacation.rank}</div>
+                            <div name="rank" className="form1-3">{vacation?.rank}</div>
                         </div>
                         <div className="vacation-require-form2">
                             <div className="form2-1">구분</div>
                             <div className="form2-2">
-                            <select name="vacationType" value={form.vacationType}  onChange={onChangeHandler} style={{width: "150px", height: "35px"}}>
+                            <select name="vacationTypeCode" value={form.vacationTypeCode}  onChange={onChangeHandler} style={{width: "150px", height: "35px"}}>
                                 <option value="1">연차</option>
                                 <option value="2">오전 반차</option>
                                 <option value="3">오후 반차</option>
@@ -146,7 +153,7 @@ function RequireForm({isOpen, closeModal}) {
                         <div  className="vacation-require-form4">
                             <div className="form4-1" >내용</div>
                             <div style={{margin: "0", textAlign: "left"} }>
-                                <div><textarea name="content" className="form4-2" onChange={onChangeHandler}></textarea></div>
+                                <div><textarea name="reqContent" className="form4-2" onChange={onChangeHandler}></textarea></div>
                             </div>
                         </div>
                         <div className="vacation-require-form5">
@@ -161,11 +168,11 @@ function RequireForm({isOpen, closeModal}) {
                                 <br/>
                             </div>
                             <div name="today" style={{fontSize: "15px", textAlign: "center", marginTop:"25px"}}>{formattedDate}</div>
-                            <div name="RequirePerson" style={{fontSize: "15px", textAlign: "right", padding: "40px 60px 30px 0"}}>서명 : {vacation.employeeName}</div>
+                            <div name="RequirePerson" style={{fontSize: "15px", textAlign: "right", padding: "40px 60px 30px 0", fontWeight:"500"}}>서명 : {vacation?.employeeName}</div>
                         </div>
                         <div className="vacation-require-form6">
                             <div className="form6-1">결재자</div>
-                            <div className="form6-2" name="approver">{vacation.approverName}</div>
+                            <div className="form6-2" name="approver">{vacation?.approverName}</div>
                         </div>
                     </div>
                 </>
