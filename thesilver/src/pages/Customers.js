@@ -83,7 +83,7 @@ function Customers() {
     const onClickOutsideHandler = (e) => {
         if (e.target === e.currentTarget) {
             // eslint-disable-next-line no-restricted-globals
-            const confirmResult = confirm("작성을 중단하고 창을 닫으시겠습니까 ?");
+            const confirmResult = confirm("창을 닫으시겠습니까 ?");
             if (confirmResult) {
                 setModal(false)
                 setLicenseModal(false)
@@ -96,7 +96,7 @@ function Customers() {
 
     const onClickCloseHandler = () => {
         // eslint-disable-next-line no-restricted-globals
-        const confirmResult = confirm("작성을 중단하고 창을 닫으시겠습니까 ?");
+        const confirmResult = confirm("창을 닫으시겠습니까 ?");
         if (confirmResult) {
             setModal(false)
             setLicenseModal(false)
