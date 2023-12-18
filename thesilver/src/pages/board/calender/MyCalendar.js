@@ -45,7 +45,9 @@ export default class DashBoard extends Component {
                                 {this.state.currentMonth}
                             </div>
                         )}
-                    </div>
+                        <br/>
+                    </div >
+                    <div  className="calender-div">
                     <FullCalendar
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                         initialView={'dayGridMonth'}
@@ -60,6 +62,7 @@ export default class DashBoard extends Component {
                         events={[{ title: '홍길동 : 연차', date: '2023-12-11', }, { title: '이순신 : 연차', date: '2023-12-13', }]}
                         locale={koLocale} // 한국어 로케일 적용
                     />
+                    </div>
                 </div>
             </>
         );
