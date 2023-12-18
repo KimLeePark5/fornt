@@ -24,7 +24,8 @@ function EmployeesRegistModal({setRegistModalOpen}) {
     const formchangeHandler = (e)=>{
         setForm(
             {...form,
-                [e.target.name]:e.target.value
+                [e.target.name]:e.target.value,
+
         })
     }
 
@@ -49,19 +50,32 @@ function EmployeesRegistModal({setRegistModalOpen}) {
     }
     const onClickEmployeeInsert = () => {
         /* 서버로 전달한 FormData 형태의 객체 설정 */
+        // eslint-disable-next-line no-restricted-globals
+        const registConfirm = confirm("정말 등록하겠습니까?")
         const formData = new FormData();
+        if(!form?.employeeName){return alert("이름은 공백일 수 없습니다.")}
+        if(!form?.employeeEmail){return alert("이메일은 공백일 수 없습니다.")}
+        if(!form?.employeePhone){return alert("번호는 공백일 수 없습니다.")}
+        if(!form?.joinDate){return alert("입사입은 공백일 수 없습니다.")}
+        if(!form?.registrationNumber || form?.registrationNumber?.length < 13){return alert("주민등록 번호가 너무 짧습니다.")}
 
-        if(img===''){
-            formData.append("employeesCreateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
-        } else {
-            formData.append("employeePicture", empFile.current.files[0]);
-            formData.append("employeesCreateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
-        }
-        dispatch(callRegistEmployeesAPI({employeesCreateRequest : formData }));
-        setRegistModalOpen(false)
+            if (img === '') {
+                formData.append("employeesCreateRequest", new Blob([JSON.stringify(form)], {type: 'application/json'}));
+            } else {
+                formData.append("employeePicture", empFile.current.files[0]);
+                formData.append("employeesCreateRequest", new Blob([JSON.stringify(form)], {type: 'application/json'}));
+            }
+        // eslint-disable-next-line no-restricted-globals
+            if(confirm){
+            dispatch(callRegistEmployeesAPI({employeesCreateRequest: formData}));
+            setRegistModalOpen(false)
+        }else {
+                return
+            }
+
     }
-
-
+    console.log(form?.registrationNumber?.length)
+    console.log(form?.joinDate)
     return (
         <>
                 <div className="modal" ref={modalBackground} onClick={e => {

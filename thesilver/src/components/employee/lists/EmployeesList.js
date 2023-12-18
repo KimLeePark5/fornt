@@ -1,10 +1,6 @@
 import EmployeesListItem from "../items/EmployeesListItem";
 import EmployeesModal from "../modal/EmployeesModal";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {callEmployeesListAPI} from "../../../apis/EmployeesAPICalls";
-import EmployeesModifyModalItem from "../items/EmployeesModifyModalItem";
-import employees from "../../../pages/Employees";
+import {useState} from "react";
 
 
 function EmployeesList({data, setToggleEmployee}) {
@@ -17,12 +13,8 @@ function EmployeesList({data, setToggleEmployee}) {
         setModalOpen(true);
         setBtnActive(false);
     }
-
-    // useEffect(()=>{
-    //     setToggleEmployee(employeeCode)
-    // },[setEmployeeCode])
+    console.log(data.length)
     return(
-
         <>
         <table className="employees-list-table">
                 <thead className="employees-list-header">
@@ -38,10 +30,14 @@ function EmployeesList({data, setToggleEmployee}) {
                 </tr>
                 </thead>
                 <tbody onDoubleClick={showModal}>
-                {/*onClick={(event)=>setXY({ x: event.clientX, y: event.clientY })}*/}
                 {data.map(employees =>
                     <EmployeesListItem setToggleEmployee={setToggleEmployee} key={employees.employeeCode} employees={employees} btnActive={btnActive} setBtnActive={setBtnActive} setModalOpen={setModalOpen} setEmployee={setEmployee}
-                                       setEmployeeCode={setEmployeeCode}></EmployeesListItem>)}
+                                       data={data} setEmployeeCode={setEmployeeCode}></EmployeesListItem>)}
+                {data.length===0 &&
+                    <tr className="employees-list-items">
+                        <td colSpan="10"> 존재 하지 않습니다.</td>
+                    </tr>
+                }
                 </tbody>
         </table>
             {modalOpen &&

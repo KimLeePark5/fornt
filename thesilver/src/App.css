@@ -5,6 +5,7 @@
 .layout {
     display: flex;
     background-color: #F7F8F8;
+    width: 1920px;
 }
 
 .layout > div:nth-child(1) {
@@ -18,8 +19,6 @@
     margin: 50px;
     margin-bottom: 0;
 }
-
-
 
 /** 스크롤바 없애기 **/
 /*::-webkit-scrollbar {*/
@@ -2357,6 +2356,30 @@ display: none;
         background-color: lightyellow;
     }
 }
+.employees-list-items-lock{
+    width: 1506px;
+    margin-left: 20px;
+    border-bottom: 1px solid #B6B6B6;
+    height: 66px;
+    background-color:ghostwhite;
+    &.active{
+        background-color: #FAFAAA;
+    }
+}
+.employees-list-items-lock-div{
+    position: absolute;
+    color: red;
+    /*transform: rotate(-5deg);*/
+    margin-left: 3px;
+    font-weight: bold;
+    font-size: 16px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+.employees-list-items-lock:hover{
+    background-color: #FAFAAA;
+}
 
 .employees-list-items:hover{
     background-color: lightyellow;
@@ -2634,7 +2657,8 @@ display: none;
     margin-top: 58px;
     display: inline-flex;
 }
-.employeesModalDiv-3{
+
+.employee-history-div{
     margin-top: 58px;
     height: 168px;
     width: 1481px;
@@ -2707,6 +2731,7 @@ display: none;
     display: flex;
     margin-top: 28px;
     align-items: center;
+    height: 47px;
 }
 
 .employees-list-header{
@@ -2756,7 +2781,13 @@ display: none;
     grid-template-columns: 188px 255px 386px 255px 386px;
     margin-top: 57px;
 }
-.employeesModalGrid-item,
+.employeesModalGrid-item{
+    place-items: center;
+    display: grid;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
 .employeesModalGrid-2-item{
     place-items: center;
     display: grid;
