@@ -30,7 +30,7 @@ function AttendCalender({myAttend: {responseAttend}}) {
     return (
         <>
             {responseAttend &&
-                <div >
+                <div className='calcon' >
                     <FullCalendar
                         plugins={[dayGridPlugin]}
                         initialView='dayGridMonth'
