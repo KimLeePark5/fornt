@@ -38,6 +38,7 @@ function AttendModalTwo({attendAdmin:{data :{responseAttendAdminTwos:{content}}}
         let curDay =  new Date(curDate).getDay();
         const day = ['(일)','(월)','(화)','(수)','(목)','(금)','(토)'];
 
+
         let arr = [];
 
         for (let i = 0; i < lastDay; i++) {
@@ -71,21 +72,9 @@ function AttendModalTwo({attendAdmin:{data :{responseAttendAdminTwos:{content}}}
             curDay += 1;
         }
 
+
         return arr;
     }
-    const escKeyModalClose = (e) => {
-        console.log(e)
-        if (e.key == 'Escape') {
-            if (attendHistoryBtn) {
-                setattendHistoryBtn(false);
-            } else if (attModifyBtn) {
-                setAttModifyBtn(false);
-            }else{
-                setAttendModal(false);
-            }
-        }
-    };
-    window.addEventListener("keydown", escKeyModalClose);
     return (
         <>
         {attendHistoryBtn && <AttendHistoryModalTwo attendNo={attendNo} setattendHistoryBtn={setattendHistoryBtn} attendAdmin={attendAdmin} month={month} today={day22.current ? day22.current.textContent : ''}/>}

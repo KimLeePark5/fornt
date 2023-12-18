@@ -11,7 +11,7 @@ import secondGraph from "../components/customer/graph/SecondGraph";
 import SecondGraph from "../components/customer/graph/SecondGraph";
 import thirdGraph from "../components/customer/graph/ThirdGraph";
 import ThirdGraph from "../components/customer/graph/ThirdGraph";
-import {getLicenseReset} from "../modules/CustomerModule";
+import {getLicenseReset, putSuccessReset} from "../modules/CustomerModule";
 import {useSearchParams} from "react-router-dom";
 
 function Customers() {
@@ -42,10 +42,6 @@ function Customers() {
         const slicedData2 = graphData.firstGraphData.slice(12, 24)
         const slicedData3 = graphData.firstGraphData.slice(24, 36)
         const slicedData4 = graphData.firstGraphData.slice(36, 48)
-        console.log(slicedData1)
-        console.log(slicedData2)
-        console.log(slicedData3)
-        console.log(slicedData4)
 
         firstData = firstGraphData({slicedData1: slicedData1,slicedData2: slicedData2,slicedData3: slicedData3,slicedData4: slicedData4})
         secondData = secondGraphData({secondGraphData: graphData?.secondGraphData})
@@ -61,6 +57,7 @@ function Customers() {
         if (putSuccess) {
             alert("고객 정보 수정이 완료되었습니다.")
             onSuccessCloseHandler("customer")
+            dispatch(putSuccessReset())
         }
     }, [currentPage, condition, putSuccess]);
 
