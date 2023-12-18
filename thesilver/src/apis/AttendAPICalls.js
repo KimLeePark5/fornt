@@ -29,7 +29,7 @@ export const callEnterBtAPI = () => {
         })
 
         if (result?.status == 201) {
-            toast.info("출근등록이 완료되었습니다")
+            alert("출근등록이 완료되었습니다")
             dispatch(enterSuccess(result));
         }
 
@@ -40,7 +40,7 @@ export const callLeaveBtAPI = () => {
     return async (dispatch, getState) => {
         const result = await authRequest.put('/api/v1/leave')
         if (result?.status == 201) {
-            toast.info("퇴근이 완료되었습니다.")
+            alert("퇴근이 완료되었습니다.")
             dispatch(leaveSuccess(result))
         }
     }
@@ -73,7 +73,7 @@ export const callSearchNameAPICalls = (month,empName,page) => {
             dispatch(attendAdmin(result))
         }
         if(result == null){
-            toast.error("존재하는 사원이 없습니다.")
+            alert("존재하는 사원이 없습니다.")
         }
     }
 }
@@ -85,13 +85,18 @@ export const callModifyAttendAPI = (form,attendNo) => {
                     'Content-Type' : 'application/json'
                 }
             }
-            ).catch(e=>console.log(e))
+            ).catch(e=>{
+                if(e.response.status == 400){
+                    alert(e.response.data.message)
+                }
+        })
 
 
 
-        if(result.status == 201){
+        if(result?.status == 201){
             dispatch(attendModifySuccess(result))
         }
+
 
     }
 }

@@ -11,7 +11,7 @@ function TodoRegist({setTodoRegist}){
     const {registSuccess} = useSelector(state => state.todoListReducer)
 
     const todoregistHandler = () => {
-        if(!text){
+        if(!text.replaceAll(" ","")){
             toast.error("공백일 수 없습니다.")
             return;
         }

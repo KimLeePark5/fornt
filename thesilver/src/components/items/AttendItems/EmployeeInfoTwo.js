@@ -70,7 +70,7 @@ function EmployeeInfoTwo({attendAdmin, setMonth, month}){
                 <div>지각</div>
                 <div>조퇴</div>
                 <div>휴가</div>
-                <div>연장근무</div>
+                <div>근무시간</div>
             </div>
             <div className='allempatinfo'>
                 {(attendAdmin.data.responseAttendAdminTwos.content).map((emp, index) =>
@@ -81,7 +81,7 @@ function EmployeeInfoTwo({attendAdmin, setMonth, month}){
                         <div style={{marginLeft:13}}>{attendAdmin.data.responseAttendAdminTwos.content[index].lateCount}회</div>
                         <div style={{marginLeft:12}}>{attendAdmin.data.responseAttendAdminTwos.content[index].leaveEarlyCount}회</div>
                         <div style={{marginLeft:13}}>{attendAdmin.data.responseAttendAdminTwos.content[index].vacCount}회</div>
-                        <div style={{marginLeft:20}}>12시간</div>
+                        <div style={{marginLeft: 20}}>{attendAdmin.data.responseAttendAdminTwos.content[index].attendTime==0?'':`${attendAdmin.data.responseAttendAdminTwos.content[index].attendTime}시간`}</div>
                         <div> <button onClick={(e) => {
                             attendDetailOnclickHandler(emp.empCode)
                         }} className='attenddetailbtn' style={{marginLeft:50}}>상세정보

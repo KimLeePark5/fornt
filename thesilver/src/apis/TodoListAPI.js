@@ -1,5 +1,6 @@
 import {authRequest, request} from "./Api";
 import {deleteSuccess, getTodolist, modifySuccess, registSuccess} from "../modules/TodoListModule";
+import {toast} from "react-toastify";
 
 export const callTodoListAPI = (page=1,day)=>{
     console.log(day)
@@ -15,8 +16,9 @@ export const callTodoListAPI = (page=1,day)=>{
 
 export const callRegistTodo = (text) => {
     return async (dispatch,getState) => {
-        const result = await authRequest.post(`/api/v1/todoList?content=${text}`)
+        const result= await authRequest.post(`/api/v1/todoList?content=${text}`)
         if(result?.status == 201){
+            alert("등록성공")
             dispatch(registSuccess(result))
         }
 
@@ -26,6 +28,7 @@ export const callTodoModifyAPI = (text,todoNo) => {
     return async (dispatch,getState) => {
         const result = await authRequest.put(`/api/v1/todoList/${todoNo}?content=${text}`)
         if(result?.status == 201 ){
+            alert("수정완료")
             dispatch(modifySuccess(result))
         }
     }
@@ -34,6 +37,7 @@ export const callTodoDeleteAPI = (todoNo) => {
     return async (dispatch,getState)=> {
         const result = await authRequest.delete(`api/v1/todoList/${todoNo}`)
         if(result?.status == 204 ){
+            alert("삭제완료")
             dispatch(deleteSuccess(result))
         }
 
