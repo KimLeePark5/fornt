@@ -5,17 +5,6 @@ import {useNavigate} from 'react-router-dom';
 
 function JournalItem({journal}) { // 상세 조회
 
-    const navigate = useNavigate();
-    const [rounds, setRounds] = useState([]);
-    const [selectedRound, setSelectedRound] = useState('');
-
-    const dispatch = useDispatch();
-
-    const handleRoundChange = (e) => {
-        setSelectedRound(e.target.value);
-    };
-
-
     console.log("JournalItem 저널 : ", journal)
 
     return (
@@ -118,11 +107,11 @@ function JournalItem({journal}) { // 상세 조회
                     <div className="journal-imgs">첨부 파일</div>
 
                     <div className="attachmentUrl-div">
-                    <div className="attachmentUrls" style={{"width": "1250px"}}>
-                        <img src={journal.attachmentUrls} alt={journal.programTopic}/>
-                        <img src={journal.attachmentUrls} alt={journal.programTopic}/>
-                        <img src={journal.attachmentUrls} alt={journal.programTopic}/>
-                    </div>
+                        <div className="attachmentUrls" style={{"width": "1250px"}}>
+                            <img src={journal.attachmentUrls} alt={journal.programTopic}/>
+                            <img src={journal.attachmentUrls} alt={journal.programTopic}/>
+                            <img src={journal.attachmentUrls} alt={journal.programTopic}/>
+                        </div>
                     </div>
                 </div>
                 </tbody>

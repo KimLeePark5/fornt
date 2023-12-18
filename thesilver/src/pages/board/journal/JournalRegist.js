@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callJournalRegistAPI} from "../../../apis/JournalAPICalls";
-import {postJournalSuccess} from "../../../modules/JournalsModule";
+
 
 function JournalRegist() {
 
@@ -12,6 +12,7 @@ function JournalRegist() {
     const imageInputs = useRef([React.createRef(), React.createRef(), React.createRef()]);
     const dispatch = useDispatch();
     const {postJournalSuccess} = useSelector(state => state.journalReducer);
+    const imageInput = useRef();
 
     useEffect(() => {
         if (postJournalSuccess === true) {
@@ -20,6 +21,10 @@ function JournalRegist() {
     }, [postJournalSuccess]);
 
     // 이미지 업로드 버튼 클릭시 input type file이 클릭 되도록 하는 이벤트
+    const onClickImageUpload = () => {
+        imageInput.current.click();
+    }
+
     const onChangeImageUpload = (index) => (e) => {
         const fileInput = imageInputs.current[index].current;
 
@@ -45,26 +50,17 @@ function JournalRegist() {
 
     // 등록 버튼 클릭 시 이벤트
     const onClickProgramRegistHandler = () => {
-        const updatedForm = {...form};
         // 서버로 전달한 FormData 형태의 객체 설정
         const formData = new FormData();
 
-
         imageInputs.current.forEach((inputRef, index) => {
             if (inputRef.current.files.length > 0) {
-                formData.append(`journalImages-${index}`, inputRef.current.files[0]);
+                formData.append('journalImages', inputRef.current.files[0]);
             }
         });
-
-        formData.append(
-            "journalRequest",
-            new Blob([JSON.stringify(updatedForm)], {type: "application/json"})
-        );
-
-        dispatch(callJournalRegistAPI({registJournalRequest: updatedForm, setForm}));
+        formData.append("journalRequest", new Blob([JSON.stringify(form)], {type: "application/json"}));
+        dispatch(callJournalRegistAPI({registJournalRequest: formData}));
     };
-
-    //const 쓸 값 이름 주소 어쩌고 다 넣고 보내기..?
 
     // 상태 변경 핸들러
     const onChangeHandler = (e) => {
@@ -87,30 +83,38 @@ function JournalRegist() {
         <>
             <div className="journal-head1">❮ 프로그램 운영 일지 등록 ❯</div>
 
-            <table className="description-table" style={{border: "2px solid #000000", "background-color": "#FFFFFF"}}>
+            <table className="description-table" style={{border: "2px solid #000000", backgroundColor: "#FFFFFF"}}>
                 <tbody>
                 <div className="detail-div1">
 
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">프로그램 명</th>
-                        <td style={{"padding-left": "40px", "padding-right": "153px"}}>
-                            <select onChange={onChangeHandler}>
-                                <option>-- 선택하세요 --</option>
-                            </select>
+                        <td style={{paddingLeft: "40px", paddingRight: "153px"}}>
+                            {/*<select onChange={onChangeHandler}>*/}
+                            {/*    <option>-- 선택하세요 --</option>*/}
+                            {/*</select>*/}
+                            <input name="categoryName" type="text" onChange={onChangeHandler}/>
                         </td>
                     </tr>
-                    <tr style={{display: "flex", "align-items": "center"}}>
-                        <th className="journal-table1" style={{"border-left": "2px solid #000000"}}>회 차</th>
-                        <td style={{"padding-left": "40px", "padding-right": "175px", width: "175px"}}>
-                            <select onChange={onChangeHandler}>
-                                <option>-- 선택하세요 --</option>
-                            </select>
+                    <tr style={{display: "flex", alignItems: "center"}}>
+                        <th className="journal-table1" style={{borderLeft: "2px solid #000000"}}>회 차</th>
+                        <td style={{paddingLeft: "40px", paddingRight: "175px", width: "175px"}}>
+                            {/*<select onChange={onChangeHandler}>*/}
+                            {/*    <option>-- 선택하세요 --</option>*/}
+                            {/*</select>*/}
+                            <input
+                                onChange={onChangeHandler}
+                                name="round"
+                                type="text"
+                                //value={form.numberOfSessions}
+                                style={{width: "40px"}} // 너비 조정/>
+                            />
                             &nbsp;&nbsp;회 차
                         </td>
                     </tr>
-                    <tr style={{display: "flex", "align-items": "center"}}>
-                        <th className="journal-table1" style={{"border-left": "2px solid #000000"}}>참관 일자</th>
-                        <td style={{"padding-left": "40px"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
+                        <th className="journal-table1" style={{borderLeft: "2px solid #000000"}}>참관 일자</th>
+                        <td style={{paddingLeft: "40px"}}>
                             <input name="observation"
                                    type="date"
                                    onChange={onChangeHandler}
@@ -121,9 +125,9 @@ function JournalRegist() {
 
 
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">프로그램 주제</th>
-                        <td className="journal-table3-body1" style={{"width": "1000px"}}>
+                        <td className="journal-table3-body1" style={{width: "1000px"}}>
                             <input
                                 style={{width: "200px"}}
                                 name="programTopic"
@@ -134,7 +138,7 @@ function JournalRegist() {
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">시작 시간</th>
                         <td className="journal-table3-body1">
                             <input
@@ -146,9 +150,9 @@ function JournalRegist() {
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">종료 시간</th>
-                        <td className="journal-table3-body1" style={{"padding-right": "710px"}}>
+                        <td className="journal-table3-body1" style={{paddingRight: "710px"}}>
                             <input
                                 onChange={onChangeHandler}
                                 name="endTime"
@@ -156,11 +160,11 @@ function JournalRegist() {
                             />
                         </td>
                     </tr>
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1"
-                            style={{"border-left": "2px solid #000000", "border-top": "1px solid #000000"}}>담당자
+                            style={{borderLeft: "2px solid #000000", borderTop: "1px solid #000000"}}>담당자
                         </th>
-                        <td className="journal-table3-body1" style={{"width": "300px"}}>
+                        <td className="journal-table3-body1" style={{width: "300px"}}>
                             <input name="employeeName"
                                    type="text"
                                    onChange={onChangeHandler}/>
@@ -169,9 +173,9 @@ function JournalRegist() {
                 </div>
 
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">요일</th>
-                        <td className="journal-table3-body1" style={{"padding-right": "635px", width: "180px"}}>
+                        <td className="journal-table3-body1" style={{paddingRight: "635px", width: "180px"}}>
                             <select
                                 onChange={onChangeHandler}
                                 name="day">
@@ -185,8 +189,8 @@ function JournalRegist() {
                             &nbsp;&nbsp;{'요일'}
                         </td>
                     </tr>
-                    <tr style={{display: "flex", "align-items": "center"}}>
-                        <th className="journal-table1" style={{"border-left": "2px solid #000000"}}>강사</th>
+                    <tr style={{display: "flex", alignItems: "center"}}>
+                        <th className="journal-table1" style={{borderLeft: "2px solid #000000"}}>강사</th>
                         <td className="journal-table3-body1">
                             <input name="teacherName"
                                    type="text"
@@ -195,61 +199,64 @@ function JournalRegist() {
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-subProgress">
                             프로그램<br/>
                             진행 사항
                         </th>
                         <td className="journal-body-subProgress" style={{"text-align": "left"}}>
                             <textarea name="subProgress"
-                                   type="text"
-                                   style={{width:"1250px", height:"100px"}}
-                                   onChange={onChangeHandler}/>
+                                      type="text"
+                                      style={{width: "1250px", height: "100px"}}
+                                      onChange={onChangeHandler}/>
                         </td>
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-observe">
                             반응 및<br/>
                             관찰 결과
                         </th>
-                        <td className="journal-table3-body1" style={{"width": "1250px"}}>
+                        <td className="journal-table3-body1" style={{width: "1250px"}}>
                             <textarea name="observe"
-                                      style={{width:"1250px", height:"70px"}}
-                                   type="text"
-                                   onChange={onChangeHandler}/>
+                                      style={{width: "1250px", height: "70px"}}
+                                      type="text"
+                                      onChange={onChangeHandler}/>
                         </td>
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">참가 인원</th>
-                        <td className="journal-table3-body1" style={{"width": "1250px"}}>
-
-                            여기에 모달
-
+                        <td className="journal-table3-body1" style={{width: "1250px"}}>
+                            {/*여기에 모달*/}
+                            <textarea
+                                name="participantNames"
+                                onChange={onChangeHandler}
+                                style={{width: "1250px", height: "15px"}}
+                            />
                         </td>
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">평가 및 관리</th>
-                        <td className="journal-table3-body1" style={{"width": "1250px"}}>
+                        <td className="journal-table3-body1" style={{width: "1250px"}}>
                             <input name="rating"
                                    type="text"
-                                   style={{width:"1250px"}}
+                                   style={{width: "1250px"}}
                                    onChange={onChangeHandler}/>
                         </td>
                     </tr>
                 </div>
                 <div className="detail-div1">
-                    <tr style={{display: "flex", "align-items": "center"}}>
+                    <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">비고</th>
-                        <td className="journal-table3-body1" style={{"width": "1250px"}}>
+                        <td className="journal-table3-body1" style={{width: "1250px"}}>
                             <input name="note"
                                    type="text"
-                                   style={{width:"1250px"}}
+                                   style={{width: "1250px"}}
                                    onChange={onChangeHandler}/>
                         </td>
                     </tr>
@@ -259,7 +266,7 @@ function JournalRegist() {
                     <div className="journal-imgs">첨부 파일</div>
 
                     <div className="attachmentUrl2-div">
-                        <div className="attachmentUrls2" style={{"width": "1250px"}}>
+                        <div className="attachmentUrls2" style={{width: "1250px"}}>
                             {imageInputs.current.map((inputRef, index) => (
                                 <div key={index}>
                                     {imageUrls[index] &&
@@ -272,7 +279,8 @@ function JournalRegist() {
                                         ref={inputRef}
                                         onChange={onChangeImageUpload(index)}
                                     />
-                                    <button className="journal-image-button" onClick={() => inputRef.current.click()}>
+                                    <button className="journal-image-button"
+                                            onClick={() => inputRef.current.click(onClickImageUpload)}>
                                         ➕
                                     </button>
 
@@ -296,7 +304,7 @@ function JournalRegist() {
                     onClick={onClickProgramRegistHandler}
                     style={{marginLeft: "1320px"}}
                 >
-                    프로그램 등록
+                    일지 등록
                 </button>
             </div>
 

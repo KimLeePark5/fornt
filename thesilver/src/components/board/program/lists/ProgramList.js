@@ -18,13 +18,6 @@ function ProgramList({data, onClickDelete }) {
         setSearch(e.target.value);
     }
 
-    //Enter 입력 시 검색 결과 화면으로 이동
-    // const onEnterKeyHandler = e => {
-    //     if (e.key === 'Enter'){
-    //         navigate(`/programs/search?value=${search}`);
-    //     }
-    // }
-
 // 검색 로직을 호출하는 함수
     const searchPrograms = async () => {
         try {
@@ -97,7 +90,7 @@ function ProgramList({data, onClickDelete }) {
                     {/*<div></div>*/}
                 </div>
             </div>
-                {data && data.map(program => <ProgramListItem key={program.code} program={program} onClickDelete={onClickDelete}/>)}
+            {data && data.map(program => <ProgramListItem key={program.code} program={program} onClickDelete={onClickDelete}/>)}
         </div>
 
     )

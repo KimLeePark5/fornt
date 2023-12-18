@@ -1,4 +1,7 @@
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {callGetCategoryNamesAPI, callGetEmployeeNamesAPI} from "../../../../apis/JournalAPICalls";
+import {useDispatch, useSelector} from "react-redux";
 
 function JournalListItem({journal}) { //상세조회
 
@@ -14,22 +17,23 @@ function JournalListItem({journal}) { //상세조회
 
     return (
 
-        <div className="journal-list-div" style={{ "background-color": "#FFFFFF"}}>
+        <div className="journal-list-div" style={{ "backgroundColor": "#FFFFFF"}}>
+
             <div className="journal-list-body">
-                    <div className="journal-list-item" onClick={onClickJournalHandler}>
-                        <div className="j-border1">{journal.journalCode}</div>
-                        <div className="j-border3">{journal.employeeName}</div>
-                        <div className="j-border3">{journal.categoryName}</div>
-                        <div className="j-shortStory">{journal.programTopic}</div>
+                <div className="journal-list-item" onClick={onClickJournalHandler}>
+                    <div className="j-border1">{journal.journalCode}</div>
+                    <div className="j-border3">{journal.employeeName}</div>
+                    <div className="j-border3">{journal.categoryName}</div>
+                    <div className="j-shortStory">{journal.programTopic}</div>
 
-                        <div className="j-border3">{journal.numberOfParticipants}</div>
+                    <div className="j-border3">{journal.numberOfParticipants}</div>
 
-                        <div className="j-border3">{journal.observation}</div>
-                        <div className="j-border3">{journal.teacherName}</div>
-                    </div>
+                    <div className="j-border3">{journal.observation}</div>
+                    <div className="j-border3">{journal.teacherName}</div>
                 </div>
+            </div>
 
-         </div>
+        </div>
 
     );
 }

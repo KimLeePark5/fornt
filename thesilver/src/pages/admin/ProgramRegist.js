@@ -15,7 +15,6 @@ function ProgramRegist() {
 
     const [postNo, setPostNo] = useState("");
     const [address, setAddress] = useState("");
-    const [teacherName, setTeacherName] = useState("");
     const [extraAddress, setExtraAddress] = useState("");
 
     useEffect(() => {
@@ -109,7 +108,6 @@ function ProgramRegist() {
             formData.append("teacherImg", imageInput.current.files[0]);
         }
         formData.append("programRequest", new Blob([JSON.stringify(updatedForm)], {type: 'application/json'}));
-
         dispatch(callAdminProgramRegistAPI({registRequest: formData})); //위에 formData를 안보내고 setForm을 보내고 있어서 안됐음
     }
 
@@ -140,7 +138,7 @@ function ProgramRegist() {
                 <table className="description-table">
                     <tbody>
                     <tr>
-                        <th className="program-table1" style={{"border-top": "1px solid #000000"}}>프로그램 명</th>
+                        <th className="program-table1" style={{borderTop: "1px solid #000000"}}>프로그램 명</th>
                         <td className="program-table1-body1">
                             <input name="categoryName" type="text" onChange={onChangeHandler}/>
                         </td>
@@ -152,6 +150,7 @@ function ProgramRegist() {
                                 name="startDate"
                                 type="date"
                                 value={form.startDate}
+                                accept='image/jpg,image/png,image/jpeg,image/gif'
                                 onChange={onChangeHandler}
                             />&nbsp;&nbsp;&nbsp;&nbsp;
                             {' ~ '}
@@ -187,7 +186,6 @@ function ProgramRegist() {
                                     name="round"
                                     type="text"
                                     value={form.numberOfSessions}
-
                                     style={{width: "40px"}} // 너비 조정/>
                                 />&nbsp;&nbsp;&nbsp;
                                 회 차
