@@ -296,6 +296,7 @@
 
 /****require state **************************************/
 .require-content{
+    /*position: relative;*/
     width: 1500px;
     display: flex;
     justify-content: space-between;
@@ -311,6 +312,8 @@
 }
 
 .vacation-require-btn {
+    /*position: absolute;*/
+    /*left: 1400px;*/
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -418,7 +421,25 @@
     padding-left: 10px;
     display: flex;
     align-items: center;
+    font-weight: 500;
 
+}
+
+.vacation-sign-form3 {
+    display: grid;
+    grid-template-columns: 130px 570px;
+    border-right: #1A1A1C 1px solid;
+    border-left: #1A1A1C 1px solid;
+    height: 40px;
+
+}
+
+.signForm3-1 {
+    padding-left: 10px;
+    display: flex;
+    text-align: center;
+    height: 30px;
+    padding-top: 10px;
 }
 
 .vacation-require-form3 {
@@ -440,6 +461,7 @@
     padding-left: 10px;
     display: flex;
     align-items: center;
+    font-weight: 500;
 }
 
 .vacation-require-form4 {
@@ -464,11 +486,13 @@
     border: none;
     resize: none;
     font-size: 15px;
+    font-weight: 500;
 }
 
 .vacation-require-form5 {
     border-right: #1A1A1C 1px solid;
     border-left: #1A1A1C 1px solid;
+    border-bottom: #1A1A1C 1px solid;
     height: 300px;
 }
 
@@ -476,7 +500,7 @@
     display: grid;
     grid-template-columns: 130px 570px;
     border: #1A1A1C 1px solid;
-
+    margin-top: 30px;
     height: 50px;
 }
 
@@ -491,6 +515,16 @@
     padding-left: 10px;
     display: flex;
     align-items: center;
+    font-weight: 500;
+}
+
+.form6-3 {
+    border: none;
+    resize: none;
+    font-size: 15px;
+    font-weight: 500;
+    height: 38px;
+    width: 550px;
 }
 
 
@@ -598,6 +632,7 @@
     color: #FFCF00;
 
 }
+
 
 /* proceedRequire */
 .require-proceed-list{
@@ -2146,6 +2181,8 @@ background-color: #01092b;
 
 .fc-media-screen{
     height: 600px;
+    margin: 0 10px 10px 10px;
+    padding-bottom: 20px;
 
 }
 
@@ -3457,7 +3494,7 @@ display: none;
     margin-bottom: 2%;
 }
 
-. journals-list-search {
+.journals-list-search {
     padding: 15px;
     display: flex;
     gap: 5px;
@@ -3468,10 +3505,10 @@ display: none;
 
 .journal-list-search input {
     height: 25px;
-.journal-list-search input {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
 }
+
 .journal-list-search select {
     height: 29px;
     font-family: 'Noto Sans KR', sans-serif;
