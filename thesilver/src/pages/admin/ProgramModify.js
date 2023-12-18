@@ -60,14 +60,13 @@ function ProgramModify() {
         }).open();
     };
     //-----------------------------------------------------
-
     // 최초 랜더링 시 프로그램 상세 정보 조회
     useEffect(() => {
-        dispatch(callProgramDetailAPI({code}));
+        dispatch(callProgramDetailAPI({ code }));
     }, []);
     //---------------------------------------------------
 
-    // 수정 성공 시 프로그램 목록으로 이동
+    // 수정 성공 시 프로그램 목록으로 이동 // 이거 뭔소용이냐.........
     useEffect(() => {
         if (putProgramSuccess === true) {
             navigate('/programs', {replace: true})
@@ -112,13 +111,23 @@ function ProgramModify() {
         setForm({...program}); //{기존에 가져왔던 상품 가져옴} -> Form으로 옮겨감
     }
 
-    // 상품 수정 요청하는 이벤트
+    // 프로그램 수정 요청하는 이벤트 저장 버튼 눌렀을 때
     const onClickProductUpdateHandler = () => {
+
+        // 폼 상태에 주소 포함
+        const updatedForm = {
+            ...form,
+            postNo: postNo,
+            address: address //이거맞음
+        };
+
         const formData = new FormData();
+
         formData.append("teacherImg", imageInput.current.files[0]);
-        formData.append("programRequest", new Blob([JSON.stringify(form)], {type: 'application/json'}));
+        formData.append("programRequest", new Blob([JSON.stringify(updatedForm)], {type: 'application/json'}));
 
         dispatch(callAdminProgramModifyAPI({code, modifyRequest: formData}));
+        navigate('/programs', {replace: true})
     }
 
     const inputStyle = !modifyMode ? {backgroundColor: '#e8e8e8'} : null;
@@ -127,13 +136,13 @@ function ProgramModify() {
         <div>
             {program &&
 
-                <div style={{border: "2px solid #000000",  "background-color": "#FFFFFF"}}>
+                <div style={{border: "2px solid #000000",  "backgroundColor": "#FFFFFF"}}>
 
                     <div className="program-head1">❮ 프로그램 수정 ❯</div>
                     <table className="description-table">
                         <tbody>
                         <tr>
-                            <th className="program-table1" style={{"border-top": "1px solid #000000"}}>프로그램 명</th>
+                            <th className="program-table1" style={{"borderTop": "1px solid #000000"}}>프로그램 명</th>
                             <td className="program-table1-body1">
                                 <input
                                     name="categoryName"

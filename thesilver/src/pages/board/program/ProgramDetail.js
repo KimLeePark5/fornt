@@ -29,8 +29,8 @@ function ProgramDetail() {
                         <ProgramItem program={program}/>
 
                         <div className="management-detail-div">
-                        {isAdmin() && <button onClick={onClickTableTr}>수정</button>}
-                        {isMaster() && <button onClick={onClickTableTr}>수정</button>}
+                            {isAdmin() && <button onClick={onClickTableTr}>수정</button>}
+                            {isMaster() && <button onClick={onClickTableTr}>수정</button>}
                         </div>
                     </div>
                 </>

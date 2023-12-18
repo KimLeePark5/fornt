@@ -3045,7 +3045,7 @@ display: none;
 
 .program-list-item {
     display: grid;
-
+    justify-content: space-between;
     grid-template-columns: 150px 1150px 100px 100px;
 }
 
@@ -3148,6 +3148,21 @@ display: none;
 
 .paging-program{
     padding-right: 660px;
+    padding-left: 640px;
+}
+
+.paging-program2{
+    padding-right: 700px;
+    padding-left: 640px;
+}
+
+.paging-journal{
+    padding-right: 660px;
+    padding-left: 640px;
+}
+
+.paging-journal2{
+    padding-right: 630px;
     padding-left: 640px;
 }
 
@@ -3412,15 +3427,18 @@ display: none;
 
 .journal-list-item:hover{
     background-color: #eeeeee;
+
 }
 
 .journal-list-item {
     display: grid;
+    justify-content: space-between;
     grid-template-columns: 60px 100px 215px 725px 100px 200px 100px;
 }
 
 .journal-list-head {
     display: grid;
+    justify-content: space-between;
     grid-template-columns: 60px 100px 215px 725px 100px 200px 100px;
     background-color: #01092b;
     color: #FFFFFF;
@@ -3453,7 +3471,7 @@ display: none;
     transition: opacity .15s linear;
     position: relative;
     height: 65px;
-    width: 100%;
+    /*width: 100%;*/
     margin-right: unset;
     margin-left: auto;
     border: 1px solid #000000; /* 박스 테투리 */
@@ -3487,7 +3505,7 @@ display: none;
 /*}*/
 
 .journals-search-button {
-    margin-left: 30%;
+    margin-left: 530px;
     border-radius: 5px; /* 검색 버튼 사각형 모서리 둥글게 */
     background-color: #0c58a5; /* 파란색 배경 설정 */
     color: white; /* 글자 색상 설정 */
@@ -3612,6 +3630,56 @@ display: none;
 
 .journal-body-subProgress tr {
     text-align : center;
+}
+
+.journal-div{ /*등록 버튼*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*align-items: flex-end;*/
+    /*position: absolute; right: 95px; bottom: 95px; !*하단에 고정 시켜주는 스타일*!*/
+}
+
+.journal-div button {
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+    /*margin-left: 300px;*/
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #0c58a5;
+    color: #ffffff;
+}
+
+.journal-div button:hover{
+    background-color: #08335B;
+}
+/* 일지 수정 */
+.note-input{
+    width: 1250px;
+}
+
+.rating-input{
+    width: 1250px;
+}
+
+.observe-input{
+    width: 1250px;
+    height: 70px;
+}
+
+.subProgress-input{
+    width: 1250px;
+    height: 100px;
+}
+
+.round-input{
+    width: 40px;
+}
+
+.participantNames-input{
+    width: 1250px;
+    height: 15px;
 }
 
 /*-------------------*/

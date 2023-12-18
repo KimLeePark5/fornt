@@ -24,22 +24,22 @@ function JournalDetail() { // 상세 조회
     }
 
 
-        return (
-            <>
-                {
-                    journal &&
-                    <>
-                        <div className="detail-div">
-                            <JournalItem journal={journal}/>
+    return (
+        <>
+            {
+                journal &&
+                <>
+                    <div className="detail-div">
+                        <JournalItem journal={journal}/>
 
-                            <div className="management-detail-div">
-                                <button onClick={onClickJournal}>수정</button>
-                            </div>
+                        <div className="management-detail-div">
+                            <button onClick={onClickJournal}>수정</button>
                         </div>
-                    </>
-                }
-            </>
-        )
-    }
+                    </div>
+                </>
+            }
+        </>
+    )
+}
 
-    export default JournalDetail;
+export default JournalDetail;

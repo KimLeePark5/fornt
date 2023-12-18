@@ -1,33 +1,33 @@
-import {authRequest, request} from "./Api";
+import {authRequest} from "./Api";
 import {getProgram, getPrograms, postProgramSuccess, putProgramSuccess} from "../modules/ProgramsModule";
 import {toast} from "react-toastify";
 
-export const callGetProgramListAPI = ({currentPage = 1}) => { //전체조회
 
+export const callGetProgramListAPI = ({ currentPage = 1 }) => { //프로그램 전체 조회
     return async (dispatch, getState) => {
+        try {
+            console.log("::: 요청 시작 > callGetProgramListAPI :::");
 
-        console.log("::: 요청 시작 > callGetProgramListAPI :::");
+            const result = await authRequest.get(`/api/v1/programs?page=${currentPage}`);
 
-        const result = await request('GET', `/api/v1/programs?page=${currentPage}`);
-
-        // 인증이 필요한 요청으로, await request 대신 await authRequest.get 사용
-        // const result = await authRequest.get(`/api/v1/programs?page=${currentPage}`)
-
-        if(result?.status != 200) {
-            console.log("::: 요청 실패 > callGetProgramListAPI :::");
-        } else {
-            console.log("::: 요청 성공 > callGetProgramListAPI :::");
-            console.log('callGetProgramListAPI result : ', result);
-            dispatch(getPrograms(result));
+            if (result?.status !== 200) {
+                console.error("::: 요청 실패 > callGetProgramListAPI :::", result.data);
+            } else {
+                console.log("::: 요청 성공 > callGetProgramListAPI :::");
+                console.log('callGetProgramListAPI result : ', result);
+                dispatch(getPrograms(result));
+            }
+        } catch (error) {
+            console.error("::: 요청 실패 > callGetProgramListAPI :::", error.message);
         }
-    }
+    };
 };
 
-export const callProgramSearchListAPI = ({ categoryName, currentPage = 1 }) => { // 카테고리이름으로 검색조회
+export const callProgramSearchListAPI = ({ categoryName, currentPage = 1 }) => { // 프로그램 이름으로 검색조회
 
     return async (dispatch, getState) => {
 
-        const result = await request('GET', `/api/v1/programs/search?categoryName=${categoryName}&page=${currentPage}`); //url
+        const result = await authRequest.get(`/api/v1/programs/search?categoryName=${categoryName}&page=${currentPage}`); //url
         console.log('callprogramSearchListAPI result : ', result);
 
         if(result?.status != 200) {
@@ -44,7 +44,7 @@ export const callProgramDetailAPI = ({ code }) => { // 상세 (관리자는 등�
 
     return async (dispatch, getState) => {
 
-        const result = await request('GET', `/api/v1/programs/${code}`); //url
+        const result = await authRequest.get(`/api/v1/programs/${code}`); //url
         console.log('callProgramDetailAPI result : ', result);
 
         if(result?.status != 200) {
@@ -96,7 +96,7 @@ export const callAdminProgramModifyAPI = ({code, modifyRequest}) => { // 수정
 
 
 
-export const callProgramDeleteAPI = ({ code, afterDeleteCallback }) => { // 삭제
+export const callProgramDeleteAPI = ({ code }) => { // 삭제
     return async (dispatch, getState) => {
         try {
             const result = await authRequest.delete(`/api/v1/programs/${code}`);
@@ -106,8 +106,6 @@ export const callProgramDeleteAPI = ({ code, afterDeleteCallback }) => { // 삭�
             } else {
                 console.log("::: 요청 성공 > callProgramDeleteAPI :::");
                 console.log('callProgramDeleteAPI result : ', result);
-
-                afterDeleteCallback();
             }
         } catch (error) {
             console.error("프로그램 삭제 실패:", error);

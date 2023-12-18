@@ -55,7 +55,7 @@ function Navbar() {
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("schedule")}>일정 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.schedule ? 'active' : ''}`}>
-                        <li><NavLink to="">월간 스케줄</NavLink></li>
+                        <li><NavLink to="/calender">월간 스케줄</NavLink></li>
                     </ul>
                 </li>
                 <li>

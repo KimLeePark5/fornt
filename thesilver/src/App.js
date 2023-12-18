@@ -33,6 +33,7 @@ import JournalModify from "./pages/board/journal/JournalModify";
 import JournalRegist from "./pages/board/journal/JournalRegist";
 
 import AttendAdminByType from "./pages/admin/AttendAdminByType";
+import MyCalendar from "./pages/board/calender/MyCalendar";
 
 
 
@@ -56,6 +57,7 @@ function App() {
                     <Route path="/vacation" element={<Vacation/>}></Route>
                     <Route path="/vacation-management" element={<VacationManagement/>}></Route>
 
+                    <Route path="calender" element={<MyCalendar/>}></Route>
                     <Route path="journals" element={<Journals/>}></Route>
                     <Route path="journals">
                         <Route path="search" element={<SearchJournal/>}/>
