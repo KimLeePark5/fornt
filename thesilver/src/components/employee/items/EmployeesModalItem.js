@@ -13,10 +13,11 @@ function EmployeesModalItem({employee}) {
                     <>
 
                         <div className="employeesModalGrid">
-                            <div className="employeesModalGrid-item">
-                                {employee?.employeePicture ? <img style={{backgroundSize:"cover",height:213,width:185}} src={employee?.employeePicture} alt={employee.employeeName}/>
-                                    : <span> 등록된 사진이 없습니다.</span>}
-                            </div>
+                            {employee?.employeePicture ?
+                                <div className="employeesModalGrid-item" style={{backgroundImage:`url(${employee?.employeePicture})`,backgroundSize:"cover"}}/>
+                                :
+                                <div className="employeesModalGrid-item"><span> 등록된 사진이 없습니다.</span></div>
+                            }
                             <div className="employeesModalGrid-item">이름</div>
                             <div className="employeesModalGrid-item">{employee.employeeName}</div>
                             <div className="employeesModalGrid-item">이메일</div>

@@ -11,12 +11,6 @@ function AdminAttendHeader({month, setMonth, name}) {
     const navigate = useNavigate();
     const [searchName, setSearchName] = useState();
     const [value,setValue]=useState('');
-    const onKeyDownHandler = (e) => {
-        console.log(e.key);
-        if(e.key == 'Enter'){
-            onClickSearchHandler();
-        }
-    }
     const onChangeSearchNameHnadler = (e) => {
         setSearchName(e.target.value)
     }
@@ -55,9 +49,10 @@ function AdminAttendHeader({month, setMonth, name}) {
     return (
         <>
                     <div className="admin-attend-head">
-                        <input type="text" placeholder="이름으로 검색" value={ searchName != null ? searchName : name != null ? name : ''} onKeyDown={onKeyDownHandler} onChange={onChangeSearchNameHnadler} className="attendNameBox"/>
+                        <input type="text" placeholder="이름으로 검색" value={ searchName != null ? searchName : name != null ? name : ''} onChange={onChangeSearchNameHnadler} className="attendNameBox"/>
                         <button type="button" onClick={onClickSearchHandler} className="attendNameBtn">검색</button>
                         <input type="month" value={month} onChange={onChangeMonthHandler} ref={inputMonth} style={{display:"none"}}/>
+
                         <div className="attendMonth">
                         <button onClick={onClickUpHandler} className="attendMonthbtn">&lt;</button>
                         <div style={{

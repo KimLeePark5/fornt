@@ -2,13 +2,12 @@
 function AttendHistoryModal({today, month, attendNo, setattendHistoryBtn, attendAdmin: {data: {responseModifiedAttend}}}) {
     console.log("bcde : ", attendNo)
 
-
     const attend = responseModifiedAttend.filter(attend => attend.attendNo == attendNo);
     return (
         <>
             <div className="historyModal">
                 <div className="historyModal-container">
-                    <div className="historyModalContent">
+                    <div className="historyModalContent" style={{marginBottom : "30px"}}>
                         <div className="historyattend">
                             <div>{today}</div>
                             <div className="att-text">수정기록</div>
@@ -26,18 +25,15 @@ function AttendHistoryModal({today, month, attendNo, setattendHistoryBtn, attend
                             <div className='attendHistoryContainer'>
                                 <div className='AttendhistoryContent' key={index}>
                                     <div className='Attendhistorybox'
-                                        >{history.employeeName}</div>
+                                         style={{paddingTop: history.afterEntertime && history.afterLeavetime ? '13px' : ''}}>{history.employeeName}</div>
                                     <div className='attime'>
                                         <div
                                             className='historyTime'>{history.afterEntertime ? '출근시간 : ' + history.beforeEntertime + ' > ' + history.afterEntertime : ''}</div>
                                         <div
                                             className='historyTime'>{history.afterLeavetime ? '퇴근시간 : ' + history.beforeLeavetime + ' > ' + history.afterLeavetime : ''}</div>
-                                        <div
-                                            className='historyTime'>{history.afterNote ? '비고 : '+  (history.beforeNote || '기본')  + ' > ' + history.afterNote : ''}
-                                        </div>
                                     </div>
                                     <div className='Attendhistorybox historymodifiedAt'
-                                         >{history.modifiedAt.replace("T"," ")}</div>
+                                         style={{paddingTop: history.afterEntertime && history.afterLeavetime ? '13px' : ''}}>{history.modifiedAt.replace("T"," ")}</div>
                                 </div>
                             </div>
                         )

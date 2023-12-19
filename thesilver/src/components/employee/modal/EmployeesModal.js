@@ -1,7 +1,7 @@
 import {Fragment, useRef, useState} from "react";
 import EmployeesModalItem from "../items/EmployeesModalItem";
 import EmployeesModifyModalItem from "../items/EmployeesModifyModalItem";
-import {callEmployeesListRemoveAPI} from "../../../apis/EmployeesAPICalls";
+import {callEmployeePwdReset, callEmployeesListRemoveAPI} from "../../../apis/EmployeesAPICalls";
 import {useDispatch} from "react-redux";
 
 function employeesModal({setModalOpen, employeeCode, data}) {
@@ -15,6 +15,9 @@ function employeesModal({setModalOpen, employeeCode, data}) {
     const modifyMode = () => {
         setModify(true)
     }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [form, setForm]=useState(null)
+
     const employee = data.filter(employees=>employees.employeeCode==employeeCode)[0]
 
 
@@ -26,6 +29,12 @@ function employeesModal({setModalOpen, employeeCode, data}) {
         } else {
             alert("선택해주세요.")
         }
+    }
+    const resetPwd = () => {
+        const formData = new FormData();
+        setForm(employee.account.attemptCount=0)
+        formData.append("employeesAccountUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
+        dispatch(callEmployeePwdReset({employeeCode: employeeCode}))
     }
 
     return(
@@ -48,9 +57,13 @@ function employeesModal({setModalOpen, employeeCode, data}) {
                     :
                     <h1 className="modal-title" align="left" style={{fontSize:32, display:"inline"}}>직원정보 수정</h1>
                 }
+
                 <button className="employees-list-delete-btn" onClick={onClickModalEmployeeDeleteHandler} style={{display:"inline", float:"right"}}>삭제</button>
                 {!modify &&
                 <button onClick={modifyMode} className="employees-list-update-btn" style={{display:"inline", float:"right"}}>수정</button>
+                }
+                {employee.account&&employee.account.attemptCount===5&&
+                    <button className="employees-list-delete-btn" onClick={resetPwd} style={{display:"inline", float:"right", width:170}}>비밀번호 초기화</button>
                 }
                 {!modify ?
                     <EmployeesModalItem employee={employee}/>

@@ -32,9 +32,7 @@ function AttendAdminByType(){
                     <div className="attendBackAdmin">
                         <AdminAttendHeader month={month} setMonth={setMonth} />
                         <EmployeeInfoTwo attendAdmin={attendAdminType} setMonth={setMonth} month={month} />
-                        <div style={{marginLeft:-500}}>
                         <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdminType.pageInfo}/>
-                        </div>
                     </div>
                 </div>
             }

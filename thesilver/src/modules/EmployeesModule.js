@@ -8,16 +8,16 @@ const POST_SUCCESS = 'employees/POST_SUCCESS';
 const PUT_SUCCESS = 'employees/PUT_SUCCESS';
 const PUT_SUCCESS_FALSE = 'employees/PUT_SUCCESS_FALSE'
 const PUT_REMOVE_SUCCESS = 'employees/PUT_REMOVE_SUCCESS'
-const GET_EMPLOYEE_INFO = 'employees/GET_EMPLOYEE_INFO'
-export const {employees: {getEmployees, getEmployee, postSuccess, putSuccess, putRemoveSuccess,getEmployeeInfo}} = createActions({
+const PUT_PWD_RESET = 'employees/PUT_PWD_RESET'
+
+export const {employees: {getEmployees, getEmployee, postSuccess, putSuccess, putRemoveSuccess, putPwdReset}} = createActions({
     [GET_EMPLOYEES]: result => ({employees: result.data}),
-    [GET_EMPLOYEE]: result => ({employees: result.data}),
+    [GET_EMPLOYEE]: result => ({employee: result.data}),
     [POST_SUCCESS] : () => ({ postSuccess : true }),
     [PUT_SUCCESS] : () => ({ putSuccess : false }),
     [PUT_SUCCESS_FALSE] : () => ({ putSuccess : null }),
     [PUT_REMOVE_SUCCESS] : () => ({ putRemoveSuccess : true }),
-    [GET_EMPLOYEE_INFO] : result => ({employee : result.data})
-
+    [PUT_PWD_RESET] : () => ({PUT_PWD_RESET : true}),
 });
 
 /* 리듀서 함수 */
@@ -28,7 +28,7 @@ const employeesReducer = handleActions({
     [PUT_SUCCESS] : (state, { payload }) => ({...state, ...payload}),
     [PUT_SUCCESS_FALSE] : (state, { payload }) => ({...state, ...payload}),
     [PUT_REMOVE_SUCCESS] : (state, { payload }) => ({...state, ...payload}),
-    [GET_EMPLOYEE_INFO] : (state, {payload}) => payload
+    [PUT_PWD_RESET] : (state, { payload }) => ({...state, ...payload}),
 }, initialState);
 
 export default employeesReducer;

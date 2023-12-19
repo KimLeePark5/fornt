@@ -29,8 +29,10 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
     }
 
     const setFormValues = () => {
+        const formattedDate = customer.birthDate.replace(/-/g, '').substring(2, 8);
+
         setForm({
-            birthDate: customer.birthDate,
+            birthDate: formattedDate,
             detailAddress: customer.detailAddress,
             gender: customer.gender,
             guardianName: customer.guardianName,
@@ -48,6 +50,13 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
             customerStatus: customer.status
         });
     };
+
+    const [validForm, setValidForm] = useState({
+        name: "",
+        birthDate: "",
+        phone3: "",
+        primaryAddress: ""
+    });
 
     useEffect(() => {
         customer && (setFormValues());
@@ -132,9 +141,13 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
 
     const onClickModifyHandler = () => {
 
-        console.log(form)
+        if (validation(form)) {
+            dispatch(callCustomerModifyAPI({modifyForm: form, customerCode: customer.customerCode}))
+        } else {
+            alert("수정 정보를 다시 확인해주세요.")
+        }
 
-        dispatch(callCustomerModifyAPI({modifyForm: form, customerCode: customer.customerCode}))
+
     }
 
     useEffect(() => {
@@ -147,6 +160,82 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
         )
     }, [postcode, address]);
 
+    // 고객 등록 유효성 검사
+    const validation = (form) => {
+        let validResult = true
+        const validationBlank = (key) => {
+            if (form[key].trim() === "") {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: " 공백일 수 없습니다. "
+                    })
+                )
+                validResult = false
+            } else {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: ""
+                    })
+                )
+            }
+        }
+
+        const validationBirthDate = (key) => {
+            if(!/^\d{6}$/.test(form[key])) {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: " 숫자 6자리여야 합니다. "
+                    })
+                )
+                validResult = false
+            } else {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: ""
+                    })
+                )
+            }
+        }
+
+        const validationPhone = (key) => {
+            if(!/^\d{4}$/.test(form[key])) {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: " 숫자 4자리여야 합니다. "
+                    })
+                )
+                validResult = false
+            } else {
+                setValidForm(prevState => ({
+                        ...prevState,
+                        [key]: ""
+                    })
+                )
+            }
+        }
+
+        for (const key in form) {
+            console.log(key)
+
+            switch (key) {
+                case 'name' :
+                    validationBlank(key)
+                    break;
+                case 'birthDate' :
+                    validationBirthDate(key);
+                    break;
+                case 'phone3' :
+                    validationBlank(key)
+                    validationPhone(key)
+                    break;
+                case 'primaryAddress' :
+                    validationBlank(key)
+                    break;
+            }
+        }
+        return validResult;
+    }
+
     return (
         <>
             {customer && (
@@ -157,7 +246,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                         <div className="customers-modify-title"><span>고객 상세 정보</span></div>
                         <div className="customers-regist-row-h">기본 정보</div>
                         <div className="customers-regist-row">
-                            <div className="customers-regist-head">이름</div>
+                            <div className="customers-regist-head">이름<span className="customers-valid">*</span></div>
                             <div>
                                 <input
                                     name="name"
@@ -168,9 +257,10 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                                     style={inputStyle}
                                 />
                             </div>
+                            <div className="customers-valid-form">{validForm.name}</div>
                         </div>
                         <div className="customers-regist-row">
-                            <div className="customers-regist-head">성별</div>
+                            <div className="customers-regist-head">성별<span className="customers-valid">*</span></div>
                             <select
                                 name="gender"
                                 onChange={onChangeHandler}
@@ -184,7 +274,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                             </select>
                         </div>
                         <div className="customers-regist-row">
-                            <div className="customers-regist-head">생년월일(6자리)</div>
+                            <div className="customers-regist-head">생년월일(6자리)<span className="customers-valid">*</span></div>
                             <div>
                                 <input
                                     name="birthDate"
@@ -194,9 +284,10 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                                     style={inputStyle}
                                 />
                             </div>
+                            <div className="customers-valid-form">{validForm.birthDate}</div>
                         </div>
                         <div className="customers-regist-row customers-regist-row-phone">
-                            <div className="customers-regist-head">전화번호</div>
+                            <div className="customers-regist-head">전화번호<span className="customers-valid">*</span></div>
                             <div>
                                 <select
                                     name="phone1"
@@ -231,6 +322,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                                     style={inputStyle}
                                 />
                             </div>
+                            <div className="customers-valid-form">{validForm.phone3}</div>
                         </div>
                         <div className="customers-regist-row">
                             <div className="customers-regist-head">고객 등록일</div>
@@ -261,7 +353,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
 
                         <div className="customers-regist-row-h">거주지 정보</div>
                         <div className="customers-regist-row">
-                            <div className="customers-regist-head">우편번호</div>
+                            <div className="customers-regist-head">우편번호<span className="customers-valid">*</span></div>
                             <div>
                                 <input
                                     className="customers-regist-head"
@@ -286,7 +378,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                             <div></div>
                         </div>
                         <div className="customers-regist-row">
-                            <div className="customers-regist-head">기본주소</div>
+                            <div className="customers-regist-head">기본주소<span className="customers-valid">*</span></div>
                             <div>
                                 <input
                                     type="text"
@@ -298,6 +390,7 @@ function CustomerModifyForm({customer, onClickCloseHandler, onSuccessCloseHandle
                                 />
                                 <br/>
                             </div>
+                            <div className="customers-valid-form">{validForm.primaryAddress}</div>
                         </div>
                         <div className="customers-regist-row">
                             <div className="customers-regist-head">상세주소</div>

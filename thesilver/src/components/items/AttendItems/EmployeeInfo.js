@@ -75,7 +75,7 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
                 <div>지각</div>
                 <div>조퇴</div>
                 <div>휴가</div>
-                <div>근무시간</div>
+                <div>연장근무</div>
             </div>
 
 
@@ -104,7 +104,7 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
                         <div
                             style={{marginLeft: 13}}>{attendAdmin.data.responseAttendTypes.content[index].vacationCount}회
                         </div>
-                        <div style={{marginLeft: 20}}>{attendAdmin.data.responseAttendTypes.content[index].totalAttendTime==0?'':`${attendAdmin.data.responseAttendTypes.content[index].totalAttendTime}시간`}</div>
+                        <div style={{marginLeft: 20}}>12시간</div>
                         <div>
                             <button onClick={(e) => {
                                 attendDetailOnclickHandler(emp.empCode)

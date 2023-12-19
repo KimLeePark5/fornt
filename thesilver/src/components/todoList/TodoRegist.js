@@ -12,7 +12,7 @@ function TodoRegist({setTodoRegist}){
     const {registSuccess} = useSelector(state => state.todoListReducer)
 
     const todoregistHandler = () => {
-        if(!text.replaceAll(" ","")){
+        if(!text){
             toast.error("공백일 수 없습니다.")
             return;
         }
@@ -29,7 +29,7 @@ function TodoRegist({setTodoRegist}){
                 </div>
                 <input type='text' value={text} className='todoregistInput' placeholder='할일 입력' onChange={(e)=>{setText(e.target.value)}}/>
                 <br/>
-                <div class='todoregistbtn'>
+                <div className='todoregistbtn'>
                 <button className='toregibtn' onClick={todoregistHandler}>등록</button>
                 <button className='toregibtn'  style={{marginLeft:'20px'}} onClick={()=>{setTodoRegist(false)}}>닫기</button>
                 </div>

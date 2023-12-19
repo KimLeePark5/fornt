@@ -51,11 +51,14 @@ authRequest.interceptors.response.use((response) => {
             response: {status}
         } = error;
 
+        console.log("구조분해 이후 결과 : ", status);
+
         if (status === 401) {
             const originRequest = config;
 
             // refresh token 전달하여 토큰 재발급 요청
             const response = await postRefreshToken();
+
             console.log("access없어서 refresh 재요청 : ", response);
 
             if (response?.status === 200) {
