@@ -1,3 +1,4 @@
+
 import {useEffect, useState} from "react";
 import {callGetAttendAdminResultAPI} from "../../apis/AttendAPICalls";
 import {useDispatch, useSelector} from "react-redux";
@@ -36,4 +37,5 @@ function AttendAdmin(){
         </>
     )
 }
+
 export default AttendAdmin;

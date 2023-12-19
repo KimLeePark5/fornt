@@ -1,7 +1,6 @@
+
 function AttendHistoryModal({today, month, attendNo, setattendHistoryBtn, attendAdmin: {data: {responseModifiedAttend}}}) {
     console.log("bcde : ", attendNo)
-
-
 
 
     const attend = responseModifiedAttend.filter(attend => attend.attendNo == attendNo);
@@ -52,5 +51,6 @@ function AttendHistoryModal({today, month, attendNo, setattendHistoryBtn, attend
         </>
     )
 }
+
 
 export default AttendHistoryModal;

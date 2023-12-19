@@ -3,6 +3,7 @@ import AttendHistoryModal from "./AttendHistoryModal";
 import {style} from "redux-logger/src/diff";
 import ModifyAttendModal from "./ModifyAttendModal";
 
+
 function AttendModal({
                          attendAdmin,
                          setMonth,
@@ -143,6 +144,7 @@ function AttendModal({
             </div>
         </>
     )
+
 }
 
 

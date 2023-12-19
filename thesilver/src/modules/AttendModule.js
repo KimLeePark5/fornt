@@ -1,3 +1,4 @@
+
 import {createActions, handleActions} from "redux-actions";
 
 /* 초기값 */
@@ -42,3 +43,4 @@ export const attendReducer = handleActions({
     [ATTEND_ADMIN_BY_TYPE] : (state,{payload}) => payload,
 
 },initialState)
+

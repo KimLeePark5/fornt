@@ -4,6 +4,7 @@ import {callSearchNameAPICalls} from "../../../apis/AttendAPICalls";
 import {useNavigate} from "react-router-dom";
 
 function AdminAttendHeader({month, setMonth, name}) {
+
     const inputMonth = useRef('');
     const date = new Date();
     const dispatch = useDispatch();
@@ -78,6 +79,7 @@ function AdminAttendHeader({month, setMonth, name}) {
 
         </>
     )
+
 }
 
 export default AdminAttendHeader;

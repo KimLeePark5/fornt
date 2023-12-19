@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import AttendModal from "./AttendModal";
 import {useSelector} from "react-redux";
 
+
 function EmployeeInfo({attendAdmin, setMonth, month}) {
     const [attendModal, setAttendModal] = useState(false);
     const [empNo, setEmpNo] = useState(0);
@@ -117,5 +118,6 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
         </div>
     )
 }
+
 
 export default EmployeeInfo;

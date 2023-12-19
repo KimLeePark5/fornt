@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callModifyAttendAPI} from "../../../apis/AttendAPICalls";
 
+
 function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data: {responseAttendAdmin: {content}}}}) {
     const modifyhistory = (content.filter(con => con.empName == empName))[0].attendList.filter(att => att.attendCode == attendNo)[0]
 
@@ -77,5 +78,6 @@ if(attendModifySuccess){
         </>
     )
 }
+
 
 export default ModifyAttendModal;
