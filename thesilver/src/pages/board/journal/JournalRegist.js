@@ -90,23 +90,16 @@ function JournalRegist() {
                     <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1">프로그램 명</th>
                         <td style={{paddingLeft: "40px", paddingRight: "153px"}}>
-                            {/*<select onChange={onChangeHandler}>*/}
-                            {/*    <option>-- 선택하세요 --</option>*/}
-                            {/*</select>*/}
                             <input name="categoryName" type="text" onChange={onChangeHandler}/>
                         </td>
                     </tr>
                     <tr style={{display: "flex", alignItems: "center"}}>
                         <th className="journal-table1" style={{borderLeft: "2px solid #000000"}}>회 차</th>
                         <td style={{paddingLeft: "40px", paddingRight: "175px", width: "175px"}}>
-                            {/*<select onChange={onChangeHandler}>*/}
-                            {/*    <option>-- 선택하세요 --</option>*/}
-                            {/*</select>*/}
                             <input
                                 onChange={onChangeHandler}
                                 name="round"
                                 type="text"
-                                //value={form.numberOfSessions}
                                 style={{width: "40px"}} // 너비 조정/>
                             />
                             &nbsp;&nbsp;회 차

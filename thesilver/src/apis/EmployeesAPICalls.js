@@ -40,12 +40,6 @@ export const callRegistEmployeesAPI = ({ employeesCreateRequest }) => {
 
         if(result.status === 201) {
             dispatch(postSuccess());
-            // const callAPI = ({})=>{
-            //     return async (dispatch, getState) => {
-            //
-            //         const result = await authRequest.post(`/api/v1/employees`, employeesCreateRequest);
-            //     }
-            // }
         }
 
     }
@@ -98,12 +92,3 @@ export const callEmployeePwdReset = ({employeeCode})=>{
     }
 }
 
-// export const callEmpoyeeRankHistory = ()=>{
-//     return async (dispatch, getState)=>{
-//         const result = await authRequest.post(`/api/v1/rankUpdate`);
-//
-//         if(result.status === 201){
-//             dispatch(postRankHistorySuccess());
-//         }
-//     }
-// }
