@@ -3173,6 +3173,7 @@ display: none;
 }
 
 .description-table{
+    background-color: #FFFFFF;
     width: 100%;
     /*height: 80%;*/
 }
