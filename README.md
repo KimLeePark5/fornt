@@ -40,7 +40,7 @@
 
 
 # 📌 주요 기능
-메인 페이지 - [상세보기-WIKI이동]
+메인 페이지&연차... - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%97%B0%EC%B0%A8&..%EC%A0%80%EC%A9%8C%EA%B3%A0)
 - 각종 화면 이동
 - 배너 슬라이드
 - .....이하현
@@ -60,11 +60,6 @@
 
 어쩌고저쩌고 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....)
 - ......이승민
-- .....
-
-
-어쩌고저쩌고 - [상세보기-WIKI이동]
-- ......
 - .....
 
 
