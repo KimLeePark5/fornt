@@ -33,14 +33,14 @@ function ProceedRequireItem({ data }) {
             {data && (
                 <div className="require-proceed-body" onClick={() => openModal(data.reqNo)}>
                     <SignForm isOpen={isModalOpen} closeModal={closeModal} data={data} />
-                    <div>{data.employeeName}</div>
-                    <div>{data.vacationName}</div>
-                    <div>
+                    <div className="rpb1">{data.employeeName}</div>
+                    <div className="rpb1">{data.vacationName}</div>
+                    <div className="rpb2">
                         {data.startDate} ~ {data.endDate}
                     </div>
-                    <div>{daysDiff} 일</div>
-                    <div>{data.reqStatus}</div>
-                    <div>{data.reqDate}</div>
+                    <div className="rpb3">{daysDiff} 일</div>
+                    <div className="rpb3">{data.reqStatus}</div>
+                    <div className="rpb4">{data.reqDate}</div>
                 </div>
             )}
         </div>
