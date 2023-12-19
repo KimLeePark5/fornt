@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 /**** Layout ****************************************/
 .layout {
     display: flex;
@@ -3910,4 +3909,3 @@ header .current-date{
 .days li:not(.active):hover::before{
     background: #f2f2f2;
 }
-
