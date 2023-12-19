@@ -43,17 +43,18 @@
 메인 페이지 - [상세보기-WIKI이동]
 - 각종 화면 이동
 - 배너 슬라이드
+- .....이하현
 - .....
-- ....
+- ....(위키 제목 바꾸면 경로 바뀌니까 다시 여기에 붙여주셔야돼요 ()로 감싸서.)
 
 로그인 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8..-&-%EC%96%B4%EC%A9%8C%EA%B3%A0&%EC%A0%80%EC%A9%8C)
 - DB값 검증
 - ID찾기, 임시비밀번호 생성
-- ....
+- ....김용민
   
 
-어쩌고저쩌고 - [상세보기-WIKI이동]
-- ......
+어쩌고저쩌고 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....)
+- ......김지상
 - .....
 
 
@@ -68,7 +69,7 @@
 
 
 프로그램$일지$캘린더 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8&%EC%9D%BC%EC%A7%80&%EC%BA%98%EB%A6%B0%EB%8D%94-%EA%B4%80%EB%A6%AC)
-- ......
+- ......박유리
 - .....
 
 
