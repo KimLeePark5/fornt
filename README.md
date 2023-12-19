@@ -58,8 +58,8 @@
 - .....
 
 
-어쩌고저쩌고 - [상세보기-WIKI이동]
-- ......
+어쩌고저쩌고 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....)
+- ......이승민
 - .....
 
 
