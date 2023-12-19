@@ -36,7 +36,7 @@ function MainTodoList(){
             <div className='todoContainer'>
                 <div className='todoccc'>
                     <div>
-                        <input type='date' value={today} onChange={dateChangeHandler} className='tododate'/>
+                        <input type='date' value={day} onChange={dateChangeHandler} className='tododate'/>
                         <button onClick={()=>setTodoRegist(true)} className='todoregistbnt'>추가+</button>
                         <h1 style={{fontWeight:'bold',fontSize:25,marginTop: 25,paddingLeft:40}}>TO DO LIST</h1>
                     </div>

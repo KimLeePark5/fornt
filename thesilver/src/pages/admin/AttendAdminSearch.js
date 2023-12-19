@@ -1,11 +1,11 @@
-
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import AdminAttendHeader from "../../components/items/AttendItems/AdminAttendHeader";
 import EmployeeInfo from "../../components/items/AttendItems/EmployeeInfo";
 import {useEffect, useState} from "react";
 import {callSearchNameAPICalls} from "../../apis/AttendAPICalls";
 import PagingBar from "../../components/common/PagingBar";
+import {ToastContainer} from "react-toastify";
 
 function AttendAdminSearch(){
     const date = new Date();
@@ -20,14 +20,15 @@ function AttendAdminSearch(){
     useEffect(() => {
         dispatch(callSearchNameAPICalls(month,nameValue,page));
     }, [month,page,searchParams]);
-
+    const navigate = useNavigate();
     return(
         <>
             {attendAdmin &&
                 <div>
-                    <div className="attendAdminHead">직원 근태 관리</div>
+                    <div className="attendAdminHead" onClick={()=>{navigate("/attend-management")}} style={{cursor:"pointer"}}>직원 근태 관리</div>
                     <div className="attendBackAdmin">
-                        <AdminAttendHeader month={month} setMonth={setMonth} />
+                        <ToastContainer hideProgressBar={true} position="top-center" style={{zIndex:500000000000}}/>
+                        <AdminAttendHeader month={month} setMonth={setMonth} name={nameValue} />
                         <EmployeeInfo attendAdmin={attendAdmin} setMonth={setMonth} month={month}/>
                         <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdmin.pageInfo}/>
                     </div>
@@ -36,5 +37,4 @@ function AttendAdminSearch(){
         </>
     )
 }
-
 export default AttendAdminSearch;

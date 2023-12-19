@@ -85,11 +85,15 @@ export const callModifyAttendAPI = (form,attendNo) => {
                     'Content-Type' : 'application/json'
                 }
             }
-            ).catch(e=>console.log(e))
+            ).catch(e=>{
+                if(e.response.status == 400){
+                    toast.error("출근시간 또는 퇴근시간이 누락되었습니다.")
+                }
+        })
 
 
 
-        if(result.status == 201){
+        if(result?.status == 201){
             dispatch(attendModifySuccess(result))
         }
 
