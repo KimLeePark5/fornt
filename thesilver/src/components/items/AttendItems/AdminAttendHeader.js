@@ -34,7 +34,6 @@ function AdminAttendHeader({month, setMonth, name}) {
         setMonth(year1.current + '-' + (String(month1.current).length == 1 ? '0' + month1.current : month1.current))
     }
     const onClickDownHandler = () => {
-
         if (month1.current == 12) {
             year1.current = year1.current + 1
             month1.current = 1
@@ -49,7 +48,9 @@ function AdminAttendHeader({month, setMonth, name}) {
     return (
         <>
                     <div className="admin-attend-head">
-                        <input type="text" placeholder="이름으로 검색" value={ searchName != null ? searchName : name != null ? name : ''} onChange={onChangeSearchNameHnadler} className="attendNameBox"/>
+                        <input type="text" onKeyDown={(e)=>{if(e.key == 'Enter'){
+                            onClickSearchHandler()
+                        }}}  placeholder="이름으로 검색" value={ searchName != null ? searchName : name != null ? name : ''} onChange={onChangeSearchNameHnadler} className="attendNameBox"/>
                         <button type="button" onClick={onClickSearchHandler} className="attendNameBtn">검색</button>
                         <input type="month" value={month} onChange={onChangeMonthHandler} ref={inputMonth} style={{display:"none"}}/>
 
