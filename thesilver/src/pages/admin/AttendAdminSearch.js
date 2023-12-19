@@ -1,3 +1,4 @@
+
 import {useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import AdminAttendHeader from "../../components/items/AttendItems/AdminAttendHeader";
@@ -35,4 +36,5 @@ function AttendAdminSearch(){
         </>
     )
 }
+
 export default AttendAdminSearch;

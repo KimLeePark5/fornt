@@ -1,3 +1,4 @@
+
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callRegistTodo} from "../../apis/TodoListAPI";
@@ -11,7 +12,7 @@ function TodoRegist({setTodoRegist}){
     const {registSuccess} = useSelector(state => state.todoListReducer)
 
     const todoregistHandler = () => {
-        if(!text){
+        if(!text.replaceAll(" ","")){
             toast.error("공백일 수 없습니다.")
             return;
         }
@@ -36,4 +37,5 @@ function TodoRegist({setTodoRegist}){
         </div>
     )
 }
+
 export default TodoRegist;

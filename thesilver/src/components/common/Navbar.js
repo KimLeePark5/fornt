@@ -78,7 +78,7 @@ function Navbar() {
                 <li>
                     <a className={`Menu`} onClick={() => onClickMenuHandler("myInfo")}>내정보 관리</a>
                     <ul className={`subMenu ${isSubMenuOpen.myInfo ? 'active' : ''}`}>
-                        <li><NavLink to="">내정보 관리</NavLink></li>
+                        <li><NavLink to="/employee">내정보 관리</NavLink></li>
                     </ul>
                 </li>
             </ul>

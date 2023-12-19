@@ -1,3 +1,4 @@
+
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callTodoDeleteAPI, callTodoModifyAPI} from "../../apis/TodoListAPI";
@@ -12,6 +13,10 @@ const dispatch = useDispatch();
 console.log(todoNo)
     const todoModifyHandler = ()=>{
         console.log("text",text)
+        if(!text.replaceAll(" ","")){
+            toast.error("공백일 수 없습니다.")
+            return;
+        }
         dispatch(callTodoModifyAPI(text,todoNo));
     }
     const todoDeleteHandler = ()=>{
@@ -37,4 +42,5 @@ console.log(todoNo)
     )
 
 }
+
 export default TodoListModify;

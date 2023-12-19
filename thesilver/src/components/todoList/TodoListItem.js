@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import TodoListModify from "./TodoListModify";
 import {callTodoComplete} from "../../apis/TodoListAPI";
 import {useDispatch} from "react-redux";
+import modifyAttendModal from "../items/AttendItems/ModifyAttendModal";
 
 function TodoListItem({content}){
     const [todoLIstModifyModal,settodoLIstModifyModal]=useState(false);
@@ -19,28 +20,33 @@ function TodoListItem({content}){
             dispatch(callTodoComplete(e.target.value, message));
         }
     }
-const textDecoStyle = (content)=>{
+    const textDecoStyle = (content)=>{
         if(content.todoComplete == 'complete'){
             return {textDecoration:'line-through'}
         }else{
             return {}
         }
 
+    }
 
-}
+
     return(
-        <div className='todobox'>
+        <div className='todobox' style={{marginTop:60}}>
             {todoLIstModifyModal && <TodoListModify settodoLIstModifyModal={settodoLIstModifyModal} todoNo={todoNo}/>}
-            {content && content.map(content =>
-                <div className='setttodo'>
-                <input type='checkbox'
-                       value={content.todoNo} checked={content.todoComplete == 'complete'} onChange={checkboxOnchangeHandler} style={{marginTop:5}}/>
-                <div className='itemboxtodo'
-                     style={textDecoStyle(content)}
-                     onClick={()=> {
-                    settodoLIstModifyModal(true)
-                    setTodoNo(content.todoNo)
-                }}>{content.todoContent}</div>
+            {content && content.map((content,i) =>
+                <div className='setttodo' >
+                    <input type='checkbox'
+                           className='todocheckbox'
+                           value={content.todoNo} checked={content.todoComplete == 'complete'} onChange={checkboxOnchangeHandler} style={{marginTop:5}}
+                    />
+                    <label className='itemboxtodo'
+                           for='todoCheckbox'
+                           style={textDecoStyle(content)}
+                           onClick={()=> {
+                               settodoLIstModifyModal(true)
+                               setTodoNo(content.todoNo)
+                           }}
+                    >{content.todoContent}</label>
                 </div>
             )}
         </div>

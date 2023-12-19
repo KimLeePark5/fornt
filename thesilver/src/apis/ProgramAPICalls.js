@@ -1,5 +1,11 @@
 import {authRequest} from "./Api";
-import {getProgram, getPrograms, postProgramSuccess, putProgramSuccess} from "../modules/ProgramsModule";
+import {
+    getProgram,
+    getProgramList,
+    getPrograms,
+    postProgramSuccess,
+    putProgramSuccess
+} from "../modules/ProgramsModule";
 import {toast} from "react-toastify";
 
 
@@ -113,3 +119,13 @@ export const callProgramDeleteAPI = ({ code }) => { // 삭제
         }
     };
 };
+
+export const callProgramList = ()=>{
+    return async (dispatch,getState) => {
+        const result = await authRequest.get(`/api/v1/program/myProgram`)
+
+        if(result?.status == 200){
+            dispatch(getProgramList(result));
+        }
+    }
+}

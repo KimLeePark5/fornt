@@ -84,10 +84,9 @@ function EmployeesModifyModalItem({employees, setModify}) {
                     <button className="employees-list-update-btn" onClick={modifyOff} style={{display:"inline", float:"right"}}>수정 취소</button>
                     <button className="employees-list-update-btn" onClick={ onClickEmployeeModify } style={{display:"inline", float:"right"}}>수정 완료</button>
                         <div className="employeesModalGrid">
-                            <div className="employeesModalGrid-item" style={{position:'relative'}}>
+                            <div className="employeesModalGrid-item" style={img?{backgroundImage:`url(${img}`,backgroundSize:"cover",position:'relative'}:{position:'relative'}}>
                                 {img &&
                                     <>
-                                        <img src={img} alt={employees?.employeeName} style={{overflow:'hidden',height:213,width:185}}/>
                                         <button className="employeesImgDelete-btn" onClick={deleteImge}> × </button>
                                     </>
                                 }
