@@ -156,6 +156,10 @@
     font-size: 20px !important;
     margin-top: 10px !important;
 }
+.mainccal{
+    line-height: 25px;
+    font-size: 15px;
+}
 
 /**** 하현 ********************************************/
 /**** nav bar ****************************************/
