@@ -13,6 +13,10 @@ const dispatch = useDispatch();
 console.log(todoNo)
     const todoModifyHandler = ()=>{
         console.log("text",text)
+        if(!text.replaceAll(" ","")){
+            toast.error("공백일 수 없습니다.")
+            return;
+        }
         dispatch(callTodoModifyAPI(text,todoNo));
     }
     const todoDeleteHandler = ()=>{

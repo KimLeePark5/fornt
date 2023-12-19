@@ -58,7 +58,7 @@ function AdminAttendHeader({month, setMonth, name}) {
                         <div style={{
                             paddingTop:3
                         }}>{inputMonth.current ? inputMonth.current.value : date.getFullYear()+'-'+(date.getMonth()+1)}</div>
-                        <button onClick={onClickDownHandler} className="attendMonthbtn" disabled={month1.current - 1 >= date.getMonth() ? true : false}>&gt;</button>
+                            <button onClick={onClickDownHandler} className="attendMonthbtn" disabled={month1.current - 1 >= date.getMonth() ? true : false}>&gt;</button>
                         </div>
                         <select onChange={attendSearchCategory} className='categoryInput' >
                             <option value='default'>기본</option>
