@@ -4,7 +4,7 @@ import {callEmployeesListAPI, callEmployeesListRemoveAPI, EmpSearchAPI} from "..
 import EmployeesList from "../components/employee/lists/EmployeesList";
 import EmployeesPagingBar from "../components/common/EmployeesPagingBar";
 import EmployeesRegistModal from "../components/employee/modal/EmployeesRegistModal";
-import {getEmployees} from "../modules/EmployeesModule";
+import {getEmployees, putPwdReset} from "../modules/EmployeesModule";
 
 function Employees() {
 
@@ -30,15 +30,14 @@ function Employees() {
     const showRegistModal = () => {
         setRegistModalOpen(true)
     }
-    const [form, setForm] = useState({})
+    const [form, setForm] = useState({
+    })
     const formChangeHandler = (e)=>{
         setForm({
             ...form,
             [e.target.name] :e.target.value
         })
     }
-    console.log(employees)
-    console.log(form)
     const searchEvent = ()=>{
         if(!form?.searchCategory && !form?.searchValue){
             alert("분류를 선택해 주세요!")
@@ -51,8 +50,9 @@ function Employees() {
         }else {
             dispatch(EmpSearchAPI(form))
         }
-
     }
+    console.log(form)
+
     return(
         <div style={{zoom:0.9}}>
         <h1 className="employees-title">직원 정보 조회</h1>
@@ -81,7 +81,8 @@ function Employees() {
                             </select>
                         }
                         {form?.searchCategory==='gender' &&
-                            <select className="employees-list-select" name='searchValue' style={{marginLeft:5}} onChange={formChangeHandler}>
+                            <select className="employees-list-select" name='searchValue' style={{marginLeft:5}} onChange={formChangeHandler} >
+                                <option value='null'>전체</option>
                                 <option value='남자' >남자</option>
                                 <option value='여자'>여자</option>
                             </select>

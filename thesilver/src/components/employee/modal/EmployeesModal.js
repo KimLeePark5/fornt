@@ -24,7 +24,7 @@ function employeesModal({setModalOpen, employeeCode, data}) {
     const onClickModalEmployeeDeleteHandler = () => {
         if(employeeCode) {
             setModalOpen(false)
-            dispatch(callEmployeesListRemoveAPI({employeeCode}));
+            dispatch(callEmployeesListRemoveAPI(employeeCode));
             // alert("삭제 완료!")
         } else {
             alert("선택해주세요.")
@@ -35,6 +35,7 @@ function employeesModal({setModalOpen, employeeCode, data}) {
         setForm(employee.account.attemptCount=0)
         formData.append("employeesAccountUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
         dispatch(callEmployeePwdReset({employeeCode: employeeCode}))
+        alert("로그인 잠금 해제 완료")
     }
 
     return(

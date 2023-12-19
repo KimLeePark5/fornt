@@ -38,12 +38,14 @@ export const callRegistEmployeesAPI = ({ employeesCreateRequest }) => {
 
         const result = await authRequest.post(`/api/v1/employees`, employeesCreateRequest);
 
-        console.log('callRegistEmployeesAPI result : ', result);
-
         if(result.status === 201) {
             dispatch(postSuccess());
-            // window.location.replace("/employees");
-
+            // const callAPI = ({})=>{
+            //     return async (dispatch, getState) => {
+            //
+            //         const result = await authRequest.post(`/api/v1/employees`, employeesCreateRequest);
+            //     }
+            // }
         }
 
     }
@@ -64,10 +66,7 @@ export const callModifyEmployeesAPI = ({employeeCode, employeesUpdateRequest }) 
 
 export const callEmployeeAPI =() => {
     return async (dispatch, getState) => {
-        console.log("확인")
         const result = await authRequest.get(`/api/v1/employee`)
-
-        console.log("재확인 : ", result)
 
         if(result?.status === 200){
             dispatch(getEmployee(result))
@@ -98,3 +97,13 @@ export const callEmployeePwdReset = ({employeeCode})=>{
         }
     }
 }
+
+// export const callEmpoyeeRankHistory = ()=>{
+//     return async (dispatch, getState)=>{
+//         const result = await authRequest.post(`/api/v1/rankUpdate`);
+//
+//         if(result.status === 201){
+//             dispatch(postRankHistorySuccess());
+//         }
+//     }
+// }
