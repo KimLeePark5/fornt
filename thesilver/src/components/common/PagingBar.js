@@ -11,7 +11,7 @@ function PagingBar({ pageInfo, setCurrentPage }) {
 
 
     return (
-        <ul className="paging-ul">
+        <ul className="paging-ul" style={{marginBottom: "0"}}>
             <li>
                 <button
                     className="paging-btn"

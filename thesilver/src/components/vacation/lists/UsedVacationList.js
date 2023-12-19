@@ -37,39 +37,6 @@ function UsedVacationList({usedVacation}) {
         setEndDate(date);
     };
 
-    // const 검색수행 = async () => {
-    //     if (!시작날짜 || !종료날짜) {
-    //         console.log('날짜를 선택하세요.');
-    //         return;
-    //     }
-    //
-    //     try {
-    //         const response = await fetch('/api/연차검색', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 startDate: 시작날짜,
-    //                 endDate: 종료날짜,
-    //             }),
-    //         });
-    //
-    //         if (!response.ok) {
-    //             throw new Error('서버 응답이 실패했습니다.');
-    //         }
-    //
-    //         const 검색결과 = await response.json();
-    //         console.log('검색 결과:', 검색결과);
-    //         // 여기에서 검색 결과를 활용하는 로직을 추가하세요.
-    //     } catch (error) {
-    //         console.error('에러 발생:', error.message);
-    //     }
-    // };
-
-
-
-
     return (
 
         <>
