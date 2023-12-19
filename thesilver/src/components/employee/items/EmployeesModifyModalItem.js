@@ -6,6 +6,7 @@ function EmployeesModifyModalItem({employees, setModify}) {
     const dispatch = useDispatch();
     const empFile = useRef();
     const [img, setImg] = useState(employees.employeePicture)
+    const [leavee, setLeavee] = useState("NO")
     const [form, setForm]=useState({
         employeeName : employees.employeeName,
         employeeEmail : employees.employeeEmail,
@@ -50,10 +51,14 @@ function EmployeesModifyModalItem({employees, setModify}) {
 
         if(img===''){
             formData.append("employeesUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
+            if(employees.rank.rankCode - form.rankCode !==0){
+
+            }
         } else {
             formData.append("employeePicture", empFile.current.files[0]);
             formData.append("employeesUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
         }
+
         dispatch(callModifyEmployeesAPI({employeesUpdateRequest : formData, employeeCode : employees.employeeCode }));
         setModify(false)
 
@@ -102,10 +107,10 @@ function EmployeesModifyModalItem({employees, setModify}) {
                                 </div>
                             </div>
                             <div className="employeesModalGrid-item">이름</div>
-                            <div className="employeesModalGrid-item"><input name='employeeName' onChange={formchangeHandler} type="text" defaultValue={employees.employeeName}/></div>
+                            <div className="employeesModalGrid-item">{employees.employeeName}</div>
                             <div className="employeesModalGrid-item">이메일</div>
                             <div className="employeesModalGrid-item"><input name='employeeEmail' onChange={formchangeHandler} type="text" defaultValue={employees.employeeEmail}/></div>
-                            <div className="employeesModalGrid-item">사번</div>
+                            <div className="employeesModalGrid-item">{employees.account?.employeeNumber}</div>
                             <div className="employeesModalGrid-item"><span>사번은 자동 생성 됩니다.</span></div>
                             <div className="employeesModalGrid-item">전화번호</div>
                             <div className="employeesModalGrid-item"><input type="text" name='employeePhone' onChange={formchangeHandler} defaultValue={employees.employeePhone}/></div>

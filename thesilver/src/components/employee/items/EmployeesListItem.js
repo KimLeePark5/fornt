@@ -20,9 +20,9 @@ function EmployeesListItem({setToggleEmployee, employees, btnActive, setBtnActiv
         <tr align={"center"} onClick={toggleActive}
             className={(employees.account && employees.account.attemptCount==5 ? "employees-list-items-lock" : "employees-list-items") + (employees.employeeCode == btnActive ? " active" : "")}>
             {employees.account && employees.account.attemptCount==5 ?
-                <td><div className="employees-list-items-lock-div">잠금상태</div>{employees.employeeCode}</td>
+                <td><div className="employees-list-items-lock-div">잠금상태</div>{employees.account?.employeeNumber}</td>
                 :
-                <td>{employees.employeeCode}</td>
+                <td>{employees.account?.employeeNumber}</td>
             }
             <td>{employees.rank.rankName}</td>
             <td>{employees.team.teamName}</td>

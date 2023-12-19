@@ -23,7 +23,7 @@ function EmployeesModalItem({employee}) {
                             <div className="employeesModalGrid-item">이메일</div>
                             <div className="employeesModalGrid-item">{employee.employeeEmail}</div>
                             <div className="employeesModalGrid-item">사번</div>
-                            <div className="employeesModalGrid-item">{employee.employeeCode}</div>
+                            <div className="employeesModalGrid-item">{employee.account?.employeeNumber}</div>
                             <div className="employeesModalGrid-item">전화번호</div>
                             <div className="employeesModalGrid-item">{employee.employeePhone}</div>
                             <div className="employeesModalGrid-item">직급</div>

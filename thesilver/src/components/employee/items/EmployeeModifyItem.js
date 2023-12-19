@@ -33,28 +33,28 @@ function EmployeeModifyItem({employees, setEmployeeModify}) {
                 [e.target.name]:e.target.value
             })
     }
-    function imageChange(e){
-        const fileReader = new FileReader();
-        fileReader.onload = e => {
-            const { result } = e.target;
-            if(result) setImg(result)
-        }
-        if(empFile.current.files[0])
-            fileReader.readAsDataURL(empFile.current.files[0]);
-    }
-    const empFileupload = ()=>{
-        empFile.current.click()
-    }
+    // function imageChange(e){
+    //     const fileReader = new FileReader();
+    //     fileReader.onload = e => {
+    //         const { result } = e.target;
+    //         if(result) setImg(result)
+    //     }
+    //     if(empFile.current.files[0])
+    //         fileReader.readAsDataURL(empFile.current.files[0]);
+    // }
+    // const empFileupload = ()=>{
+    //     empFile.current.click()
+    // }
     const onClickEmployeeModify = () => {
         /* 서버로 전달한 FormData 형태의 객체 설정 */
         const formData = new FormData();
 
-        if(img===''){
+        // if(img===''){
             formData.append("employeesUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
-        } else {
-            formData.append("employeePicture", empFile.current.files[0]);
-            formData.append("employeesUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
-        }
+        // } else {
+        //     formData.append("employeePicture", empFile.current.files[0]);
+        //     formData.append("employeesUpdateRequest", new Blob([JSON.stringify(form)], { type : 'application/json' }));
+        // }
         dispatch(callModifyEmployeesAPI({employeesUpdateRequest : formData, employeeCode : employees.employeeCode }));
         setEmployeeModify(false)
 
@@ -85,95 +85,79 @@ function EmployeeModifyItem({employees, setEmployeeModify}) {
             <button className="employees-list-update-btn" onClick={modifyOff} style={{display:"inline", float:"right", marginRight:70, marginTop:-15}}>수정 취소</button>
             <button className="employees-list-update-btn" onClick={ onClickEmployeeModify } style={{display:"inline", float:"right", marginTop:-15}}>수정 완료</button>
             <div className="employeesModalGrid">
-                <div className="employeesModalGrid-item" style={img?{backgroundImage:`url(${img}`,backgroundSize:"cover"}:{}}>
-                    {img &&
-                        <button className="employeesImgDelete-btn" onClick={deleteImge}> × </button>
-                    }
-                    <div className="employeesModalGrid-item-div">
-                        {!img && <div style={{backgroundImage: img, backgroundSize:"cover" }} className="employeesModalGrid-item-fileForm" onClick={empFileupload}>
-                            +
-                        </div>
-                        }
-                        {!img &&
-                            <label htmlFor="file" style={{margin:10}}>사진첨부</label>
-                        }
-                        <input name="employeePicture" ref={empFile} type="file" accept='image/jpg,image/png,image/jpeg' className="employeesModalGrid-item-hidden" onChange={imageChange}/>
-                    </div>
-                </div>
+                {employees?.employeePicture ?
+                    <div className="employeesModalGrid-item" style={{backgroundImage:`url(${employees?.employeePicture})`,backgroundSize:"cover"}}/>
+                    :
+                    <div className="employeesModalGrid-item" style={{backgroundColor:"#E5E5E5"}}><span> 등록된 사진이 없습니다.</span></div>
+                }
                 <div className="employeesModalGrid-item">이름</div>
                 <div className="employeesModalGrid-item"><input name='employeeName' onChange={formchangeHandler} type="text" defaultValue={employees.employeeName}/></div>
                 <div className="employeesModalGrid-item">이메일</div>
                 <div className="employeesModalGrid-item"><input name='employeeEmail' onChange={formchangeHandler} type="text" defaultValue={employees.employeeEmail}/></div>
                 <div className="employeesModalGrid-item">사번</div>
-                <div className="employeesModalGrid-item"><span>사번은 자동 생성 됩니다.</span></div>
+                <div className="employeesModalGrid-item" style={{backgroundColor:"#E5E5E5"}}>{employees.account?.employeeNumber}</div>
                 <div className="employeesModalGrid-item">전화번호</div>
                 <div className="employeesModalGrid-item"><input type="text" name='employeePhone' onChange={formchangeHandler} defaultValue={employees.employeePhone}/></div>
                 <div className="employeesModalGrid-item">직급</div>
-                <div className="employeesModalGrid-item">
-                    <select className="employeesModal-list-select-2" name='rankCode' onChange={formchangeHandler} defaultValue={employees.rank.rankCode}>
-                        <option value='3'>직원</option>
-                        <option value='2'>팀장</option></select>
-                </div>
+                <div className="employeesModalGrid-item" style={{backgroundColor:"#E5E5E5"}}>{employees.rank.rankName}</div>
                 <div className="employeesModalGrid-item">팀</div>
-                <div className="employeesModalGrid-item">
-                    <select className="employeesModal-list-select-2" name='teamCode' onChange={formchangeHandler}>
-                        <option value='99'>미지정</option>
-                        <option value='1'>1팀</option>
-                        <option value='2'>2팀</option>
-                        <option value='3'>3팀</option></select>
-                </div>
+                <div className="employeesModalGrid-item" style={{backgroundColor:"#E5E5E5"}}>{employees.team.teamName}</div>
                 <div className="employeesModalGrid-item">주소</div>
                 <div className="employeesModalGrid-item"><input name='employeeAddress' onChange={formchangeHandler} type="text" defaultValue={employees.employeeAddress}/></div>
             </div>
 
             <div className="employeesModalGrid-2">
                 <div className="employeesModalGrid-2-item">입사일</div>
-                <div className="employeesModalGrid-2-item"><input name='joinDate' onChange={formchangeHandler} type="date" defaultValue={employees.joinDate.replaceAll(".","-")}/></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.joinDate}</div>
                 <div className="employeesModalGrid-2-item">성별</div>
-                <div className="employeesModalGrid-2-item">
-                    <select name='gender' onChange={formchangeHandler} className="employeesModal-list-select-2" defaultValue={employees.gender}>
-                        <option value='남'>남성</option>
-                        <option value='여'>여성</option></select>
-                </div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.gender}</div>
                 <div className="employeesModalGrid-2-item">퇴사일</div>
-                <div className="employeesModalGrid-2-item"><input name='leaveDate' type="date" onChange={formchangeHandler}/></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.leaveDate}</div>
                 <div className="employeesModalGrid-2-item">채용 구분</div>
-                <div className="employeesModalGrid-2-item">
-                    <select name="employmentType" onChange={formchangeHandler} className="employeesModal-list-select-2" defaultValue={employees.employmentType}>
-                        <option value='신입'>신입</option>
-                        <option value='경력'>경력</option></select>
-                </div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.employmentType}</div>
                 <div className="employeesModalGrid-2-item">주민등록 번호</div>
-                <div className="employeesModalGrid-2-item"><input name='registrationNumber' onChange={formchangeHandler} type="text" defaultValue={employees.registrationNumber}/></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.registrationNumber}</div>
                 <div className="employeesModalGrid-2-item">퇴사 사유</div>
-                <div className="employeesModalGrid-2-item"><input name='leaveReason;' type="text" placeholder="퇴사 사유를 입력하세요." onChange={formchangeHandler}/></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.leaveReason}</div>
                 <div className="employeesModalGrid-2-item">상태</div>
-                <div className="employeesModalGrid-2-item">
-                    <select name='workingStatus' onChange={formchangeHandler} className="employeesModal-list-select-2" defaultValue={employees.workingStatus}>
-                        <option value='근무'>근무</option>
-                        <option value='휴직'>휴직</option></select>
-                </div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.workingStatus}</div>
                 <div className="employeesModalGrid-2-item">결혼 여부</div>
-                <div className="employeesModalGrid-2-item">
-                    <select name='marriage' onChange={formchangeHandler} className="employeesModal-list-select-2" defaultValue={employees.marriage}>
-                        <option value='비혼'>비혼</option>
-                        <option value='결혼'>결혼</option></select>
-                </div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.marriage}</div>
                 <div className="employeesModalGrid-2-item"></div>
-                <div className="employeesModalGrid-2-item"></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}></div>
                 <div className="employeesModalGrid-2-item">장애 여부</div>
-                <div className="employeesModalGrid-2-item">
-                    <select name='disability' onChange={formchangeHandler} className="employeesModal-list-select-2" defaultValue={employees.disability}>
-                        <option value='비장애'>비장애</option>
-                        <option value='장애'>장애</option></select>
-                </div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.disability}</div>
                 <div className="employeesModalGrid-2-item">보훈 여부</div>
-                <div className="employeesModalGrid-2-item">
-                    <select name='patriots' onChange={formchangeHandler} className="employeesModal-list-select-2" defaultValue={employees.patriots}>
-                        <option  value='비보훈'>비보훈</option>
-                        <option  value='보훈'>보훈</option></select></div>
-                <div className="employeesModalGrid-2-item"></div>
-                <div className="employeesModalGrid-2-item"></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}>{employees.patriots}</div>
+                <div className="employeesModalGrid-2-item" ></div>
+                <div className="employeesModalGrid-2-item" style={{backgroundColor:"#E5E5E5"}}></div>
+            </div>
+
+            <h1 className="employeesModalGrid-3-title" align="left">직급 변경 이력</h1>
+
+            <div className="employee-history-div">
+                <div className="employee-history-fix-row">
+                    <div className="employee-history-fix-row-item">번호</div>
+                    <div className="employee-history-fix-row-item">변경 사항</div>
+                    <div className="employee-history-fix-row-item">변경 전</div>
+                    <div className="employee-history-fix-row-item">변경 후</div>
+                    <div className="employee-history-fix-row-item">변경 일자</div>
+                    <div className="employee-history-fix-row-item2">비고</div>
+                </div>
+                {(employees.rankHistory).length > 0 ? employees.rankHistory.map( rankHistory =>
+                        <div className="employee-history-fix-row2" key={rankHistory.rankNum} style={{backgroundColor:"#FFFFFF"}}>
+                            <div className="employee-history-fix-row2-item" style={{backgroundColor:"#E5E5E5"}}>{rankHistory.rankNum}</div>
+                            <div className="employee-history-fix-row2-item" style={{backgroundColor:"#E5E5E5"}}>{rankHistory.upDown == 'UP' ? '진급' : '강등'}</div>
+                            <div className="employee-history-fix-row2-item" style={{backgroundColor:"#E5E5E5"}}>{rankHistory.afterRank}</div>
+                            <div className="employee-history-fix-row2-item" style={{backgroundColor:"#E5E5E5"}}>{rankHistory.beforeRank}</div>
+                            <div className="employee-history-fix-row2-item" style={{backgroundColor:"#E5E5E5"}}>{rankHistory.updateDate}</div>
+                            <div className="employee-history-fix-row2-item2" style={{backgroundColor:"#E5E5E5"}}>{rankHistory.updateNote}</div>
+                        </div>
+                    ) :
+                    <div className="employee-history-fix-row2">
+                        <div className="employee-history-fix-row3" style={{backgroundColor:"#E5E5E5"}}>직급 변경 이력이 없습니다.</div>
+                    </div>
+                }
             </div>
         </>
     )
