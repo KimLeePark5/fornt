@@ -1,4 +1,3 @@
-
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callGetAttendResultAPI} from "../../../apis/AttendAPICalls";
@@ -128,7 +127,7 @@ function AttendItem() {
         console.log(month.current)
         console.log("231321312331month")
         const date = new Date();
-
+        console.log(date.getMonth());
         let start =new Date(date.getFullYear(),month.current-1,1)
         let end = new Date(date.getFullYear(),start.getMonth()+1,0)
         console.log(end)
@@ -144,8 +143,7 @@ function AttendItem() {
                 }else if(start.getDay() == 6){
                     dayoff += 1
                 }
-                start.setDate(start.getDate()+1 )
-
+                start.setDate(start.getDate()+1)
             }
         }else{
             for(let i = 1; start <= end; i++){
@@ -171,6 +169,8 @@ function AttendItem() {
                         display: "none"
                     }}/>
                     <span>{inputmonth.current && (inputmonth.current.value).replace("-", "년 ")}월</span>
+                    {console.log(month1.current, date.getMonth())}
+                    {console.log("ddudududurl")}
                     <button disabled={month1.current-1 >= date.getMonth() ? true : false} onClick={onClickDownHandler} className="attend-btn">&gt;</button>
                 </div>
             </div>
@@ -226,11 +226,12 @@ function AttendItem() {
                     </div>
                 </div>
             }
-            {myAttend && <AttendCalender myAttend={myAttend}/>}
+            <div className='calcon'>
+                {myAttend && <AttendCalender myAttend={myAttend}/>}
+            </div>
         </div>
 
     )
 }
-
 
 export default AttendItem;
