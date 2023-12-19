@@ -44,7 +44,7 @@ function ModifyAttendModalTwo({attendNo, setModifyBtn, attendAdmin, empName, att
                         </select>
                         <select name='note' onChange={formChangeHandler} value={form.note || modifyhistory.note}
                                 className="attselectForm" style={{marginLeft: '25px'}}>
-                            <option value="" className='atop'>결근</option>
+                            <option value="기본" className='atop'>기본</option>
                             <option value="결근" className='atop'>결근</option>
                             <option value="지각" className='atop'>지각</option>
                             <option value="조퇴" className='atop'>조퇴</option>

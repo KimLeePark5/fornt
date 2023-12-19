@@ -44,7 +44,9 @@ if(attendModifySuccess){
                         </select>
                         <select name='note' onChange={formChangeHandler} value={form.note || modifyhistory.note}
                                 className="attselectForm" style={{marginLeft: '25px'}}>
+
                             <option value="기본">기본</option>
+
                             <option value="결근">결근</option>
                             <option value="지각">지각</option>
                             <option value="조퇴">조퇴</option>
