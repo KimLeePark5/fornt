@@ -4,13 +4,13 @@ import {
     callGetCategoryNamesAPI,
     callGetEmployeeNamesAPI,
     callGetJournalListAPI,
-    callJournalDeleteAPI
+    callJournalDeleteAPI, callJournalManySearchListAPI
 } from "../../../apis/JournalAPICalls";
 import PagingBar from "../../../components/common/PagingBar";
 
 import JournalList from "../../../components/board/journals/lists/JournalList";
 import {isAdmin, isMaster} from "../../../utils/TokenUtils";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import JournalListItem from "../../../components/board/journals/items/JournalListItem";
 import ProgramList from "../../../components/board/program/lists/ProgramList";
 import {callProgramDeleteAPI} from "../../../apis/ProgramAPICalls";
@@ -24,6 +24,11 @@ function Journals() {  // 전체조회
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
     const {journals} = useSelector(state => state.journalReducer);
+
+    const [searchParams] = useSearchParams(); //
+    const employeeName = searchParams.get('employeeName');
+    const categoryName = searchParams.get('categoryName');
+    const observation = searchParams.get('observation');
 
     const onSelectJournals = (selectedJournals) => {
         // 부모 컴포넌트에서 선택된 일지를 관리하는 로직을 추가할 수 있습니다.
@@ -44,7 +49,8 @@ function Journals() {  // 전체조회
                     await dispatch(callJournalDeleteAPI({ journalCode }));
                 }
                 // 삭제 후 페이지 갱신
-                dispatch(callGetJournalListAPI({ currentPage }));
+                await dispatch(callJournalManySearchListAPI({ employeeName, categoryName, observation, currentPage }));
+                setSelectedJournals([]); // 선택한 일지 목록 초기화
                 alert("선택한 일지가 성공적으로 삭제되었습니다.");
                 navigate("/journals");
             }

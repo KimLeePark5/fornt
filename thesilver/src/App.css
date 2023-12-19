@@ -3286,7 +3286,12 @@ display: none;
 }
 
 .paging-journal2{
-    padding-right: 500px;
+    padding-right: 530px;
+    padding-left: 640px;
+}
+
+.paging-journal3{
+    padding-right: 570px;
     padding-left: 640px;
 }
 
@@ -3709,7 +3714,7 @@ display: none;
     padding: 55px 5px 55px 5px;
     text-align : center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     border-right: 2px solid #000000;
 }
 
@@ -3721,7 +3726,7 @@ display: none;
     padding: 35px 5px 35px 5px;
     text-align : center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     border-right: 2px solid #000000;
 }
 
@@ -3732,7 +3737,7 @@ display: none;
     padding: 90px 5px 120px 5px;
     text-align : center; /*글ㅆㅣ 가운데 정렬*/
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     border-right: 2px solid #000000;
 }
 
