@@ -30,8 +30,22 @@ export const callGetJournalListAPI = ({currentPage = 1}) => { // 전체 조회
 export const callJournalManySearchListAPI = ({ categoryName, employeeName, observation, currentPage = 1 }) => { // 다중 검색
     return async (dispatch, getState) => {
         try {
-            //const result = await authRequest.get(`/api/v1/journals/search?observation=${observation}&page=${currentPage}`);
-            const result = await authRequest.get(`/api/v1/journals/search?employeeName=${employeeName}&categoryName=${categoryName}&observation=${observation}&page=${currentPage}`);
+            const queryParams = {
+                page: currentPage,
+            };
+
+            if (employeeName) {
+                queryParams.employeeName = employeeName;
+            }
+
+            if (categoryName) {
+                queryParams.categoryName = categoryName;
+            }
+
+            if (observation) {
+                queryParams.observation = observation;
+            }
+            const result = await authRequest.get('/api/v1/journals/search', { params: queryParams });
 
             console.log('callJournalManyListAPI result 검색 : ', result);
 
@@ -103,3 +117,21 @@ export const callJournalModifyAPI = ({journalCode, modifyJournalRequest}) => { /
         }
     }
 }
+
+export const callJournalDeleteAPI = ({ journalCode }) => { // 삭제
+    return async (dispatch, getState) => {
+        try {
+            const result = await authRequest.delete(`/api/v1/journals/${journalCode}`);
+
+            if (result?.status !== 200) {
+                console.log("::: 요청 실패 > callProgramDeleteAPI :::");
+            } else {
+                console.log("::: 요청 성공 > callProgramDeleteAPI :::");
+                console.log('callProgramDeleteAPI result : ', result);
+            }
+        } catch (error) {
+            console.error("프로그램 삭제 실패:", error);
+            toast.error("프로그램 삭제 중 오류가 발생했습니다.");
+        }
+    };
+};
