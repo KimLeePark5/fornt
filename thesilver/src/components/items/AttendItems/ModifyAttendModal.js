@@ -1,11 +1,12 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {callModifyAttendAPI} from "../../../apis/AttendAPICalls";
+
 
 function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data: {responseAttendAdmin: {content}}}}) {
     const modifyhistory = (content.filter(con => con.empName == empName))[0].attendList.filter(att => att.attendCode == attendNo)[0]
 
-    console.log("modifyHistory",modifyhistory)
+    console.log("modifyHistory", modifyhistory)
     const dispatch = useDispatch();
     const [form, setForm] = useState({})
 
@@ -16,11 +17,12 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
         });
         console.log(form)
     }
-    const {attendModifySuccess} = useSelector(state=>state.attendReducer)
+    const {attendModifySuccess} = useSelector(state => state.attendReducer)
 
-    if(attendModifySuccess){
-        setModifyBtn(false)
-    }
+if(attendModifySuccess){
+    setModifyBtn(false)
+}
+
 
     const onClickHandler = () => {
         dispatch(callModifyAttendAPI(form, attendNo))
@@ -42,6 +44,9 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
                         </select>
                         <select name='note' onChange={formChangeHandler} value={form.note || modifyhistory.note}
                                 className="attselectForm" style={{marginLeft: '25px'}}>
+
+                            <option value="기본">기본</option>
+
                             <option value="결근">결근</option>
                             <option value="지각">지각</option>
                             <option value="조퇴">조퇴</option>
@@ -52,19 +57,22 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
                         <div className='atttimecon'>
                             <div>
                                 <p>출근시간</p>
-                                <input className='inputtimeatt' type='time' name='enterTime' value={form.enterTime || modifyhistory.enterTime}
+                                <input className='inputtimeatt' type='time' name='enterTime'
+                                       value={form.enterTime || modifyhistory.enterTime}
                                        onChange={formChangeHandler}/>
                             </div>
-                            <div style={{marginLeft:'80px'}}>
+                            <div>
                                 <p>퇴근시간</p>
-                                <input  className='inputtimeatt' type='time' name='leaveTime' value={form.leaveTime || modifyhistory.leaveTime}
+                                <input className='inputtimeatt' type='time' name='leaveTime'
+                                       value={form.leaveTime || modifyhistory.leaveTime}
                                        onChange={formChangeHandler}/>
                             </div>
                         </div>
                     </div>
                     <button onClick={() => {
                         setModifyBtn(false)
-                    }} className='attmodifyBtn1'>취소</button>
+                    }} className='attmodifyBtn1'>취소
+                    </button>
                     <button onClick={onClickHandler} className='attmodifyBtn'>수정하기</button>
 
                 </div>
@@ -72,5 +80,6 @@ function ModifyAttendModal({setModifyBtn, attendNo, empName, attendAdmin: {data:
         </>
     )
 }
+
 
 export default ModifyAttendModal;

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 /**** Layout ****************************************/
 .layout {
     display: flex;
@@ -156,6 +155,10 @@
     bottom: -10px !important;
     font-size: 20px !important;
     margin-top: 10px !important;
+}
+.mainccal{
+    line-height: 25px;
+    font-size: 15px;
 }
 
 /**** 하현 ********************************************/
@@ -363,9 +366,17 @@
 
 .require-form-btn{
     font-family: 'Noto Sans KR', sans-serif;
-    margin-right: 40px;
+    margin-right: 27px;
     display: flex;
+    padding: 0 0 5px 10px;
     justify-content: flex-end;
+}
+
+.require-form-btn button {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 3px 15px 3px 15px;
 }
 
 .vacation-require-form {
@@ -383,6 +394,7 @@
     text-align: center;
     padding-top: 10px;
     border-right: #1A1A1C 1px solid;
+    background-color: rgba(29, 29, 29, 0.1);
 }
 
 .form1-2 {
@@ -414,6 +426,7 @@
     padding-top: 10px;
     border-right: #1A1A1C 1px solid;
     border-bottom: #1A1A1C 1px solid;
+    background-color: rgba(29, 29, 29, 0.1);
 }
 
 .form2-2 {
@@ -454,6 +467,7 @@
     height: 30px;
     padding-top: 10px;
     border-right: #1A1A1C 1px solid;
+    background-color: rgba(29, 29, 29, 0.1);
 }
 
 .form3-2 {
@@ -474,6 +488,7 @@
     text-align: center;
     padding-top: 55px;
     border-right: #1A1A1C 1px solid;
+    background-color: rgba(29, 29, 29, 0.1);
 }
 
 .form4-2 {
@@ -508,6 +523,7 @@
     height: 35px;
     padding-top: 15px;
     border-right: #1A1A1C 1px solid;
+    background-color: rgba(29, 29, 29, 0.1);
 }
 
 .form6-2 {
@@ -643,8 +659,7 @@
 
 .require-proceed-head {
 
-    display: grid;
-    grid-template-columns: 180px 180px 450px 150px 150px 300px;
+    display: flex;
     justify-content: center;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
@@ -659,9 +674,9 @@
 }
 
 .require-proceed-body {
-    display: grid;
+    display: flex;
+    width: 1500px;
     justify-content: center;
-    grid-template-columns: 180px 180px 450px 150px 150px 300px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -673,6 +688,27 @@
     margin: 10px 0 10px 0;
     background-color: white;
 }
+
+
+.require-proceed-body:hover {
+    background-color: lightyellow;
+}
+
+.rpb1 {
+    width: 180px;
+}
+.rpb2 {
+    width: 450px;
+}
+.rpb3 {
+    width: 180px;
+}
+.rpb4 {
+    width: 300px;
+}
+
+
+
 
 
 
@@ -1327,10 +1363,10 @@
 
 .attend-main {
     background-color: white;
-    margin-left: 20px;
-    width: 1000px;
-    height: 780px;
-
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 1050px;
+    height: 800px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 }
@@ -1347,15 +1383,14 @@
 
 .attend-box {
     display: flex;
-    margin-top: 40px;
-    margin-left: 40px;
 }
 
 .commute-btn-box {
     background-color: white;
-    width: 380px;
-    margin-left: 55px;
-    height: 445px;
+    margin-top: 20px;
+    width: 325px;
+    margin-left: 50px;
+    height: 425px;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
     position: relative;
     border-radius: 10px;
@@ -1374,7 +1409,7 @@
     display: flex;
     margin-left: 120px;
     margin-top: 20px;
-    margin-bottom: 10px;
+    position: relative;
 }
 
 .attend-detail {
@@ -1464,6 +1499,10 @@
     font-weight: bold;
     font-size: 19px;
 }
+.maintime{
+    font-size: 15px;
+}
+
 
 .progress-bar {
     border-radius: 15px;
@@ -1510,6 +1549,7 @@
     display: flex;
     position: relative;
     margin-top: 15px;
+
 }
 
 .attendNameBox {
@@ -1520,6 +1560,7 @@
     width: 170px;
     font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 11px;
 }
 .attendheaad{
     font-size: 28px;
@@ -1636,7 +1677,7 @@
     font-weight: bolder;
     text-align: left;
     position: fixed;
-    top: 66px;
+    top: 60px;
     border-radius: 10px;
     width: 920px;
     padding-left: 60px;
@@ -1650,7 +1691,7 @@
 }
 .headattend{
     background-color: white;
-    top: 143px;
+    top: 140px;
     display: flex;
     font-size: 19px;
     font-weight: bolder;
@@ -1847,6 +1888,7 @@
     cursor: pointer;
 }
 .attime{
+    width: 341px;
     margin-left: 0px;
     line-height: 23px;
 }
@@ -1854,7 +1896,7 @@
     display: flex;
     border-bottom: 1px solid #BABABA;
     padding-left: 70px;
-background-color: #01092b;
+    background-color: #01092b;
     color: white;
 
     padding-top: 10px;
@@ -1866,9 +1908,10 @@ background-color: #01092b;
     border-bottom: 1px solid #BABABA;
     padding-left: 70px;
     padding-bottom: 20px;
-    font-size: 16px;
-
+    font-size: 15px;
+    align-items: center;
 }
+
 
 .historyModalContent {
     margin-top: 30px;
@@ -1899,7 +1942,9 @@ background-color: #01092b;
     margin-top: 18px;
 }
 
+.Attendhistorybox{
 
+}
 .att33 {
     margin-top: 26px;
 }
@@ -2067,7 +2112,7 @@ background-color: #01092b;
     margin-top: 5px;
     width: 80px;
     margin-left: 5px;
-   color: #B6B6B6;
+    color: #B6B6B6;
     font-size: 20px;
 }
 
@@ -2086,14 +2131,12 @@ background-color: #01092b;
 
 
 .atttimecon{
-
     display: flex;
     margin-top: 50px;
     font-size: 18px;
     column-gap: 80px;
     width: 550px;
     justify-content: center;
-
 }
 .inputtimeatt{
     font-family: 'Noto Sans KR', sans-serif;
@@ -2127,7 +2170,7 @@ background-color: #01092b;
     cursor: pointer;
 }
 .categoryInput{
-    margin-left: 300px;
+    margin-left: 315px;
     padding-left: 12px;
     font-family: 'Noto Sans KR', sans-serif;
     color: black;
@@ -2145,14 +2188,17 @@ background-color: #01092b;
 .ele2{
     width: 100% !important;
     margin-top: -10px;
-   font-size: 12px;
+    font-size: 12px;
     text-align: center;
 }
 .dhodksehla{
-
+    position: relative;
     border-radius: 20px;
     background-color: white;
     box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+}
+.Attendhistorybox{
+
 }
 
 
@@ -3173,6 +3219,7 @@ display: none;
 }
 
 .description-table{
+    background-color: #FFFFFF;
     width: 100%;
     /*height: 80%;*/
 }
@@ -3229,7 +3276,7 @@ display: none;
 }
 
 .paging-program2{
-    padding-right: 700px;
+    padding-right: 660px;
     padding-left: 640px;
 }
 
@@ -3239,7 +3286,7 @@ display: none;
 }
 
 .paging-journal2{
-    padding-right: 630px;
+    padding-right: 500px;
     padding-left: 640px;
 }
 
@@ -3510,13 +3557,13 @@ display: none;
 .journal-list-item {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 60px 100px 215px 725px 100px 200px 100px;
+    grid-template-columns: 40PX 60px 100px 215px 685px 100px 200px 100px;
 }
 
 .journal-list-head {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 60px 100px 215px 725px 100px 200px 100px;
+    grid-template-columns: 40PX 60px 100px 215px 685px 100px 200px 100px;
     background-color: #01092b;
     color: #FFFFFF;
     padding-top: 15px;
@@ -3557,7 +3604,7 @@ display: none;
 }
 
 .journals-list-search {
-    padding: 15px;
+
     display: flex;
     gap: 5px;
     text-align: center;
@@ -3618,6 +3665,11 @@ display: none;
 
 .j-shortStory, .j-border1, .j-border2, .j-border3{
    padding: 12px;
+}
+
+.journal-check {
+    padding-top: 12px;
+    border-left: 1px solid #000000
 }
 
 /* 일지 상세 조회 */
@@ -3760,6 +3812,11 @@ display: none;
     height: 15px;
 }
 
+/*  캘린더  */
+.calender-div{
+    /*border: 1px solid #000000;*/
+}
+
 /*-------------------*/
 
 .todoccc{
@@ -3900,4 +3957,3 @@ header .current-date{
 .days li:not(.active):hover::before{
     background: #f2f2f2;
 }
-

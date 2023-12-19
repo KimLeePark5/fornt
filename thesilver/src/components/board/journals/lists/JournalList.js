@@ -8,36 +8,33 @@ import {
 } from "../../../../apis/JournalAPICalls";
 
 
+function JournalList({data, onDeleteJournals, onSelectJournals }) {      //전체조회
 
-function JournalList({data}) {      //전체조회
+    const [selectedJournals, setSelectedJournals] = useState([]);
+    const handleCheckboxChange = (journalCode) => {
+        setSelectedJournals((prevSelected) => {
+            const isSelected = prevSelected.includes(journalCode);
+
+            if (isSelected) {
+                return prevSelected.filter((code) => code !== journalCode);
+            } else {
+                return [...prevSelected, journalCode];
+            }
+        });
+    };
+        // 부모 컴포넌트에 선택된 일지 알리기
+        onSelectJournals(selectedJournals);
+
 
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
     const dispatch = useDispatch();
-    //const [currentPage, setCurrentPage] = useState(1);
-
-    // const employeeNames = useSelector((state) => state.employeeNames);
-    // const categoryNames = useSelector((state) => state.categoryNames);
-
 
     const [employeeSearch, setEmployeeSearch] = useState('');
     const [categorySearch, setCategorySearch] = useState('');
     const [observationSearch, setObservationSearch] = useState('');
 
     console.log("::: JournalList js 파일 진입 :::");
-
-    // useEffect(() => {
-    //     dispatch(callGetEmployeeNamesAPI()); //직원이름
-    // }, [dispatch]);
-    //
-    // useEffect(() => {
-    //     dispatch(callGetCategoryNamesAPI());//프로그램 이름
-    // }, [dispatch]);
-
-    // useEffect(() => {
-    //     dispatch(callJournalManySearchListAPI({ /*employeeCode, categoryCode,*/ observation, currentPage }));
-    // }, [dispatch, /*employeeCode, categoryCode,*/ observation, currentPage, search]);
-
 
     // 검색어 입력 값 상태 저장
     const onSearchChangeHandler = (e, field) => {
@@ -66,16 +63,33 @@ function JournalList({data}) {      //전체조회
                 return;
             }
 
-            const response = await callJournalManySearchListAPI({
-                employeeName: employeeSearch,
-                categoryName: categorySearch,
-                observation: observationSearch,
-            });
+            // 검색 필드에 값이 있는 경우에만 쿼리 매개변수를 조건부로 구성
+            const queryParams = {};
+            if (employeeSearch.trim()) {
+                queryParams.employeeName = employeeSearch;
+            }
+            if (categorySearch.trim()) {
+                queryParams.categoryName = categorySearch;
+            }
+            if (observationSearch.trim()) {
+                queryParams.observation = observationSearch;
+            }
 
+            // 페이지 번호도 추가
+            queryParams.page = 1;
+
+            // 구성된 쿼리 매개변수를 사용하여 API 호출
+            const response = await callJournalManySearchListAPI(queryParams);
             console.log('검색 결과:', response);
 
-            // 검색어를 URL에 추가하여 이동
-            navigate(`/journals/search?employeeName=${employeeSearch}&categoryName=${categorySearch}&observation=${observationSearch}`);
+            const searchQuery = Object.keys(queryParams)
+                .map(key => `${key}=${encodeURIComponent(queryParams[key])}`)
+                .join('&');
+
+            // 검색 결과 페이지로 이동하면서 구성된 검색 쿼리를 사용
+            navigate(`/journals/search?${searchQuery}`);
+
+            console.log('검색 결과:', response);
 
             // 검색 완료 후 입력 필드 비우기
             setEmployeeSearch('');
@@ -98,7 +112,6 @@ function JournalList({data}) {      //전체조회
         searchJournals();
     }
 
-
     return (
 
         <div className="journals-contents">
@@ -112,39 +125,15 @@ function JournalList({data}) {      //전체조회
             <div className="journals-tab-pane">
                 <div className="journals-list-search">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• 작성자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {/*<select*/}
-                    {/*    onChange={(e) => setEmployeeCode(e.target.value)}*/}
-                    {/*    value={employeeCode}*/}
-                    {/*>*/}
-                    {/*    <option value="">-- 선택하세요 --</option>*/}
-                    {/*    {employeeNames && employeeNames.map((name) => (*/}
-                    {/*        <option key={name} value={name}>*/}
-                    {/*            {name}*/}
-                    {/*        </option>*/}
-                    {/*    ))}*/}
-                    {/*</select>*/}
                     <input
                         placeholder=" 검색"
-                        type="text"
                         value={employeeSearch}
                         onChange={(e) => onSearchChangeHandler(e, 'employeeName')}
                         onKeyUp={onEnterKeyHandler2}
                     />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• 프로그램 명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {/*<select*/}
-                    {/*    onChange={(e) => setCategoryCode(e.target.value)}*/}
-                    {/*    value={categoryCode}*/}
-                    {/*>*/}
-                    {/*    <option value="">-- 선택하세요 --</option>*/}
-                    {/*    {categoryNames && categoryNames.map((name) => (*/}
-                    {/*        <option key={name} value={name}>*/}
-                    {/*            {name}*/}
-                    {/*        </option>*/}
-                    {/*    ))}*/}
-                    {/*</select>*/}
                     <input
                         placeholder=" 검색"
-                        type="text"
                         value={categorySearch}
                         onChange={(e) => onSearchChangeHandler(e, 'categoryName')}
                         onKeyUp={onEnterKeyHandler2}
@@ -165,6 +154,7 @@ function JournalList({data}) {      //전체조회
 
             <div className="journal-list-div">
                 <div className="journal-list-head">
+                    <div></div>
                     <div>번호</div>
                     <div>작성자</div>
                     <div>프로그램 명</div>
@@ -173,7 +163,11 @@ function JournalList({data}) {      //전체조회
                     <div>참관 일자</div>
                     <div>담당 강사</div>
                 </div>
-                {data && data.map(journal => <JournalListItem key={journal.journalCode} journal={journal}/>)}
+                {data && data.map(journal => <JournalListItem key={journal.journalCode}
+                                                              journal={journal}
+                                                              isSelected={selectedJournals.includes(journal.journalCode)}
+                                                              onCheckboxChange={handleCheckboxChange}
+                />)}
             </div>
         </div>
 

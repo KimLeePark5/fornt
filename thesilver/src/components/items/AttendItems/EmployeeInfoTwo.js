@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import AttendModal from "./AttendModal";
 import AttendModalTwo from "./AttendModalTwo";
 
+
 function EmployeeInfoTwo({attendAdmin, setMonth, month}){
     const [attendModal, setAttendModal] = useState(false);
     const [empNo, setEmpNo] = useState(0);
@@ -92,4 +93,5 @@ function EmployeeInfoTwo({attendAdmin, setMonth, month}){
         </div>
     )
 }
+
 export default EmployeeInfoTwo;

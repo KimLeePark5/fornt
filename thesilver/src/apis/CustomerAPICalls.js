@@ -10,6 +10,20 @@ import {
 } from "../modules/CustomerModule";
 import {LicenseRegistError} from "../components/customer/form/LicenseModifyForm";
 
+// 고객 등록
+export const callCustomerRegistAPI = ({registForm}) => {
+    return async (dispatch, getState) => {
+        console.log('레지스트폼 : ', registForm);
+
+        const result = await authRequest.post(`/api/v1/customers`, registForm)
+        console.log('callCustomersAPI : ', result);
+
+        if (result.status === 201) {
+            dispatch(postSuccess());
+        }
+    }
+}
+
 // 고객 리스트 조회
 export const callCustomersAPI = ({condition, currentPage = 1}) => {
     return async (dispatch, getState) => {
@@ -25,16 +39,14 @@ export const callCustomersAPI = ({condition, currentPage = 1}) => {
     }
 }
 
-// 고객 등록
-export const callCustomerRegistAPI = ({registForm}) => {
+// 고객 상세 조회
+export const callCustomerAPI = ({customerCode}) => {
     return async (dispatch, getState) => {
-        console.log('레지스트폼 : ', registForm);
+        console.log("커스토머코드 : " + customerCode)
+        const result = await authRequest.get(`/api/v1/customers/${customerCode}`)
 
-        const result = await authRequest.post(`/api/v1/customers`, registForm)
-        console.log('callCustomersAPI : ', result);
-
-        if (result.status === 201) {
-            dispatch(postSuccess());
+        if (result.status === 200) {
+            dispatch(getCustomer(result));
         }
     }
 }
@@ -54,32 +66,7 @@ export const callCustomerModifyAPI = ({modifyForm, customerCode}) => {
     }
 }
 
-// 고객 상세 조회
-export const callCustomerAPI = ({customerCode}) => {
-    return async (dispatch, getState) => {
-        console.log("커스토머코드 : " + customerCode)
-        const result = await authRequest.get(`/api/v1/customers/${customerCode}`)
-
-        if (result.status === 200) {
-            dispatch(getCustomer(result));
-        }
-    }
-}
-
-// 고객 회원권 조회
-export const callLicenseAPI = ({customerCode, currentPage = 1}) => {
-    return async (dispatch, getState) => {
-        console.log("첫번째 커스토머코드 : " + customerCode)
-        const result = await authRequest.get(`/api/v1/customers/licenses/${customerCode}?page=${currentPage}`)
-
-        console.log("api라이센스결과 : ", result)
-
-        if (result.status === 200) {
-            dispatch(getLicense(result));
-        }
-    }
-}
-
+// 고객 회원권 등록
 export const callLicenseRegistAPI = ({customerCode, licenseDate}) => {
     return async (dispatch, getState) => {
         console.log("customerCode : " + customerCode)
@@ -98,6 +85,21 @@ export const callLicenseRegistAPI = ({customerCode, licenseDate}) => {
     }
 }
 
+// 고객 회원권 조회
+export const callLicenseAPI = ({customerCode, currentPage = 1}) => {
+    return async (dispatch, getState) => {
+        console.log("첫번째 커스토머코드 : " + customerCode)
+        const result = await authRequest.get(`/api/v1/customers/licenses/${customerCode}?page=${currentPage}`)
+
+        console.log("api라이센스결과 : ", result)
+
+        if (result.status === 200) {
+            dispatch(getLicense(result));
+        }
+    }
+}
+
+// 고객 회원권 삭제
 export const callLicenseDeleteAPI = ({licenseCode}) => {
     return async (dispatch, getState) => {
         console.log("licenseCode : " + licenseCode)
@@ -115,6 +117,7 @@ export const callLicenseDeleteAPI = ({licenseCode}) => {
     }
 }
 
+// 고객 데이터 통계 조회
 export const callGraphDataAPI = () => {
     return async (dispatch, getState) => {
         const result = await authRequest.get(`/api/v1/customers/graph`)

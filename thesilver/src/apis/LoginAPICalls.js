@@ -5,6 +5,7 @@ import {changePwSuccess, loginFailure, loginSuccess, resetFailure, resetSuccess}
 import {getCustomers} from "../modules/CustomerModule";
 import error from "../pages/Error";
 
+// 로그인
 export const callLoginAPI = ({loginForm}) => {
 
     return async (dispatch, getState) => {
@@ -41,6 +42,8 @@ export const callLoginAPI = ({loginForm}) => {
         }
     }
 }
+
+// 비밀번호 찾기
 export const callResetPasswordAPI = ({resetPasswordForm}) => {
     return async (dispatch, getState) => {
         try {
@@ -56,6 +59,7 @@ export const callResetPasswordAPI = ({resetPasswordForm}) => {
     }
 }
 
+// 비밀번호 변경
 export const callChangePasswordAPI = ({changePasswordForm}) => {
     return async (dispatch, getState) => {
         try {
