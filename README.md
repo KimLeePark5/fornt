@@ -1,4 +1,4 @@
-# SpringBoot_React__Groupware_Project
+# SpringBoot_React__Groupware_Project           ##By.KIMLEEPARK
 
 ## 🖥️ 프로젝트 소개
 - 1000만에 임박한 고령인구를 케어하기 위한 시설이 증가하고 있습니다.
