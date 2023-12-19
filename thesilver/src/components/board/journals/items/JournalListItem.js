@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {callGetCategoryNamesAPI, callGetEmployeeNamesAPI} from "../../../../apis/JournalAPICalls";
 import {useDispatch, useSelector} from "react-redux";
 
-function JournalListItem({journal}) { //상세조회
+function JournalListItem({journal, isSelected, onCheckboxChange }) { //상세조회
 
     console.log("::: JournalListItem js 파일 진입 :::");
 
@@ -20,19 +20,25 @@ function JournalListItem({journal}) { //상세조회
         <div className="journal-list-div" style={{ "backgroundColor": "#FFFFFF"}}>
 
             <div className="journal-list-body">
-                <div className="journal-list-item" onClick={onClickJournalHandler}>
-                    <div className="j-border1">{journal.journalCode}</div>
-                    <div className="j-border3">{journal.employeeName}</div>
-                    <div className="j-border3">{journal.categoryName}</div>
-                    <div className="j-shortStory">{journal.programTopic}</div>
+                <div className="journal-list-item">
+                    <div className="journal-check">
+                        <input
+                            type="checkbox"
+                            checked={isSelected}
+                            onChange={() => onCheckboxChange(journal.journalCode)}
+                        />
+                    </div>
+                    <div className="j-border1" onClick={onClickJournalHandler}>{journal.journalCode}</div>
+                    <div className="j-border3" onClick={onClickJournalHandler}>{journal.employeeName}</div>
+                    <div className="j-border3" onClick={onClickJournalHandler}>{journal.categoryName}</div>
+                    <div className="j-shortStory" onClick={onClickJournalHandler}>{journal.programTopic}</div>
 
-                    <div className="j-border3">{journal.numberOfParticipants}</div>
+                    <div className="j-border3" onClick={onClickJournalHandler}>{journal.numberOfParticipants}</div>
 
-                    <div className="j-border3">{journal.observation}</div>
-                    <div className="j-border3">{journal.teacherName}</div>
+                    <div className="j-border3" onClick={onClickJournalHandler}>{journal.observation}</div>
+                    <div className="j-border3" onClick={onClickJournalHandler}>{journal.teacherName}</div>
                 </div>
             </div>
-
         </div>
 
     );

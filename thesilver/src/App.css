@@ -3198,7 +3198,7 @@ display: none;
 }
 
 .paging-program2{
-    padding-right: 700px;
+    padding-right: 660px;
     padding-left: 640px;
 }
 
@@ -3208,7 +3208,7 @@ display: none;
 }
 
 .paging-journal2{
-    padding-right: 630px;
+    padding-right: 500px;
     padding-left: 640px;
 }
 
@@ -3479,13 +3479,13 @@ display: none;
 .journal-list-item {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 60px 100px 215px 725px 100px 200px 100px;
+    grid-template-columns: 40PX 60px 100px 215px 685px 100px 200px 100px;
 }
 
 .journal-list-head {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 60px 100px 215px 725px 100px 200px 100px;
+    grid-template-columns: 40PX 60px 100px 215px 685px 100px 200px 100px;
     background-color: #01092b;
     color: #FFFFFF;
     padding-top: 15px;
@@ -3526,7 +3526,7 @@ display: none;
 }
 
 .journals-list-search {
-    padding: 15px;
+
     display: flex;
     gap: 5px;
     text-align: center;
@@ -3587,6 +3587,11 @@ display: none;
 
 .j-shortStory, .j-border1, .j-border2, .j-border3{
    padding: 12px;
+}
+
+.journal-check {
+    padding-top: 12px;
+    border-left: 1px solid #000000
 }
 
 /* 일지 상세 조회 */
