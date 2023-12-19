@@ -60,7 +60,7 @@
 - .....
 
 
-근태관리,TodoList - [상세보기-WIKI이동]([https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....](https://github.com/KimLeePark5/front/wiki/%EA%B7%BC%ED%83%9C%EA%B4%80%EB%A6%AC&TodoList))
+근태관리,TodoList - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EA%B7%BC%ED%83%9C%EA%B4%80%EB%A6%AC&TodoList)
 - ......이승민
 - 출/퇴근버튼 (출/퇴근등록)
 - 출/퇴근 조회,수정
