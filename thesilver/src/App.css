@@ -642,8 +642,7 @@
 
 .require-proceed-head {
 
-    display: grid;
-    grid-template-columns: 180px 180px 450px 150px 150px 300px;
+    display: flex;
     justify-content: center;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
@@ -658,9 +657,9 @@
 }
 
 .require-proceed-body {
-    display: grid;
+    display: flex;
+    width: 1500px;
     justify-content: center;
-    grid-template-columns: 180px 180px 450px 150px 150px 300px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -672,6 +671,22 @@
     margin: 10px 0 10px 0;
     background-color: white;
 }
+
+.rpb1 {
+    width: 180px;
+}
+.rpb2 {
+    width: 450px;
+}
+.rpb3 {
+    width: 180px;
+}
+.rpb4 {
+    width: 300px;
+}
+
+
+
 
 
 

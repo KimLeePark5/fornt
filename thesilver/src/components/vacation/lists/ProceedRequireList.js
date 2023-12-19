@@ -6,12 +6,12 @@ function ProceedRequireList({proceedRequire}) {
         <>
         <div className="require-proceed-list">
             <div className="require-proceed-head">
-                <div>이름</div>
-                <div>종류</div>
-                <div>사용 일자</div>
-                <div>사용 일</div>
-                <div>상태</div>
-                <div>일시</div>
+                <div className="rpb1">이름</div>
+                <div className="rpb1">종류</div>
+                <div className="rpb2">사용 일자</div>
+                <div className="rpb3">사용 일</div>
+                <div className="rpb3">상태</div>
+                <div className="rpb4">일시</div>
             </div>
             {proceedRequire?.data.map(data => <ProceedRequireItem key={data.employeeCode} data={data}/>)}
         </div>
