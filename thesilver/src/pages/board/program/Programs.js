@@ -26,10 +26,10 @@ function Programs() {
 
         try {
             if (userConfirmed) {
-                await dispatch(callProgramDeleteAPI({ code }));
+                await dispatch(callProgramDeleteAPI({code}));
                 navigate("/programs");
-                alert('성공적으로 삭제되었습니다.');
-            } else {
+                alert('프로그램이 성공적으로 삭제되었습니다.');
+                window.location.reload(); //새로고침 할 필요없이 바로 바뀜
                 navigate("/programs");
             }
         } catch (error) {

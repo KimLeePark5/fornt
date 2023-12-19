@@ -65,11 +65,9 @@ function SearchJournal() {  // 다중 검색 조회(전체 리스트)
                         <div className="paging-journal3">
                             <PagingBar pageInfo={journals.pageInfo} setCurrentPage={setCurrentPage}/>
                         </div>
-                        <div className="journal-div"
+                        <div className="journal-delete"
                              style={{paddingRight: "40px"}}>
-                            <button className="program-delete-button"
-                                    onClick={onDeleteSelectedJournals}
-                                    style={{backgroundColor:" #c71a1a"}}>
+                            <button onClick={onDeleteSelectedJournals}>
                                 삭제
                             </button>
                         </div>
