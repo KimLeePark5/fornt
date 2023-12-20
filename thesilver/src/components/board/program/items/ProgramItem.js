@@ -39,7 +39,9 @@ function ProgramItem({program}) {
                     <div className=" img-div0">
 
                         <img style={{border: "1px solid #000000"}}
-                             src={program.profilePicture} alt={program.teacherName}/>
+                             //src= '/img/2341199f94884fed9b5fae15959f7034.jpg' /*이미지 걍 박아서 눈가리고 아웅함 ㅋㅋ*/
+                             src={program.profilePicture} alt={program.teacherName}
+                        />
                     </div>
 
                     <div className="description-div0">
