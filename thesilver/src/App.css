@@ -2055,6 +2055,9 @@
 }
 .itemboxtodo{
     margin-left: 10px;
+    font-weight: bold;
+    padding-top: 2px;
+    font-size: 16px;
 }
 .modifyModal {
     position: fixed;
@@ -2221,7 +2224,7 @@
 .fc .fc-button-primary{
     /*display: none;*/
     /*background-color: white;*/
-    /*color: white;*/
+    color: white;
     width: 20px;
     height: 20px;
 

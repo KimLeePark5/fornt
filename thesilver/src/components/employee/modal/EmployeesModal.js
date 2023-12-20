@@ -24,7 +24,7 @@ function employeesModal({setModalOpen, employeeCode, data}) {
     const onClickModalEmployeeDeleteHandler = () => {
         if(employeeCode) {
             setModalOpen(false)
-            dispatch(callEmployeesListRemoveAPI(employeeCode));
+            dispatch(callEmployeesListRemoveAPI({employeeCode}));
             // alert("삭제 완료!")
         } else {
             alert("선택해주세요.")

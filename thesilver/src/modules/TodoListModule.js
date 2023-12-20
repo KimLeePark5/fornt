@@ -10,13 +10,14 @@ const MODIFY_SUCCESS = 'todolist/MODIFY_SUCCESS'
 const DELETE_SUCCESS = 'todolist/DELETE_SUCCESS'
 const COMPLETE_SUCCESS = 'todolist/COMPLETE_SUCCESS';
 
+
 //액션함수
-export const { todolist :{getTodolist,registSuccess,modifySuccess,deleteSuccess}} = createActions({
+export const { todolist :{getTodolist,registSuccess,modifySuccess,deleteSuccess,completeSuccess}} = createActions({
     [GET_TODOLIST] : result => ({myTodo : result}),
     [REGIST_SUCCESS] : result => ({registSuccess : true}),
     [MODIFY_SUCCESS] : result =>({modifySuccess : true}),
     [DELETE_SUCCESS] : result => ({deleteSuccess : true}),
-    [COMPLETE_SUCCESS] : result => ({completeSuccess : true})
+    [COMPLETE_SUCCESS] : result => ({completeSuccess : true}),
 })
 
 //리듀서 함수

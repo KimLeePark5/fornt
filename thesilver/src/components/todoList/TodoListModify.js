@@ -5,20 +5,22 @@ import {callTodoDeleteAPI, callTodoModifyAPI} from "../../apis/TodoListAPI";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 
-function TodoListModify({settodoLIstModifyModal, todoNo}){
+function TodoListModify({settodoLIstModifyModal, todoNo, content}){
+
 const dispatch = useDispatch();
-    const[text,setText]=useState('')
-    const {modifySuccess,deleteSuccess} = useSelector(state=>state.todoListReducer)
+    const[text,setText]=useState()
     const navigate = useNavigate();
 console.log(todoNo)
     const todoModifyHandler = ()=>{
-        console.log("text",text)
+    if(!text)
         if(!text.replaceAll(" ","")){
             toast.error("공백일 수 없습니다.")
             return;
         }
         dispatch(callTodoModifyAPI(text,todoNo));
     }
+
+
     const todoDeleteHandler = ()=>{
         dispatch(callTodoDeleteAPI(todoNo));
     }
@@ -26,10 +28,10 @@ console.log(todoNo)
         <div className='todomodal'>
             <div className='todomodalcontainer'>
                 <div>
-                <span className="todoregiHead" style={{display:'inline-block', marginLeft:'200px'}}>
+                <span className="todoregiHead" style={{display:'inline-block', marginLeft:'150px'}}>
                     Todo-List
                 </span>
-                    <span onClick={()=>{settodoLIstModifyModal(false)}} style={{display:'inline-block', marginLeft:'170px',fontSize:'30px'}}>X</span>
+                    <span onClick={()=>{settodoLIstModifyModal(false)}} style={{display:'inline-block', marginLeft:'150px',fontSize:'30px'}}>X</span>
                 </div>
                 <input type='text' className='todoregistInput' value={text} placeholder='수정할 텍스트 입력' onChange={(e)=>{setText(e.target.value)}}/>
                 <br/>

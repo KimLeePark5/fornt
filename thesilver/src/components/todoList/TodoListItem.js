@@ -26,13 +26,13 @@ function TodoListItem({content}){
         }else{
             return {}
         }
-
     }
 
 
     return(
         <div className='todobox' style={{marginTop:60}}>
-            {todoLIstModifyModal && <TodoListModify settodoLIstModifyModal={settodoLIstModifyModal} todoNo={todoNo}/>}
+            {todoLIstModifyModal && <TodoListModify settodoLIstModifyModal={settodoLIstModifyModal} todoNo={todoNo} content={content}/>}
+            {content.length==0 && <div style={{fontSize:15, fontWeight:"bold",marginLeft:250}}>오늘의 할 일을 등록해보세요</div>}
             {content && content.map((content,i) =>
                 <div className='setttodo' >
                     <input type='checkbox'

@@ -2,12 +2,10 @@ import React, {useState} from "react";
 import AttendModal from "./AttendModal";
 import {useSelector} from "react-redux";
 
-
 function EmployeeInfo({attendAdmin, setMonth, month}) {
     const [attendModal, setAttendModal] = useState(false);
     const [empNo, setEmpNo] = useState(0);
-    console.log(attendAdmin.data)
-    console.log("123333333333333333333331312321")
+
     const getAttlate = (attendAdmin, i, month) => {
         const date = new Date();
         let start = new Date(String(month).substring(0, 4), (String(month).substring(5,7))-1, 1)
@@ -105,7 +103,7 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
                         <div
                             style={{marginLeft: 13}}>{attendAdmin.data.responseAttendTypes.content[index].vacationCount}회
                         </div>
-                        <div style={{marginLeft: 20, textAlign:"center"}}>{attendAdmin.data.responseAttendTypes.content[index].totalAttendTime==0?'':`${attendAdmin.data.responseAttendTypes.content[index].totalAttendTime}시간`}</div>
+                        <div style={{marginLeft: 20}}>{attendAdmin.data.responseAttendTypes.content[index].totalAttendTime==0?'':`${attendAdmin.data.responseAttendTypes.content[index].totalAttendTime}시간`}</div>
                         <div>
                             <button onClick={(e) => {
                                 attendDetailOnclickHandler(emp.empCode)
@@ -119,6 +117,5 @@ function EmployeeInfo({attendAdmin, setMonth, month}) {
         </div>
     )
 }
-
 
 export default EmployeeInfo;

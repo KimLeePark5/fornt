@@ -3,13 +3,14 @@ import {useDispatch} from "react-redux";
 import {callSearchNameAPICalls} from "../../../apis/AttendAPICalls";
 import {useNavigate} from "react-router-dom";
 
-function AdminAttendHeader({month, setMonth, name}) {
+function AdminAttendHeader({month, setMonth, name, standard}) {
 
     const inputMonth = useRef('');
     const date = new Date();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchName, setSearchName] = useState();
+
     const [value,setValue]=useState('');
     const onChangeSearchNameHnadler = (e) => {
         setSearchName(e.target.value)
@@ -62,13 +63,13 @@ function AdminAttendHeader({month, setMonth, name}) {
                             <button onClick={onClickDownHandler} className="attendMonthbtn" disabled={month1.current - 1 >= date.getMonth() ? true : false}>&gt;</button>
                         </div>
                         <select onChange={attendSearchCategory} className='categoryInput' >
-                            <option value='default'>기본</option>
-                            <option value='team'>팀</option>
-                            <option value='abs'>결근</option>
-                            <option value='late'>지각</option>
-                            <option value='vac'>휴가</option>
-                            <option value='leaveE'>조퇴</option>
-                            <option value='atTime'>근무시간</option>
+                            <option value='default' selected={standard==='default'}>기본</option>
+                            <option value='team' selected={standard==='team'}>팀</option>
+                            <option value='abs' selected={standard==='abs'}>결근횟수</option>
+                            <option value='late' selected={standard==='late'}>지각횟수</option>
+                            <option value='vac' selected={standard==='vac'}>휴가횟수</option>
+                            <option value='leaveE' selected={standard==='leaveE'}>조퇴횟수</option>
+                            <option value='atTime' selected={standard==='atTime'}>근무시간순</option>
                         </select>
                     </div>
 

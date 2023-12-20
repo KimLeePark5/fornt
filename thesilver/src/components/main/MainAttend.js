@@ -27,6 +27,7 @@ function MainAttend() {
         setMonth(year1.current+'-' + (String(month1.current).length == 1 ? '0'+month1.current : month1.current))
     }
 
+    const {enterSuccess,leaveuSuccess} = useSelector(state=>state.attendReducer);
 
     const [month, setMonth] = useState('2023-12')
     const {myAttend} = useSelector(state => state.attendReducer);
@@ -36,7 +37,7 @@ function MainAttend() {
     useEffect(() => {
         dispatch(callGetAttendResultAPI({month: month}));
         console.log('myAttend : ',myAttend);
-    }, [month]);
+    }, [month,enterSuccess,leaveuSuccess]);
 
     return (
         <div className='main-attend-main'>

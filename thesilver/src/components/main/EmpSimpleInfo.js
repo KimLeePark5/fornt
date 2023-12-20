@@ -14,8 +14,8 @@ function EmpSimpleInfo() {
         <div className='simpleinfoCon'>
             {MainEmployee &&
                 <>
-                    <img className='simpleinfoimg' src={MainEmployee.employeePicture}/>
-                    <div className='simpleinfoName'>{MainEmployee.employeeName} {MainEmployee.rank.rankName} </div>
+                    <img className='simpleinfoimg' src={MainEmployee?.employeePicture}/>
+                    <div className='simpleinfoName'>{MainEmployee?.employeeName} {MainEmployee.rank.rankName} </div>
                 </>
             }
 
