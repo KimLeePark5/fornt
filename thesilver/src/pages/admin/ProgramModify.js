@@ -112,7 +112,7 @@ function ProgramModify() {
     }
 
     // 프로그램 수정 요청하는 이벤트 저장 버튼 눌렀을 때
-    const onClickProductUpdateHandler = () => {
+    const onClickProductUpdateHandler = async () => {
 
         // 폼 상태에 주소 포함
         const updatedForm = {
@@ -126,10 +126,24 @@ function ProgramModify() {
         formData.append("teacherImg", imageInput.current.files[0]);
         formData.append("programRequest", new Blob([JSON.stringify(updatedForm)], {type: 'application/json'}));
 
-        dispatch(callAdminProgramModifyAPI({code, modifyRequest: formData}));
-        alert("프로그램을 수정하였습니다.");
-        navigate('/programs', {replace: true})
-    }
+        try {
+            // 서버 API 호출
+            await dispatch(callAdminProgramModifyAPI({code, modifyRequest: formData}));
+            // 성공적인 경우
+            alert("프로그램을 수정하였습니다.");
+            navigate('/programs',  {replace: true});
+        } catch (error) {
+            // 실패한 경우
+            if (error.response) {
+                // 백엔드에서 예외 메시지를 받아온 경우
+                alert(error.response.data.message);
+            } else {
+                // 백엔드에서 에러 응답을 받지 못한 경우
+                alert('프로그램 수정 중 오류가 발생했습니다.');
+            }
+        }
+    };
+
 
     const inputStyle = !modifyMode ? {backgroundColor: '#e8e8e8'} : null;
 
@@ -256,7 +270,7 @@ function ProgramModify() {
                                         className="img-div00"
                                          alt="preview"
                                           src={ !imageUrl ?  program.profilePicture  : imageUrl }
-                                        //src= '/img/2341199f94884fed9b5fae15959f7034.jpg' /*이미지 걍 박아서 눈가리고 아웅함 ㅋㅋ*/
+                                        //src= '/img/img.png' /*이미지 걍 박아서 눈가리고 아웅함 ㅋㅋ*/
                                     />
                                 <input
                                     style={{display: 'none'}}
