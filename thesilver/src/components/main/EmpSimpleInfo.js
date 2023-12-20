@@ -1,19 +1,28 @@
 import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {callEmployeeInfoAPI} from "../../apis/EmployeesAPICalls";
 
 function EmpSimpleInfo() {
+    const dispatch = useDispatch();
+    const {MainEmployee} = useSelector(state => state.employeesReducer);
 
-    const name = '홍길동'
-    const rank = '사원'
-    const image = '사진'
     useEffect(() => {
-
+        dispatch(callEmployeeInfoAPI())
     }, []);
     return (
+
         <div className='simpleinfoCon'>
-            <img className='simpleinfoimg' src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_hq0WZBhFK7trcEApAsmPWKPUbBBZdDg8GPjcVTywD8-BGgE5KvBp55RPRb-bgxuHmE0&usqp=CAU'}/>
-            <div className='simpleinfoName'> {name} {rank}</div>
+            {MainEmployee &&
+                <>
+                    <img className='simpleinfoimg' src={MainEmployee.employeePicture}/>
+                    <div className='simpleinfoName'>{MainEmployee.employeeName} {MainEmployee.rank.rankName} </div>
+                </>
+            }
+
         </div>
     )
+
+
 }
 
 export default EmpSimpleInfo;
