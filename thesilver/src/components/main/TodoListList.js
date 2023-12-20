@@ -10,7 +10,7 @@ function TodoListList({data, setPage, setDay}) {
     return (
         <div>
             <TodoListItem content={data.data.content}/>
-            <div className='todopage' style={{marginLeft:0}}>
+            <div className='todopage' style={{position:"absolute",bottom:350}}>
             <PagingBar setCurrentPage={setPage} pageInfo={data.pageInfo}/>
             </div>
         </div>

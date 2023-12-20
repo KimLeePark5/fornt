@@ -95,7 +95,7 @@ function AttendModal({
                         <button ref={keyValue} value={dayInfo?.attendCode} className="getmodibtn" onClick={(e) => {
                             e.stopPropagation();
                             attendHistoryOnclickHandler(e.target.value);
-                        }}>확인
+                        }} style={dayInfo?.attendCode ? {} : {display:"none"}  }>확인
                         </button>
                     </div>
                 </div>

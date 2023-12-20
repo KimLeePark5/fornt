@@ -32,7 +32,7 @@ function AttendAdminByType(){
                     <div style={{cursor:"pointer"}} className="attendAdminHead" onClick={()=>{window.location.replace("/attend-management")}}>직원 근태 관리</div>
                     <div className="attendBackAdmin">
                         <ToastContainer hideProgressBar={true} position="top-center" style={{zIndex:500000000000}}/>
-                        <AdminAttendHeader month={month} setMonth={setMonth} />
+                        <AdminAttendHeader month={month} setMonth={setMonth} standard={standard}/>
                         <EmployeeInfoTwo attendAdmin={attendAdminType} setMonth={setMonth} month={month} />
                         <PagingBar setCurrentPage={setCurrentPage} pageInfo={attendAdminType.pageInfo}/>
                     </div>

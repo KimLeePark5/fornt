@@ -19,8 +19,9 @@ export const callEmployeesListAPI = ({ currentPage = 1 }) => {
     }
 }
 
-export const callEmployeesListRemoveAPI = ({ employeeCode }) => {
+export const callEmployeesListRemoveAPI = ({employeeCode}) => {
     return async (dispatch, getState) => {
+        console.log()
         const result = await authRequest.delete(`/api/v1/employees/${employeeCode}`)
 
         if (result?.status === 204) {

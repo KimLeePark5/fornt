@@ -86,8 +86,9 @@ export const callModifyAttendAPI = (form,attendNo) => {
                 }
             }
             ).catch(e=>{
+                console.log(e)
                 if(e.response.status == 400){
-                    toast.error("출근시간 또는 퇴근시간이 누락되었습니다.")
+                    toast.error(e.response.data.message)
                 }
         })
 
