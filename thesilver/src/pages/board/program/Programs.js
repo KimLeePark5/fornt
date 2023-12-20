@@ -23,17 +23,15 @@ function Programs() {
 
     const onClickDeleteProgram = async (code) => {
         let userConfirmed = window.confirm("프로그램을 삭제하시겠습니까?");
-
         try {
             if (userConfirmed) {
                 await dispatch(callProgramDeleteAPI({code}));
                 navigate("/programs");
                 alert('프로그램이 성공적으로 삭제되었습니다.');
-                window.location.reload(); //새로고침 할 필요없이 바로 바뀜
+                window.location.reload(); //자동 새로고침 하기
                 navigate("/programs");
             }
         } catch (error) {
-            console.error("프로그램 삭제 실패:", error);
             toast.error("프로그램 삭제 중 오류가 발생했습니다.");
         }
     };
