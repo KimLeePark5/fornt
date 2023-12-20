@@ -3435,7 +3435,7 @@ display: none;
 
 .img-div0 img {
     margin: 5px;
-    width: 40%;
+    width: 30%;
     height: 80%;
 }
 
@@ -3916,7 +3916,7 @@ header .icons span{
 }
 
 .attachmentUrl2-div div{
-    /*height: 200px;*/
+    height: 200px;
     display: flex;
     align-items: center;
     align-content: flex-end;

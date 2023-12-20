@@ -92,13 +92,20 @@ function ProgramRegist() {
     //-----------------------------------
 
     // 등록 버튼 클릭 시 이벤트
-    const onClickProgramRegistHandler = () => {
+    const onClickProgramRegistHandler = async () => {
+        // 필수 정보를 확인하고 누락된 필드가 있다면 알림창을 띄움
+        if (!form.categoryName || !form.startDate || !form.endDate || !form.day || !form.round || !form.startTime || !form.endTime
+            || !form.shortStory || !form.teacherName || !form.gender || !form.birthDate || !form.phone || !postNo || !address)
+        {
+            alert('누락된 필수 정보가 있습니다. 모든 필수 정보를 입력해 주세요.');
+            return;
+        }
 
         // 폼 상태에 주소 포함
         const updatedForm = {
             ...form,
             postNo: postNo,
-            address: address //이거맞음
+            address: address
         };
 
         // 서버로 전달한 FormData 형태의 객체 설정
@@ -108,8 +115,24 @@ function ProgramRegist() {
             formData.append("teacherImg", imageInput.current.files[0]);
         }
         formData.append("programRequest", new Blob([JSON.stringify(updatedForm)], {type: 'application/json'}));
-        dispatch(callAdminProgramRegistAPI({registRequest: formData})); //위에 formData를 안보내고 setForm을 보내고 있어서 안됐음
+
+        try {
+            // 서버 API 호출
+            await dispatch(callAdminProgramRegistAPI({registRequest: formData}));
+            // 성공적인 경우
+            navigate('/programs');
+        } catch (error) {
+            // 실패한 경우
+            if (error.response) {
+                // 서버 응답에 에러가 포함된 경우
+                alert(error.response.data.message); // 서버에서 전달한 에러 메시지를 띄움
+            } else {
+                // 네트워크 오류 등으로 인한 실패인 경우
+                console.error("서버 응답이 없습니다.");
+            }
+        }
     }
+
 
     // 상태 변경 핸들러
     const onChangeHandler = (e) => {

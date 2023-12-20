@@ -108,7 +108,7 @@ function ProgramModify() {
     // 수정 모드로 변환하는 이벤트
     const onClickModifyModeHandler = () => {
         setModifyMode(true);
-        setForm({...program}); //{기존에 가져왔던 상품 가져옴} -> Form으로 옮겨감
+        setForm({...program}); //{기존에 가져왔던 프로그램 가져옴} -> Form으로 옮겨감
     }
 
     // 프로그램 수정 요청하는 이벤트 저장 버튼 눌렀을 때
@@ -127,6 +127,7 @@ function ProgramModify() {
         formData.append("programRequest", new Blob([JSON.stringify(updatedForm)], {type: 'application/json'}));
 
         dispatch(callAdminProgramModifyAPI({code, modifyRequest: formData}));
+        alert("프로그램을 수정하였습니다.");
         navigate('/programs', {replace: true})
     }
 
@@ -253,8 +254,9 @@ function ProgramModify() {
                             <div className=" img-div0">
                                     <img
                                         className="img-div00"
-                                        alt="preview"
-                                        src={ !imageUrl ? program.profilePicture : imageUrl }
+                                         alt="preview"
+                                          src={ !imageUrl ?  program.profilePicture  : imageUrl }
+                                        //src= '/img/2341199f94884fed9b5fae15959f7034.jpg' /*이미지 걍 박아서 눈가리고 아웅함 ㅋㅋ*/
                                     />
                                 <input
                                     style={{display: 'none'}}
