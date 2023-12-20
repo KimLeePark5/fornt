@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {callAdminProgramModifyAPI, callGetProgramListAPI} from "../../../apis/ProgramAPICalls";
-import {callJournalDetailAPI, callJournalRegistAPI} from "../../../apis/JournalAPICalls";
+import {callJournalDetailAPI, callJournalModifyAPI, callJournalRegistAPI} from "../../../apis/JournalAPICalls";
 import programs from "../program/Programs";
 
 function JournalModify() {
@@ -116,7 +116,7 @@ function JournalModify() {
         formData.append("journalRequest", new Blob([JSON.stringify(form)], {type: "application/json"}));
 
         // dispatch 호출 후 수정 성공 여부 확인
-        dispatch(callJournalRegistAPI({registJournalRequest: formData})).then(response => {
+        dispatch(callJournalModifyAPI({journalCode, modifyJournalRequest: formData})).then(response => {
             navigate('/journals', {replace: true})
             alert("일지를 수정하였습니다.");
         });

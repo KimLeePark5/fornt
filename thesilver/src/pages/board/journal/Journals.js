@@ -1,8 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {
-    callGetCategoryNamesAPI,
-    callGetEmployeeNamesAPI,
     callGetJournalListAPI,
     callJournalDeleteAPI, callJournalManySearchListAPI
 } from "../../../apis/JournalAPICalls";
@@ -15,6 +13,7 @@ import JournalListItem from "../../../components/board/journals/items/JournalLis
 import ProgramList from "../../../components/board/program/lists/ProgramList";
 import {callProgramDeleteAPI} from "../../../apis/ProgramAPICalls";
 import {toast} from "react-toastify";
+import {hover} from "@testing-library/user-event/dist/hover";
 
 
 function Journals() {  // 전체조회
@@ -77,11 +76,9 @@ function Journals() {  // 전체조회
                             <div className="paging-journal2">
                                 <PagingBar pageInfo={journals.pageInfo} setCurrentPage={setCurrentPage}/>
                             </div>
-                            <div className="journal-div"
+                            <div className="journal-delete"
                                  style={{paddingRight: "40px"}}>
-                            <button className="program-delete-button"
-                                    onClick={onDeleteSelectedJournals}
-                                    style={{backgroundColor:" #c71a1a"}}>
+                            <button onClick={onDeleteSelectedJournals}>
                                 삭제
                             </button>
                             </div>

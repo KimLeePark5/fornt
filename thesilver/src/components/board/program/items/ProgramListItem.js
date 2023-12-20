@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {isAdmin, isMaster} from "../../../../utils/TokenUtils";
 
-function ProgramListItem({program: {code, categoryName, shortStory, teacherName}, onClickDelete}) {
+function ProgramListItem({program: {code, categoryName, shortStory, teacherName}, onDelete }) {
 
     console.log("::: ProgramListItem js 파일 진입 :::");
     const navigate = useNavigate();
@@ -20,14 +20,16 @@ function ProgramListItem({program: {code, categoryName, shortStory, teacherName}
                         <div className="p-shortStory" onClick={onClickProgramHandler}>{shortStory}</div>
                         <div className="p-border2" onClick={onClickProgramHandler}>{teacherName}</div>
                         <div className="p-border3">
-                            {isAdmin() &&
-                                <button className="program-delete-button" onClick={() => onClickDelete(code)}>
+                            {isAdmin() && (
+                                <button className="program-delete-button" onClick={() => onDelete && onDelete(code)}>
                                     삭제
-                                </button>}
-                            {isMaster() &&
-                                <button className="program-delete-button" onClick={() => onClickDelete(code)}>
+                                </button>
+                            )}
+                            {isMaster() && (
+                                <button className="program-delete-button" onClick={() => onDelete && onDelete(code)}>
                                     삭제
-                                </button>}
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>

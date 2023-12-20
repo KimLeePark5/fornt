@@ -47,6 +47,8 @@ function RequireForm({isOpen, closeModal}) {
     const timeDiff = endDate - startDate;
     // 일(day)로 변환
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+    const isHalfDay = form.vacationTypeCode === '2' || form.vacationTypeCode === '3';
+    const adjustedDaysDiff = isHalfDay ? daysDiff - 0.5 : daysDiff;
 
     const onChangeHandler = (e) => {
         setForm(prevForm => ({
@@ -147,7 +149,7 @@ function RequireForm({isOpen, closeModal}) {
                                     placeholderText="종료 날짜"
                                     dateFormat="yyyy년 MM월 dd일"
                                 />
-                                <span name="countDate" style={{paddingLeft: "50px"}}>{daysDiff} 일</span>
+                                <span name="countDate" style={{paddingLeft: "50px"}}>{adjustedDaysDiff} 일</span>
                             </div>
                         </div>
                         <div  className="vacation-require-form4">

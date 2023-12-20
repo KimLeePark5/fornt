@@ -25,7 +25,7 @@ function UsedVacationList({usedVacation}) {
     };
 
 
-    // 날짜로 조회 하기
+
     // 시작 날짜와 종료 날짜의 상태
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);

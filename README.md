@@ -40,6 +40,9 @@
 - 각종 화면 이동
 - 배너 슬라이드
 - .....이하현
+- .....이하현
+- .....이하현
+- .....이하현
 - 자신의 기능쓰면 됨
 - 연차 상신
 - 연차 수정
@@ -57,12 +60,13 @@
 - .....
 
 
-어쩌고저쩌고 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....)
+근태관리,TodoList - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EA%B7%BC%ED%83%9C%EA%B4%80%EB%A6%AC&TodoList)
 - ......이승민
-- .....
+- 출/퇴근버튼 (출/퇴리) -
+-
 
 
-프로그램$일지$캘린더 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8&%EC%9D%BC%EC%A7%80&%EC%BA%98%EB%A6%B0%EB%8D%94-%EA%B4%80%EB%A6%AC)
+프로그램&일지&캘린더 관리(박유리) - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8&%EC%9D%BC%EC%A7%80&%EC%BA%98%EB%A6%B0%EB%8D%94-%EA%B4%80%EB%A6%AC)
 - 프로그램 관리(조회,등록, 수정, 삭제)- 팀장, 센터장만 가능
 - 일지 관리(조회,등록, 수정, 삭제)
 - 캘린더 관리(캘린더에 프로그램 조회, 캘린더의 해당 프로그램에 직원 등록해줌, 스케쥴 수정, 스케쥴 삭제)

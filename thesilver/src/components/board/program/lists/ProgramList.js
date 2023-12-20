@@ -90,7 +90,9 @@ function ProgramList({data, onClickDelete }) {
                     {/*<div></div>*/}
                 </div>
             </div>
-            {data && data.map(program => <ProgramListItem key={program.code} program={program} onClickDelete={onClickDelete}/>)}
+            {data && data.map(program => (
+                <ProgramListItem key={program.code} program={program} onDelete={onClickDelete} />
+            ))}
         </div>
 
     )

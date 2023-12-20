@@ -73,6 +73,8 @@ function SignForm({isOpen, closeModal, data}) {
     const timeDiff = endDate - startDate;
     // 일(day)로 변환
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+    const isHalfDay = data.vacationName === '오전반차' || data.vacationName === '오후반차';
+    const adjustedDaysDiff = isHalfDay ? daysDiff - 0.5 : daysDiff;
 
 
     if (!isOpen || !data) {
@@ -138,7 +140,7 @@ function SignForm({isOpen, closeModal, data}) {
                                 <div name="startDate">{data.startDate}</div>
                                 <span>&nbsp; ~ &nbsp;</span>
                                 <div name="endDate">{data.endDate}</div>
-                                <span name="countDate" style={{paddingLeft: "50px"}}>{daysDiff} 일</span>
+                                <span name="countDate" style={{paddingLeft: "50px"}}>{adjustedDaysDiff} 일</span>
                             </div>
                         </div>
                         <div className="vacation-require-form4">
