@@ -1,6 +1,6 @@
 
 import {
-    getEmployee,
+    getEmployee, getEmployeeInfo,
     getEmployees, getSearchEmployee,
     postSuccess,
     putPwdReset,
@@ -107,3 +107,15 @@ export const callEmployeePwdReset = ({employeeCode})=>{
 //         }
 //     }
 // }
+
+export const callEmployeeInfoAPI = () => {
+    return async (dispatch, getState) => {
+        const result = await authRequest.get(`/api/v1/employee`)
+        console.log(result)
+        console.log("MainEEEM")
+
+        if(result?.status === 200){
+            dispatch(getEmployeeInfo(result))
+        }
+    }
+}
