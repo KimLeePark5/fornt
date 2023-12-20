@@ -13,9 +13,12 @@ function ProceedRequireItem({ data }) {
     const timeDiff = endDate - startDate;
     // 일(day)로 변환
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+    const isHalfDay = data.vacationName === '오전반차' || data.vacationName === '오후반차';
+    const adjustedDaysDiff = isHalfDay ? daysDiff - 0.5 : daysDiff;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentReqNo, setCurrentReqNo] = useState(null);
+
 
     const openModal = (reqNo) => {
         console.log('openModal 호출됨');
@@ -38,7 +41,7 @@ function ProceedRequireItem({ data }) {
                     <div className="rpb2">
                         {data.startDate} ~ {data.endDate}
                     </div>
-                    <div className="rpb3">{daysDiff} 일</div>
+                    <div className="rpb3">{adjustedDaysDiff} 일</div>
                     <div className="rpb3">{data.reqStatus}</div>
                     <div className="rpb4">{data.reqDate}</div>
                 </div>
