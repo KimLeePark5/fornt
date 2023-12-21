@@ -352,9 +352,8 @@ function JournalModify() {
                                         <div key={index}>
                                             <img className="img-div00"
                                                  alt="preview"
-                                                // src={!imageUrl ? journal.attachments : imageUrls[index]}/>
-                                                 src={imageUrls[index] || ''}
-                                            />
+                                                 src={!imageUrl ? journal.attachments : imageUrls[index]}/>
+                                                 {/*src={imageUrls[index] || ''}/>*/}
                                             <input
                                                 style={{display: "none"}}
                                                 type="file"
