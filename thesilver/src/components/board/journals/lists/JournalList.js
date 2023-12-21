@@ -142,7 +142,6 @@ function JournalList({data, onDeleteJournals, onSelectJournals }) {      //전�
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• 참관일자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                         type="date"
-                        //onChange={(e) => setObservation(e.target.value)}
                         value={observationSearch}
                         onChange={(e) => onSearchChangeHandler(e, 'observation')}
                         onKeyUp={onEnterKeyHandler2}
