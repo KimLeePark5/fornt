@@ -108,12 +108,10 @@ function JournalItem({journal}) { // 상세 조회
 
                     <div className="attachmentUrl-div">
                         <div className="attachmentUrls" style={{width: "1250px"}}>
-                            {/*<img src={journal.attachmentUrls} alt={journal.programTopic}/>*/}
-                            {/*<img src={journal.attachmentUrls} alt={journal.programTopic}/>*/}
-                            {/*<img src={journal.attachmentUrls} alt={journal.programTopic}/>*/}
-                            <img src='/img/a9c933501e77456b88fcda08d9b80999.jpg'/>
-                            <img src='/img/a249cfd6576c43279637c4e4f06d8b53.jpg'/> {/*이미지 걍 넣어서 눈가리고 아웅함 ㅋㅋ*/}
-                            <img src='/img/fa351e4632524841b41e26c6c5310b71.jpg'/>
+                            <img src={journal.attachmentUrls} alt={journal.programTopic}/>
+                            <img src={journal.attachmentUrls} alt={journal.programTopic}/>
+                            <img src={journal.attachmentUrls} alt={journal.programTopic}/>
+
                         </div>
                     </div>
                 </div>
