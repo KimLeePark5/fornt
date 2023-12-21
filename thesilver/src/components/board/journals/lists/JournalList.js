@@ -11,22 +11,18 @@ import {
 function JournalList({data, onDeleteJournals, onSelectJournals }) {      //전체조회
 
     const [selectedJournals, setSelectedJournals] = useState([]);
+
     const handleCheckboxChange = (journalCode) => {
         setSelectedJournals((prevSelected) => {
             const isSelected = prevSelected.includes(journalCode);
-
             let updatedSelectedJournals;
-
             if (isSelected) {
                 updatedSelectedJournals = prevSelected.filter((code) => code !== journalCode);
             } else {
                 updatedSelectedJournals = [...prevSelected, journalCode];
             }
-
-            // 수정: 새로 계산된 선택 목록을 사용하여 onSelectJournals 호출
             // 부모 컴포넌트에 선택된 일지 알리기
             onSelectJournals(updatedSelectedJournals);
-
             return updatedSelectedJournals;
         });
     };
