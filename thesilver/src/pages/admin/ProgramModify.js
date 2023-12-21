@@ -270,7 +270,6 @@ function ProgramModify() {
                                         className="img-div00"
                                          alt="preview"
                                           src={ !imageUrl ?  program.profilePicture  : imageUrl }
-
                                     />
                                 <input
                                     style={{display: 'none'}}
