@@ -9,10 +9,8 @@
 
 
 ## ⌛ 개발 기간
-- 23.11.13 ~ 23.12.22
-
-
-- 여기에 나중에 프로젝트 실행 계획표 사진 올리기
+- 23-11-13 ~ 23-12-22
+![image](https://github.com/KimLeePark5/front/assets/138549516/d78ecfec-a00f-4a99-a86e-c7084741b584)
 
 
 ## 🤼‍♀️ 멤버 구성
@@ -23,16 +21,7 @@
 - 팀원 : 박유리(https://github.com/qkrdbfl) - 프로그램 등록&수정&삭제 / 일지 등록&수정&삭제 / 캘린더 스케쥴 관리
 
 ## ⚙️ 개발환경
--  Software  | Tool	IntelliJ / Figma / Notion / Slack  
--  TEST      |	Post Man
--  DBMS      |	MySQL
--  Server    |	Apache TOMCAT
--  Language  |	JAVA 11 / javaScript / HTML / CSS
--  형상관리   |	GIT
--  화면구현   |  Figma
--  커뮤니티	 |  Notion / Slack
--  API	     |  kakao address api / FullCalendar api / DatePicker api
--  프레임워크 |	SpringBoot / React
+![image](https://github.com/KimLeePark5/front/assets/138549516/6dae63f4-5b3d-46de-93f6-49a0f5bc145b)
 
 
 ## 📌 주요 기능
