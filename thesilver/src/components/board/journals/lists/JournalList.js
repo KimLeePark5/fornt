@@ -118,7 +118,7 @@ function JournalList({data, onDeleteJournals, onSelectJournals }) {      //전�
         <div className="journals-contents">
             <div>
                 <h2 style={{fontSize: "30px"}}>
-                    <b>❙ 프로그램 일지</b>
+                    <b className="pageTitle-div">프로그램 일지</b>
                 </h2>
                 <br/>
             </div>
@@ -142,7 +142,6 @@ function JournalList({data, onDeleteJournals, onSelectJournals }) {      //전�
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• 참관일자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                         type="date"
-                        //onChange={(e) => setObservation(e.target.value)}
                         value={observationSearch}
                         onChange={(e) => onSearchChangeHandler(e, 'observation')}
                         onKeyUp={onEnterKeyHandler2}

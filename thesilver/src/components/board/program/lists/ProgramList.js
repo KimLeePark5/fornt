@@ -55,7 +55,7 @@ function ProgramList({data, onClickDelete }) {
         <div className="Programs-contents">
             <div>
                 <h2 style={{fontSize: "30px"}}>
-                    <b>❙ 프로그램</b>
+                    <b className="pageTitle-div"> 프로그램</b>
                 </h2>
                 <br/>
             </div>
