@@ -118,7 +118,7 @@ function JournalList({data, onDeleteJournals, onSelectJournals }) {      //전�
         <div className="journals-contents">
             <div>
                 <h2 style={{fontSize: "30px"}}>
-                    <b>❙ 프로그램 일지</b>
+                    <b className="pageTitle-div">프로그램 일지</b>
                 </h2>
                 <br/>
             </div>
