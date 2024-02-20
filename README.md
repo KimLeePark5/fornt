@@ -26,25 +26,21 @@
 
 ## 📌 주요 기능
 메인 페이지&연차... - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%97%B0%EC%B0%A8&..%EC%A0%80%EC%A9%8C%EA%B3%A0)
-- 각종 화면 이동
-- 배너 슬라이드
-- .....이하현
-- .....이하현
-- .....이하현
-- .....이하현
-- 자신의 기능쓰면 됨
+- 메인
 - 연차 상신
 - 연차 수정
-- 이런거
-- ....(위키 제목 바꾸면 경로 바뀌니까 다시 여기에 붙여주셔야돼요 ()로 감싸서.)
+- 연차 관리
+- 연차 결재
+- 연차 취소
+- 연차 반려
 
-로그인 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8..-&-%EC%96%B4%EC%A9%8C%EA%B3%A0&%EC%A0%80%EC%A9%8C)
+로그인, 고객 관리 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8..-&-%EC%96%B4%EC%A9%8C%EA%B3%A0&%EC%A0%80%EC%A9%8C)
 - DB값 검증
 - ID찾기, 임시비밀번호 생성
 - ....김용민
   
 
-어쩌고저쩌고 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....)
+마이페이지, 직원 관리 - [상세보기-WIKI이동](https://github.com/KimLeePark5/front/wiki/%EC%A7%81%EC%9B%90%EB%93%B1%EB%A1%9D&....)
 - ......김지상
 - .....
 
